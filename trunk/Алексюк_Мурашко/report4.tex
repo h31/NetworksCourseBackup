@@ -36,31 +36,67 @@
 \tableofcontents
 \pagebreak
 
+\section{Цель работы}
+Познакомиться со средствами генерации сигналов и визуализации их спектров.
+
+\section{Постановка задачи}
+В командном окне MATLAB и в среде Simulink промоделировать чистый синусоидальный сигнал, а также синусоидальный сигнал с шумом. Получить их спектры.
+
+\section{Ход работы}
+
+\subsection{Код Matlab}
 \begin{lstlisting}
+close all;
+clear all;
 x = 0:0.01:4*pi;
 f0 = 5;
 %исходный сигнал
 y = sin(2*pi*f0*x);
 plot(x(1:200),y(1:200))
 grid
-%спектр исходного сигнала
+%спектр исходного сигнала 
 figure
-spectrum = fft(y,512);
+spectrum = abs(fft(y,128)); 
 norm_spectrum = spectrum.*conj(spectrum)/512;
-f=100*(0:255)/512;
-plot(f, norm_spectrum(1:256))
+f=100*(0:127)/512;
+plot(f, norm_spectrum(1:128))
 axis([0 max(f) 0 10])
 grid
 \end{lstlisting}
 
 \begin{figure}[H]
-   \includegraphics[width=\textwidth]{sin.png}
+   \includegraphics[scale=0.7]{sin.png}
    \caption{Синусоида}
 \end{figure}
 
 \begin{figure}[H]
-   \includegraphics[width=\textwidth]{spectre.png}
+   \includegraphics[scale=0.7]{spectre.png}
    \caption{Спектр}
 \end{figure}
+
+\subsection{Simulink}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.7]{simulink.png}
+   \caption{Проект Simulink}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.7]{sin_simulink.png}
+   \caption{Синус}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.7]{scope.png}
+   \caption{Спектр}
+\end{figure}
+
+\section{Вывод}
+
+В ходе работы были исследованы два важных нюанса, касающиеся применения преобразования Фурье в цифровых системах.
+
+Во-первых, если бы входной сигнал был бесконечным, то его спектр представлял бы собой дельта-импульс, бесконечно короткий, с бесконечно большой амплитудой и единичной площадью, однако на практике из-за ограниченной длины сигнала (бесконечный сигнал был как бы умножен на прямоугольный импульс конечной длины) импульсы на спектре имеют конечную высоту и конечную ширину.
+
+Во-вторых, так как сигнал был дискретизирован, то импульс повторяется бесконечное число раз (на графике видно два импульса).
 
 \end{document}
