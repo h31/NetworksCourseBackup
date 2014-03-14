@@ -1,16 +1,17 @@
 function main()
-x=0:0.01:4*pi;
-f0 = 5;
-y = sin(2*pi*f0*x);
-figure(1)
-plot(x(1:200),y(1:200))
-grid
-figure(2)
-spectrum = fft(y,1024);
-norm_spectrum = spectrum.*conj(spectrum)/1024;
-f = 100*(0:1023)/1024;
-%plot(f, norm_spectrum(1:1024))
-plot(f,abs(fft(y,1024)))
-axis([0 max(f) 0 10])
-grid
+x = 0:0.1:100;
+e = 0:0.1:100;
+y = cos(x) + cos(3/4*pi*x);
+%plot(fft(y));
+%subplot(2,1,1), plot(y);
+%subplot(2,1,2), plot(abs(fft(y,512)),'r');
+
+
+c = [ 0 0 1 1 1 1 0 0];
+b = [ 0 0 1 1 1 1 0 0];
+subplot(2,1,1), plot(c);
+subplot(2,1,2), plot(abs(fft(c)),'r');
+%plot(conv(c,b));
+
+
 end
