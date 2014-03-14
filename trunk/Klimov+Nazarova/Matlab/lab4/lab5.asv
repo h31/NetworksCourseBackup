@@ -23,7 +23,6 @@ grid
 spectrum = fft(y,512);
 norm_spectrum = spectrum.*conj(spectrum)/512;
 f=100*(0:511)/512;
-figure
 plot(f, norm_spectrum(1:512))
 axis([0 max(f) 0 10])
 grid
