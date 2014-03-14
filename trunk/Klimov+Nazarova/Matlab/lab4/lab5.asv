@@ -12,7 +12,7 @@
 % axis([0 max(f) 0 10])
 % grid
 t = 0:0.1:4*pi;
-N=100;
+N=20;
 y = 0;
 for i=0:N
     y = y + cos(i*t);
@@ -20,9 +20,15 @@ end;
 plot(t,y)
 grid
 
-spectrum = fft(y,512);
-norm_spectrum = spectrum.*conj(spectrum)/512;
-f=100*(0:511)/512;
-plot(f, norm_spectrum(1:512))
+spectrum = fft(y,1024);
+norm_spectrum = spectrum.*conj(spectrum)/1024;
+f=100*(0:1023)/1024;
+figure
+plot(f, norm_spectrum(1:1024))
 axis([0 max(f) 0 10])
 grid
+
+y=[ 1 1 0 0 1 1 0 0];
+x=[1 1 2 2 3 3 4 ];
+figure
+plot(x,y);
