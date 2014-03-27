@@ -21,7 +21,7 @@
 так же синусоидальный сигнал с шумом. Получить их спектры.
 
 \chapter{Ход работы}
-\section{Алгоритм работы}
+\section{Алгоритм работы. Построение сигналов}
 \begin{itemize}
 \item Построение синусоидального сигнала без шумов
 \item Вывод временной характеристики сигнала
@@ -83,6 +83,164 @@ grid\newline
 рис. 4. Спектр зашумленного сигнала\newline
 \end{center}
 \end{figure}
+
+\chapter{Построение спектров}
+\section{Алгоритм работы}
+\begin{itemize}
+\item Построение полигармонического сигнала
+\item Построение прямоугольного импульсного сигнала
+\item Построение треугольного импульсного сигнала
+\item Получение спектров этих сигналов
+\item Создание моделей в Simulink
+\end{itemize}
+\section{Код MATLAB}
+function laba5()\newline
+x = 0:0.01:4*pi;\newline
+f0 = 5;\newline
+y = 0;\newline
+for i=1:1:100\newline
+    y=y+cos(i*x);\newline
+end\newline
+plot(x(1:100),y(1:100));\newline
+figure(1)\newline
+spectrum=fft(y,512);\newline
+normspectrum=spectrum.*conj(spectrum)/512;\newline
+f=100*(0:255)/512;\newline
+figure(2)\newline
+plot(f,normspectrum(1:256))\newline
+axis([0 max(f) 0 10])\newline
+grid \newline
+figure(3)\newline
+y1=square(x,50)\newline
+plot(x(1:1000),y1(1:1000),'LineWidth',2);\newline
+ylim([-1.2,1.2]);\newline
+spectrum=fft(y1,512);\newline
+normspectrum=spectrum.*conj(spectrum)/512;\newline
+f1=100*(0:255)/512;\newline
+figure(4)\newline
+plot(f1,normspectrum(1:256))\newline
+axis([0 max(f1) 0 10])\newline
+grid \newline
+y2=conv(y1,y1);\newline
+figure(5)\newline
+plot(x(1:1000),y2(1:1000),'LineWidth',2);\newline
+grid\newline
+spectrum=fft(y2,512);\newline
+normspectrum=spectrum.*conj(spectrum)/512;\newline
+f2=100*(0:255)/512;\newline
+figure(6)\newline
+plot(f2,normspectrum(1:256)/1000)\newline
+axis([0 max(f2) 0 10])\newline
+grid \newline
+end\newline
+\section{Результаты работы}
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.9]{5.png}\newline
+рис. 5. спектр прямоугольного сигнала\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.7]{6.png}\newline
+рис. 6.спектр полигармонического сигнала\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.7]{7.png}\newline
+рис. 7.спектр треугольного сигнала\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.7]{8.png}\newline
+рис. 8 полигармонический сигнал\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.7]{9.png}\newline
+рис. 9  треугольный сигнал\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.7]{10.png}\newline
+рис. 10  прямоугольный сигнал\newline
+\end{center}
+\end{figure}
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.7]{11.png}\newline
+рис. 11  прямоугольный сигнал\newline
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.9]{12.png}\newline
+рис. 12  полигармонический сигнал\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.9]{13.png}\newline
+рис. 13   спектр треугольного сигнала\newline
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.9]{14.png}\newline
+рис. 14   спектр прямоугольного сигнала\newline
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.79]{15.png}\newline
+рис. 15    спектр полигармонического сигнала\newline
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.9]{16.png}\newline
+рис. 16    треугольный сигнал\newline
+\end{center}
+\end{figure}
 \chapter{Вывод}
-В данной лабораторной работе был получен спектр исходного сигнала синуса. Спектр представляет собой два резко возрастающих на коротком промежутке графика, симметрично расположенных на оси. Исходный сигнал был зашумлен, его график представляет собой "неровный" синус. Также был получен спектр зашумленного сигнала, который представляет собой "неровный" спектр исходного сигнала.
+В данной лабораторной работе был получен спектр исходного сигнала и спектр зашумленного сигнала. Полученный спектр представляет собой одну гармонику синуса с определенной частотой, что объясняется наличием у сигнала одной частоты. Теоретически ожидалось получить один спектр, практически был получен спектр, который представляет собой узкую полоску на графике. Практические результаты оказались очень правдивыми. После нанесения шума на сигнал, был получен спектр зашумленного сигнала. Спектр зашумленного сигнала представляет собой прерывистые линии на графике. Таким образом спектр сигнала также оказался зашумленным. \newline
+
+В следующей лабораторной работе было проведено моделирование полигармонического сигнала
+
+ прямоугольного сигнала и треугольного сигнала. Были получены спектры данных сигналов. Для получения сигналов использовались математические формулы данных функций, а также средство моделирования Simulink. Обоими способами были получены спектры сигналов. Частным случаем в работе было получение треугольного сигнала через премение операции свертки над произведением двух прямоуголных сигналов. Данная операция осуществляется как математически, так и при моделировании в среде Simulink.
+Обоснованием получения треугольного сигнала из свертки двух прямоугольных служит тот факт, что интеграл от произведения двух констант есть линейная функция. График такого преобразования будет представлять две линеных функции, одна из котрых имеет положительный коэффициента наклона, а другая отрицательный.
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.8]{17.png}\newline
+рис. 17    Формула полигармонического сигнала\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.8]{18.png}\newline
+рис. 18   Свертка функций
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.8]{19.png}\newline
+рис. 19    Прямоугольная функция
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.8]{20.png}\newline
+рис. 20    Спектр сигнала. Математическое представление
+\end{center}
+\end{figure}
 \end{document}
