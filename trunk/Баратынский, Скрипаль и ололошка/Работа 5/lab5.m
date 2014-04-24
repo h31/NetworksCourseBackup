@@ -14,7 +14,7 @@ f=100*(0:255)/512;
 plot(f, norm_spectrum(1:256))
 axis([0 max(f) 0 10])
 grid
-
+figure
 y1 = square(x,50);
 plot(x(1:1000),y1(1:1000),'LineWidth',2);
 ylim([-1.2,1.2]);
@@ -26,7 +26,7 @@ f1=100*(0:255)/512;
 plot(f1, norm_spectrum(1:256))
 axis([0 max(f1) 0 10])
 grid
-
+figure
 y2 = conv(square(x,50),square(x,50));
 plot(x(1:1000),y2(1:1000),'LineWidth',2);
 grid

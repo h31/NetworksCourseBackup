@@ -133,7 +133,7 @@ f=100*(0:255)/512;
 plot(f, norm_spectrum(1:256))
 axis([0 max(f) 0 10])
 grid
-
+figure
 y1 = square(x,50);
 plot(x(1:1000),y1(1:1000),'LineWidth',2);
 ylim([-1.2,1.2]);
@@ -145,7 +145,7 @@ f1=100*(0:255)/512;
 plot(f1, norm_spectrum(1:256))
 axis([0 max(f1) 0 10])
 grid
-
+figure
 y2 = conv(square(x,50),square(x,50));
 plot(x(1:1000),y2(1:1000),'LineWidth',2);
 grid
@@ -156,4 +156,42 @@ f2=100*(0:255)/512;
 plot(f2, norm_spectrum(1:256)/1000)
 axis([0 max(f2) 0 50])
 grid
+\section{Результаты работы}
+В результате, были полученны 6 графиков: графики полигармонического, прямоугольного и треугольного сигналов, а так же графики их спектров соответственно. Графики представлены на рисунках ниже.
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.9]{5_1.png}\newline
+рис. 5. Полигармонический сигнал\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.9]{5_2.png}\newline
+рис. 6. Спектр полигармонического сигнала\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.9]{5_3.png}\newline
+рис. 7. Прямоугольный сигнал\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.9]{5_4.png}\newline
+рис. 8. Спектр прямоугольного сигнала\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.9]{5_5.png}\newline
+рис. 5. Треугольный сигнал\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0, scale = 0.9]{5_6.png}\newline
+рис. 5. Спектр треугольного сигнала\newline
+\end{center}
+\end{figure}
 \end{document}
