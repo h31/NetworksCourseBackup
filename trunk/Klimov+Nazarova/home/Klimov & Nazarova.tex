@@ -6,8 +6,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-
-
+\graphicspath{{lab5/}}
 
 \author{Климов С.А., Назарова К.Е.}
 \title{Отчет по лабораторным работам по дисциплине ТСС}
@@ -131,5 +130,187 @@ grid\\
 
 \subsection{Выводы}
 \newpage
-Умноженный на свое комплексное сопряженное спектр является нормированным. Синус не бесконечен. Спектр исрытывает свертку с синком, повторение спектра происходит на частоте кратной частоте дискретезации.
+По результатам моделирования синусоидальных сигналов (чистого и с шумом) а также их полученных спектров можно сделать следующие выводы: умноженный на свое комплексное сопряженное спектр является нормированным, синус не бесконечен, спектр испытывает свертку с синком, повторение спектра происходит на частоте, кратной частоте дискретезации.
+
+\newpage
+\section{Спектры простых сигналов}
+\subsection{Цель работы}
+Получить представление о свойствах спектров.
+\subsection{Постановка задачи}
+В командном окне MATLAB и в среде Simulink промоделировать следующие тестовые сигналы:
+\begin{itemize}
+\item Полигармонический сигнал 
+	\begin{equation}
+	y(t) = \sum_{n=0}^{{N}-1}cos{(nt)}
+	\end{equation}
+\item Прямоугольный импульсный сигнал
+	\begin{equation}
+	y(t) = \prod(t, T_i)
+	\end{equation}
+\item Tреугольный импульсный сигнал
+	\begin{equation}
+	y(t) = \vartriangle(t, T_i)
+	\end{equation}
+\end{itemize}
+и получить их спектры.
+\subsection{Справочные материалы}
+В.С. Гутников. Фильтрация измерительных сигналов пп.3-6, 13-14
+\subsection{Ход работы}
+Для моделирования заданных сигналов использовался приведенный код MATLAB:
+
+\begin{flushleft}
+t = 0:00.1:4*pi;\\
+N = 100;\\
+y = 0;\\
+
+\% Полигармонический сигнал\\
+y = sin(pi*t)+sin(2*pi*t)+sin(pi*0.3*t);\\
+plot(t,y,'LineWidth',2)\\
+grid\\
+
+figure\\
+spectrum = fft(y,512);\\
+norm\_spectrum = spectrum.*conj(spectrum)/512;\\
+f=100*(0:255)/512;\\
+plot(f, norm\_spectrum(1:256),'LineWidth',2)\\
+axis([0 max(f) 0 10])\\
+grid\\
+
+\% Прямоугольный сигнал\\
+figure\\
+y1 = square(t,50);\\
+plot(t(1:100),y1(1:100),'LineWidth',2);\\
+ylim([-2,2]);\\
+grid\\
+
+figure\\
+spectrum = fft(y1,512);\\
+norm\_spectrum = spectrum.*conj(spectrum)/512;\\
+f1=100*(0:255)/512;\\
+plot(f1, norm\_spectrum(1:256),'LineWidth',2)\\
+axis([0 max(f1) 0 10])\\
+grid\\
+
+\% Треугольный сигнал\\
+figure\\
+y2 = conv(square(t,20),square(t,20));\\
+plot(t(1:100),y2(1:100),'LineWidth',2);\\
+grid\\
+
+figure\\
+spectrum = fft(y2,512);\\
+norm\_spectrum = spectrum.*conj(spectrum)/512;\\
+f2=100*(0:255)/512;\\
+plot(f2, norm\_spectrum(1:256)/1000,'LineWidth',2)\\
+axis([0 max(f2) 0 50])\\
+grid\\
+\end{flushleft}
+\subsection{Результаты работы}
+В результате были получены следующие сигналы и их спектры:
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{5_1} 
+\caption{Полигармонический сигнал} 
+\label{fig.l5_1} 
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{5_2}
+\caption{Спектр полигармонического сигнала} 
+\label{fig.l5_2} 
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{5_3} 
+\caption{Прямоугольный импульсный сигнал} 
+\label{fig.l5_3} 
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{5_4}
+\caption{Спектр прямоугольного сигнала} 
+\label{fig.l5_4} 
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{5_5} 
+\caption{Треугольный импульсный сигнал} 
+\label{fig.l5_3} 
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{5_6}
+\caption{Спектр треугольного сигнала} 
+\label{fig.l5_4} 
+\end{figure}
+
+В ходе моделирования сигналов в Simulink были собраны следующие схемы и получены соответствующие графики:
+
+
+\begin{itemize}
+\item Полигармонический сигнал (Рис. 11 - 13)
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{1_simulink} 
+\caption{Полигармонический сигнал (Simulink)} 
+\label{fig.l5_1s} 
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{lab5_1_simulink} 
+\caption{Полигармонический сигнал} 
+\label{fig.l5_2s1} 
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{lab5_2_simulink}
+\caption{Спектр полигармонического сигнала} 
+\label{fig.l5_3s} 
+\end{figure}
+
+\item Прямоугольный импульсный сигнал (Рис. 14 - 16)
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{3_simulink} 
+\caption{Прямоугольный импульсный сигнал (Simulink)} 
+\label{fig.l5_4s} 
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{lab5_3_simulink} 
+\caption{Прямоугольный импульсный сигнал} 
+\label{fig.l5_5s} 
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{lab5_4_simulink}
+\caption{Спектр прямоугольного сигнала} 
+\label{fig.l5_6s} 
+\end{figure}
+
+\item Треугольный импульсный сигнал (Рис. 17 - 19)
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{4_simulink} 
+\caption{Треугольный импульсный сигнал (Simulink)} 
+\label{fig.l5_7s} 
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{lab5_5_simulink} 
+\caption{Треугольный импульсный сигнал} 
+\label{fig.l5_8s} 
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{lab5_6_simulink}
+\caption{Спектр треугольного сигнала} 
+\label{fig.l5_9s} 
+\end{figure}
+\end{itemize}
+\subsection{Выводы}
+В результате проделанной работы было проведено моделирование в среде MatLAB и Simulink полигармонического, прямоугольного и треугольного импульсных сигналаов, а также получены их спектры. В Simulink для получения генератора треугольного сигнала используется генератор прямоугольных импульсов каскадно с фильтром с прямоугольным окном. Это обоснуется тем, что свертка двух прямоугольных импульсов в результате дает треугольный 
 \end{document}
