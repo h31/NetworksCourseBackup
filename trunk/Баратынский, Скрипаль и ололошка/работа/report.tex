@@ -373,5 +373,252 @@ begin{figure}
 \end{center}
 \end{figure}
 \section{Вывод}
-Временная характеристика сигнала после фильтрации фильтром Баттерворта 16 порядка, практически совпадает с исходным сигналом. Незначительные отличия объясняются во-первых, погрешностью вычислений, а во-вторых - погрешностью алгоритма. Для получения идеального сигнала, порядок фильтра должен стремиться к бесконечности, что нереализуемо на практике. Частотная характеристика у исходного, отфильтрованного и зашумленного сигнала очень схожи, однако стоит отметить, что характеристика отфильтрованного сигнала более плавная и ближе к частотной характеристике исходного сигнала, чем частотная характеристика зашумленного сигнала. 
+Временная характеристика сигнала после фильтрации фильтром Баттерворта 16 порядка, практически совпадает с исходным сигналом. Незначительные отличия объясняются во-первых, погрешностью вычислений, а во-вторых - погрешностью алгоритма. Для получения идеального сигнала, порядок фильтра должен стремиться к бесконечности, что нереализуемо на практике. Частотная характеристика у исходного, отфильтрованного и зашумленного сигнала очень схожи, однако стоит отметить, что характеристика отфильтрованного сигнала более плавная и ближе к частотной характеристике исходного сигнала, чем частотная характеристика зашумленного сигнала.
+\chapter{Лабораторная работа №7}
+\section{Постановка задачи}
+	\begin{enumerate}
+		\item Сгенерировать однотоальный сигнал низкой частоты.
+		\item Выполнить амплитудную модуляцию сигнала по закону
+				\begin{equation}
+					u(t) = (1+MU_m cos(\Omega t))cos(\omega_0 t+\phi_0).
+				\end{equation}
+		\item Получить спектр модулированного сигнала.
+		\item Выполнить модуляцию с подавлением несущей 
+				\begin{equation}
+					u(t) = MU_m cos(\omega t)cos(\omega_0 t+\phi_0).
+				\end{equation}
+		      Получить спектр. 
+		\item Выполнить однополосную модуляцию:
+				\begin{equation}
+					u(t) = U_m cos(\omega t)cos(\omega_0 t+\phi_0)+\frac{U_m}{2}\sum_{n=1}^N M_n (cos(\omega_0 + \Omega_n )t + \phi_0 + \Phi_n ),
+				\end{equation}
+				положив n = 1.
+		\item Выполить синхронное детектирование и получить исходный однополосный сигнал.
+		\item Рассчитать КПД модуляции
+				\begin{equation}
+					\eta_A M = \frac{U_m ^2 M^2 /4}{P_U} = \frac{M^2}{M^2 + 2}.
+				\end{equation}
+	\end{enumerate}
+\section{Теоретическая часть}
+Амплитудная модуляция - модуляция, при которой сигнал представляет собой произведение информационной огибающей u(t) и гармонического колебания ее заполнения с более высокими частотами. Простейшая форма модулированного сигнала создается при однотональной амплитудной модуляции, при которой несущий сигнал модулируется гармоническим колебанием с одной частотой $\Omega$:
+	\begin{equation}
+		u(t) = (1+MU_m cos(\Omega t))cos(\omega_0 t+\phi_0).
+	\end{equation}
+При модуляции с подавлением несущей частоты производится перемножение двух сигналов - модулирующего и несущего, при котором проиходит подавление неcущего колебания. КПД модуляции равен 100\%. 
+Физическая сущность подавления несущей заключается в том, что при переходе огибающей биений U(t) через 0 фаза несущей частоты высокочастотного заполнения изменяется на $180^0$.
+Синхронное детектирование является одним из способов демодуляции АМ-сигнала. Его суть состоит в умножении частоты сигнала на опорное колебание с несущей частотой. Результат умножения содержит два слагаемых: искомая амплитуда и АМ-сигнал с несущей частотой $2\omega_0$. Эта частота может быть убрана, если пропустить данный сигнал, через ФНЧ.
+\section{Код matlab}
+\begin{flushleft}
+x = 0:0.01:8*pi;\newline
+f0 = 0.1;\newline
+\newline
+y = sin(2*pi*f0*x);\newline
+figure\newline
+plot(x(1:1000),y(1:1000), 'LineWidth', 2)\newline
+grid\newline
+\newline
+spectrum = fft(y, 512);\newline
+norm_spectrum = spectrum.*conj(spectrum)/512;\newline
+f = 100*(0:255)/512;\newline
+figure\newline
+plot(f, norm_spectrum(1:256), 'LineWidth', 2)\newline
+axis([0 max(f) 0 70])\newline
+grid\newline
+\newline
+Fc = 10*f0;\newline
+Fs = 100*f0;\newline
+U = ammod(y, Fc, Fs, 0, 1);\newline
+figure \newline
+plot(x(1:1000), U(1:1000),  'LineWidth', 2)\newline
+grid\newline
+\newline
+ u_spectrum = fft(U, 512);\newline
+ norm_u_spectrum = u_spectrum.*conj(u_spectrum)/512;\newline
+ figure\newline
+ plot(f, norm_u_spectrum(1:256))\newline
+ axis([0 max(f) 0 70])\newline
+ grid\newline
+\newline
+Fc = 10*f0;\newline
+Fs = 100*f0;\newline
+U = ammod(y, Fc, Fs);\newline
+figure \newline
+plot(x(1:1000), U(1:1000), 'LineWidth', 2)\newline
+grid\newline
+\newline
+u_spectrum = fft(U, 512);\newline
+norm_u_spectrum = u_spectrum.*conj(u_spectrum)/512;\newline
+figure\newline
+plot(f, norm_u_spectrum(1:256))\newline
+axis([0 max(f) 0 70])\newline
+grid\newline
+\newline
+Fc = 10*f0;\newline
+Fs = 100*f0;\newline
+U = ssbmod(y, Fc, Fs, [], 'upper');\newline
+figure \newline
+plot(x(1:500), U(1:500), 'LineWidth', 2)\newline
+grid\newline
+\newline
+u_spectrum = fft(U, 512);\newline
+norm_u_spectrum = u_spectrum.*conj(u_spectrum)/512;\newline
+figure\newline
+plot(f, norm_u_spectrum(1:256))\newline
+axis([0 max(f) 0 70])\newline
+grid\newline
+\newline
+[b, a] = butter(10, Fc*2/Fs);\newline
+z = ssbdemod(U, Fc, Fs, 0, b, a);\newline
+figure\newline
+plot(x(1:1000), z(1:1000), 'LineWidth', 2)\newline
+grid\newline
+\newline
+du_spectrum = fft(U, 512);\newline
+norm_du_spectrum = du_spectrum.*conj(du_spectrum)/512;\newline
+figure\newline
+plot(f, norm_du_spectrum(1:256))\newline
+axis([0 max(f) 0 70])\newline
+grid\newline
+\newline 
+M = 0.5;\newline
+n = M^2/(M^2+2)\newline
+\end{flushleft} 
+\section{Результаты работы}
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_1.png}\newline
+рис. 29. Исходный сигнал\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_2.png}\newline
+рис. 30. Спектр исходного сигнала\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_3.png}\newline
+рис. 31. Модуляция с М = 0.5\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_4.png}\newline
+рис. 32. Спектр сигнала с М=0.5\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_5.png}\newline
+рис. 33. Модуляция с М=1\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_6.png}\newline
+рис. 34. Спектр сигнала с М = 1\newline
+\end{center}
+\end{figure}
+begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_7.jpg}\newline
+рис. 35. Сигнал с М = 5\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_8.jpg}\newline
+рис. 36. Спектр сигнала с М = 5\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_9.jpg}\newline
+рис. 37. Модуляция с подавлением несущей\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_10.png}\newline
+рис. 38. Спектр сиганала с подавлением несущей \newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_11.png}\newline
+рис. 39. Однополосный АМ-сигнал\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_12.png}\newline
+рис. 40. Спектр однополосного модулированного сигнала\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_13.png}\newline
+рис. 41. Демодулированный сигнал\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_14.png}\newline
+рис. 42. Спектр демодулированного сигнала\newline
+\end{center}
+\end{figure}
+Для глубины модулирования 1 КПД равен 0.1111%
+Моделирование в среде Simulink
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_15.png}\newline
+рис. 43. Исходный сигнал\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_16.png}\newline
+рис. 44. Модулированный сигнал\newline
+\end{center}
+\end{figure}
+begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_17.jpg}\newline
+рис. 45. Демодулированный сигнал\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_18.jpg}\newline
+рис. 46. Модель\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_19.jpg}\newline
+рис. 47. Сигнал БАМ\newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_20.png}\newline
+рис. 48. Демодулированный БАМ сигнал \newline
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=150mm, scale = 0.9]{7_21.png}\newline
+рис. 49. Модель\newline
+\end{center}
+\end{figure}
+\section{Вывод}
+В данной лабораторной работе был сгенерирован низкочастотный гармонический сигнал и проведена его амплитудная модуляция, баланстная амплитудная модуляция, однополосная амплитудная модуляция, а так же последующая демодуляция. Все результаты соответствуют ожиданиям.
+Амплитудная модуляция применяется на низких частотах (не выше коротких волн), что обусловлено низким КПД использования энергии модулированных сигналов.Основным применением амплитудной модуляции является передача сигналов звуковой частоты.
+Для получения колебаний боковых частот без несущей применяют так называемую балансную модуляцию, основанную на том, что складывают два АМ колебания, у которых колебания боковых частот находятся в фазе, а несущих - в пративофазе (или берут разность двух АМ колебаний, у которых боковые частоты в противофазе, а несущие - в фазе).КПД такой модуляции становится равно 100 процентам.
+Рассмотренная в предыдущем разделе двухполосная АМ с подавленной несущей имеет преимущества перед обычной АМ только в энергетическом плане - за счет устранения несущего колебания. Ширина спектра при этом по-прежнему вдвое больше, чем у модулирующего сигнала. Однако спектры двух боковых полос АМ-сигнала являются зеркальным отражением друг друга, то есть они несут одну и ту же информацию. Поэтому одну из боковых полос можно удалить. Получающаяся модуляция называется однополосной (английский термин - Single Side Band, SSB).
+В зависимости от того, какая боковая полоса сохраняется, говорят об однополосной модуляции с использованием верхней или нижней боковой полосы.
+Итак, однополосный сигнал можно представить как сумму двух АМ-сигналов, несущие колебания которых имеют одну и ту же частоту, но сдвинуты по фазе друг относительно друга на 90°. Амплитудными функциями этих АМ-сигналов являются модулирующий сигнал и его квадратурное дополнение. В зависимости от того, складываются эти два АМ-сигнала или вычитаются (а точнее, какая из двух несущих опережает другую по фазе), формируется однополосный сигнал с верхней или нижней боковой полосой.
+Синхронное детектирование является одним из способов демодуляции АМ-сигнала. Его суть состоит в умножении частоты сигнала на опорное колебание с несущей частотой. Результат умножения содержит два слагаемых: искомая амплитуда и АМ-сигнал с несущей частотой 2ω0 , который легко удаляется путем пропускания сигнала через ФНЧ (например через фильт Баттерворта).
+
 \end{document}
