@@ -1,7 +1,10 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.3.26)  21 MAY 2014 13:54
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.5.23)  23 MAY 2014 13:10
 entering extended mode
-**lab7.tex
-("C:\Users\Аня\Desktop\6 семестр\телеком\lab7.tex"
+**E:/Юличка/Мой*Политехничек/Телекомм.сети/tru
+nk/Замотаева,*Никитина/lab7/lab7.tex
+
+("E:/Юличка/Мой Политехничек/Телекомм.сети/tru
+nk/Замотаева, Никитина/lab7/lab7.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -13,9 +16,9 @@ german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
-("D:\MiKTeX 2.9\tex\latex\base\report.cls"
+(H:\Programms\MixTex\tex\latex\base\report.cls
 Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
-("D:\MiKTeX 2.9\tex\latex\base\size10.clo"
+(H:\Programms\MixTex\tex\latex\base\size10.clo
 File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -31,19 +34,19 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("D:\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+(H:\Programms\MixTex\tex\latex\base\inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 
-("D:\MiKTeX 2.9\tex\latex\base\utf8.def"
+(H:\Programms\MixTex\tex\latex\base\utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-("D:\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
+(H:\Programms\MixTex\tex\latex\base\t1enc.dfu
 File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -193,7 +196,7 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-("D:\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
+(H:\Programms\MixTex\tex\latex\base\ot1enc.dfu
 File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -224,7 +227,7 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-("D:\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
+(H:\Programms\MixTex\tex\latex\base\omsenc.dfu
 File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -248,29 +251,29 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-("D:\MiKTeX 2.9\tex\generic\babel\babel.sty"
+(H:\Programms\MixTex\tex\generic\babel\babel.sty
 Package: babel 2008/07/08 v3.8m The Babel package
 
 *************************************
 * Local config file bblopts.cfg used
 *
-("D:\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
+(H:\Programms\MixTex\tex\latex\00miktex\bblopts.cfg
 File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
 )
-("D:\MiKTeX 2.9\tex\generic\babel\russianb.ldf"
+(H:\Programms\MixTex\tex\generic\babel\russianb.ldf
 Language: russianb 2008/03/21 v1.1r Russian support from the babel system
 
-("D:\MiKTeX 2.9\tex\generic\babel\babel.def"
+(H:\Programms\MixTex\tex\generic\babel\babel.def
 File: babel.def 2008/07/08 v3.8m Babel common definitions
 \babel@savecnt=\count88
 \U@D=\dimen103
 )
-("D:\MiKTeX 2.9\tex\latex\cyrillic\t2aenc.def"
+(H:\Programms\MixTex\tex\latex\cyrillic\t2aenc.def
 File: t2aenc.def 2005/09/27 v1.0i Cyrillic encoding definition file
 Now handling font encoding T2A ...
 ... processing UTF-8 mapping file for font encoding T2A
 
-("D:\MiKTeX 2.9\tex\latex\base\t2aenc.dfu"
+(H:\Programms\MixTex\tex\latex\base\t2aenc.dfu
 File: t2aenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A4 (decimal 164)
    defining Unicode char U+00A7 (decimal 167)
@@ -461,31 +464,31 @@ File: t2aenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 ))
 Package babel Info: Making " an active character on input line 199.
 ))
-("D:\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+(H:\Programms\MixTex\tex\latex\base\fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-("D:\MiKTeX 2.9\tex\latex\base\ot1enc.def"
+(H:\Programms\MixTex\tex\latex\base\ot1enc.def
 File: ot1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding OT1 on input line 43.
 ))
-("D:\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+(H:\Programms\MixTex\tex\latex\amsmath\amsmath.sty
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-("D:\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+(H:\Programms\MixTex\tex\latex\amsmath\amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-("D:\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+(H:\Programms\MixTex\tex\latex\amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen104
 ))
-("D:\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+(H:\Programms\MixTex\tex\latex\amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen105
 )
-("D:\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+(H:\Programms\MixTex\tex\latex\amsmath\amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count89
@@ -526,41 +529,41 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-("D:\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+(H:\Programms\MixTex\tex\latex\amsfonts\amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-("D:\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+(H:\Programms\MixTex\tex\latex\amsfonts\amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-("D:\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+(H:\Programms\MixTex\tex\latex\graphics\graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("D:\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+(H:\Programms\MixTex\tex\latex\graphics\keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks21
 )
-("D:\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+(H:\Programms\MixTex\tex\latex\graphics\graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("D:\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+(H:\Programms\MixTex\tex\latex\graphics\trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("D:\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+(H:\Programms\MixTex\tex\latex\00miktex\graphics.cfg
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("D:\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+(H:\Programms\MixTex\tex\latex\pdftex-def\pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("D:\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+(H:\Programms\MixTex\tex\generic\oberdiek\infwarerr.sty
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("D:\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+(H:\Programms\MixTex\tex\generic\oberdiek\ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count101
@@ -568,10 +571,11 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen113
 \Gin@req@width=\dimen114
 )
-("C:\Users\Аня\Desktop\6 семестр\телеком\lab7.aux"
+("E:\Юличка\Мой Политехничек\Телекомм.сети\tru
+nk\Замотаева, Никитина\lab7\lab7.aux"
 LaTeX Font Info:    Try loading font information for T2A+cmr on input line 3.
 
-("D:\MiKTeX 2.9\tex\latex\cyrillic\t2acmr.fd"
+(H:\Programms\MixTex\tex\latex\cyrillic\t2acmr.fd
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 ))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
@@ -589,7 +593,7 @@ LaTeX Font Info:    ... okay on input line 13.
 LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
 
-("D:\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+(H:\Programms\MixTex\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count102
 \scratchdimen=\dimen115
@@ -604,19 +608,19 @@ LaTeX Font Info:    ... okay on input line 13.
 \everyMPtoPDFconversion=\toks23
 )
 LaTeX Font Info:    Try loading font information for U+msa on input line 14.
- ("D:\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+ (H:\Programms\MixTex\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 14.
 
-("D:\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+(H:\Programms\MixTex\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 1.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 21.
-("D:\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+(H:\Programms\MixTex\tex\latex\base\omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
@@ -687,14 +691,19 @@ Package pdftex.def Info: 1_7.png used on input line 125.
 (pdftex.def)             Requested size: 422.32678pt x 316.18047pt.
  [3
 
-] [4 <C:/Users/Аня/Desktop/6 семестр/телеком/1_1.png (PNG copy
-)> <C:/Users/Аня/Desktop/6 семестр/телеком/1_2.png (PNG copy)>
-] [5 <C:/Users/Аня/Desktop/6 семестр/телеком/1_4.png (PNG copy
-)> <C:/Users/Аня/Desktop/6 семестр/телеком/1_6.png (PNG copy)>
-] [6 <C:/Users/Аня/Desktop/6 семестр/телеком/1_3.png (PNG copy
-)> <C:/Users/Аня/Desktop/6 семестр/телеком/1_5.png (PNG copy)>
-] [7 <C:/Users/Аня/Desktop/6 семестр/телеком/1_7.png (PNG copy
-)>]
+] [4 <E:/Юличка/Мой Политехничек/Телекомм.сети
+/trunk/Замотаева, Никитина/lab7/1_1.png (PNG copy)> <E:/Юли
+чка/Мой Политехничек/Телекомм.сети/trunk/Замо
+таева, Никитина/lab7/1_2.png (PNG copy)>] [5 <E:/Юличка/Мо
+й Политехничек/Телекомм.сети/trunk/Замотаева,
+ Никитина/lab7/1_4.png (PNG copy)> <E:/Юличка/Мой Полите
+хничек/Телекомм.сети/trunk/Замотаева, Никитин
+а/lab7/1_6.png (PNG copy)>] [6 <E:/Юличка/Мой Политехниче�
+�/Телекомм.сети/trunk/Замотаева, Никитина/lab7/1_3
+.png (PNG copy)> <E:/Юличка/Мой Политехничек/Телеко�
+�м.сети/trunk/Замотаева, Никитина/lab7/1_5.png (PNG copy)
+>] [7 <E:/Юличка/Мой Политехничек/Телекомм.сет�
+�/trunk/Замотаева, Никитина/lab7/1_7.png (PNG copy)>]
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 4.
 File: 1_1.png Graphic file (type png)
 <use 1_1.png>
@@ -712,8 +721,8 @@ Package pdftex.def Info: 2_2.png used on input line 153.
 (pdftex.def)             Requested size: 422.32678pt x 316.18047pt.
  [8
 
-] [9 <C:/Users/Аня/Desktop/6 семестр/телеком/2_2.png (PNG copy
-)>] [10]
+] [9 <E:/Юличка/Мой Политехничек/Телекомм.сети
+/trunk/Замотаева, Никитина/lab7/2_2.png (PNG copy)>] [10]
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 5.
 File: 1_1.png Graphic file (type png)
 <use 1_1.png>
@@ -727,8 +736,8 @@ Package pdftex.def Info: 3_1.png used on input line 181.
 
 [11
 
-] [12 <C:/Users/Аня/Desktop/6 семестр/телеком/3_1.png (PNG cop
-y)>]
+] [12 <E:/Юличка/Мой Политехничек/Телекомм.сет�
+�/trunk/Замотаева, Никитина/lab7/3_1.png (PNG copy)>]
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 6.
 [13
 
@@ -736,26 +745,29 @@ y)>]
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 7.
 [14
 
-] ("C:\Users\Аня\Desktop\6 семестр\телеком\lab7.aux") ) 
+]
+("E:\Юличка\Мой Политехничек\Телекомм.сети\tru
+nk\Замотаева, Никитина\lab7\lab7.aux") ) 
 Here is how much of TeX's memory you used:
  3332 strings out of 493921
- 37089 string characters out of 3152893
+ 38013 string characters out of 3150538
  91431 words of memory out of 3000000
  6565 multiletter control sequences out of 15000+200000
  16459 words of font info for 48 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,9n,24p,712b,282s stack positions out of 5000i,500n,10000p,200000b,50000s
-{D:/MiK
-TeX 2.9/fonts/enc/dvips/cm-super/cm-super-t2a.enc}<D:/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmmi10.pfb><D:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7
-.pfb><D:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr7.pfb><D:/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb><D:/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx1440.pfb><D:/MiKT
-eX 2.9/fonts/type1/public/cm-super/sfbx2074.pfb><D:/MiKTeX 2.9/fonts/type1/publ
-ic/cm-super/sfbx2488.pfb><D:/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1000.pf
-b><D:/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1200.pfb><D:/MiKTeX 2.9/fonts/
-type1/public/cm-super/sfrm1728.pfb>
-Output written on lab7.pdf (15 pages, 197606 bytes).
+ 27i,9n,24p,834b,282s stack positions out of 5000i,500n,10000p,200000b,50000s
+{H:/Programms/MixTex/f
+onts/enc/dvips/cm-super/cm-super-t2a.enc}<H:/Programms/MixTex/fonts/type1/publi
+c/amsfonts/cm/cmmi10.pfb><H:/Programms/MixTex/fonts/type1/public/amsfonts/cm/cm
+mi7.pfb><H:/Programms/MixTex/fonts/type1/public/amsfonts/cm/cmr10.pfb><H:/Progr
+amms/MixTex/fonts/type1/public/amsfonts/cm/cmr7.pfb><H:/Programms/MixTex/fonts/
+type1/public/amsfonts/cm/cmsy10.pfb><H:/Programms/MixTex/fonts/type1/public/cm-
+super/sfbx1440.pfb><H:/Programms/MixTex/fonts/type1/public/cm-super/sfbx2074.pf
+b><H:/Programms/MixTex/fonts/type1/public/cm-super/sfbx2488.pfb><H:/Programms/M
+ixTex/fonts/type1/public/cm-super/sfrm1000.pfb><H:/Programms/MixTex/fonts/type1
+/public/cm-super/sfrm1200.pfb><H:/Programms/MixTex/fonts/type1/public/cm-super/
+sfrm1728.pfb>
+Output written on lab7.pdf (15 pages, 201711 bytes).
 PDF statistics:
  105 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
