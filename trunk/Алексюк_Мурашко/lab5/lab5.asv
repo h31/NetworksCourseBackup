@@ -13,17 +13,21 @@ for n=1:length(x)
       y(n) = 1;
   end;
 end;
+figure
+plot(x(1:200),y(1:200))
+
 y = conv(y,y);
 for n=1:length(x)
     y(n) = y(n)/n;
 end;
+figure
 plot(x(1:200),y(1:200))
 grid
 %спектр исходного сигнала
 figure
 spectrum = fft(y,512);
-%norm_spectrum = spectrum.*conj(spectrum)/512;
+norm_spectrum = spectrum.*conj(spectrum)/512;
 f=100*(0:255)/512;
 plot(f, norm_spectrum(1:256))
-axis([0 max(f) 0 10])
+axis([0 max(f) 0 1000])
 grid

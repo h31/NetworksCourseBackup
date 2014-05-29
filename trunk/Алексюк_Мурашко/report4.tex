@@ -1,40 +1,4 @@
-\documentclass[a4paper, 12pt]{article}
-
-\usepackage{cmap}
-\usepackage[OT1]{fontenc}
-\usepackage[utf8]{inputenc}
-%\usepackage{mathtext}
-%\usepackage{amsmath}
-\usepackage[russian]{babel}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-%\usepackage[bookmarks=true, pdfpagemode=UseNone]{hyperref}
-\usepackage{indentfirst}
-\usepackage{listings}
-%\usepackage{multicol}
-%\usepackage{misccorr}
-%\usepackage{longtable}
-%\usepackage{flafter}
-\usepackage{float}
-%\usepackage{color}
-%\usepackage{nccfloats}
-%\usepackage{tabularx}
-%\usepackage{graphicx}
-%\usepackage[babel=true,protrusion=true,expansion=true]{microtype}
-%\usepackage[left=1.8cm, right=1cm, top=1cm, bottom=1cm, bindingoffset=0cm]{geometry}
-
-%\pagestyle{empty}
-
-\author{Алексюк А.О., Мурашко Д.С.}
-\title{Визуализация сигналов во временной и частотной области}
-\lstset{inputencoding=utf8, extendedchars=\true, keepspaces = true, language=Matlab}
-
-\begin{document}
-\maketitle
-\tableofcontents
-\pagebreak
+\chapter{Визуализация сигналов во временной и частотной области}
 
 \section{Цель работы}
 Познакомиться со средствами генерации сигналов и визуализации их спектров.
@@ -109,8 +73,6 @@ grid
 
 В ходе работы были исследованы два важных нюанса, касающиеся применения преобразования Фурье в цифровых системах.
 
-Во-первых, если бы входной сигнал был бесконечным, то его спектр представлял бы собой бесконечно короткий импульс, с бесконечно большой амплитудой и единичной площадью, однако на практике из-за ограниченной длины сигнала (бесконечный сигнал был как бы умножен на прямоугольный импульс конечной длины) произошла свертка с дельта-импульсом.
+Во-первых, если бы входной сигнал был бесконечным, то его спектр представлял бы собой бесконечно короткий импульс, с бесконечно большой амплитудой и единичной площадью, однако на практике из-за ограниченной длины сигнала (бесконечный сигнал был как бы умножен на прямоугольный импульс конечной длины) произошла свертка со спектром прямоугольного окна.
 
-Во-вторых, так как сигнал был дискретизирован, то импульс повторяется бесконечное число раз с периодом равным частоте дискретизации (на графике видно два импульса).
-
-\end{document}
+Во-вторых, так как сигнал был дискретизирован, он умножается на решетку дельта-импульсов. Спектр решетки дельта-импульсов - также решетка дельта-импульсов, и спектр нашего сигнала сворачивается также с решеткой дельта-импульсов. Из-за этого импульс повторяется бесконечное число раз с периодом равным частоте дискретизации (на графике видно два импульса).

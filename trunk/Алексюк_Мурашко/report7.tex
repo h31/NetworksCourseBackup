@@ -1,40 +1,4 @@
-\documentclass[a4paper, 12pt]{article}
-
-\usepackage{cmap}
-\usepackage[OT1]{fontenc}
-\usepackage[utf8]{inputenc}
-%\usepackage{mathtext}
-%\usepackage{amsmath}
-\usepackage[russian]{babel}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-%\usepackage[bookmarks=true, pdfpagemode=UseNone]{hyperref}
-\usepackage{indentfirst}
-\usepackage{listings}
-%\usepackage{multicol}
-%\usepackage{misccorr}
-%\usepackage{longtable}
-%\usepackage{flafter}
-\usepackage{float}
-%\usepackage{color}
-%\usepackage{nccfloats}
-%\usepackage{tabularx}
-%\usepackage{graphicx}
-%\usepackage[babel=true,protrusion=true,expansion=true]{microtype}
-%\usepackage[left=1.8cm, right=1cm, top=1cm, bottom=1cm, bindingoffset=0cm]{geometry}
-
-%\pagestyle{empty}
-
-\author{Алексюк А.О., Мурашко Д.С.}
-\title{Аналоговая модуляция}
-\lstset{inputencoding=utf8, extendedchars=\true, keepspaces = true, language=Matlab}
-
-\begin{document}
-\maketitle
-\tableofcontents
-\pagebreak
+\chapter{Аналоговая модуляция}
 
 \section{Цель работы}
 Изучение амплитудной модуляции/демодуляции сигнала.
@@ -224,10 +188,6 @@ n = M^2/(M^2+2)
 и мощность передатчика используется неэкономично. Для однотональной
 модуляции начальная фаза модулирующего колебания для верхней боковой частоты складывается с начальной фазой несущей, для нижней - вычитаются из фазы несущей. Физическая ширина спектра модулированного
 сигнала в два раза больше ширины спектра сигнала модуляции, так как
-модулирующее колебание перемещается в область частоты !0 и расщепляется на два колебания, симметричные относительно частоты !0, что будет видно в спектре.
-u(t) = Um cos(...)
-При балансной модуляции производится перемножение двух сигналов - модулирующего и несущего, при котором происходит подавление несущего колебания, соответственно, КПД модуляции становится равным 100%.
-
-	
-
-\end{document}
+модулирующее колебание перемещается в область частоты $\omega_0$ и расщепляется на два колебания, симметричные относительно частоты $\omega_0$, что будет видно в спектре.
+$$ u(t) = U_m cos(\omega_0 t) + (U_m * M/2)cos[(\omega_0 + \Omega)t] + (U_m * M/2)cos[(\omega_0 - \Omega)t] $$
+При балансной модуляции производится перемножение двух сигналов - модулирующего и несущего, при котором происходит подавление несущего колебания, соответственно, КПД модуляции становится равным 100\%.

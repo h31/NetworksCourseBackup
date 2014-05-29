@@ -1,40 +1,4 @@
-\documentclass[a4paper, 12pt]{article}
-
-\usepackage{cmap}
-\usepackage[OT1]{fontenc}
-\usepackage[utf8]{inputenc}
-%\usepackage{mathtext}
-%\usepackage{amsmath}
-\usepackage[russian]{babel}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-%\usepackage[bookmarks=true, pdfpagemode=UseNone]{hyperref}
-\usepackage{indentfirst}
-\usepackage{listings}
-%\usepackage{multicol}
-%\usepackage{misccorr}
-%\usepackage{longtable}
-%\usepackage{flafter}
-\usepackage{float}
-%\usepackage{color}
-%\usepackage{nccfloats}
-%\usepackage{tabularx}
-%\usepackage{graphicx}
-%\usepackage[babel=true,protrusion=true,expansion=true]{microtype}
-%\usepackage[left=1.8cm, right=1cm, top=1cm, bottom=1cm, bindingoffset=0cm]{geometry}
-
-%\pagestyle{empty}
-
-\author{Алексюк А.О., Мурашко Д.С.}
-\title{Спектры простых сигналов}
-\lstset{inputencoding=utf8, extendedchars=\true, keepspaces = true, language=Matlab}
-
-\begin{document}
-\maketitle
-\tableofcontents
-\pagebreak
+\chapter{Спектры простых сигналов}
 
 \section{Цель работы}
 Получить представление о свойствах спектров.
@@ -73,10 +37,14 @@ for n=1:length(x)
       y(n) = 1;
   end;
 end;
+figure
+plot(x(1:200),y(1:200))
+axis([-0.5 2.5 -0.5 1.5])
 y = conv(y,y);
 for n=1:length(x)
     y(n) = y(n)/n;
 end;
+figure
 plot(x(1:200),y(1:200))
 grid
 %спектр исходного сигнала
@@ -88,44 +56,128 @@ plot(f, norm_spectrum(1:256))
 axis([0 max(f) 0 1000])
 grid
 
+clear all;
+
+t = 0:00.1:4*pi;
+N = 100;
+y = 0;
+
+% Полигармонический сигнал
+y = sin(pi*t)+sin(3*pi*t)+sin(pi*0.3*t);
+plot(t,y)
+grid
+
+figure
+spectrum = fft(y,512);
+norm_spectrum = spectrum.*conj(spectrum)/512;
+f=100*(0:255)/512;
+plot(f, norm_spectrum(1:256))
+axis([0 max(f) 0 10])
+grid
+
+% Треугольный сигнал
+figure
+y2 = conv(square(t,20),square(t,20));
+plot(t(1:100),y2(1:100));
+grid
+
+figure
+spectrum = fft(y2,512);
+norm_spectrum = spectrum.*conj(spectrum)/512;
+f2=100*(0:255)/512;
+plot(f2, norm_spectrum(1:256)/1000)
+axis([0 max(f2) 0 50])
+grid
+
 \end{lstlisting}
 
 \begin{figure}[H]
-   \includegraphics[scale=0.7]{lab5/1.png}
-   \caption{Подписать}
+   \includegraphics[scale=0.7]{lab5/poly.png}
+   \caption{Полигармонический сигнал}
 \end{figure}
 
 \begin{figure}[H]
-   \includegraphics[scale=0.7]{lab5/2.png}
-   \caption{Подписать}
+   \includegraphics[scale=0.7]{lab5/poly_spectro.png}
+   \caption{Спектр gолигармонического сигнала}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.7]{lab5/rect.png}
+   \caption{Прямоугольный сигнал}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.7]{lab5/rect_spectro.png}
+   \caption{Спектр прямоугольного сигнала}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.7]{lab5/triangle.png}
+   \caption{Треугольный сигнал}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.7]{lab5/triangle_spectro.png}
+   \caption{Спектр треугольного сигнала}
 \end{figure}
 
 \subsection{Simulink}
 
+В ходе моделирования сигналов в Simulink были собраны следующие схемы и получены соответствующие графики:
+
 \begin{figure}[H]
-   \includegraphics[scale=0.7]{lab5/simulink.png}
-   \caption{Проект Simulink}
+\centering
+\includegraphics[width=10cm]{lab5/1_simulink} 
+\caption{Полигармонический сигнал (Simulink)} 
 \end{figure}
 
 \begin{figure}[H]
-   \includegraphics[scale=0.7]{lab5/scope.png}
-   \caption{Подписать}
+\centering
+\includegraphics[width=10cm]{lab5/lab5_1_simulink} 
+\caption{Полигармонический сигнал} 
 \end{figure}
 
 \begin{figure}[H]
-   \includegraphics[scale=0.7]{lab5/scope1.png}
-   \caption{Подписать}
+\centering
+\includegraphics[width=10cm]{lab5/lab5_2_simulink}
+\caption{Спектр полигармонического сигнала} 
 \end{figure}
+
 \begin{figure}[H]
-   \includegraphics[scale=0.7]{lab5/scope2.png}
-   \caption{Подписать}
+\centering
+\includegraphics[width=10cm]{lab5/3_simulink} 
+\caption{Прямоугольный импульсный сигнал (Simulink)} 
 \end{figure}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{lab5/lab5_3_simulink} 
+\caption{Прямоугольный импульсный сигнал} 
+\end{figure}
 
-\section{Вывод}
-В лабораторной работе было проведено моделирование полигармонического, прямоугольного и треугольного сигналаов. После чего получены их спектры. Треугольный сигнал представляет собой два участка прямых,
-исходящих из одной точки - вершины, а интеграл от произведения двух констант есть линейная функция.
-Поэтому треугольный сигнал был получен путем применения операции свертки для двух прямоугольных сигналов.  Данная операция осуществляется с помощью специальной функции Matlab. 
-	
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{lab5/lab5_4_simulink}
+\caption{Спектр прямоугольного сигнала} 
+\end{figure}
 
-\end{document}
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{lab5/4_simulink} 
+\caption{Треугольный импульсный сигнал (Simulink)} 
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{lab5/lab5_5_simulink} 
+\caption{Треугольный импульсный сигнал} 
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{lab5/lab5_6_simulink}
+\caption{Спектр треугольного сигнала} 
+\end{figure}
+
+\section{Выводы}
+В результате проделанной работы было проведено моделирование в среде MatLAB и Simulink полигармонического, прямоугольного и треугольного импульсных сигналаов, а также получены их спектры. В Simulink для получения генератора треугольного сигнала используется генератор прямоугольных импульсов каскадно с фильтром с прямоугольным окном. Это обоснуется тем, что свертка двух прямоугольных импульсов в результате дает треугольный.
