@@ -94,7 +94,9 @@ grid\newline
 \end{figure}
 Как видно из графиков, регулярная составляющая, как у чистого синусоидальног осигнала, так и у зашумленного равна 10Гц. Временная же характеристика чистого и зашумленного сигнала отличается достаточно сильно, хотя в обоих случаях заметны общие черты.
 \section{Вывод}
-Данная лабораторная работа заключалась в получении и сравнении спектров чистого и зашумленного сигнала. Спектры сигналов вычислялись на ограниченном промежутке. Для этого длина промежутка и частота квантования выбирались так, что бы результаты вычислений были достаточно точными. Полученные значения совпали с ожидаемыми. Стоит отметить, что спектр получается периодическим по частоте. Это вызвано тем, что при разложении сигнала в ряд Фурье, он умножается на комплексную экспоненту, которая обладает свойством периодичности.
+Данная лабораторная работа заключалась в получении и сравнении спектров чистого и зашумленного сигнала. Спектры сигналов вычислялись на ограниченном промежутке. Для этого длина промежутка и частота квантования выбирались так, чтобы результаты вычислений были достаточно точными. Полученные значения совпали с ожидаемыми. Стоит отметить, что спектр получается периодическим по частоте.
+
+Теоретически , спектр синуса должен выглядеть как один импульс очень малой ширины.Но, из-за того, что синус конечный, то есть умноженный на прямоугольное окно, то и его спектр сворачивается со спектром прямоугольного окна. Так как наш сигнал дискретизирован, он умножается на решетку дельта-импульсов. Спектр решетки дельта-импульсов - также решетка дельта-импульсов, и спектр нашего сигнала сворачивается также с решеткой дельта-импульсов. Из-за чего получается спектр в виде нескольких импульсов.
 \chapter{Лабораторная работа 5}
 \section{Цель работы}
 Целью данной работы является получение представлений о свойствах спектров, а именно:
@@ -130,6 +132,7 @@ y(t) = \Delta (t,T_i)
 (f*g)(x) = int_inf^-inf f(y)g(x-y)dy
 \end{displaymath}
 \section{Код matlab}
+\begin{verbatim}
 x = 0:0.01:4*pi;\newline
 f0=5;\newline
 y = 0;\newline
@@ -168,6 +171,7 @@ f2=100*(0:255)/512;\newline
 plot(f2, norm_spectrum(1:256)/1000)\newline
 axis([0 max(f2) 0 50])\newline
 grid\newline
+\end{verbatim}
 \section{Результаты работы}
 В результате, были полученны 6 графиков: графики полигармонического, прямоугольного и треугольного сигналов, а так же графики их спектров соответственно. Графики представлены на рисунках ниже.
 \begin{figure}
@@ -247,7 +251,6 @@ grid\newline
 \includegraphics[width=150mm, scale = 0.9]{5_13.jpg}\newline
 рис. 17. Треугольный сигнал\newline
 \end{center}
-\end{figure}
 \begin{figure}
 \begin{center}
 \includegraphics[width=150mm, scale = 0.9]{5_14.jpg}\newline
@@ -278,6 +281,7 @@ grid\newline
 \end{itemize}
 Легко заметить, что для бесконечных значений n АЧХ становится прямоугольной функцией, и частоты ниже частоты среза будут пропускаться с коэффициентом усиления G_0, а частоты выше частоты среза будут полностью подавляться. Для конечных значений n спад характеристики будет пологим.
 \section{Код matlab}
+\begin{verbatim}
 x = 0:0.01:4*pi;\newline
 f=100*(0:255)/512;\newline
 figure\newline
@@ -316,6 +320,7 @@ norm_filtered_spectrum=spectrum.*conj(spectrum)/512;\newline
 plot(f,norm_filtered_spectrum(1:256))\newline
 axis([0 max(f) 0 2])\newline
 grid\newline
+\end{verbatim}
 \section{Результаты работы}
 \begin{figure}
 \begin{center}
@@ -408,7 +413,7 @@ begin{figure}
 Физическая сущность подавления несущей заключается в том, что при переходе огибающей биений U(t) через 0 фаза несущей частоты высокочастотного заполнения изменяется на $180^0$.
 Синхронное детектирование является одним из способов демодуляции АМ-сигнала. Его суть состоит в умножении частоты сигнала на опорное колебание с несущей частотой. Результат умножения содержит два слагаемых: искомая амплитуда и АМ-сигнал с несущей частотой $2\omega_0$. Эта частота может быть убрана, если пропустить данный сигнал, через ФНЧ.
 \section{Код matlab}
-\begin{flushleft}
+\begin{verbatim}
 x = 0:0.01:8*pi;\newline
 f0 = 0.1;\newline
 \newline
@@ -482,7 +487,7 @@ grid\newline
 \newline 
 M = 0.5;\newline
 n = M^2/(M^2+2)\newline
-\end{flushleft} 
+\end{verbatim} 
 \section{Результаты работы}
 \begin{figure}
 \begin{center}
@@ -528,13 +533,13 @@ begin{figure}
 \end{figure}
 \begin{figure}
 \begin{center}
-\includegraphics[width=150mm, scale = 0.9]{7_8.jpg}\newline
+\includegraphics[width=150mm, scale = 0.9]{7_8}\newline
 рис. 36. Спектр сигнала с М = 5\newline
 \end{center}
 \end{figure}
 \begin{figure}
 \begin{center}
-\includegraphics[width=150mm, scale = 0.9]{7_9.jpg}\newline
+\includegraphics[width=150mm, scale = 0.9]{7_9}\newline
 рис. 37. Модуляция с подавлением несущей\newline
 \end{center}
 \end{figure}
@@ -584,19 +589,19 @@ begin{figure}
 \end{figure}
 \begin{figure}
 \begin{center}
-\includegraphics[width=150mm, scale = 0.9]{7_17.jpg}\newline
+\includegraphics[width=150mm, scale = 0.9]{7_17}\newline
 рис. 45. Демодулированный сигнал\newline
 \end{center}
 \end{figure}
 \begin{figure}
 \begin{center}
-\includegraphics[width=150mm, scale = 0.9]{7_18.jpg}\newline
+\includegraphics[width=150mm, scale = 0.9]{7_18}\newline
 рис. 46. Модель\newline
 \end{center}
 \end{figure}
 \begin{figure}
 \begin{center}
-\includegraphics[width=150mm, scale = 0.9]{7_19.jpg}\newline
+\includegraphics[width=150mm, scale = 0.9]{7_19}\newline
 рис. 47. Сигнал БАМ\newline
 \end{center}
 \end{figure}
@@ -725,6 +730,8 @@ axis([min(f) max(f) 0 max(normSpectrum)]);
 рис. 56. Модель для фазовой модуляции\newline
 \end{center}
 \end{figure}
+\begin{figure}
+\begin{center}
 \includegraphics[width=150mm, scale = 0.9]{8_8}\newline
 рис. 57. Исходный сигнал\newline
 \end{center}
@@ -772,6 +779,8 @@ axis([min(f) max(f) 0 max(normSpectrum)]);
 рис. 64. Сигнал на выходе ФНЧ\newline
 \end{center}
 \end{figure}
+\begin{figure}
+\begin{center}
 \includegraphics[width=150mm, scale = 0.9]{8_16}\newline
 рис. 66. Сигнал на выходе фазового детектора\newline
 \end{center}
@@ -847,7 +856,7 @@ scatterplot(demodSignal);
 eyediagram(demodSignal,10);
 
 %GENQAM modulation
-M = 10;
+M = 5;
 h = modem.genqammod('Constellation', exp(1i*2*pi*[0:M-1]/M));
 g = modem.genqamdemod('Constellation', exp(1i*2*pi*[0:M-1]/M));
 msg = randint(10,1,8);
