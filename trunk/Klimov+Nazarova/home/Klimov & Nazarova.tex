@@ -7,7 +7,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{placeins}
-\graphicspath{{lab4/},{lab5/},{lab6/},{lab7/}{lab8/}}
+\graphicspath{{lab4/},{lab5/},{lab6/},{lab7/},{lab8/},{lab9/}}
 
 
 \author{Климов С.А., Назарова К.Е.}
@@ -160,53 +160,53 @@ grid\\
 \subsection{Ход работы}
 Для моделирования заданных сигналов использовался приведенный код MATLAB:
 
-\begin{flushleft}
-t = 0:00.1:4*pi;\\
-N = 100;\\
-y = 0;\\
+\begin{verbatim}
+t = 0:00.1:4*pi;
+N = 100;
+y = 0;
 
-\% Полигармонический сигнал\\
-y = sin(pi*t)+sin(2*pi*t)+sin(pi*0.3*t);\\
-plot(t,y,'LineWidth',2)\\
-grid\\
+% Полигармонический сигнал
+y = sin(pi*t)+sin(2*pi*t)+sin(pi*0.3*t);
+plot(t,y,'LineWidth',2)
+grid
 
-figure\\
-spectrum = fft(y,512);\\
-norm\_spectrum = spectrum.*conj(spectrum)/512;\\
-f=100*(0:255)/512;\\
-plot(f, norm\_spectrum(1:256),'LineWidth',2)\\
-axis([0 max(f) 0 10])\\
-grid\\
+figure
+spectrum = fft(y,512);
+norm_spectrum = spectrum.*conj(spectrum)/512;
+f=100*(0:255)/512;
+plot(f, norm_spectrum(1:256),'LineWidth',2)
+axis([0 max(f) 0 10])
+grid
 
-\% Прямоугольный сигнал\\
-figure\\
-y1 = square(t,50);\\
-plot(t(1:100),y1(1:100),'LineWidth',2);\\
-ylim([-2,2]);\\
-grid\\
+% Прямоугольный сигнал
+figure
+y1 = square(t,50);
+plot(t(1:100),y1(1:100),'LineWidth',2);
+ylim([-2,2]);
+grid
 
-figure\\
-spectrum = fft(y1,512);\\
-norm\_spectrum = spectrum.*conj(spectrum)/512;\\
-f1=100*(0:255)/512;\\
-plot(f1, norm\_spectrum(1:256),'LineWidth',2)\\
-axis([0 max(f1) 0 10])\\
-grid\\
+figure
+spectrum = fft(y1,512);
+norm_spectrum = spectrum.*conj(spectrum)/512;
+f1=100*(0:255)/512;
+plot(f1, norm_spectrum(1:256),'LineWidth',2)
+axis([0 max(f1) 0 10])
+grid
 
-\% Треугольный сигнал\\
-figure\\
-y2 = conv(square(t,20),square(t,20));\\
-plot(t(1:100),y2(1:100),'LineWidth',2);\\
-grid\\
+% Треугольный сигнал
+figure
+y2 = conv(square(t,20),square(t,20));
+plot(t(1:100),y2(1:100),'LineWidth',2);
+grid
 
-figure\\
-spectrum = fft(y2,512);\\
-norm\_spectrum = spectrum.*conj(spectrum)/512;\\
-f2=100*(0:255)/512;\\
-plot(f2, norm\_spectrum(1:256)/1000,'LineWidth',2)\\
-axis([0 max(f2) 0 50])\\
-grid\\
-\end{flushleft}
+figure
+spectrum = fft(y2,512);
+norm\_spectrum = spectrum.*conj(spectrum)/512;
+f2=100*(0:255)/512;
+plot(f2, norm_spectrum(1:256)/1000,'LineWidth',2)
+axis([0 max(f2) 0 50])
+grid
+\end{verbatim}
 \subsection{Результаты работы}
 В результате были получены следующие сигналы и их спектры:
 
@@ -980,4 +980,246 @@ title('Частотная демодуляция')
 Различие между фазовой и частотной модуляцией заключается лишь в том, как именно начальная фаза $j(t)$ связана с модулирующим сигналом.
 
 Для демодуляции использовалась петля ФАПЧ, состоящая из перемножителя (используемого в качестве фазового детектора), фильтра нижних частот и генератора, управляемого напряжением (ГУН). Получаемый на выходе петли ФАПЧ сигнал пропорционален отклонению мгновенной частоты модулированного сигнала от несущей частоты, поэтому при демодуляции ФМ этот сигнал можно дополнительно проинтегрировать, чтобы получить начальную фазу сигнала.
+
+\newpage
+\section{Цифровая модуляция}
+
+\subsection{Цель работы}
+Изучение методов модуляции цировых сигналов.
+
+\subsection{Постановка задачи}
+	\begin{enumerate}
+		\item Получить сигналы BPSK, PSK, OQPSK, genQAM, MSK, M-FSK модуляторов.
+		\item Построить их сигнальые созвездия.
+		\item Провести сравнение изученных методов модуляции цифровых сигналов.
+	\end{enumerate}
+
+\subsection{Справочные материалы}
+Н.В. Богач и др. Обработка сигналов в информационных системах, с. 137-141.
+
+\subsection{Ход работы}
+Цифровая модуляция и демодуляция включают в себя две стадии. При модуляции цифровое сообщение сначала преобразуется в аналоговый модулирующий сигнал с помощью функции modmap, а затем осуществляется аналоговая модуляция. При демодуляции сначала получается аналоговый демодулированный сигнал, а затем он преобразуется в цифровое сообщение с помощью функции demodmap.
+
+Аналоговый несущий сигнал модулируется цифровым битовым потоком.
+Существуют три фундаментальных типа цифровой модуляции (или шифтинга) и один гибридный:
+\begin{enumerate}
+    \item ASK – Amplitude shift keying (Амплитудная двоичная модуляция).
+    \item FSK – Frequency shift keying (Частотая двоичная модуляция).
+    \item PSK – Phase shift keying (Фазовая двоичная модуляция).
+    \item ASK/PSK.
+\end{enumerate}
+Одна из частных реализаций схемы ASK/PSK, которая называется QAM - Quadrature Amplitude Modulation (квадратурная амплитудная модуляция (КАМ). Это метод объединения двух AM-сигналов в одном канале. Он позваляет удвоить эффективную пропускную способность. В QAM используется две несущих с одинаковой частотой но с разницей в фазе на четверть периода (отсюда и возникает слово квадратура). 
+Частотная модуляция представляет логическую единицу интервалом с большей частотой, чем ноль.
+Фазовый шифтинг представляет «0» как сигнал без сдвига, а «1» как сигнал со сдвигом.
+
+BPSK : используется единственный сдвиг фазы между «0» и «1» — 180 градусов, половина периода.
+Существуют также QPSK:
+QPSK использует 4 различных сдвига фазы (по четверти периода) и может кодировать 2 бита в символе (01, 11, 00, 10). 
+
+Реализация различных типов модуляций с помощью MATLAB:
+\begin{verbatim}
+%BPSK modulation
+h = modem.pskmod('M', 2);
+g = modem.pskdemod('M', 2);
+msg = randint(10,1,2)
+modSignal = modulate(h,msg);
+errSignal = (randerr(1,10, 3) ./ 30)';
+modSignal = modSignal + errSignal;
+demodSignal = demodulate(g,modSignal);
+figure
+subplot(3, 1, 1)
+plot(1:10, msg(1:10))
+title('Сообщение')
+subplot(3, 1, 2)
+plot(1:10, modSignal(1:10))
+title('Модулированный сигнал')
+subplot(3, 1, 3)
+plot(1:10, modSignal(1:10))
+title('Демодулированный сигнал')
+scatterplot(modSignal);
+\end{verbatim}
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{bpsk}
+	\caption{BPSK}\label{fig.bpsk}
+\end{figure}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{BPSKm}
+	\caption{Сигнальное созвездие BPSK}\label{fig.BPSKm}
+\end{figure}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{BPSKe}
+	\caption{Глазковая диаграмма BPSK}\label{fig.BPSKe}
+\end{figure}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+\FloatBarrier
+\begin{verbatim}
+%PSK modulation
+h = modem.pskmod('M', 8);
+g = modem.pskdemod('M', 8);
+msg = randint(10,1,8);
+modSignal = modulate(h,msg);
+errSignal = (randerr(1,10, 3) ./ 30)';
+modSignal = modSignal + errSignal;
+demodSignal = demodulate(g,modSignal);
+figure
+subplot(3, 1, 1)
+plot(1:10, msg(1:10))
+title('Сообщение')
+subplot(3, 1, 2)
+plot(1:10, modSignal(1:10))
+title('Модулированный сигнал')
+subplot(3, 1, 3)
+plot(1:10, modSignal(1:10))
+title('Демодулированный сигнал')
+scatterplot(modSignal);
+\end{verbatim}
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{psk}
+	\caption{PSK}\label{fig.psk}
+\end{figure}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{PSKm}
+	\caption{Сигнальное созвездие PSK}\label{fig.PSKm}
+\end{figure}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{PSKe}
+	\caption{Глазковая диаграмма PSK}\label{fig.PSKe}
+\end{figure}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+\FloatBarrier
+\begin{verbatim}
+%OQPSK modulation
+h = modem.oqpskmod;
+g = modem.oqpskdemod;
+msg = randint(200,1,4);
+modSignal = modulate(h,msg);
+errSignal = (randerr(1,400, 100) ./ 30)';
+modSignal = modSignal + errSignal;
+demodSignal = demodulate(g,modSignal);
+figure
+subplot(3, 1, 1)
+plot(1:200, msg(1:200))
+title('Сообщение')
+subplot(3, 1, 2)
+plot(1:200, modSignal(1:200))
+title('Модулированный сигнал')
+subplot(3, 1, 3)
+plot(1:200, modSignal(1:200))
+title('Демодулированный сигнал')
+scatterplot(modSignal);
+\end{verbatim}
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{oqpsk}
+	\caption{OQPSK}\label{fig.oqpsk}
+\end{figure}
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{OQPSKm}
+	\caption{Сигнальное созвездие OQPSK}\label{fig.OQPSKm}
+\end{figure}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{OQPSKe}
+	\caption{Глазковая диаграмма OQPSK}\label{fig.OQPSKe}
+\end{figure}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+\FloatBarrier
+\begin{verbatim}
+%GENQAM modulation
+M = 10;
+h = modem.genqammod('Constellation', exp(j*2*pi*[0:M-1]/M));
+g = modem.genqamdemod('Constellation', exp(j*2*pi*[0:M-1]/M));
+msg = randint(10,1,8);
+modSignal = modulate(h,msg);
+errSignal = (randerr(1,10, 3) ./ 30)';
+modSignal = modSignal + errSignal;
+demodSignal = demodulate(g,modSignal);
+subplot(3, 1, 1)
+plot(1:10, msg(1:10))
+title('Сообщение')
+subplot(3, 1, 2)
+plot(1:10, modSignal(1:10))
+title('Модулированный сигнал')
+subplot(3, 1, 3)
+plot(1:10, modSignal(1:10))
+title('Демодулированный сигнал')
+scatterplot(modSignal);
+\end{verbatim}
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{genqam}
+	\caption{genQAM}\label{fig.genqam}
+\end{figure}
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{genQAMm}
+	\caption{Сигнальное созвездие genQAM}\label{fig.genQAMm}
+\end{figure}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{genQAMe}
+	\caption{Глазковая диаграмма genQAM}\label{fig.genQAMe}
+\end{figure}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+\FloatBarrier
+\begin{verbatim}
+%MSK modulation
+h = modem.mskmod('SamplesPerSymbol', 10);
+g = modem.mskdemod('SamplesPerSymbol', 10);
+msg = randint(10,1,2);
+modSignal = modulate(h, msg);
+errSignal = (randerr(1,100, 3) ./ 30)';
+modSignal = modSignal + errSignal;
+demodSignal = demodulate(g, modSignal);
+subplot(3, 1, 1)
+plot(1:10, msg(1:10))
+title('Сообщение')
+subplot(3, 1, 2)
+plot(1:10, modSignal(1:10))
+title('Модулированный сигнал')
+subplot(3, 1, 3)
+plot(1:10, modSignal(1:10))
+title('Демодулированный сигнал')
+scatterplot(modSignal);
+\end{verbatim}
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{msk}
+	\caption{MSK}\label{fig.msk}
+\end{figure}
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{MSKm}
+	\caption{Сигнальное созвездие MSK}\label{fig.MSKm}
+\end{figure}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{MSKe}
+	\caption{Глазковая диаграма MSK}\label{fig.MSKe}
+\end{figure}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+\FloatBarrier
+
+Cоздания моделей в Simulink.
+
+Для создания моделей в Simulink использовался рздел Communication Blockset/Digital Baseband/Passband Modulation.
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{sim}
+	\caption{Модель в Simulink}\label{fig.sim}
+\end{figure}
+
+В результате были получены следующие характеристики:
+
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{BPSKs}
+	\caption{BPSK}\label{fig.BPSKs}
+\end{figure}
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{PSKs}
+	\caption{PSK}\label{fig.PSKs}
+\end{figure}
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{OQPSKs}
+	\caption{OQPSK}\label{fig.OQPSKs}
+\end{figure}
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{genQAMs}
+	\caption{genQAM}\label{fig.genQAMs}
+\end{figure}
+\begin{figure}[h]\centering
+	\includegraphics[width=10cm]{MFSKs}
+	\caption{M-FSK}\label{fig.MFSKs}
+\end{figure}
+
+\FloatBarrier
+\subsection{Выводы}
+В ходе выполнения даной работы были получены сигналы BPSK, PSK, OQPSK, genQAM, MSK, M-FSK модуляторов, построены их сигнальые созвездия и глазковые диаграммы, проведено их сравнение, по результатам которого можно сделать вывод, что чем выше уровень модуляции, тем большими скоростными возможностями и меньшей помехоустойчивостью она обладает и чем выше уровень модуляции, тем больше данных мы можем передать за единицу времени.
+
 \end{document}
