@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.3.14)  5 MAY 2014 09:15
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.3.14)  29 MAY 2014 11:19
 entering extended mode
 **Klimov*&*Nazarova.tex
 ("K:\trunk\trunk\Klimov+Nazarova\home\Klimov & Nazarova.tex"
@@ -575,7 +575,11 @@ LaTeX Font Info:    Try loading font information for T2A+cmr on input line 3.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\cyrillic\t2acmr.fd"
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
-))
+)
+
+LaTeX Warning: Label `fig.sim_fm' multiply defined.
+
+)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
@@ -590,8 +594,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
 LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
-
-("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count101
 \scratchdimen=\dimen115
@@ -619,49 +622,48 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ("K:\trunk\trunk\Klimov+Nazarova\home\Klimov & Nazarova.toc")
 \tf@toc=\write3
  [2] [3] [4]
-<lab4/1.jpg, id=32, 563.10374pt x 421.575pt>
-File: lab4/1.jpg Graphic file (type jpg)
- <use lab4/1.jpg>
-Package pdftex.def Info: lab4/1.jpg used on input line 108.
+<1.jpg, id=32, 563.10374pt x 421.575pt>
+File: 1.jpg Graphic file (type jpg)
+ <use 1.jpg>
+Package pdftex.def Info: 1.jpg used on input line 108.
 (pdftex.def)             Requested size: 284.52756pt x 213.0127pt.
- [5 <K:/trunk/trunk/Klimov+Nazarova/home/lab4/1.jpg>]
-<lab4/2.jpg, id=36, 563.10374pt x 421.575pt>
-File: lab4/2.jpg Graphic file (type jpg)
- <use lab4/2.jpg>
-Package pdftex.def Info: lab4/2.jpg used on input line 115.
-(pdftex.def)             Requested size: 284.52756pt x 213.0127pt.
-
-<lab4/3.jpg, id=37, 563.10374pt x 421.575pt>
-File: lab4/3.jpg Graphic file (type jpg)
- <use lab4/3.jpg>
-Package pdftex.def Info: lab4/3.jpg used on input line 121.
+ [5 <K:/trunk/trunk/Klimov+Nazarova/home/1.jpg>] <2.jpg, id=36, 563.10374pt x 4
+21.575pt>
+File: 2.jpg Graphic file (type jpg)
+ <use 2.jpg>
+Package pdftex.def Info: 2.jpg used on input line 115.
 (pdftex.def)             Requested size: 284.52756pt x 213.0127pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[6 <K:/trunk/trunk/Klimov+Nazarova/home/lab4/2.jpg>]
-<lab4/4.jpg, id=41, 563.10374pt x 421.575pt>
-File: lab4/4.jpg Graphic file (type jpg)
- <use lab4/4.jpg>
-Package pdftex.def Info: lab4/4.jpg used on input line 128.
+<3.jpg, id=37, 563.10374pt x 421.575pt>
+File: 3.jpg Graphic file (type jpg)
+ <use 3.jpg>
+Package pdftex.def Info: 3.jpg used on input line 121.
 (pdftex.def)             Requested size: 284.52756pt x 213.0127pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7 <K:/trunk/trunk/Klimov+Nazarova/home/lab4/3.jpg>] [8 <K:/trunk/trunk/Klimov+
-Nazarova/home/lab4/4.jpg>]
+[6 <K:/trunk/trunk/Klimov+Nazarova/home/2.jpg>]
+<4.jpg, id=41, 563.10374pt x 421.575pt>
+File: 4.jpg Graphic file (type jpg)
+ <use 4.jpg>
+Package pdftex.def Info: 4.jpg used on input line 128.
+(pdftex.def)             Requested size: 284.52756pt x 213.0127pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[7 <K:/trunk/trunk/Klimov+Nazarova/home/3.jpg>] [8 <K:/trunk/trunk/Klimov+Nazar
+ova/home/4.jpg>]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 144.
 
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 144.
- [9]
-<lab5/5_1.jpg, id=53, 421.575pt x 316.18124pt>
+
+[9] <lab5/5_1.jpg, id=53, 421.575pt x 316.18124pt>
 File: lab5/5_1.jpg Graphic file (type jpg)
  <use lab5/5_1.jpg>
 Package pdftex.def Info: lab5/5_1.jpg used on input line 217.
@@ -1159,38 +1161,211 @@ LaTeX Warning: `h' float specifier changed to `ht'.
  <K:/trunk/trunk/Klimov+Nazarova/home/lab7/Sim_dsbsc0.jpg> <K:/trunk/trunk/Klim
 ov+Nazarova/home/lab7/Sim_dsbsc2.jpg>] [29 <K:/trunk/trunk/Klimov+Nazarova/home
 /lab7/Sim_dsbsc3.jpg>]
-("K:\trunk\trunk\Klimov+Nazarova\home\Klimov & Nazarova.aux") ) 
+LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 786
+.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\cyrillic\t2acmtt.fd"
+File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+) [30]
+Overfull \hbox (17.16156pt too wide) in paragraph at lines 821--821
+[]\T2A/cmtt/m/n/10 phasedev = pi/2;                % ƒевиаци€ фазы дл€ фазовой 
+модул€ции[] 
+ []
+
+<lab8/pm.jpg, id=169, 775.89874pt x 713.66624pt>
+File: lab8/pm.jpg Graphic file (type jpg)
+ <use lab8/pm.jpg>
+Package pdftex.def Info: lab8/pm.jpg used on input line 827.
+(pdftex.def)             Requested size: 284.52756pt x 261.71109pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[31]
+Overfull \hbox (32.90771pt too wide) in paragraph at lines 867--867
+[]\T2A/cmtt/m/n/10 freqdev = 20;                 % ƒевиаци€ частоты дл€ частотн
+ой модул€ции[] 
+ []
+
+[32 <K:/trunk/trunk/Klimov+Nazarova/home/lab8/pm.jpg>]
+<lab8/fm.jpg, id=177, 756.8275pt x 647.41875pt>
+File: lab8/fm.jpg Graphic file (type jpg)
+ <use lab8/fm.jpg>
+Package pdftex.def Info: lab8/fm.jpg used on input line 873.
+(pdftex.def)             Requested size: 284.52756pt x 243.3939pt.
+
+<lab8/sim_y.jpg, id=178, 343.2825pt x 147.55125pt>
+File: lab8/sim_y.jpg Graphic file (type jpg)
+ <use lab8/sim_y.jpg>
+Package pdftex.def Info: lab8/sim_y.jpg used on input line 883.
+(pdftex.def)             Requested size: 199.16928pt x 85.60678pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[33 <K:/trunk/trunk/Klimov+Nazarova/home/lab8/fm.jpg>]
+<lab8/sim_p.jpg, id=182, 372.64218pt x 188.95593pt>
+File: lab8/sim_p.jpg Graphic file (type jpg)
+ <use lab8/sim_p.jpg>
+Package pdftex.def Info: lab8/sim_p.jpg used on input line 890.
+(pdftex.def)             Requested size: 199.16928pt x 100.99094pt.
+
+<lab8/sim_pm.jpg, id=183, 474.27188pt x 298.11375pt>
+File: lab8/sim_pm.jpg Graphic file (type jpg)
+ <use lab8/sim_pm.jpg>
+Package pdftex.def Info: lab8/sim_pm.jpg used on input line 898.
+(pdftex.def)             Requested size: 184.9429pt x 116.25024pt.
+
+Overfull \hbox (15.891pt too wide) in paragraph at lines 898--898
+ [][] 
+ []
+
+<lab8/sim_pms.jpg, id=184, 481.04718pt x 335.75438pt>
+File: lab8/sim_pms.jpg Graphic file (type jpg)
+ <use lab8/sim_pms.jpg>
+Package pdftex.def Info: lab8/sim_pms.jpg used on input line 902.
+(pdftex.def)             Requested size: 184.9429pt x 129.08395pt.
+
+Overfull \hbox (15.891pt too wide) in paragraph at lines 902--903
+ [][] 
+ []
+
+<lab8/sim_pdm.jpg, id=185, 512.66531pt x 271.0125pt>
+File: lab8/sim_pdm.jpg Graphic file (type jpg)
+ <use lab8/sim_pdm.jpg>
+Package pdftex.def Info: lab8/sim_pdm.jpg used on input line 908.
+(pdftex.def)             Requested size: 199.16928pt x 105.28918pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[34 <K:/trunk/trunk/Klimov+Nazarova/home/lab8/sim_y.jpg> <K:/trunk/trunk/Klimov
++Nazarova/home/lab8/sim_p.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab8/sim_pm
+.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab8/sim_pms.jpg>]
+<lab8/sim_f.jpg, id=189, 369.63094pt x 182.18062pt>
+File: lab8/sim_f.jpg Graphic file (type jpg)
+ <use lab8/sim_f.jpg>
+Package pdftex.def Info: lab8/sim_f.jpg used on input line 916.
+(pdftex.def)             Requested size: 199.16928pt x 98.1648pt.
+
+<lab8/sim_fm.jpg, id=190, 466.74374pt x 293.59688pt>
+File: lab8/sim_fm.jpg Graphic file (type jpg)
+ <use lab8/sim_fm.jpg>
+Package pdftex.def Info: lab8/sim_fm.jpg used on input line 924.
+(pdftex.def)             Requested size: 184.9429pt x 116.3346pt.
+
+Overfull \hbox (15.891pt too wide) in paragraph at lines 924--924
+ [][] 
+ []
+
+<lab8/sim_fms.jpg, id=191, 482.55281pt x 337.26pt>
+File: lab8/sim_fms.jpg Graphic file (type jpg)
+ <use lab8/sim_fms.jpg>
+Package pdftex.def Info: lab8/sim_fms.jpg used on input line 928.
+(pdftex.def)             Requested size: 184.9429pt x 129.25626pt.
+
+Overfull \hbox (15.891pt too wide) in paragraph at lines 928--929
+ [][] 
+ []
+
+<lab8/sim_fdm.jpg, id=192, 502.12593pt x 264.99pt>
+File: lab8/sim_fdm.jpg Graphic file (type jpg)
+ <use lab8/sim_fdm.jpg>
+Package pdftex.def Info: lab8/sim_fdm.jpg used on input line 934.
+(pdftex.def)             Requested size: 199.16928pt x 105.10861pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[35 <K:/trunk/trunk/Klimov+Nazarova/home/lab8/sim_pdm.jpg> <K:/trunk/trunk/Klim
+ov+Nazarova/home/lab8/sim_f.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab8/sim_
+fm.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab8/sim_fms.jpg>]
+<lab8/sim_pll.jpg, id=196, 422.32782pt x 220.57407pt>
+File: lab8/sim_pll.jpg Graphic file (type jpg)
+ <use lab8/sim_pll.jpg>
+Package pdftex.def Info: lab8/sim_pll.jpg used on input line 951.
+(pdftex.def)             Requested size: 199.16928pt x 104.02321pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<lab8/sim_fpll_filt.jpg, id=197, 503.63156pt x 267.24844pt>
+File: lab8/sim_fpll_filt.jpg Graphic file (type jpg)
+
+<use lab8/sim_fpll_filt.jpg>
+Package pdftex.def Info: lab8/sim_fpll_filt.jpg used on input line 958.
+(pdftex.def)             Requested size: 199.16928pt x 105.68634pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<lab8/sim_fpll_pd.jpg, id=198, 500.62032pt x 262.73157pt>
+File: lab8/sim_fpll_pd.jpg Graphic file (type jpg)
+
+<use lab8/sim_fpll_pd.jpg>
+Package pdftex.def Info: lab8/sim_fpll_pd.jpg used on input line 964.
+(pdftex.def)             Requested size: 184.9429pt x 97.06082pt.
+
+Overfull \hbox (15.891pt too wide) in paragraph at lines 964--964
+ [][] 
+ []
+
+<lab8/sim_fpll_vco.jpg, id=199, 496.10344pt x 261.97874pt>
+File: lab8/sim_fpll_vco.jpg Graphic file (type jpg)
+
+<use lab8/sim_fpll_vco.jpg>
+Package pdftex.def Info: lab8/sim_fpll_vco.jpg used on input line 968.
+(pdftex.def)             Requested size: 184.9429pt x 97.66216pt.
+
+Overfull \hbox (15.891pt too wide) in paragraph at lines 968--969
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[36 <K:/trunk/trunk/Klimov+Nazarova/home/lab8/sim_fdm.jpg>] [37 <K:/trunk/trunk
+/Klimov+Nazarova/home/lab8/sim_pll.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/la
+b8/sim_fpll_filt.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab8/sim_fpll_pd.jpg
+> <K:/trunk/trunk/Klimov+Nazarova/home/lab8/sim_fpll_vco.jpg>] [38
+
+]
+("K:\trunk\trunk\Klimov+Nazarova\home\Klimov & Nazarova.aux")
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3643 strings out of 493921
- 43584 string characters out of 3147276
- 93575 words of memory out of 3000000
- 6778 multiletter control sequences out of 15000+200000
- 18992 words of font info for 57 fonts, out of 3000000 for 9000
+ 3766 strings out of 493921
+ 45811 string characters out of 3147276
+ 94761 words of memory out of 3000000
+ 6867 multiletter control sequences out of 15000+200000
+ 19302 words of font info for 58 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,7n,30p,4425b,300s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program File
-s/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t2a.enc}<C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmbx7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5
-.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/
-Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program F
-iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
-sfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-su
-per/sfbx1000.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx1
-200.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx1440.pfb><
-C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1000.pfb><C:/Progra
-m Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1200.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/public/cm-super/sfrm1728.pfb><C:/Program Files/MiKTeX 2.9
-/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on "Klimov & Nazarova.pdf" (29 pages, 2879167 bytes).
+ 27i,8n,30p,4425b,300s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t2a.enc}<C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmmi5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/public/cm-super/sfbx1000.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
+lic/cm-super/sfbx1200.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-su
+per/sfbx1440.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1
+000.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1200.pfb><
+C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1728.pfb><C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfti1000.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on "Klimov & Nazarova.pdf" (38 pages, 3731585 bytes).
 PDF statistics:
- 228 PDF objects out of 1000 (max. 8388607)
+ 278 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 241 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 316 words of extra memory for PDF output out of 10000 (max. 10000000)
 
