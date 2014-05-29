@@ -819,75 +819,97 @@ axis([min(f) max(f) 0 max(normSpectrum)]);
 \item При частотной манипуляции (FSK) значениям «0» и «1» информационной последовательности соответствуют определённые частоты синусоидального сигнала при неизменной амплитуде. Частотная манипуляция весьма помехоустойчива. Однако при частотной манипуляции неэкономно расходуется ресурс полосы частот телефонного канала. Поэтому этот вид модуляции применяется в низкоскоростных протоколах, позволяющих осуществлять связь по каналам с низким отношением сигнал/шум.
 \item Минимальная частотная модуляция (MSK) представляет собой способ модуляции, при котором не происходит скачков фазы и изменение частоты происходит в моменты пересечения несущей нулевого уровня. MSK уникальна потому, что значение частот соответствующих логическим «0» и «1» отличаются на величину равную половине скорости передачи данных.
 \item Фазовая манипуляция (PSK) — один из видов фазовой модуляции, при которой фаза несущего колебания меняется скачкообразно в зависимости от информационного сообщения.
-\item Квадратурной амплитудной манипуляцией (QASK) называется манипуляция, при которой изменяется как фаза, так и амплитуда сигнала, что позволяет увеличить количество информации, передаваемой одним состоянием (отсчётом) сигнала. 
+\item Четырехпозиционная фазовая модуляция со сдвигом квадратур (OQPSK). В ОQPSK биты в потоках, подаваемых на модуляторы квадратур I и Q, переключаются в один и тот же момент времени. Сигнал символьной синхронизации, и синхросигналы битовых потоков, подаваемых на модуляторы I и Q, синхронизированы. Это приводит к тому, что в диаграмме переходов сигнала четырехпозиционной фазовой модуляции встречаются переходы через точку с нулевой амплитудой сигнала. Битовые потоки, подаваемые на модуляторы квадратур I и Q, сдвинуты друг относительно друга на длительность одного бита.
+\item Квадратурная амплитудная модуляция (QAM) — разновидность амплитудной модуляции сигнала, которая представляет собой сумму двух несущих колебаний одной частоты, но сдвинутых по фазе относительно друг друга на 90°, каждое из которых модулировано по амплитуде своим модулирующим сигналом.
 \end{enumerate}
 \section{Код matlab}
 \begin{verbatim}
-%BPSK modulation
-h = modem.pskmod('M', 2);
-g = modem.pskdemod('M', 2);
-msg = randint(10,1,2);
-modSignal = modulate(h,msg);
-errSignal = (randerr(1,10, 3) ./ 30)';
-modSignal = modSignal + errSignal;
-demodSignal = demodulate(g,modSignal);
-scatterplot(modSignal);
-eyediagram(modSignal,10);
-scatterplot(demodSignal);
-eyediagram(demodSignal,10);
+noise_persent = 20;
+noise_persent = noise_persent/100;
 
-%PSK modulation
-h = modem.pskmod('M', 8);
-g = modem.pskdemod('M', 8);
-msg = randint(10,1,8);
+%BPSK modulation
+M=2;
+N=10;
+h = modem.pskmod('M', M);
+g = modem.pskdemod('M', M);
+msg = randint(N,1,M);
 modSignal = modulate(h,msg);
-errSignal = (randerr(1,10, 3) ./ 30)';
-modSignal = modSignal + errSignal;
+% errSignal = (randerr(1,N, N*noise_persent) ./ noise_level)';
+% modSignal = modSignal + errSignal;
 demodSignal = demodulate(g,modSignal);
 scatterplot(modSignal);
-eyediagram(modSignal,10);
 scatterplot(demodSignal);
-eyediagram(demodSignal,10);
+errSignal = (randerr(1,N, N*noise_persent) ./ noise_level)';
+modSignal = modSignal + errSignal;
+demodSignal = demodulate(g,modSignal);
+symerr(msg,demodSignal)/length(msg)*100
+
+M=4;
+N=10;
+%PSK modulation
+h = modem.pskmod('M', M);
+g = modem.pskdemod('M', M);
+msg = randint(N,1,M);
+modSignal = modulate(h,msg);
+% errSignal = (randerr(1,N, N*noise_persent) ./ noise_level)';
+% modSignal = modSignal + errSignal;
+demodSignal = demodulate(g,modSignal);
+scatterplot(modSignal);
+scatterplot(demodSignal);
+errSignal = (randerr(1,N, N*noise_persent) ./ noise_level)';
+modSignal = modSignal + errSignal;
+demodSignal = demodulate(g,modSignal);
+symerr(msg,demodSignal)/length(msg)*100
 
 %OQPSK modulation
-h = modem.oqpskmod;
-g = modem.oqpskdemod;
-msg = randint(200,1,4);
+N=200;
+M=4;
+h = modem.oqpskmod('M',M);
+g = modem.oqpskdemod(h);
+msg = randint(N,1,M);
 modSignal = modulate(h,msg);
-errSignal = (randerr(1,400, 100) ./ 30)';
-modSignal = modSignal + errSignal;
+% errSignal = (randerr(1,2*N, N*noise_persent) ./ noise_level)';
+% modSignal = modSignal + errSignal;
 demodSignal = demodulate(g,modSignal);
 scatterplot(modSignal);
-eyediagram(modSignal,10);
 scatterplot(demodSignal);
-eyediagram(demodSignal,10);
+errSignal = (randerr(1,2*N, N*noise_persent) ./ noise_level)';
+modSignal = modSignal + errSignal;
+demodSignal = demodulate(g,modSignal);
+symerr(msg,demodSignal)/length(msg)*100
 
 %GENQAM modulation
-M = 5;
+M = 10;
+N = 10;
 h = modem.genqammod('Constellation', exp(1i*2*pi*[0:M-1]/M));
 g = modem.genqamdemod('Constellation', exp(1i*2*pi*[0:M-1]/M));
-msg = randint(10,1,8);
+msg = randint(N,1,4);
 modSignal = modulate(h,msg);
-errSignal = (randerr(1,10, 3) ./ 30)';
-modSignal = modSignal + errSignal;
+% errSignal = (randerr(1,N, N*noise_persent) ./ noise_level)';
+% modSignal = modSignal + errSignal;
 demodSignal = demodulate(g,modSignal);
 scatterplot(modSignal);
-eyediagram(modSignal,10);
 scatterplot(demodSignal);
-eyediagram(demodSignal,10);
-
-%MSK modulation
-h = modem.mskmod('SamplesPerSymbol', 10);
-g = modem.mskdemod('SamplesPerSymbol', 10);
-msg = randint(10,1,2);
-modSignal = modulate(h, msg);
-errSignal = (randerr(1,100, 3) ./ 30)';
+errSignal = (randerr(1,N, N*noise_persent) ./ noise_level)';
 modSignal = modSignal + errSignal;
+demodSignal = demodulate(g,modSignal);
+symerr(msg,demodSignal)/length(msg)*100
+
+N=20;
+%MSK modulation
+h = modem.mskmod('SamplesPerSymbol', N);
+g = modem.mskdemod('SamplesPerSymbol', N);
+msg = randint(N,1,2);
+modSignal = modulate(h, msg);
+% errSignal = (randerr(1,N*N, N*noise_persent) ./ noise_level)';
+% modSignal = modSignal + errSignal;
 demodSignal = demodulate(g, modSignal);
 scatterplot(modSignal);
-eyediagram(modSignal,10);
 scatterplot(demodSignal);
-eyediagram(demodSignal,10);
+demodSignal = demodulate(g,modSignal);
+errSignal = (randerr(1,N*N, N*noise_persent) ./ noise_level)';
+modSignal = modSignal + errSignal;
+symerr(msg,demodSignal)/length(msg)*100
 \end{verbatim}
 \section{Результаты работы}
 \begin{figure}
