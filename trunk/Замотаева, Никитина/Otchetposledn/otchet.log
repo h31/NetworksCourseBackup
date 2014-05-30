@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.5.23)  30 MAY 2014 01:24
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.3.26)  30 MAY 2014 09:29
 entering extended mode
-**H:/Save*Firefox/otchet2/otchet.tex
-("H:/Save Firefox/otchet2/otchet.tex"
+**otchet.tex
+("D:\b33501-3\Замотаева, Никитина\Otchetposledn\otchet.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -13,9 +13,9 @@ german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
-(H:\Programms\MixTex\tex\latex\base\article.cls
+("D:\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(H:\Programms\MixTex\tex\latex\base\size10.clo
+("D:\MiKTeX 2.9\tex\latex\base\size10.clo"
 File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -30,19 +30,19 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(H:\Programms\MixTex\tex\latex\base\inputenc.sty
+("D:\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 
-(H:\Programms\MixTex\tex\latex\base\utf8.def
+("D:\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-(H:\Programms\MixTex\tex\latex\base\t1enc.dfu
+("D:\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
 File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -192,7 +192,7 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-(H:\Programms\MixTex\tex\latex\base\ot1enc.dfu
+("D:\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
 File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -223,7 +223,7 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-(H:\Programms\MixTex\tex\latex\base\omsenc.dfu
+("D:\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
 File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -247,29 +247,29 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-(H:\Programms\MixTex\tex\generic\babel\babel.sty
+("D:\MiKTeX 2.9\tex\generic\babel\babel.sty"
 Package: babel 2008/07/08 v3.8m The Babel package
 
 *************************************
 * Local config file bblopts.cfg used
 *
-(H:\Programms\MixTex\tex\latex\00miktex\bblopts.cfg
+("D:\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
 File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
 )
-(H:\Programms\MixTex\tex\generic\babel\russianb.ldf
+("D:\MiKTeX 2.9\tex\generic\babel\russianb.ldf"
 Language: russianb 2008/03/21 v1.1r Russian support from the babel system
 
-(H:\Programms\MixTex\tex\generic\babel\babel.def
+("D:\MiKTeX 2.9\tex\generic\babel\babel.def"
 File: babel.def 2008/07/08 v3.8m Babel common definitions
 \babel@savecnt=\count87
 \U@D=\dimen103
 )
-(H:\Programms\MixTex\tex\latex\cyrillic\t2aenc.def
+("D:\MiKTeX 2.9\tex\latex\cyrillic\t2aenc.def"
 File: t2aenc.def 2005/09/27 v1.0i Cyrillic encoding definition file
 Now handling font encoding T2A ...
 ... processing UTF-8 mapping file for font encoding T2A
 
-(H:\Programms\MixTex\tex\latex\base\t2aenc.dfu
+("D:\MiKTeX 2.9\tex\latex\base\t2aenc.dfu"
 File: t2aenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A4 (decimal 164)
    defining Unicode char U+00A7 (decimal 167)
@@ -460,31 +460,31 @@ File: t2aenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 ))
 Package babel Info: Making " an active character on input line 199.
 ))
-(H:\Programms\MixTex\tex\latex\base\fontenc.sty
+("D:\MiKTeX 2.9\tex\latex\base\fontenc.sty"
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-(H:\Programms\MixTex\tex\latex\base\ot1enc.def
+("D:\MiKTeX 2.9\tex\latex\base\ot1enc.def"
 File: ot1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding OT1 on input line 43.
 ))
-(H:\Programms\MixTex\tex\latex\amsmath\amsmath.sty
+("D:\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-(H:\Programms\MixTex\tex\latex\amsmath\amstext.sty
+("D:\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01
 
-(H:\Programms\MixTex\tex\latex\amsmath\amsgen.sty
+("D:\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen104
 ))
-(H:\Programms\MixTex\tex\latex\amsmath\amsbsy.sty
+("D:\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen105
 )
-(H:\Programms\MixTex\tex\latex\amsmath\amsopn.sty
+("D:\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count88
@@ -525,41 +525,41 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-(H:\Programms\MixTex\tex\latex\amsfonts\amsfonts.sty
+("D:\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-(H:\Programms\MixTex\tex\latex\amsfonts\amssymb.sty
+("D:\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-(H:\Programms\MixTex\tex\latex\graphics\graphicx.sty
+("D:\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(H:\Programms\MixTex\tex\latex\graphics\keyval.sty
+("D:\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks21
 )
-(H:\Programms\MixTex\tex\latex\graphics\graphics.sty
+("D:\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(H:\Programms\MixTex\tex\latex\graphics\trig.sty
+("D:\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(H:\Programms\MixTex\tex\latex\00miktex\graphics.cfg
+("D:\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(H:\Programms\MixTex\tex\latex\pdftex-def\pdftex.def
+("D:\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-(H:\Programms\MixTex\tex\generic\oberdiek\infwarerr.sty
+("D:\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-(H:\Programms\MixTex\tex\generic\oberdiek\ltxcmds.sty
+("D:\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count100
@@ -567,13 +567,13 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen113
 \Gin@req@width=\dimen114
 )
-(H:\Programms\MixTex\tex\latex\placeins\placeins.sty
+("D:\MiKTeX 2.9\tex\latex\placeins\placeins.sty"
 Package: placeins 2005/04/18  v 2.2
 )
-("H:\Save Firefox\otchet2\otchet.aux"
+("D:\b33501-3\Замотаева, Никитина\Otchetposledn\otchet.aux"
 LaTeX Font Info:    Try loading font information for T2A+cmr on input line 3.
 
-(H:\Programms\MixTex\tex\latex\cyrillic\t2acmr.fd
+("D:\MiKTeX 2.9\tex\latex\cyrillic\t2acmr.fd"
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
 
@@ -606,7 +606,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
 LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
- (H:\Programms\MixTex\tex\context\base\supp-pdf.mkii
+ ("D:\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count101
 \scratchdimen=\dimen115
@@ -621,27 +621,27 @@ LaTeX Font Info:    ... okay on input line 13.
 \everyMPtoPDFconversion=\toks23
 )
 LaTeX Font Info:    Try loading font information for U+msa on input line 14.
- (H:\Programms\MixTex\tex\latex\amsfonts\umsa.fd
+ ("D:\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 14.
 
-(H:\Programms\MixTex\tex\latex\amsfonts\umsb.fd
+("D:\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] ("H:\Save Firefox\otchet2
-\otchet.toc" [2])
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+("D:\b33501-3\Замотаева, Никитина\Otchetposledn\otchet.toc"
+[2])
 \tf@toc=\write3
- [3]
-[4]
+ [3] [4]
 Underfull \hbox (badness 10000) in paragraph at lines 69--84
 
  []
 
 [5]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 87.
- (H:\Programms\MixTex\tex\latex\base\omscmr.fd
+ ("D:\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
@@ -663,8 +663,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 100--112
 
  []
 
-[6 <H:/Save Firefox/otchet2/1.png (PNG copy)> <H:/Save Firefox/otchet2/2.png (P
-NG copy)>] <3.png, id=40, 422.32782pt x 316.18124pt>
+[6 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/1.png (PNG c
+opy)> <D:/b33501-3/Замотаева, Никитина/Otchetposledn/2.png (PN
+G copy)>] <3.png, id=40, 422.32782pt x 316.18124pt>
 File: 3.png Graphic file (type png)
  <use 3.png>
 Package pdftex.def Info: 3.png used on input line 118.
@@ -679,8 +680,9 @@ Package pdftex.def Info: 4.png used on input line 123.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7 <H:/Save Firefox/otchet2/3.png (PNG copy)>] [8 <H:/Save Firefox/otchet2/4.pn
-g (PNG copy)>]
+[7 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/3.png (PNG c
+opy)>] [8 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/4.png
+ (PNG copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 162--182
 
  []
@@ -721,9 +723,11 @@ Package pdftex.def Info: 11.png used on input line 201.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[10 <H:/Save Firefox/otchet2/5_1.png (PNG copy)>] [11 <H:/Save Firefox/otchet2/
-5_2.png (PNG copy)> <H:/Save Firefox/otchet2/12.png (PNG copy)>] [12 <H:/Save F
-irefox/otchet2/11.png (PNG copy)>]
+[10 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/5_1.png (PN
+G copy)>] [11 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/5
+_2.png (PNG copy)> <D:/b33501-3/Замотаева, Никитина/Otchetposl
+edn/12.png (PNG copy)>] [12 <D:/b33501-3/Замотаева, Никитина/O
+tchetposledn/11.png (PNG copy)>]
 <sim5_1.png, id=66, 322.20375pt x 173.89969pt>
 File: sim5_1.png Graphic file (type png)
  <use sim5_1.png>
@@ -747,7 +751,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [13
 
- <H:/Save Firefox/otchet2/sim5_1.png> <H:/Save Firefox/otchet2/sim5_2.png>]
+ <D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim5_1.png> <D
+:/b33501-3/Замотаева, Никитина/Otchetposledn/sim5_2.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 226--232
 
  []
@@ -770,21 +775,22 @@ Package pdftex.def Info: 5_4.png used on input line 241.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[14 <H:/Save Firefox/otchet2/sim5_3.png>] [15 <H:/Save Firefox/otchet2/5_3.png 
-(PNG copy)> <H:/Save Firefox/otchet2/5_4.png (PNG copy)>]
-<sim5_4.png, id=81, 305.64188pt x 165.61874pt>
+[14 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim5_3.png>
+] [15 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/5_3.png (
+PNG copy)> <D:/b33501-3/Замотаева, Никитина/Otchetposledn/5_4.
+png (PNG copy)>] <sim5_4.png, id=81, 305.64188pt x 165.61874pt>
 File: sim5_4.png Graphic file (type png)
- <use sim5_4.png>
+
+<use sim5_4.png>
 Package pdftex.def Info: sim5_4.png used on input line 250.
 (pdftex.def)             Requested size: 341.43306pt x 185.02167pt.
-
-<sim5_5.png, id=82, 292.84406pt x 175.40532pt>
+ <sim5_5.png, id=82, 292.84406pt x 175.40532pt>
 File: sim5_5.png Graphic file (type png)
- <use sim5_5.png>
+
+<use sim5_5.png>
 Package pdftex.def Info: sim5_5.png used on input line 255.
 (pdftex.def)             Requested size: 341.43306pt x 204.53017pt.
-
-<sim5_6.png, id=83, 289.08pt x 170.88844pt>
+ <sim5_6.png, id=83, 289.08pt x 170.88844pt>
 File: sim5_6.png Graphic file (type png)
  <use sim5_6.png>
 Package pdftex.def Info: sim5_6.png used on input line 260.
@@ -795,7 +801,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [16
 
- <H:/Save Firefox/otchet2/sim5_4.png> <H:/Save Firefox/otchet2/sim5_5.png>]
+ <D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim5_4.png> <D
+:/b33501-3/Замотаева, Никитина/Otchetposledn/sim5_5.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 266--274
 
  []
@@ -818,9 +825,10 @@ Package pdftex.def Info: 6.png used on input line 283.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[17 <H:/Save Firefox/otchet2/sim5_6.png>] [18 <H:/Save Firefox/otchet2/5.png (P
-NG copy)> <H:/Save Firefox/otchet2/6.png (PNG copy)>]
-<sim5_7.png, id=95, 299.61937pt x 163.3603pt>
+[17 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim5_6.png>
+] [18 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/5.png (PN
+G copy)> <D:/b33501-3/Замотаева, Никитина/Otchetposledn/6.png 
+(PNG copy)>] <sim5_7.png, id=95, 299.61937pt x 163.3603pt>
 File: sim5_7.png Graphic file (type png)
  <use sim5_7.png>
 Package pdftex.def Info: sim5_7.png used on input line 292.
@@ -843,7 +851,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [19
 
- <H:/Save Firefox/otchet2/sim5_7.png> <H:/Save Firefox/otchet2/sim5_8.png>]
+ <D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim5_7.png> <D
+:/b33501-3/Замотаева, Никитина/Otchetposledn/sim5_8.png>]
 Overfull \hbox (2.41516pt too wide) in paragraph at lines 307--309
 \T2A/cmr/m/n/10 ������������ ��-��-��-��� ���-�����-��-�� ���-��-�� �� �����-��
  ���� ���-��-�����-
@@ -858,8 +867,8 @@ Package pdftex.def Info: 8.png used on input line 316.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[20 <H:/Save Firefox/otchet2/sim5_9.png>]
-<9.png, id=106, 257.46187pt x 27.85406pt>
+[20 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim5_9.png>
+] <9.png, id=106, 257.46187pt x 27.85406pt>
 File: 9.png Graphic file (type png)
  <use 9.png>
 Package pdftex.def Info: 9.png used on input line 322.
@@ -867,9 +876,10 @@ Package pdftex.def Info: 9.png used on input line 322.
 LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 333
 .
 
-(H:\Programms\MixTex\tex\latex\cyrillic\t2acmtt.fd
+("D:\MiKTeX 2.9\tex\latex\cyrillic\t2acmtt.fd"
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
-) [21 <H:/Save Firefox/otchet2/8.png> <H:/Save Firefox/otchet2/9.png>]
+) [21 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/8.png> <D
+:/b33501-3/Замотаева, Никитина/Otchetposledn/9.png>]
 <im1.jpg, id=111, 301.8778pt x 225.84375pt>
 File: im1.jpg Graphic file (type jpg)
  <use im1.jpg>
@@ -908,15 +918,18 @@ Overfull \hbox (71.22589pt too wide) in paragraph at lines 394--402
 []$[]$  $[]$ 
  []
 
-[22] [23 <H:/Save Firefox/otchet2/im1.jpg> <H:/Save Firefox/otchet2/im2.jpg> <H
-:/Save Firefox/otchet2/im56.jpg> <H:/Save Firefox/otchet2/im4.jpg> <H:/Save Fir
-efox/otchet2/im3.jpg>] <im7.png, id=122, 418.56375pt x 293.59688pt>
+[22] [23 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/im1.jp
+g> <D:/b33501-3/Замотаева, Никитина/Otchetposledn/im2.jpg> <D:
+/b33501-3/Замотаева, Никитина/Otchetposledn/im56.jpg> <D:/b335
+01-3/Замотаева, Никитина/Otchetposledn/im4.jpg> <D:/b33501-3/�
+�амотаева, Никитина/Otchetposledn/im3.jpg>]
+<im7.png, id=122, 418.56375pt x 293.59688pt>
 File: im7.png Graphic file (type png)
-
-<use im7.png>
+ <use im7.png>
 Package pdftex.def Info: im7.png used on input line 410.
 (pdftex.def)             Requested size: 207.0021pt x 145.19873pt.
- <im6.png, id=123, 417.05812pt x 292.09125pt>
+
+<im6.png, id=123, 417.05812pt x 292.09125pt>
 File: im6.png Graphic file (type png)
  <use im6.png>
 Package pdftex.def Info: im6.png used on input line 414.
@@ -950,9 +963,11 @@ Overfull \hbox (71.22589pt too wide) in paragraph at lines 417--429
 
 [24
 
-] [25 <H:/Save Firefox/otchet2/im7.png> <H:/Save Firefox/otchet2/im6.png> <H:/S
-ave Firefox/otchet2/im8.png> <H:/Save Firefox/otchet2/im9.png> <H:/Save Firefox
-/otchet2/im5.png>] [26
+] [25 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/im7.png> 
+<D:/b33501-3/Замотаева, Никитина/Otchetposledn/im6.png> <D:/b3
+3501-3/Замотаева, Никитина/Otchetposledn/im8.png> <D:/b33501-3
+/Замотаева, Никитина/Otchetposledn/im9.png> <D:/b33501-3/За�
+�отаева, Никитина/Otchetposledn/im5.png>] [26
 
 ]
 Overfull \hbox (1.97037pt too wide) detected at line 482
@@ -1025,11 +1040,14 @@ Overfull \hbox (71.22589pt too wide) in paragraph at lines 526--548
 $[]$ $[]$ 
  []
 
-[28 <H:/Save Firefox/otchet2/am1_1.png (PNG copy)>] [29 <H:/Save Firefox/otchet
-2/am1_2.png (PNG copy)> <H:/Save Firefox/otchet2/am1_4.png (PNG copy)> <H:/Save
- Firefox/otchet2/am1_6.png (PNG copy)> <H:/Save Firefox/otchet2/am1_5.png (PNG 
-copy)> <H:/Save Firefox/otchet2/am1_7.png (PNG copy)> <H:/Save Firefox/otchet2/
-am1_3.png (PNG copy)>]
+[28 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/am1_1.png (
+PNG copy)>] [29 <D:/b33501-3/Замотаева, Никитина/Otchetposledn
+/am1_2.png (PNG copy)> <D:/b33501-3/Замотаева, Никитина/Otchet
+posledn/am1_4.png (PNG copy)> <D:/b33501-3/Замотаева, Никитина
+/Otchetposledn/am1_6.png (PNG copy)> <D:/b33501-3/Замотаева, Ники�
+�ина/Otchetposledn/am1_5.png (PNG copy)> <D:/b33501-3/Замотаева, Н
+икитина/Otchetposledn/am1_7.png (PNG copy)> <D:/b33501-3/Замотае�
+�а, Никитина/Otchetposledn/am1_3.png (PNG copy)>]
 File: am1_1.png Graphic file (type png)
  <use am1_1.png>
 Package pdftex.def Info: am1_1.png used on input line 566.
@@ -1053,8 +1071,9 @@ Overfull \hbox (71.22589pt too wide) in paragraph at lines 565--578
 
 [30
 
-] [31 <H:/Save Firefox/otchet2/am2_2.png (PNG copy)> <H:/Save Firefox/otchet2/a
-m2_3.png (PNG copy)>] <am3_3.png, id=162, 247.67531pt x 158.09062pt>
+] [31 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/am2_2.png
+ (PNG copy)> <D:/b33501-3/Замотаева, Никитина/Otchetposledn/am
+2_3.png (PNG copy)>] <am3_3.png, id=162, 247.67531pt x 158.09062pt>
 File: am3_3.png Graphic file (type png)
 
 <use am3_3.png>
@@ -1082,8 +1101,10 @@ LaTeX Warning: Float too large for page by 16.88062pt on input line 610.
 
 [32
 
-] [33 <H:/Save Firefox/otchet2/am3_3.png> <H:/Save Firefox/otchet2/am3_1.png> <
-H:/Save Firefox/otchet2/am3_2.png>] [34
+] [33 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/am3_3.png
+> <D:/b33501-3/Замотаева, Никитина/Otchetposledn/am3_1.png> <D
+:/b33501-3/Замотаева, Никитина/Otchetposledn/am3_2.png>]
+[34
 
 ]
 Overfull \hbox (17.16156pt too wide) in paragraph at lines 695--695
@@ -1102,7 +1123,7 @@ Overfull \hbox (32.90771pt too wide) in paragraph at lines 741--741
 �� ���������[] 
  []
 
-[36 <H:/Save Firefox/otchet2/pm.jpg>]
+[36 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/pm.jpg>]
 <fm.jpg, id=181, 756.8275pt x 647.41875pt>
 File: fm.jpg Graphic file (type jpg)
  <use fm.jpg>
@@ -1118,7 +1139,7 @@ Package pdftex.def Info: sim_y.jpg used on input line 757.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[37 <H:/Save Firefox/otchet2/fm.jpg>]
+[37 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/fm.jpg>]
 <sim_p.jpg, id=187, 372.64218pt x 188.95593pt>
 File: sim_p.jpg Graphic file (type jpg)
  <use sim_p.jpg>
@@ -1154,8 +1175,10 @@ Package pdftex.def Info: sim_pdm.jpg used on input line 782.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[38 <H:/Save Firefox/otchet2/sim_y.jpg> <H:/Save Firefox/otchet2/sim_p.jpg> <H:
-/Save Firefox/otchet2/sim_pm.jpg> <H:/Save Firefox/otchet2/sim_pms.jpg>]
+[38 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim_y.jpg> 
+<D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim_p.jpg> <D:/
+b33501-3/Замотаева, Никитина/Otchetposledn/sim_pm.jpg> <D:/b33
+501-3/Замотаева, Никитина/Otchetposledn/sim_pms.jpg>]
 <sim_f.jpg, id=194, 369.63094pt x 182.18062pt>
 File: sim_f.jpg Graphic file (type jpg)
  <use sim_f.jpg>
@@ -1191,8 +1214,10 @@ Package pdftex.def Info: sim_fdm.jpg used on input line 808.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[39 <H:/Save Firefox/otchet2/sim_pdm.jpg> <H:/Save Firefox/otchet2/sim_f.jpg> <
-H:/Save Firefox/otchet2/sim_fm.jpg> <H:/Save Firefox/otchet2/sim_fms.jpg>]
+[39 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim_pdm.jpg
+> <D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim_f.jpg> <D
+:/b33501-3/Замотаева, Никитина/Otchetposledn/sim_fm.jpg> <D:/b
+33501-3/Замотаева, Никитина/Otchetposledn/sim_fms.jpg>]
 <sim_pll.jpg, id=201, 422.32782pt x 220.57407pt>
 File: sim_pll.jpg Graphic file (type jpg)
  <use sim_pll.jpg>
@@ -1234,37 +1259,40 @@ Overfull \hbox (15.891pt too wide) in paragraph at lines 842--843
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[40 <H:/Save Firefox/otchet2/sim_fdm.jpg>] [41 <H:/Save Firefox/otchet2/sim_pll
-.jpg> <H:/Save Firefox/otchet2/sim_fpll_filt.jpg> <H:/Save Firefox/otchet2/sim_
-fpll_pd.jpg> <H:/Save Firefox/otchet2/sim_fpll_vco.jpg>] [42
+[40 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim_fdm.jpg
+>] [41 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim_pll.
+jpg> <D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim_fpll_f
+ilt.jpg> <D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim_fp
+ll_pd.jpg> <D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim_
+fpll_vco.jpg>] [42
 
-] [43]
-<1_1.png, id=218, 316.93407pt x 316.18124pt>
+] [43] <1_1.png, id=218, 224.33812pt x 230.36063pt>
 File: 1_1.png Graphic file (type png)
- <use 1_1.png>
-Package pdftex.def Info: 1_1.png used on input line 910.
-(pdftex.def)             Requested size: 284.52756pt x 283.8754pt.
- [44 <H:/Save Firefox/otchet2/1_1.png (PNG copy)>] <1_2.png, id=222, 316.93407p
-t x 316.18124pt>
-File: 1_2.png Graphic file (type png)
 
-<use 1_2.png>
+<use 1_1.png>
+Package pdftex.def Info: 1_1.png used on input line 910.
+(pdftex.def)             Requested size: 284.52756pt x 292.19618pt.
+ [44 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/1_1.png>] 
+<1_2.png, id=222, 316.93407pt x 316.18124pt>
+File: 1_2.png Graphic file (type png)
+ <use 1_2.png>
 Package pdftex.def Info: 1_2.png used on input line 926.
 (pdftex.def)             Requested size: 284.52756pt x 283.8754pt.
- [45 <H:/Save Firefox/otchet2/1_2.png (PNG copy)>]
-<1_3.png, id=226, 226.59656pt x 230.36063pt>
+
+[45 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/1_2.png (PN
+G copy)>] <1_3.png, id=226, 226.59656pt x 230.36063pt>
 File: 1_3.png Graphic file (type png)
  <use 1_3.png>
 Package pdftex.def Info: 1_3.png used on input line 942.
 (pdftex.def)             Requested size: 284.52756pt x 289.25412pt.
- [46 <H:/Save Firefox/otchet2/1_3.png>] <1_4.png, id=230, 316.93407pt x 316.181
-24pt>
+ [46 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/1_3.png>]
+<1_4.png, id=230, 316.93407pt x 316.18124pt>
 File: 1_4.png Graphic file (type png)
  <use 1_4.png>
 Package pdftex.def Info: 1_4.png used on input line 959.
 (pdftex.def)             Requested size: 284.52756pt x 283.8754pt.
-
-[47 <H:/Save Firefox/otchet2/1_4.png (PNG copy)>]
+ [47 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/1_4.png (P
+NG copy)>]
 <1_5.png, id=234, 316.93407pt x 316.18124pt>
 File: 1_5.png Graphic file (type png)
  <use 1_5.png>
@@ -1294,8 +1322,8 @@ Package pdftex.def Info: sim1.png used on input line 989.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[48 <H:/Save Firefox/otchet2/1_5.png (PNG copy)>]
-<sim2_1.png, id=240, 332.74312pt x 115.18031pt>
+[48 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/1_5.png (PN
+G copy)>] <sim2_1.png, id=240, 332.74312pt x 115.18031pt>
 File: sim2_1.png Graphic file (type png)
  <use sim2_1.png>
 Package pdftex.def Info: sim2_1.png used on input line 999.
@@ -1310,8 +1338,9 @@ Package pdftex.def Info: sim2.png used on input line 1004.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[49 <H:/Save Firefox/otchet2/sim1_1.png> <H:/Save Firefox/otchet2/sim1.png> <H:
-/Save Firefox/otchet2/sim2_1.png>]
+[49 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim1_1.png>
+ <D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim1.png> <D:/
+b33501-3/Замотаева, Никитина/Otchetposledn/sim2_1.png>]
 <sim3_1.png, id=246, 346.29375pt x 115.93312pt>
 File: sim3_1.png Graphic file (type png)
  <use sim3_1.png>
@@ -1332,38 +1361,39 @@ Package pdftex.def Info: sim3.png used on input line 1019.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[50 <H:/Save Firefox/otchet2/sim2.png> <H:/Save Firefox/otchet2/sim3_1.png>]
-[51 <H:/Save Firefox/otchet2/sim3.png>] ("H:\Save Firefox\otchet2\otchet.aux")
+[50 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim2.png> <
+D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim3_1.png>]
+[51 <D:/b33501-3/Замотаева, Никитина/Otchetposledn/sim3.png>]
+("D:\b33501-3\Замотаева, Никитина\Otchetposledn\otchet.aux")
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
  3689 strings out of 493921
- 42349 string characters out of 3150538
+ 42208 string characters out of 3152893
  97267 words of memory out of 3000000
  6847 multiletter control sequences out of 15000+200000
  18428 words of font info for 57 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,8n,25p,3057b,322s stack positions out of 5000i,500n,10000p,200000b,50000s
-{H:/Programms/MixTex/fonts/enc/dvips/cm-super/cm-super-t2a.enc}<H:/Programms/
-MixTex/fonts/type1/public/amsfonts/cm/cmbx10.pfb><H:/Programms/MixTex/fonts/typ
-e1/public/amsfonts/cm/cmbx12.pfb><H:/Programms/MixTex/fonts/type1/public/amsfon
-ts/cm/cmbx7.pfb><H:/Programms/MixTex/fonts/type1/public/amsfonts/cm/cmex10.pfb>
-<H:/Programms/MixTex/fonts/type1/public/amsfonts/cm/cmmi10.pfb><H:/Programms/Mi
-xTex/fonts/type1/public/amsfonts/cm/cmmi5.pfb><H:/Programms/MixTex/fonts/type1/
-public/amsfonts/cm/cmmi7.pfb><H:/Programms/MixTex/fonts/type1/public/amsfonts/c
-m/cmr10.pfb><H:/Programms/MixTex/fonts/type1/public/amsfonts/cm/cmr5.pfb><H:/Pr
-ogramms/MixTex/fonts/type1/public/amsfonts/cm/cmr7.pfb><H:/Programms/MixTex/fon
-ts/type1/public/amsfonts/cm/cmsy10.pfb><H:/Programms/MixTex/fonts/type1/public/
-amsfonts/cm/cmsy7.pfb><H:/Programms/MixTex/fonts/type1/public/amsfonts/symbols/
-msam10.pfb><H:/Programms/MixTex/fonts/type1/public/cm-super/sfbx1000.pfb><H:/Pr
-ogramms/MixTex/fonts/type1/public/cm-super/sfbx1200.pfb><H:/Programms/MixTex/fo
-nts/type1/public/cm-super/sfbx1440.pfb><H:/Programms/MixTex/fonts/type1/public/
-cm-super/sfrm1000.pfb><H:/Programms/MixTex/fonts/type1/public/cm-super/sfrm1200
-.pfb><H:/Programms/MixTex/fonts/type1/public/cm-super/sfrm1728.pfb><H:/Programm
-s/MixTex/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on otchet.pdf (51 pages, 2032840 bytes).
+ 27i,8n,25p,3033b,322s stack positions out of 5000i,500n,10000p,200000b,50000s
+{D:/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t2a.enc}<D:/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmbx10.pfb><D:/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmbx12.pfb><D:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb><D:/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmmi10.pfb><D:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.
+pfb><D:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><D:/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmr10.pfb><D:/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmr5.pfb><D:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmsy7.pfb><D:/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam1
+0.pfb><D:/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx1000.pfb><D:/MiKTeX 2.9/fo
+nts/type1/public/cm-super/sfbx1200.pfb><D:/MiKTeX 2.9/fonts/type1/public/cm-sup
+er/sfbx1440.pfb><D:/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1000.pfb><D:/MiK
+TeX 2.9/fonts/type1/public/cm-super/sfrm1200.pfb><D:/MiKTeX 2.9/fonts/type1/pub
+lic/cm-super/sfrm1728.pfb><D:/MiKTeX 2.9/fonts/type1/public/cm-super/sftt1000.p
+fb>
+Output written on otchet.pdf (51 pages, 2038103 bytes).
 PDF statistics:
  319 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

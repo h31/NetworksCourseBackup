@@ -65,4 +65,4 @@
 \contentsline {subsubsection}{\numberline {7.5.1}BPSK modulation}{48}
 \contentsline {subsubsection}{\numberline {7.5.2}DBPSK modulation}{49}
 \contentsline {subsubsection}{\numberline {7.5.3}M-FSK modulation}{50}
-\contentsline {subsection}{\numberline {7.6}\IeC {\CYRV }\IeC {\cyrery }\IeC {\cyrv }\IeC {\cyro }\IeC {\cyrd }}{50}
+\contentsline {subsection}{\numberline {7.6}\IeC {\CYRV }\IeC {\cyrery }\IeC {\cyrv }\IeC {\cyro }\IeC {\cyrd }}{51}
