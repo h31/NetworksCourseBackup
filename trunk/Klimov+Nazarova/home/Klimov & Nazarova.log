@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.3.14)  29 MAY 2014 13:33
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.2.13)  30 MAY 2014 13:47
 entering extended mode
 **Klimov*&*Nazarova.tex
-("K:\trunk\trunk\Klimov+Nazarova\home\Klimov & Nazarova.tex"
+("D:\svn\Klimov+Nazarova\home\Klimov & Nazarova.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -570,7 +570,7 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\placeins\placeins.sty"
 Package: placeins 2005/04/18  v 2.2
 )
-("K:\trunk\trunk\Klimov+Nazarova\home\Klimov & Nazarova.aux"
+("D:\svn\Klimov+Nazarova\home\Klimov & Nazarova.aux"
 LaTeX Font Info:    Try loading font information for T2A+cmr on input line 3.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\cyrillic\t2acmr.fd"
@@ -619,16 +619,16 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-("K:\trunk\trunk\Klimov+Nazarova\home\Klimov & Nazarova.toc" [2])
+("D:\svn\Klimov+Nazarova\home\Klimov & Nazarova.toc" [2])
 \tf@toc=\write3
- [3] [4]
-[5] <1.jpg, id=35, 563.10374pt x 421.575pt>
+ [3] [4] [5]
+<1.jpg, id=35, 563.10374pt x 421.575pt>
 File: 1.jpg Graphic file (type jpg)
  <use 1.jpg>
 Package pdftex.def Info: 1.jpg used on input line 108.
 (pdftex.def)             Requested size: 284.52756pt x 213.0127pt.
- [6 <K:/trunk/trunk/Klimov+Nazarova/home/1.jpg>] <2.jpg, id=39, 563.10374pt x 4
-21.575pt>
+ [6 <D:/svn/Klimov+Nazarova/home/1.jpg>] <2.jpg, id=39, 563.10374pt x 421.575pt
+>
 File: 2.jpg Graphic file (type jpg)
  <use 2.jpg>
 Package pdftex.def Info: 2.jpg used on input line 115.
@@ -643,7 +643,7 @@ Package pdftex.def Info: 3.jpg used on input line 121.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7 <K:/trunk/trunk/Klimov+Nazarova/home/2.jpg>]
+[7 <D:/svn/Klimov+Nazarova/home/2.jpg>]
 <4.jpg, id=45, 563.10374pt x 421.575pt>
 File: 4.jpg Graphic file (type jpg)
  <use 4.jpg>
@@ -653,11 +653,10 @@ Package pdftex.def Info: 4.jpg used on input line 128.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[8 <K:/trunk/trunk/Klimov+Nazarova/home/3.jpg>] [9 <K:/trunk/trunk/Klimov+Nazar
-ova/home/4.jpg>]
+[8 <D:/svn/Klimov+Nazarova/home/3.jpg>] [9 <D:/svn/Klimov+Nazarova/home/4.jpg>]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 144.
 
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
@@ -734,9 +733,8 @@ Overfull \hbox (15.891pt too wide) in paragraph at lines 245--246
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11 <K:/trunk/trunk/Klimov+Nazarova/home/lab5/5_1.jpg> <K:/trunk/trunk/Klimov+N
-azarova/home/lab5/5_2.jpg>]
-<lab5/1_simulink.jpg, id=66, 252.19218pt x 202.50656pt>
+[11 <D:/svn/Klimov+Nazarova/home/lab5/5_1.jpg> <D:/svn/Klimov+Nazarova/home/lab
+5/5_2.jpg>] <lab5/1_simulink.jpg, id=66, 252.19218pt x 202.50656pt>
 File: lab5/1_simulink.jpg Graphic file (type jpg)
 
 <use lab5/1_simulink.jpg>
@@ -826,16 +824,15 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12 <K:/trunk/trunk/Klimov+Nazarova/home/lab5/5_3.jpg> <K:/trunk/trunk/Klimov+N
-azarova/home/lab5/5_4.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab5/5_5.jpg> <
-K:/trunk/trunk/Klimov+Nazarova/home/lab5/5_6.jpg>] [13 <K:/trunk/trunk/Klimov+N
-azarova/home/lab5/1_simulink.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab5/lab
-5_1_simulink.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab5/lab5_2_simulink.jpg
->] [14 <K:/trunk/trunk/Klimov+Nazarova/home/lab5/3_simulink.jpg> <K:/trunk/trun
-k/Klimov+Nazarova/home/lab5/lab5_3_simulink.jpg> <K:/trunk/trunk/Klimov+Nazarov
-a/home/lab5/lab5_4_simulink.jpg>] [15 <K:/trunk/trunk/Klimov+Nazarova/home/lab5
-/4_simulink.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab5/lab5_5_simulink.jpg>
- <K:/trunk/trunk/Klimov+Nazarova/home/lab5/lab5_6_simulink.jpg>] [16
+[12 <D:/svn/Klimov+Nazarova/home/lab5/5_3.jpg> <D:/svn/Klimov+Nazarova/home/lab
+5/5_4.jpg> <D:/svn/Klimov+Nazarova/home/lab5/5_5.jpg> <D:/svn/Klimov+Nazarova/h
+ome/lab5/5_6.jpg>] [13 <D:/svn/Klimov+Nazarova/home/lab5/1_simulink.jpg> <D:/sv
+n/Klimov+Nazarova/home/lab5/lab5_1_simulink.jpg> <D:/svn/Klimov+Nazarova/home/l
+ab5/lab5_2_simulink.jpg>] [14 <D:/svn/Klimov+Nazarova/home/lab5/3_simulink.jpg>
+ <D:/svn/Klimov+Nazarova/home/lab5/lab5_3_simulink.jpg> <D:/svn/Klimov+Nazarova
+/home/lab5/lab5_4_simulink.jpg>] [15 <D:/svn/Klimov+Nazarova/home/lab5/4_simuli
+nk.jpg> <D:/svn/Klimov+Nazarova/home/lab5/lab5_5_simulink.jpg> <D:/svn/Klimov+N
+azarova/home/lab5/lab5_6_simulink.jpg>] [16
 
 ] [17]
 <lab6/lab6_0.jpg, id=98, 563.10374pt x 421.575pt>
@@ -892,18 +889,17 @@ Overfull \hbox (15.891pt too wide) in paragraph at lines 416--417
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[18 <K:/trunk/trunk/Klimov+Nazarova/home/lab6/lab6_0.jpg> <K:/trunk/trunk/Klimo
-v+Nazarova/home/lab6/lab6_1.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab6/lab6
-_2.jpg>] <lab6/Sim_0.jpg, id=106, 350.05782pt x 244.66406pt>
+[18 <D:/svn/Klimov+Nazarova/home/lab6/lab6_0.jpg> <D:/svn/Klimov+Nazarova/home/
+lab6/lab6_1.jpg> <D:/svn/Klimov+Nazarova/home/lab6/lab6_2.jpg>]
+<lab6/Sim_0.jpg, id=106, 350.05782pt x 244.66406pt>
 File: lab6/Sim_0.jpg Graphic file (type jpg)
-
-<use lab6/Sim_0.jpg>
+ <use lab6/Sim_0.jpg>
 Package pdftex.def Info: lab6/Sim_0.jpg used on input line 424.
 (pdftex.def)             Requested size: 284.52756pt x 198.87491pt.
- <lab6/Sim_1.jpg, id=107, 362.10281pt x 315.42844pt>
-File: lab6/Sim_1.jpg Graphic file (type jpg)
 
-<use lab6/Sim_1.jpg>
+<lab6/Sim_1.jpg, id=107, 362.10281pt x 315.42844pt>
+File: lab6/Sim_1.jpg Graphic file (type jpg)
+ <use lab6/Sim_1.jpg>
 Package pdftex.def Info: lab6/Sim_1.jpg used on input line 428.
 (pdftex.def)             Requested size: 284.52756pt x 247.85733pt.
 
@@ -916,15 +912,15 @@ File: lab6/Sim_2.jpg Graphic file (type jpg)
 Package pdftex.def Info: lab6/Sim_2.jpg used on input line 433.
 (pdftex.def)             Requested size: 284.52756pt x 262.22894pt.
 
-[19 <K:/trunk/trunk/Klimov+Nazarova/home/lab6/lab6_3.jpg> <K:/trunk/trunk/Klimo
-v+Nazarova/home/lab6/lab6_4.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab6/Sim_
-0.jpg>] [20 <K:/trunk/trunk/Klimov+Nazarova/home/lab6/Sim_1.jpg> <K:/trunk/trun
-k/Klimov+Nazarova/home/lab6/Sim_2.jpg>] [21
+[19 <D:/svn/Klimov+Nazarova/home/lab6/lab6_3.jpg> <D:/svn/Klimov+Nazarova/home/
+lab6/lab6_4.jpg> <D:/svn/Klimov+Nazarova/home/lab6/Sim_0.jpg>] [20 <D:/svn/Klim
+ov+Nazarova/home/lab6/Sim_1.jpg> <D:/svn/Klimov+Nazarova/home/lab6/Sim_2.jpg>]
+[21
 
-] [22]
-<lab7/lab7_0.jpg, id=123, 563.10374pt x 421.575pt>
+] [22] <lab7/lab7_0.jpg, id=123, 563.10374pt x 421.575pt>
 File: lab7/lab7_0.jpg Graphic file (type jpg)
- <use lab7/lab7_0.jpg>
+
+<use lab7/lab7_0.jpg>
 Package pdftex.def Info: lab7/lab7_0.jpg used on input line 524.
 (pdftex.def)             Requested size: 184.9429pt x 138.4576pt.
 
@@ -1016,12 +1012,11 @@ Overfull \hbox (15.891pt too wide) in paragraph at lines 564--565
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[23 <K:/trunk/trunk/Klimov+Nazarova/home/lab7/lab7_0.jpg> <K:/trunk/trunk/Klimo
-v+Nazarova/home/lab7/lab7_1.jpg>] [24 <K:/trunk/trunk/Klimov+Nazarova/home/lab7
-/lab7_2.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab7/lab7_3.jpg> <K:/trunk/tr
-unk/Klimov+Nazarova/home/lab7/lab7_4.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/
-lab7/lab7_5.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab7/lab7_6.jpg> <K:/trun
-k/trunk/Klimov+Nazarova/home/lab7/lab7_7.jpg>]
+[23 <D:/svn/Klimov+Nazarova/home/lab7/lab7_0.jpg> <D:/svn/Klimov+Nazarova/home/
+lab7/lab7_1.jpg>] [24 <D:/svn/Klimov+Nazarova/home/lab7/lab7_2.jpg> <D:/svn/Kli
+mov+Nazarova/home/lab7/lab7_3.jpg> <D:/svn/Klimov+Nazarova/home/lab7/lab7_4.jpg
+> <D:/svn/Klimov+Nazarova/home/lab7/lab7_5.jpg> <D:/svn/Klimov+Nazarova/home/la
+b7/lab7_6.jpg> <D:/svn/Klimov+Nazarova/home/lab7/lab7_7.jpg>]
 <lab7/lab7_8.jpg, id=137, 563.10374pt x 421.575pt>
 File: lab7/lab7_8.jpg Graphic file (type jpg)
  <use lab7/lab7_8.jpg>
@@ -1044,11 +1039,11 @@ Overfull \hbox (15.891pt too wide) in paragraph at lines 603--604
 
 [25
 
- <K:/trunk/trunk/Klimov+Nazarova/home/lab7/lab7_8.jpg> <K:/trunk/trunk/Klimov+N
-azarova/home/lab7/lab7_9.jpg>]
-<lab7/lab7_10.jpg, id=143, 563.10374pt x 421.575pt>
+ <D:/svn/Klimov+Nazarova/home/lab7/lab7_8.jpg> <D:/svn/Klimov+Nazarova/home/lab
+7/lab7_9.jpg>] <lab7/lab7_10.jpg, id=143, 563.10374pt x 421.575pt>
 File: lab7/lab7_10.jpg Graphic file (type jpg)
- <use lab7/lab7_10.jpg>
+
+<use lab7/lab7_10.jpg>
 Package pdftex.def Info: lab7/lab7_10.jpg used on input line 636.
 (pdftex.def)             Requested size: 184.9429pt x 138.4576pt.
 
@@ -1097,17 +1092,17 @@ Overfull \hbox (15.891pt too wide) in paragraph at lines 677--678
  [][] 
  []
 
-[26 <K:/trunk/trunk/Klimov+Nazarova/home/lab7/lab7_10.jpg> <K:/trunk/trunk/Klim
-ov+Nazarova/home/lab7/lab7_11.jpg>]
-<lab7/Sim_ssb0.jpg, id=150, 313.9228pt x 185.19188pt>
+[26 <D:/svn/Klimov+Nazarova/home/lab7/lab7_10.jpg> <D:/svn/Klimov+Nazarova/home
+/lab7/lab7_11.jpg>] <lab7/Sim_ssb0.jpg, id=150, 313.9228pt x 185.19188pt>
 File: lab7/Sim_ssb0.jpg Graphic file (type jpg)
- <use lab7/Sim_ssb0.jpg>
+
+<use lab7/Sim_ssb0.jpg>
 Package pdftex.def Info: lab7/Sim_ssb0.jpg used on input line 697.
 (pdftex.def)             Requested size: 170.71652pt x 100.70856pt.
-
-<lab7/Sim_ssb1.jpg, id=151, 417.05812pt x 286.06876pt>
+ <lab7/Sim_ssb1.jpg, id=151, 417.05812pt x 286.06876pt>
 File: lab7/Sim_ssb1.jpg Graphic file (type jpg)
- <use lab7/Sim_ssb1.jpg>
+
+<use lab7/Sim_ssb1.jpg>
 Package pdftex.def Info: lab7/Sim_ssb1.jpg used on input line 702.
 (pdftex.def)             Requested size: 227.62204pt x 156.13354pt.
 
@@ -1132,11 +1127,10 @@ Package pdftex.def Info: lab7/Sim_ssb3.jpg used on input line 712.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[27 <K:/trunk/trunk/Klimov+Nazarova/home/lab7/lab7_12.jpg> <K:/trunk/trunk/Klim
-ov+Nazarova/home/lab7/lab7_13.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab7/Si
-m_ssb0.jpg>] [28 <K:/trunk/trunk/Klimov+Nazarova/home/lab7/Sim_ssb1.jpg> <K:/tr
-unk/trunk/Klimov+Nazarova/home/lab7/Sim_ssb2.jpg> <K:/trunk/trunk/Klimov+Nazaro
-va/home/lab7/Sim_ssb3.jpg>]
+[27 <D:/svn/Klimov+Nazarova/home/lab7/lab7_12.jpg> <D:/svn/Klimov+Nazarova/home
+/lab7/lab7_13.jpg> <D:/svn/Klimov+Nazarova/home/lab7/Sim_ssb0.jpg>] [28 <D:/svn
+/Klimov+Nazarova/home/lab7/Sim_ssb1.jpg> <D:/svn/Klimov+Nazarova/home/lab7/Sim_
+ssb2.jpg> <D:/svn/Klimov+Nazarova/home/lab7/Sim_ssb3.jpg>]
 <lab7/Sim_dsbsc0.jpg, id=160, 320.69812pt x 185.94469pt>
 File: lab7/Sim_dsbsc0.jpg Graphic file (type jpg)
 
@@ -1163,9 +1157,9 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [29
 
- <K:/trunk/trunk/Klimov+Nazarova/home/lab7/Sim_dsbsc0.jpg> <K:/trunk/trunk/Klim
-ov+Nazarova/home/lab7/Sim_dsbsc2.jpg>] [30 <K:/trunk/trunk/Klimov+Nazarova/home
-/lab7/Sim_dsbsc3.jpg>] [31]
+ <D:/svn/Klimov+Nazarova/home/lab7/Sim_dsbsc0.jpg> <D:/svn/Klimov+Nazarova/home
+/lab7/Sim_dsbsc2.jpg>] [30 <D:/svn/Klimov+Nazarova/home/lab7/Sim_dsbsc3.jpg>] [
+31]
 Overfull \hbox (17.16156pt too wide) in paragraph at lines 821--821
 []\T2A/cmtt/m/n/10 phasedev = pi/2;                % ƒевиаци€ фазы дл€ фазовой 
 модул€ции[] 
@@ -1186,7 +1180,7 @@ Overfull \hbox (32.90771pt too wide) in paragraph at lines 867--867
 ой модул€ции[] 
  []
 
-[33 <K:/trunk/trunk/Klimov+Nazarova/home/lab8/pm.jpg>]
+[33 <D:/svn/Klimov+Nazarova/home/lab8/pm.jpg>]
 <lab8/fm.jpg, id=180, 756.8275pt x 647.41875pt>
 File: lab8/fm.jpg Graphic file (type jpg)
  <use lab8/fm.jpg>
@@ -1202,7 +1196,7 @@ Package pdftex.def Info: lab8/sim_y.jpg used on input line 883.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[34 <K:/trunk/trunk/Klimov+Nazarova/home/lab8/fm.jpg>]
+[34 <D:/svn/Klimov+Nazarova/home/lab8/fm.jpg>]
 <lab8/sim_p.jpg, id=185, 372.64218pt x 188.95593pt>
 File: lab8/sim_p.jpg Graphic file (type jpg)
  <use lab8/sim_p.jpg>
@@ -1238,9 +1232,9 @@ Package pdftex.def Info: lab8/sim_pdm.jpg used on input line 908.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[35 <K:/trunk/trunk/Klimov+Nazarova/home/lab8/sim_y.jpg> <K:/trunk/trunk/Klimov
-+Nazarova/home/lab8/sim_p.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab8/sim_pm
-.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab8/sim_pms.jpg>]
+[35 <D:/svn/Klimov+Nazarova/home/lab8/sim_y.jpg> <D:/svn/Klimov+Nazarova/home/l
+ab8/sim_p.jpg> <D:/svn/Klimov+Nazarova/home/lab8/sim_pm.jpg> <D:/svn/Klimov+Naz
+arova/home/lab8/sim_pms.jpg>]
 <lab8/sim_f.jpg, id=192, 369.63094pt x 182.18062pt>
 File: lab8/sim_f.jpg Graphic file (type jpg)
  <use lab8/sim_f.jpg>
@@ -1276,9 +1270,9 @@ Package pdftex.def Info: lab8/sim_fdm.jpg used on input line 934.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[36 <K:/trunk/trunk/Klimov+Nazarova/home/lab8/sim_pdm.jpg> <K:/trunk/trunk/Klim
-ov+Nazarova/home/lab8/sim_f.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab8/sim_
-fm.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab8/sim_fms.jpg>]
+[36 <D:/svn/Klimov+Nazarova/home/lab8/sim_pdm.jpg> <D:/svn/Klimov+Nazarova/home
+/lab8/sim_f.jpg> <D:/svn/Klimov+Nazarova/home/lab8/sim_fm.jpg> <D:/svn/Klimov+N
+azarova/home/lab8/sim_fms.jpg>]
 <lab8/sim_pll.jpg, id=199, 422.32782pt x 220.57407pt>
 File: lab8/sim_pll.jpg Graphic file (type jpg)
  <use lab8/sim_pll.jpg>
@@ -1323,10 +1317,10 @@ Overfull \hbox (15.891pt too wide) in paragraph at lines 968--969
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[37 <K:/trunk/trunk/Klimov+Nazarova/home/lab8/sim_fdm.jpg>] [38 <K:/trunk/trunk
-/Klimov+Nazarova/home/lab8/sim_pll.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/la
-b8/sim_fpll_filt.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab8/sim_fpll_pd.jpg
-> <K:/trunk/trunk/Klimov+Nazarova/home/lab8/sim_fpll_vco.jpg>] [39
+[37 <D:/svn/Klimov+Nazarova/home/lab8/sim_fdm.jpg>] [38 <D:/svn/Klimov+Nazarova
+/home/lab8/sim_pll.jpg> <D:/svn/Klimov+Nazarova/home/lab8/sim_fpll_filt.jpg> <D
+:/svn/Klimov+Nazarova/home/lab8/sim_fpll_pd.jpg> <D:/svn/Klimov+Nazarova/home/l
+ab8/sim_fpll_vco.jpg>] [39
 
 ] [40]
 <lab9/bpsk.jpg, id=216, 563.10374pt x 421.575pt>
@@ -1353,9 +1347,9 @@ Package pdftex.def Info: lab9/BPSKe.jpg used on input line 1050.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[41 <K:/trunk/trunk/Klimov+Nazarova/home/lab9/bpsk.jpg>] [42 <K:/trunk/trunk/Kl
-imov+Nazarova/home/lab9/BPSKm.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab9/BP
-SKe.jpg>] <lab9/psk.jpg, id=225, 563.10374pt x 421.575pt>
+[41 <D:/svn/Klimov+Nazarova/home/lab9/bpsk.jpg>] [42 <D:/svn/Klimov+Nazarova/ho
+me/lab9/BPSKm.jpg> <D:/svn/Klimov+Nazarova/home/lab9/BPSKe.jpg>]
+<lab9/psk.jpg, id=225, 563.10374pt x 421.575pt>
 File: lab9/psk.jpg Graphic file (type jpg)
  <use lab9/psk.jpg>
 Package pdftex.def Info: lab9/psk.jpg used on input line 1076.
@@ -1381,9 +1375,9 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [43
 
- <K:/trunk/trunk/Klimov+Nazarova/home/lab9/psk.jpg>] [44 <K:/trunk/trunk/Klimov
-+Nazarova/home/lab9/PSKm.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab9/PSKe.jp
-g>] <lab9/oqpsk.jpg, id=235, 563.10374pt x 421.575pt>
+ <D:/svn/Klimov+Nazarova/home/lab9/psk.jpg>] [44 <D:/svn/Klimov+Nazarova/home/l
+ab9/PSKm.jpg> <D:/svn/Klimov+Nazarova/home/lab9/PSKe.jpg>]
+<lab9/oqpsk.jpg, id=235, 563.10374pt x 421.575pt>
 File: lab9/oqpsk.jpg Graphic file (type jpg)
  <use lab9/oqpsk.jpg>
 Package pdftex.def Info: lab9/oqpsk.jpg used on input line 1110.
@@ -1409,18 +1403,17 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [45
 
- <K:/trunk/trunk/Klimov+Nazarova/home/lab9/oqpsk.jpg>] [46 <K:/trunk/trunk/Klim
-ov+Nazarova/home/lab9/OQPSKm.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab9/OQP
-SKe.jpg>] <lab9/genqam.jpg, id=244, 563.10374pt x 421.575pt>
+ <D:/svn/Klimov+Nazarova/home/lab9/oqpsk.jpg>] [46 <D:/svn/Klimov+Nazarova/home
+/lab9/OQPSKm.jpg> <D:/svn/Klimov+Nazarova/home/lab9/OQPSKe.jpg>]
+<lab9/genqam.jpg, id=244, 563.10374pt x 421.575pt>
 File: lab9/genqam.jpg Graphic file (type jpg)
-
-<use lab9/genqam.jpg>
+ <use lab9/genqam.jpg>
 Package pdftex.def Info: lab9/genqam.jpg used on input line 1144.
 (pdftex.def)             Requested size: 284.52756pt x 213.0127pt.
- <lab9/genQAMm.jpg, id=245, 422.57875pt x 421.575pt>
-File: lab9/genQAMm.jpg Graphic file (type jpg)
 
-<use lab9/genQAMm.jpg>
+<lab9/genQAMm.jpg, id=245, 422.57875pt x 421.575pt>
+File: lab9/genQAMm.jpg Graphic file (type jpg)
+ <use lab9/genQAMm.jpg>
 Package pdftex.def Info: lab9/genQAMm.jpg used on input line 1148.
 (pdftex.def)             Requested size: 284.52756pt x 283.85611pt.
 
@@ -1438,18 +1431,17 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [47
 
- <K:/trunk/trunk/Klimov+Nazarova/home/lab9/genqam.jpg>] [48 <K:/trunk/trunk/Kli
-mov+Nazarova/home/lab9/genQAMm.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab9/g
-enQAMe.jpg>] <lab9/msk.jpg, id=253, 563.10374pt x 421.575pt>
+ <D:/svn/Klimov+Nazarova/home/lab9/genqam.jpg>] [48 <D:/svn/Klimov+Nazarova/hom
+e/lab9/genQAMm.jpg> <D:/svn/Klimov+Nazarova/home/lab9/genQAMe.jpg>]
+<lab9/msk.jpg, id=253, 563.10374pt x 421.575pt>
 File: lab9/msk.jpg Graphic file (type jpg)
-
-<use lab9/msk.jpg>
+ <use lab9/msk.jpg>
 Package pdftex.def Info: lab9/msk.jpg used on input line 1177.
 (pdftex.def)             Requested size: 284.52756pt x 213.0127pt.
- <lab9/MSKm.jpg, id=254, 422.57875pt x 421.575pt>
-File: lab9/MSKm.jpg Graphic file (type jpg)
 
-<use lab9/MSKm.jpg>
+<lab9/MSKm.jpg, id=254, 422.57875pt x 421.575pt>
+File: lab9/MSKm.jpg Graphic file (type jpg)
+ <use lab9/MSKm.jpg>
 Package pdftex.def Info: lab9/MSKm.jpg used on input line 1181.
 (pdftex.def)             Requested size: 284.52756pt x 283.85611pt.
 
@@ -1467,9 +1459,9 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [49
 
- <K:/trunk/trunk/Klimov+Nazarova/home/lab9/msk.jpg>] [50 <K:/trunk/trunk/Klimov
-+Nazarova/home/lab9/MSKm.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab9/MSKe.jp
-g>] <lab9/sim.jpg, id=263, 368.87813pt x 419.31656pt>
+ <D:/svn/Klimov+Nazarova/home/lab9/msk.jpg>] [50 <D:/svn/Klimov+Nazarova/home/l
+ab9/MSKm.jpg> <D:/svn/Klimov+Nazarova/home/lab9/MSKe.jpg>]
+<lab9/sim.jpg, id=263, 368.87813pt x 419.31656pt>
 File: lab9/sim.jpg Graphic file (type jpg)
  <use lab9/sim.jpg>
 Package pdftex.def Info: lab9/sim.jpg used on input line 1194.
@@ -1522,21 +1514,20 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [51
 
- <K:/trunk/trunk/Klimov+Nazarova/home/lab9/sim.jpg>] [52 <K:/trunk/trunk/Klimov
-+Nazarova/home/lab9/BPSKs.jpg> <K:/trunk/trunk/Klimov+Nazarova/home/lab9/PSKs.j
-pg>] [53 <K:/trunk/trunk/Klimov+Nazarova/home/lab9/OQPSKs.jpg> <K:/trunk/trunk/
-Klimov+Nazarova/home/lab9/genQAMs.jpg>] [54 <K:/trunk/trunk/Klimov+Nazarova/hom
-e/lab9/MFSKs.jpg>] [55
+ <D:/svn/Klimov+Nazarova/home/lab9/sim.jpg>] [52 <D:/svn/Klimov+Nazarova/home/l
+ab9/BPSKs.jpg> <D:/svn/Klimov+Nazarova/home/lab9/PSKs.jpg>] [53 <D:/svn/Klimov+
+Nazarova/home/lab9/OQPSKs.jpg> <D:/svn/Klimov+Nazarova/home/lab9/genQAMs.jpg>] 
+[54 <D:/svn/Klimov+Nazarova/home/lab9/MFSKs.jpg>] [55
 
 ]
-("K:\trunk\trunk\Klimov+Nazarova\home\Klimov & Nazarova.aux")
+("D:\svn\Klimov+Nazarova\home\Klimov & Nazarova.aux")
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
  3913 strings out of 493921
- 47920 string characters out of 3147276
+ 47848 string characters out of 3147267
  95980 words of memory out of 3000000
  6972 multiletter control sequences out of 15000+200000
  19302 words of font info for 58 fonts, out of 3000000 for 9000
@@ -1562,7 +1553,7 @@ per/sfbx1440.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1
 C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1728.pfb><C:/Progra
 m Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfti1000.pfb><C:/Program Files/M
 iKTeX 2.9/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on "Klimov & Nazarova.pdf" (55 pages, 4230411 bytes).
+Output written on "Klimov & Nazarova.pdf" (55 pages, 4230504 bytes).
 PDF statistics:
  353 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
