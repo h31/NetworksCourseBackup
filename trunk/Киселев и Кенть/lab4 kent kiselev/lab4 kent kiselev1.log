@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.2.27)  25 MAY 2014 22:06
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.2.27)  2 JUN 2014 02:48
 entering extended mode
-**C:/Systems*and*Networks/trunk/Киселев*и*Кенть/lab4*kent*kiselev/
-lab4*kent*kiselev1.tex
+**C:/Users/Антон/Desktop/lab4*kent*kiselev/lab4*kent*kiselev/lab4*kent*kis
+elev1.tex
 
-("C:/Systems and Networks/trunk/Киселев и Кенть/lab4 kent kiselev/
-lab4 kent kiselev1.tex"
+("C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/lab4 kent kis
+elev1.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -571,11 +571,10 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen113
 \Gin@req@width=\dimen114
 )
-("C:\Systems and Networks\trunk\Киселев и Кенть\lab4 kent kiselev\
-lab4 kent kiselev1.aux"
+("C:\Users\Антон\Desktop\lab4 kent kiselev\lab4 kent kiselev\lab4 kent kis
+elev1.aux"
 LaTeX Font Info:    Try loading font information for T2A+cmr on input line 3.
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\cyrillic\t2acmr.fd"
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\cyrillic\t2acmr.fd"
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 ))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
@@ -619,529 +618,738 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 1.
-[1
-
-]
-{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 2.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 26.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 38.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 26.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 38.
+ [1
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--64
+]
+Underfull \hbox (badness 10000) in paragraph at lines 48--76
 
  []
 
-[2
-
-] [3] <1.png, id=21, 372.64218pt x 300.3722pt>
+[2] [3] <1.png, id=30, 372.64218pt x 300.3722pt>
 File: 1.png Graphic file (type png)
  <use 1.png>
-Package pdftex.def Info: 1.png used on input line 68.
+Package pdftex.def Info: 1.png used on input line 80.
 (pdftex.def)             Requested size: 372.64127pt x 300.37144pt.
 
-<2.png, id=23, 364.36125pt x 297.36093pt>
+<2.png, id=32, 364.36125pt x 297.36093pt>
 File: 2.png Graphic file (type png)
  <use 2.png>
-Package pdftex.def Info: 2.png used on input line 72.
+Package pdftex.def Info: 2.png used on input line 84.
 (pdftex.def)             Requested size: 364.36035pt x 297.3602pt.
 
 
-LaTeX Warning: Float too large for page by 8.95482pt on input line 75.
+LaTeX Warning: Float too large for page by 8.95482pt on input line 87.
 
-<3.png, id=24, 380.92313pt x 295.1025pt>
+<3.png, id=33, 380.92313pt x 295.1025pt>
 File: 3.png Graphic file (type png)
  <use 3.png>
-Package pdftex.def Info: 3.png used on input line 78.
+Package pdftex.def Info: 3.png used on input line 90.
 (pdftex.def)             Requested size: 380.92218pt x 295.10176pt.
 
-<4.png, id=25, 360.59718pt x 285.31593pt>
+<4.png, id=34, 360.59718pt x 285.31593pt>
 File: 4.png Graphic file (type png)
  <use 4.png>
-Package pdftex.def Info: 4.png used on input line 82.
+Package pdftex.def Info: 4.png used on input line 94.
 (pdftex.def)             Requested size: 360.5963pt x 285.31523pt.
- [4 <C:/Systems and Networks/trunk/Киселев и Кенть/lab4 kent kisel
-ev/1.png> <C:/Systems and Networks/trunk/Киселев и Кенть/lab4 kent
- kiselev/2.png>] [5 <C:/Systems and Networks/trunk/Киселев и Кенть
-/lab4 kent kiselev/3.png> <C:/Systems and Networks/trunk/Киселев и Ке
-нть/lab4 kent kiselev/4.png>]
-{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 3.
-
-Underfull \hbox (badness 10000) in paragraph at lines 97--136
+ [4 <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/1.png> <C:
+/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/2.png>] [5 <C:/Us
+ers/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/3.png> <C:/Users/А�
+�тон/Desktop/lab4 kent kiselev/lab4 kent kiselev/4.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 100--105
 
  []
 
 [6
 
-] <5.png, id=40, 483.30562pt x 327.47343pt>
+]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 140--179
+
+ []
+
+[7
+
+] [8] <5.png, id=55, 483.30562pt x 327.47343pt>
 File: 5.png Graphic file (type png)
  <use 5.png>
-Package pdftex.def Info: 5.png used on input line 139.
+Package pdftex.def Info: 5.png used on input line 183.
 (pdftex.def)             Requested size: 483.30444pt x 327.47264pt.
 
-Overfull \hbox (89.97104pt too wide) in paragraph at lines 139--141
+Overfull \hbox (89.97104pt too wide) in paragraph at lines 183--185
  []  
  []
 
-<6.png, id=41, 481.04718pt x 363.60844pt>
+<6.png, id=56, 481.04718pt x 363.60844pt>
 File: 6.png Graphic file (type png)
  <use 6.png>
-Package pdftex.def Info: 6.png used on input line 145.
+Package pdftex.def Info: 6.png used on input line 189.
 (pdftex.def)             Requested size: 481.046pt x 363.60754pt.
 
-<7.png, id=42, 483.30562pt x 359.09157pt>
+<7.png, id=57, 483.30562pt x 359.09157pt>
 File: 7.png Graphic file (type png)
  <use 7.png>
-Package pdftex.def Info: 7.png used on input line 151.
+Package pdftex.def Info: 7.png used on input line 195.
 (pdftex.def)             Requested size: 483.30444pt x 359.09068pt.
 
-<8.png, id=43, 472.01344pt x 202.50656pt>
+<8.png, id=58, 472.01344pt x 202.50656pt>
 File: 8.png Graphic file (type png)
  <use 8.png>
-Package pdftex.def Info: 8.png used on input line 157.
+Package pdftex.def Info: 8.png used on input line 201.
 (pdftex.def)             Requested size: 472.01228pt x 202.50604pt.
 
-<9.png, id=44, 478.78876pt x 275.52937pt>
+<9.png, id=59, 478.78876pt x 275.52937pt>
 File: 9.png Graphic file (type png)
  <use 9.png>
-Package pdftex.def Info: 9.png used on input line 163.
+Package pdftex.def Info: 9.png used on input line 207.
 (pdftex.def)             Requested size: 478.78758pt x 275.52869pt.
 
-<10.png, id=45, 469.755pt x 185.94469pt>
+<10.png, id=60, 469.755pt x 185.94469pt>
 File: 10.png Graphic file (type png)
  <use 10.png>
-Package pdftex.def Info: 10.png used on input line 169.
+Package pdftex.def Info: 10.png used on input line 213.
 (pdftex.def)             Requested size: 469.75386pt x 185.94421pt.
 
-<11.png, id=46, 453.94594pt x 325.215pt>
+<11.png, id=61, 453.94594pt x 325.215pt>
 File: 11.png Graphic file (type png)
  <use 11.png>
-Package pdftex.def Info: 11.png used on input line 177.
+Package pdftex.def Info: 11.png used on input line 221.
 (pdftex.def)             Requested size: 453.94482pt x 325.2142pt.
 
-<12.png, id=47, 424.58624pt x 338.76563pt>
+<12.png, id=62, 424.58624pt x 338.76563pt>
 File: 12.png Graphic file (type png)
  <use 12.png>
-Package pdftex.def Info: 12.png used on input line 184.
+Package pdftex.def Info: 12.png used on input line 228.
 (pdftex.def)             Requested size: 424.5852pt x 338.76479pt.
 
-Overfull \hbox (37.12408pt too wide) in paragraph at lines 184--186
- []  
- []
-
-<13.png, id=48, 435.87843pt x 334.24875pt>
+<13.png, id=63, 435.87843pt x 334.24875pt>
 File: 13.png Graphic file (type png)
  <use 13.png>
-Package pdftex.def Info: 13.png used on input line 190.
+Package pdftex.def Info: 13.png used on input line 234.
 (pdftex.def)             Requested size: 435.87737pt x 334.24792pt.
 
-Overfull \hbox (47.28696pt too wide) in paragraph at lines 190--192
- []  
- []
-
-<14.png, id=49, 429.10312pt x 334.24875pt>
+<14.png, id=64, 429.10312pt x 334.24875pt>
 File: 14.png Graphic file (type png)
  <use 14.png>
-Package pdftex.def Info: 14.png used on input line 197.
+Package pdftex.def Info: 14.png used on input line 241.
 (pdftex.def)             Requested size: 429.10207pt x 334.24792pt.
 
-Overfull \hbox (41.18924pt too wide) in paragraph at lines 197--199
- []  
- []
-
-<15.png, id=50, 420.06938pt x 334.24875pt>
+<15.png, id=65, 420.06938pt x 334.24875pt>
 File: 15.png Graphic file (type png)
  <use 15.png>
-Package pdftex.def Info: 15.png used on input line 204.
+Package pdftex.def Info: 15.png used on input line 248.
 (pdftex.def)             Requested size: 420.06836pt x 334.24792pt.
 
-<16.png, id=51, 426.84468pt x 311.66437pt>
+<16.png, id=66, 426.84468pt x 311.66437pt>
 File: 16.png Graphic file (type png)
  <use 16.png>
-Package pdftex.def Info: 16.png used on input line 211.
+Package pdftex.def Info: 16.png used on input line 255.
 (pdftex.def)             Requested size: 426.84364pt x 311.6636pt.
+ [9 <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/5.png>] [1
+0 <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/6.png> <C:/U
+sers/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/7.png>] [11 <C:/Use
+rs/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/8.png> <C:/Users/Ан
+тон/Desktop/lab4 kent kiselev/lab4 kent kiselev/9.png> <C:/Users/Антон/
+Desktop/lab4 kent kiselev/lab4 kent kiselev/10.png>] [12 <C:/Users/Антон/D
+esktop/lab4 kent kiselev/lab4 kent kiselev/11.png> <C:/Users/Антон/Desktop
+/lab4 kent kiselev/lab4 kent kiselev/12.png>] [13 <C:/Users/Антон/Desktop/
+lab4 kent kiselev/lab4 kent kiselev/13.png> <C:/Users/Антон/Desktop/lab4 k
+ent kiselev/lab4 kent kiselev/14.png>] [14 <C:/Users/Антон/Desktop/lab4 ke
+nt kiselev/lab4 kent kiselev/15.png> <C:/Users/Антон/Desktop/lab4 kent kis
+elev/lab4 kent kiselev/16.png>] [15
 
-Overfull \hbox (39.15666pt too wide) in paragraph at lines 211--213
- []  
- []
-
-[7] [8 <C:/Systems and Networks/trunk/Киселев и Кенть/lab4 kent ki
-selev/5.png>] [9 <C:/Systems and Networks/trunk/Киселев и Кенть/la
-b4 kent kiselev/6.png> <C:/Systems and Networks/trunk/Киселев и Кен�
-�ь/lab4 kent kiselev/7.png>] [10 <C:/Systems and Networks/trunk/Киселев
- и Кенть/lab4 kent kiselev/8.png> <C:/Systems and Networks/trunk/Кисе
-лев и Кенть/lab4 kent kiselev/9.png> <C:/Systems and Networks/trunk/К
-иселев и Кенть/lab4 kent kiselev/10.png>] [11 <C:/Systems and Netwo
-rks/trunk/Киселев и Кенть/lab4 kent kiselev/11.png>] [12 <C:/Syste
-ms and Networks/trunk/Киселев и Кенть/lab4 kent kiselev/12.png>]
-[13 <C:/Systems and Networks/trunk/Киселев и Кенть/lab4 kent kisel
-ev/13.png>] [14 <C:/Systems and Networks/trunk/Киселев и Кенть/lab
-4 kent kiselev/14.png>] [15 <C:/Systems and Networks/trunk/Киселев и К
-енть/lab4 kent kiselev/15.png>] [16 <C:/Systems and Networks/trunk/Кисе
-лев и Кенть/lab4 kent kiselev/16.png>]
-{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 4.
-
-Underfull \hbox (badness 10000) in paragraph at lines 219--220
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 221--265
-
- []
-
-[17
-
-] <6_1.png, id=86, 391.4625pt x 305.64188pt>
-File: 6_1.png Graphic file (type png)
- <use 6_1.png>
-Package pdftex.def Info: 6_1.png used on input line 268.
-(pdftex.def)             Requested size: 391.46153pt x 305.64111pt.
-
-Overfull \hbox (7.31299pt too wide) in paragraph at lines 268--270
- []  
- []
-
-<6_2.png, id=87, 377.91188pt x 301.8778pt>
-File: 6_2.png Graphic file (type png)
- <use 6_2.png>
-Package pdftex.def Info: 6_2.png used on input line 274.
-(pdftex.def)             Requested size: 377.91095pt x 301.87706pt.
-
-<6_3.png, id=88, 371.13657pt x 298.86656pt>
-File: 6_3.png Graphic file (type png)
- <use 6_3.png>
-Package pdftex.def Info: 6_3.png used on input line 280.
-(pdftex.def)             Requested size: 371.13565pt x 298.86581pt.
-
-<6_4.png, id=89, 378.66469pt x 299.61937pt>
-File: 6_4.png Graphic file (type png)
- <use 6_4.png>
-Package pdftex.def Info: 6_4.png used on input line 286.
-(pdftex.def)             Requested size: 378.66376pt x 299.61864pt.
-
-<6_5.png, id=90, 389.20406pt x 298.86656pt>
-File: 6_5.png Graphic file (type png)
- <use 6_5.png>
-Package pdftex.def Info: 6_5.png used on input line 292.
-(pdftex.def)             Requested size: 389.20311pt x 298.86581pt.
-
-Overfull \hbox (5.28041pt too wide) in paragraph at lines 292--294
- []  
- []
-
-<6_6.png, id=91, 386.19281pt x 298.86656pt>
-File: 6_6.png Graphic file (type png)
- <use 6_6.png>
-Package pdftex.def Info: 6_6.png used on input line 298.
-(pdftex.def)             Requested size: 386.19185pt x 298.86581pt.
-
-Overfull \hbox (2.5703pt too wide) in paragraph at lines 298--300
- []  
- []
-
-[18] [19 <C:/Systems and Networks/trunk/Киселев и Кенть/lab4 kent 
-kiselev/6_1.png>] [20 <C:/Systems and Networks/trunk/Киселев и Кент
-ь/lab4 kent kiselev/6_2.png>] [21 <C:/Systems and Networks/trunk/Киселе�
-� и Кенть/lab4 kent kiselev/6_3.png>] [22 <C:/Systems and Networks/trunk/
-Киселев и Кенть/lab4 kent kiselev/6_4.png>] [23 <C:/Systems and Ne
-tworks/trunk/Киселев и Кенть/lab4 kent kiselev/6_5.png>] [24 <C:/S
-ystems and Networks/trunk/Киселев и Кенть/lab4 kent kiselev/6_6.pn
-g>]
-{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 5.
-
-Underfull \hbox (badness 10000) in paragraph at lines 316--320
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 321--326
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 327--335
-
- []
-
-[25
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 336--343
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 286--287
+
+ []
+
+[16
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 288--332
+
+ []
+
+<6_1.png, id=92, 391.4625pt x 305.64188pt>
+File: 6_1.png Graphic file (type png)
+ <use 6_1.png>
+Package pdftex.def Info: 6_1.png used on input line 336.
+(pdftex.def)             Requested size: 391.46153pt x 305.64111pt.
+
+<6_2.png, id=93, 377.91188pt x 301.8778pt>
+File: 6_2.png Graphic file (type png)
+ <use 6_2.png>
+Package pdftex.def Info: 6_2.png used on input line 342.
+(pdftex.def)             Requested size: 377.91095pt x 301.87706pt.
+
+<6_3.png, id=94, 371.13657pt x 298.86656pt>
+File: 6_3.png Graphic file (type png)
+ <use 6_3.png>
+Package pdftex.def Info: 6_3.png used on input line 348.
+(pdftex.def)             Requested size: 371.13565pt x 298.86581pt.
+
+<6_4.png, id=95, 378.66469pt x 299.61937pt>
+File: 6_4.png Graphic file (type png)
+ <use 6_4.png>
+Package pdftex.def Info: 6_4.png used on input line 354.
+(pdftex.def)             Requested size: 378.66376pt x 299.61864pt.
+
+<6_5.png, id=96, 389.20406pt x 298.86656pt>
+File: 6_5.png Graphic file (type png)
+ <use 6_5.png>
+Package pdftex.def Info: 6_5.png used on input line 360.
+(pdftex.def)             Requested size: 389.20311pt x 298.86581pt.
+
+<6_6.png, id=97, 386.19281pt x 298.86656pt>
+File: 6_6.png Graphic file (type png)
+ <use 6_6.png>
+Package pdftex.def Info: 6_6.png used on input line 366.
+(pdftex.def)             Requested size: 386.19185pt x 298.86581pt.
+ [17] [18 <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/6_1.
+png> <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/6_2.png>]
+ [19 <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/6_3.png> 
+<C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/6_4.png>] [20 
+<C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/6_5.png> <C:/U
+sers/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/6_6.png>] [21
+
+]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 408--412
+
+ []
+
+[22
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 413--418
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 344--351
+Underfull \hbox (badness 10000) in paragraph at lines 419--427
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 352--359
+Underfull \hbox (badness 10000) in paragraph at lines 428--435
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 360--375
+Underfull \hbox (badness 10000) in paragraph at lines 436--443
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 360--375
+Underfull \hbox (badness 10000) in paragraph at lines 444--451
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 376--383
-
- []
-
-[26]
-Underfull \hbox (badness 10000) in paragraph at lines 384--390
+Underfull \hbox (badness 10000) in paragraph at lines 452--467
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 391--398
+Underfull \hbox (badness 10000) in paragraph at lines 452--467
 
  []
 
-<7_1.jpg, id=124, 563.10374pt x 421.575pt>
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 468--475
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 476--482
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 483--490
+
+ []
+
+[24] <7_1.jpg, id=127, 563.10374pt x 421.575pt>
 File: 7_1.jpg Graphic file (type jpg)
  <use 7_1.jpg>
-Package pdftex.def Info: 7_1.jpg used on input line 406.
+Package pdftex.def Info: 7_1.jpg used on input line 498.
 (pdftex.def)             Requested size: 563.10237pt x 421.57396pt.
 
-Overfull \hbox (161.7887pt too wide) in paragraph at lines 406--408
- []  
- []
-
-<7_2.jpg, id=125, 563.10374pt x 421.575pt>
+<7_2.jpg, id=128, 563.10374pt x 421.575pt>
 File: 7_2.jpg Graphic file (type jpg)
  <use 7_2.jpg>
-Package pdftex.def Info: 7_2.jpg used on input line 412.
+Package pdftex.def Info: 7_2.jpg used on input line 504.
 (pdftex.def)             Requested size: 563.10237pt x 421.57396pt.
 
-Overfull \hbox (161.7887pt too wide) in paragraph at lines 412--414
- []  
- []
-
-<7_3.jpg, id=126, 563.10374pt x 421.575pt>
+<7_3.jpg, id=129, 563.10374pt x 421.575pt>
 File: 7_3.jpg Graphic file (type jpg)
  <use 7_3.jpg>
-Package pdftex.def Info: 7_3.jpg used on input line 418.
+Package pdftex.def Info: 7_3.jpg used on input line 510.
 (pdftex.def)             Requested size: 563.10237pt x 421.57396pt.
 
-Overfull \hbox (161.7887pt too wide) in paragraph at lines 418--420
- []  
- []
-
-<7_4.jpg, id=127, 563.10374pt x 421.575pt>
+<7_4.jpg, id=130, 563.10374pt x 421.575pt>
 File: 7_4.jpg Graphic file (type jpg)
  <use 7_4.jpg>
-Package pdftex.def Info: 7_4.jpg used on input line 424.
+Package pdftex.def Info: 7_4.jpg used on input line 516.
 (pdftex.def)             Requested size: 563.10237pt x 421.57396pt.
 
-Overfull \hbox (161.7887pt too wide) in paragraph at lines 424--426
- []  
- []
-
-<7_5.jpg, id=128, 563.10374pt x 421.575pt>
+<7_5.jpg, id=131, 563.10374pt x 421.575pt>
 File: 7_5.jpg Graphic file (type jpg)
  <use 7_5.jpg>
-Package pdftex.def Info: 7_5.jpg used on input line 430.
+Package pdftex.def Info: 7_5.jpg used on input line 522.
 (pdftex.def)             Requested size: 563.10237pt x 421.57396pt.
 
-Overfull \hbox (161.7887pt too wide) in paragraph at lines 430--432
- []  
- []
-
-<7_6.jpg, id=129, 563.10374pt x 421.575pt>
+<7_6.jpg, id=132, 563.10374pt x 421.575pt>
 File: 7_6.jpg Graphic file (type jpg)
  <use 7_6.jpg>
-Package pdftex.def Info: 7_6.jpg used on input line 436.
+Package pdftex.def Info: 7_6.jpg used on input line 528.
 (pdftex.def)             Requested size: 563.10237pt x 421.57396pt.
 
-Overfull \hbox (161.7887pt too wide) in paragraph at lines 436--438
- []  
- []
-
-<7_7.jpg, id=130, 563.10374pt x 421.575pt>
+<7_7.jpg, id=133, 563.10374pt x 421.575pt>
 File: 7_7.jpg Graphic file (type jpg)
  <use 7_7.jpg>
-Package pdftex.def Info: 7_7.jpg used on input line 442.
+Package pdftex.def Info: 7_7.jpg used on input line 534.
 (pdftex.def)             Requested size: 563.10237pt x 421.57396pt.
 
-Overfull \hbox (161.7887pt too wide) in paragraph at lines 442--444
- []  
- []
-
-<7_8.jpg, id=131, 563.10374pt x 421.575pt>
+<7_8.jpg, id=134, 563.10374pt x 421.575pt>
 File: 7_8.jpg Graphic file (type jpg)
  <use 7_8.jpg>
-Package pdftex.def Info: 7_8.jpg used on input line 448.
+Package pdftex.def Info: 7_8.jpg used on input line 540.
 (pdftex.def)             Requested size: 563.10237pt x 421.57396pt.
 
-Overfull \hbox (161.7887pt too wide) in paragraph at lines 448--450
- []  
- []
-
-<7_9.jpg, id=132, 563.10374pt x 421.575pt>
+<7_9.jpg, id=135, 563.10374pt x 421.575pt>
 File: 7_9.jpg Graphic file (type jpg)
  <use 7_9.jpg>
-Package pdftex.def Info: 7_9.jpg used on input line 454.
+Package pdftex.def Info: 7_9.jpg used on input line 546.
 (pdftex.def)             Requested size: 563.10237pt x 421.57396pt.
 
-Overfull \hbox (161.7887pt too wide) in paragraph at lines 454--456
- []  
- []
-
-<7_10.jpg, id=133, 563.10374pt x 421.575pt>
+<7_10.jpg, id=136, 563.10374pt x 421.575pt>
 File: 7_10.jpg Graphic file (type jpg)
  <use 7_10.jpg>
-Package pdftex.def Info: 7_10.jpg used on input line 460.
+Package pdftex.def Info: 7_10.jpg used on input line 552.
 (pdftex.def)             Requested size: 563.10237pt x 421.57396pt.
 
-Overfull \hbox (161.7887pt too wide) in paragraph at lines 460--462
- []  
- []
-
-<7_11.png, id=134, 566.86781pt x 350.81062pt>
+<7_11.png, id=137, 566.86781pt x 350.81062pt>
 File: 7_11.png Graphic file (type png)
  <use 7_11.png>
-Package pdftex.def Info: 7_11.png used on input line 466.
+Package pdftex.def Info: 7_11.png used on input line 558.
 (pdftex.def)             Requested size: 566.86642pt x 350.80975pt.
 
-Overfull \hbox (165.17632pt too wide) in paragraph at lines 466--468
- []  
- []
-
-<7_12.png, id=135, 676.77844pt x 381.67593pt>
+<7_12.png, id=138, 676.77844pt x 381.67593pt>
 File: 7_12.png Graphic file (type png)
  <use 7_12.png>
-Package pdftex.def Info: 7_12.png used on input line 472.
+Package pdftex.def Info: 7_12.png used on input line 564.
 (pdftex.def)             Requested size: 676.7768pt x 381.675pt.
 
-Overfull \hbox (264.09497pt too wide) in paragraph at lines 472--474
+Overfull \hbox (61.0702pt too wide) in paragraph at lines 564--566
  []  
  []
 
-<7_13.png, id=136, 702.37407pt x 328.97906pt>
+<7_13.png, id=139, 702.37407pt x 328.97906pt>
 File: 7_13.png Graphic file (type png)
  <use 7_13.png>
-Package pdftex.def Info: 7_13.png used on input line 478.
+Package pdftex.def Info: 7_13.png used on input line 570.
 (pdftex.def)             Requested size: 702.37236pt x 328.97826pt.
 
-Overfull \hbox (287.13083pt too wide) in paragraph at lines 478--480
+Overfull \hbox (76.42769pt too wide) in paragraph at lines 570--572
  []  
  []
 
-<7_14.png, id=137, 422.32782pt x 311.66437pt>
+<7_14.png, id=140, 422.32782pt x 311.66437pt>
 File: 7_14.png Graphic file (type png)
  <use 7_14.png>
-Package pdftex.def Info: 7_14.png used on input line 484.
+Package pdftex.def Info: 7_14.png used on input line 576.
 (pdftex.def)             Requested size: 422.32678pt x 311.6636pt.
 
-Overfull \hbox (35.09152pt too wide) in paragraph at lines 484--486
- []  
- []
-
-<7_15.png, id=138, 422.32782pt x 311.66437pt>
+<7_15.png, id=141, 422.32782pt x 311.66437pt>
 File: 7_15.png Graphic file (type png)
  <use 7_15.png>
-Package pdftex.def Info: 7_15.png used on input line 490.
+Package pdftex.def Info: 7_15.png used on input line 582.
 (pdftex.def)             Requested size: 422.32678pt x 311.6636pt.
+ [25 <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/7_1.jpg> 
+<C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/7_2.jpg>] [26 
+<C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/7_3.jpg> <C:/U
+sers/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/7_4.jpg>] [27 <C:/U
+sers/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/7_5.jpg> <C:/Users/
+Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/7_6.jpg>] [28 <C:/Users/
+Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/7_7.jpg> <C:/Users/Ан�
+�он/Desktop/lab4 kent kiselev/lab4 kent kiselev/7_8.jpg>] [29 <C:/Users/Ан�
+�он/Desktop/lab4 kent kiselev/lab4 kent kiselev/7_9.jpg> <C:/Users/Антон
+/Desktop/lab4 kent kiselev/lab4 kent kiselev/7_10.jpg>] [30 <C:/Users/Анто�
+�/Desktop/lab4 kent kiselev/lab4 kent kiselev/7_11.png> <C:/Users/Антон/De
+sktop/lab4 kent kiselev/lab4 kent kiselev/7_12.png>] [31 <C:/Users/Антон/D
+esktop/lab4 kent kiselev/lab4 kent kiselev/7_13.png> <C:/Users/Антон/Deskt
+op/lab4 kent kiselev/lab4 kent kiselev/7_14.png (PNG copy)>] [32 <C:/Users/Ан
+тон/Desktop/lab4 kent kiselev/lab4 kent kiselev/7_15.png (PNG copy)>] [33
 
-Overfull \hbox (35.09152pt too wide) in paragraph at lines 490--492
+
+]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 5.
+
+Overfull \hbox (4.12442pt too wide) in paragraph at lines 612--614
+[]\T2A/cmr/m/n/10 ���������������� ��-��-��-���/����������� ���-��-�� �� ��-��-
+�� $\OML/cmm/m/it/10 u\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) =$
+ []
+
+LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 631
+.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\cyrillic\t2acmtt.fd"
+File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+) [34
+
+]
+<8_1.png, id=173, 422.32782pt x 316.18124pt>
+File: 8_1.png Graphic file (type png)
+ <use 8_1.png>
+Package pdftex.def Info: 8_1.png used on input line 670.
+(pdftex.def)             Requested size: 422.32678pt x 316.18047pt.
+
+<8_2.png, id=174, 422.32782pt x 316.18124pt>
+File: 8_2.png Graphic file (type png)
+ <use 8_2.png>
+Package pdftex.def Info: 8_2.png used on input line 676.
+(pdftex.def)             Requested size: 422.32678pt x 316.18047pt.
+
+<8_3.png, id=175, 422.32782pt x 316.18124pt>
+File: 8_3.png Graphic file (type png)
+ <use 8_3.png>
+Package pdftex.def Info: 8_3.png used on input line 682.
+(pdftex.def)             Requested size: 422.32678pt x 316.18047pt.
+
+<8_4.png, id=176, 422.32782pt x 316.18124pt>
+File: 8_4.png Graphic file (type png)
+ <use 8_4.png>
+Package pdftex.def Info: 8_4.png used on input line 688.
+(pdftex.def)             Requested size: 422.32678pt x 316.18047pt.
+
+<8_5.png, id=177, 422.32782pt x 316.18124pt>
+File: 8_5.png Graphic file (type png)
+ <use 8_5.png>
+Package pdftex.def Info: 8_5.png used on input line 694.
+(pdftex.def)             Requested size: 422.32678pt x 316.18047pt.
+
+<8_6.png, id=178, 422.32782pt x 316.18124pt>
+File: 8_6.png Graphic file (type png)
+ <use 8_6.png>
+Package pdftex.def Info: 8_6.png used on input line 700.
+(pdftex.def)             Requested size: 422.32678pt x 316.18047pt.
+
+<8_8.png, id=179, 1204.5pt x 677.53125pt>
+File: 8_8.png Graphic file (type png)
+ <use 8_8.png>
+Package pdftex.def Info: 8_8.png used on input line 707.
+(pdftex.def)             Requested size: 1084.04001pt x 609.77249pt.
+
+Overfull \hbox (81.79443pt too wide) in paragraph at lines 707--709
  []  
  []
 
-[27] [28 <C:/Systems and Networks/trunk/Киселев и Кенть/lab4 kent 
-kiselev/7_1.jpg>] [29 <C:/Systems and Networks/trunk/Киселев и Кент
-ь/lab4 kent kiselev/7_2.jpg>] [30 <C:/Systems and Networks/trunk/Киселе�
-� и Кенть/lab4 kent kiselev/7_3.jpg>] [31 <C:/Systems and Networks/trunk/
-Киселев и Кенть/lab4 kent kiselev/7_4.jpg>] [32 <C:/Systems and Ne
-tworks/trunk/Киселев и Кенть/lab4 kent kiselev/7_5.jpg>] [33 <C:/S
-ystems and Networks/trunk/Киселев и Кенть/lab4 kent kiselev/7_6.jp
-g>] [34 <C:/Systems and Networks/trunk/Киселев и Кенть/lab4 kent k
-iselev/7_7.jpg>] [35 <C:/Systems and Networks/trunk/Киселев и Кент�
-�/lab4 kent kiselev/7_8.jpg>] [36 <C:/Systems and Networks/trunk/Киселев
- и Кенть/lab4 kent kiselev/7_9.jpg>] [37 <C:/Systems and Networks/trunk/�
-�иселев и Кенть/lab4 kent kiselev/7_10.jpg>] [38 <C:/Systems and Ne
-tworks/trunk/Киселев и Кенть/lab4 kent kiselev/7_11.png>] [39 <C:/
-Systems and Networks/trunk/Киселев и Кенть/lab4 kent kiselev/7_12.
-png>] [40 <C:/Systems and Networks/trunk/Киселев и Кенть/lab4 kent
- kiselev/7_13.png>] [41 <C:/Systems and Networks/trunk/Киселев и Кен
-ть/lab4 kent kiselev/7_14.png (PNG copy)>] [42 <C:/Systems and Networks/trunk
-/Киселев и Кенть/lab4 kent kiselev/7_15.png (PNG copy)>]
+<8_9.png, id=180, 1190.94937pt x 563.10374pt>
+File: 8_9.png Graphic file (type png)
+ <use 8_9.png>
+Package pdftex.def Info: 8_9.png used on input line 713.
+(pdftex.def)             Requested size: 1071.84454pt x 506.7887pt.
+
+Overfull \hbox (81.78502pt too wide) in paragraph at lines 713--715
+ []  
+ []
+
+<8_10.png, id=181, 1192.455pt x 531.48563pt>
+File: 8_10.png Graphic file (type png)
+ <use 8_10.png>
+Package pdftex.def Info: 8_10.png used on input line 719.
+(pdftex.def)             Requested size: 1073.1996pt x 478.33264pt.
+
+Overfull \hbox (81.78416pt too wide) in paragraph at lines 719--721
+ []  
+ []
+
+<8_11.png, id=182, 1190.94937pt x 566.115pt>
+File: 8_11.png Graphic file (type png)
+ <use 8_11.png>
+Package pdftex.def Info: 8_11.png used on input line 726.
+(pdftex.def)             Requested size: 1071.84454pt x 509.4988pt.
+
+Overfull \hbox (81.78502pt too wide) in paragraph at lines 726--728
+ []  
+ []
+
+<8_12.png, id=183, 1179.65718pt x 557.08125pt>
+File: 8_12.png Graphic file (type png)
+ <use 8_12.png>
+Package pdftex.def Info: 8_12.png used on input line 732.
+(pdftex.def)             Requested size: 825.7544pt x 389.95422pt.
+
+Overfull \hbox (81.7876pt too wide) in paragraph at lines 732--734
+ []  
+ []
+
+<8_13.png, id=184, 401.24907pt x 298.86656pt>
+File: 8_13.png Graphic file (type png)
+ <use 8_13.png>
+Package pdftex.def Info: 8_13.png used on input line 738.
+(pdftex.def)             Requested size: 280.87242pt x 209.20515pt.
+
+Overfull \hbox (81.833pt too wide) in paragraph at lines 738--740
+ []  
+ []
+
+[35] [36 <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/8_1.p
+ng (PNG copy)> <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev
+/8_2.png (PNG copy)>] [37 <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 k
+ent kiselev/8_3.png (PNG copy)> <C:/Users/Антон/Desktop/lab4 kent kiselev/
+lab4 kent kiselev/8_4.png (PNG copy)>] [38 <C:/Users/Антон/Desktop/lab4 ke
+nt kiselev/lab4 kent kiselev/8_5.png (PNG copy)> <C:/Users/Антон/Desktop/l
+ab4 kent kiselev/lab4 kent kiselev/8_6.png (PNG copy)>] [39 <C:/Users/Анто�
+�/Desktop/lab4 kent kiselev/lab4 kent kiselev/8_8.png> <C:/Users/Антон/Des
+ktop/lab4 kent kiselev/lab4 kent kiselev/8_9.png>] [40 <C:/Users/Антон/Des
+ktop/lab4 kent kiselev/lab4 kent kiselev/8_10.png> <C:/Users/Антон/Desktop
+/lab4 kent kiselev/lab4 kent kiselev/8_11.png>] [41 <C:/Users/Антон/Deskto
+p/lab4 kent kiselev/lab4 kent kiselev/8_12.png> <C:/Users/Антон/Desktop/la
+b4 kent kiselev/lab4 kent kiselev/8_13.png>] [42
+
+]
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 495--496
-
+Overfull \hbox (3.52711pt too wide) in paragraph at lines 771--773
+\T2A/cmr/m/n/10 �������� ���-��-��� ��-��-��-��� ��-���-��-��-�� � ���, ��� ��-
+��-��-��-�-��� �����-
  []
 
+[43
 
-Overfull \hbox (5.88765pt too wide) in paragraph at lines 499--501
-\T2A/cmr/m/n/10 ��-���� ���-��-�� ���-��� ����-���, � ���-�� ����-���� ��-��-��
--��-��-��� Simulink.
- []
+] [44] [45] [46] <9_1.png, id=224, 316.93407pt x 316.18124pt>
+File: 9_1.png Graphic file (type png)
+ <use 9_1.png>
+Package pdftex.def Info: 9_1.png used on input line 857.
+(pdftex.def)             Requested size: 316.93329pt x 316.18047pt.
 
-<17.png, id=190, 240.14719pt x 54.2025pt>
-File: 17.png Graphic file (type png)
- <use 17.png>
-Package pdftex.def Info: 17.png used on input line 521.
-(pdftex.def)             Requested size: 240.14658pt x 54.20236pt.
+<9_2.png, id=225, 316.93407pt x 316.18124pt>
+File: 9_2.png Graphic file (type png)
+ <use 9_2.png>
+Package pdftex.def Info: 9_2.png used on input line 863.
+(pdftex.def)             Requested size: 316.93329pt x 316.18047pt.
 
-<18.png, id=191, 484.05844pt x 192.72pt>
-File: 18.png Graphic file (type png)
- <use 18.png>
-Package pdftex.def Info: 18.png used on input line 527.
-(pdftex.def)             Requested size: 484.05725pt x 192.71951pt.
+<9_3.png, id=226, 316.93407pt x 316.18124pt>
+File: 9_3.png Graphic file (type png)
+ <use 9_3.png>
+Package pdftex.def Info: 9_3.png used on input line 869.
+(pdftex.def)             Requested size: 316.93329pt x 316.18047pt.
 
-Overfull \hbox (42.24727pt too wide) in paragraph at lines 527--529
+<9_4.png, id=227, 316.93407pt x 316.18124pt>
+File: 9_4.png Graphic file (type png)
+ <use 9_4.png>
+Package pdftex.def Info: 9_4.png used on input line 875.
+(pdftex.def)             Requested size: 316.93329pt x 316.18047pt.
+
+<9_5.png, id=228, 316.93407pt x 316.18124pt>
+File: 9_5.png Graphic file (type png)
+ <use 9_5.png>
+Package pdftex.def Info: 9_5.png used on input line 881.
+(pdftex.def)             Requested size: 316.93329pt x 316.18047pt.
+
+<9_6.png, id=229, 316.93407pt x 316.18124pt>
+File: 9_6.png Graphic file (type png)
+ <use 9_6.png>
+Package pdftex.def Info: 9_6.png used on input line 887.
+(pdftex.def)             Requested size: 316.93329pt x 316.18047pt.
+
+<9_7.png, id=230, 316.93407pt x 316.18124pt>
+File: 9_7.png Graphic file (type png)
+ <use 9_7.png>
+Package pdftex.def Info: 9_7.png used on input line 893.
+(pdftex.def)             Requested size: 316.93329pt x 316.18047pt.
+
+<9_8.png, id=231, 316.93407pt x 316.18124pt>
+File: 9_8.png Graphic file (type png)
+ <use 9_8.png>
+Package pdftex.def Info: 9_8.png used on input line 899.
+(pdftex.def)             Requested size: 316.93329pt x 316.18047pt.
+
+<9_9.png, id=232, 316.93407pt x 316.18124pt>
+File: 9_9.png Graphic file (type png)
+ <use 9_9.png>
+Package pdftex.def Info: 9_9.png used on input line 905.
+(pdftex.def)             Requested size: 316.93329pt x 316.18047pt.
+
+<9_10.png, id=233, 316.93407pt x 316.18124pt>
+File: 9_10.png Graphic file (type png)
+ <use 9_10.png>
+Package pdftex.def Info: 9_10.png used on input line 911.
+(pdftex.def)             Requested size: 316.93329pt x 316.18047pt.
+
+<9_21.png, id=234, 387.69844pt x 68.50594pt>
+File: 9_21.png Graphic file (type png)
+ <use 9_21.png>
+Package pdftex.def Info: 9_21.png used on input line 918.
+(pdftex.def)             Requested size: 348.92535pt x 61.65477pt.
+
+Overfull \hbox (81.81276pt too wide) in paragraph at lines 918--920
  []  
  []
 
-<19.png, id=192, 226.59656pt x 82.05656pt>
-File: 19.png Graphic file (type png)
- <use 19.png>
-Package pdftex.def Info: 19.png used on input line 533.
-(pdftex.def)             Requested size: 226.596pt x 82.05635pt.
+<9_22.png, id=235, 237.88875pt x 188.95593pt>
+File: 9_22.png Graphic file (type png)
+ <use 9_22.png>
+Package pdftex.def Info: 9_22.png used on input line 926.
+(pdftex.def)             Requested size: 214.09789pt x 170.05875pt.
 
-<20.png, id=193, 197.98969pt x 67.75313pt>
-File: 20.png Graphic file (type png)
- <use 20.png>
-Package pdftex.def Info: 20.png used on input line 539.
-(pdftex.def)             Requested size: 197.9892pt x 67.75294pt.
- [43
+Overfull \hbox (81.79755pt too wide) in paragraph at lines 926--928
+ []  
+ []
 
-] [44 <C:/Systems and Networks/trunk/Киселев и Кенть/lab4 kent kis
-elev/17.png> <C:/Systems and Networks/trunk/Киселев и Кенть/lab4 k
-ent kiselev/18.png>] [45 <C:/Systems and Networks/trunk/Киселев и Ке�
-�ть/lab4 kent kiselev/19.png> <C:/Systems and Networks/trunk/Киселев �
-� Кенть/lab4 kent kiselev/20.png>]
-("C:\Systems and Networks\trunk\Киселев и Кенть\lab4 kent kiselev\
-lab4 kent kiselev1.aux") ) 
+<9_23.png, id=236, 319.1925pt x 69.25874pt>
+File: 9_23.png Graphic file (type png)
+ <use 9_23.png>
+Package pdftex.def Info: 9_23.png used on input line 932.
+(pdftex.def)             Requested size: 287.27058pt x 62.33228pt.
+
+Overfull \hbox (81.82054pt too wide) in paragraph at lines 932--934
+ []  
+ []
+
+<9_24.png, id=237, 264.23718pt x 216.05719pt>
+File: 9_24.png Graphic file (type png)
+ <use 9_24.png>
+Package pdftex.def Info: 9_24.png used on input line 938.
+(pdftex.def)             Requested size: 237.81125pt x 194.44965pt.
+
+Overfull \hbox (81.84172pt too wide) in paragraph at lines 938--940
+ []  
+ []
+
+<9_25.png, id=238, 337.26pt x 72.27pt>
+File: 9_25.png Graphic file (type png)
+ <use 9_25.png>
+Package pdftex.def Info: 9_25.png used on input line 944.
+(pdftex.def)             Requested size: 303.53119pt x 65.04237pt.
+
+Overfull \hbox (81.83147pt too wide) in paragraph at lines 944--946
+ []  
+ []
+
+<9_26.png, id=239, 241.65282pt x 205.5178pt>
+File: 9_26.png Graphic file (type png)
+ <use 9_26.png>
+Package pdftex.def Info: 9_26.png used on input line 951.
+(pdftex.def)             Requested size: 217.48552pt x 184.96431pt.
+
+Overfull \hbox (81.82396pt too wide) in paragraph at lines 951--953
+ []  
+ []
+
+<9_27.png, id=240, 295.1025pt x 60.97781pt>
+File: 9_27.png Graphic file (type png)
+ <use 9_27.png>
+Package pdftex.def Info: 9_27.png used on input line 957.
+(pdftex.def)             Requested size: 265.58978pt x 54.8795pt.
+
+Overfull \hbox (81.83377pt too wide) in paragraph at lines 957--959
+ []  
+ []
+
+<9_28.png, id=241, 282.30469pt x 226.59656pt>
+File: 9_28.png Graphic file (type png)
+ <use 9_28.png>
+Package pdftex.def Info: 9_28.png used on input line 964.
+(pdftex.def)             Requested size: 254.07185pt x 203.935pt.
+
+Overfull \hbox (81.80396pt too wide) in paragraph at lines 964--966
+ []  
+ []
+
+[47 <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/9_1.png (P
+NG copy)> <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/9_2.
+png (PNG copy)>] [48 <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent k
+iselev/9_3.png (PNG copy)> <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 
+kent kiselev/9_4.png (PNG copy)>] [49 <C:/Users/Антон/Desktop/lab4 kent ki
+selev/lab4 kent kiselev/9_5.png (PNG copy)> <C:/Users/Антон/Desktop/lab4 k
+ent kiselev/lab4 kent kiselev/9_6.png (PNG copy)>] [50 <C:/Users/Антон/Des
+ktop/lab4 kent kiselev/lab4 kent kiselev/9_7.png (PNG copy)> <C:/Users/Анто
+н/Desktop/lab4 kent kiselev/lab4 kent kiselev/9_8.png (PNG copy)>] [51 <C:/Use
+rs/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/9_9.png (PNG copy)> <
+C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/9_10.png (PNG c
+opy)>] [52 <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/9_2
+1.png> <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/9_22.pn
+g>] [53 <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/9_23.p
+ng> <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/9_24.png>]
+[54 <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/9_25.png> 
+<C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/9_26.png>]
+[55 <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/9_27.png> 
+<C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/9_28.png>]
+<9_29.png, id=271, 395.97937pt x 85.06781pt>
+File: 9_29.png Graphic file (type png)
+ <use 9_29.png>
+Package pdftex.def Info: 9_29.png used on input line 971.
+(pdftex.def)             Requested size: 356.37814pt x 76.5603pt.
+
+Overfull \hbox (81.79349pt too wide) in paragraph at lines 971--973
+ []  
+ []
+
+<9_30.png, id=272, 275.52937pt x 224.33812pt>
+File: 9_30.png Graphic file (type png)
+ <use 9_30.png>
+Package pdftex.def Info: 9_30.png used on input line 978.
+(pdftex.def)             Requested size: 247.97412pt x 201.90244pt.
+
+Overfull \hbox (81.79956pt too wide) in paragraph at lines 978--980
+ []  
+ []
+
+[56 <C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/9_29.png> 
+<C:/Users/Антон/Desktop/lab4 kent kiselev/lab4 kent kiselev/9_30.png>]
+Overfull \hbox (22.62189pt too wide) in paragraph at lines 984--1001
+\T2A/cmr/m/n/10 ��-��-��� ��� ���-���-��� ��-��-��-��-���: BPSK, PSK, OQPSK, GE
+NQAM, MSK.���
+ []
+
+[57
+
+
+
+]
+("C:\Users\Антон\Desktop\lab4 kent kiselev\lab4 kent kiselev\lab4 kent kis
+elev1.aux") ) 
 Here is how much of TeX's memory you used:
- 3482 strings out of 493921
- 40425 string characters out of 3144924
- 96490 words of memory out of 3000000
- 6685 multiletter control sequences out of 15000+200000
- 14760 words of font info for 40 fonts, out of 3000000 for 9000
+ 3651 strings out of 493921
+ 42676 string characters out of 3144924
+ 95376 words of memory out of 3000000
+ 6820 multiletter control sequences out of 15000+200000
+ 16769 words of font info for 49 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,9n,24p,1268b,286s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\ProgramData\MiKTeX\2.9\fonts\pk\ljfour\unknown\u
-nknown\dpi600\larm1000.pk> <C:\ProgramData\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a
-\dpi600\labx1440.pk> <C:\ProgramData\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi60
-0\labx2488.pk> <C:\ProgramData\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\labx
-2074.pk> <C:\ProgramData\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\larm1200.p
-k> <C:\ProgramData\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\larm1728.pk><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on "lab4 kent kiselev1.pdf" (46 pages, 1529834 bytes).
+ 27i,8n,24p,1404b,286s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\ProgramData\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\latt1
+000.pk> <C:\ProgramData\MiKTeX\2.9\fonts\pk\ljfour\unknown\unknown\dpi600\larm1
+000.pk> <C:\ProgramData\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\labx1440.pk
+> <C:\ProgramData\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\labx2488.pk> <C:\
+ProgramData\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\labx2074.pk> <C:\Progra
+mData\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\larm1200.pk> <C:\ProgramData\
+MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\larm1728.pk><C:/Program Files (x86)
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files (x86)/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files (x86)/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files (x86)/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmsy5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmsy7.pfb>
+Output written on "lab4 kent kiselev1.pdf" (58 pages, 1992459 bytes).
 PDF statistics:
- 460 PDF objects out of 1000 (max. 8388607)
+ 650 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 206 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 346 words of extra memory for PDF output out of 10000 (max. 10000000)
 
