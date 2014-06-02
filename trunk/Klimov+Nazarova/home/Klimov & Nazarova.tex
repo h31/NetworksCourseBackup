@@ -791,28 +791,28 @@ grid\\
 
 Реализация фазовой модуляции/демодуляции с помощью MATLAB:
 \begin{verbatim}
-% Исходный сигнал
-x = 0:0.01:4*pi;
-y = sin(2*pi*x);
+Fs = 100;                      % Частота дискретизации 
+t = [0:2*Fs+1]'/Fs;            % Вектор моментов времени
+% Создаем модулирующий сигнал в виде суммы двух синусоид
+x = sin(2*pi*t);
+Fc = 10;                       % Несущая частота 
+phasedev = pi/2;               % Девиация фазы для фазовой модуляции
 
 figure
 subplot(4, 1, 1);
-plot(x(1:500), y(1:500))
+plot(t, x)
 grid
 title('Исходный сигнал')
- 
-% Фазовоя модуляция
-Fs = 1000;                      % Частота дискретизации 
-Fc = 4;                         % Несущая частота 
-phasedev = pi/2;                % Девиация фазы для фазовой модуляции
-pm_y = pmmod(x,Fc,Fs,phasedev); % Фазовая модуляция
+
+y = pmmod(x,Fc,Fs,phasedev);   % Фазовая модуляция
+
 subplot(4, 1, 2);
-plot(x(1:500), pm_y(1:500))
+plot(t, y)
 grid
 title('Фазовая модуляция')
 
-spectrum = fft(pm_y, 512);      % Спектр фазовой модуляции
-norm_spectrum = spectrum.*conj(spectrum)/512;  
+spectrum = fft(y, 512);      % Спектр фазовой модуляции
+norm_spectrum = spectrum.*conj(spectrum)/512;
 f = 100*(0:255)/512;
 subplot(4, 1, 3);
 plot(f, norm_spectrum(1:256))
@@ -820,9 +820,9 @@ grid
 title('Спектр фазовой модуляции')
 axis([min(f) max(f) 0 max(norm_spectrum)]);
 
-pdm_y = pmdemod(pm_y,Fc,Fs,phasedev); % Демодуляция
+z = pmdemod(y,Fc,Fs,phasedev); % Демодуляция
 subplot(4, 1, 4);
-plot(x, pdm_y)
+plot(t, z)
 grid
 title('Фазовая демодуляция')
 \end{verbatim}
@@ -840,36 +840,41 @@ title('Фазовая демодуляция')
 
 Реализация частотной модуляции/демодуляции с помощью MATLAB:
 \begin{verbatim}
-% Исходный сигнал
-x = 0:0.01:4*pi;
-y = sin(2*pi*x);
+Fs = 300;
+t = [0:Fs]'/Fs; % Вектор моментов времени
+% Создаем модулирующий сигнал в виде суммы двух синусоид
+x = sin(2*pi*t);
+Fc = 80;                       % Несущая частота 
+fdev = 30;               % Девиация для частотной модуляции
 
 figure
 subplot(4, 1, 1);
-plot(x(1:500), y(1:500))
+plot(t, x)
 grid
 title('Исходный сигнал')
- 
-% Частотная модуляция
-freqdev = 20;                	% Девиация частоты для частотной модуляции
-fm_y = fmmod(x,Fc,Fs,freqdev); 	% Частотная модуляция
+
+y = fmmod(x,Fc,Fs,fdev);   % Частотная модуляция
+
 subplot(4, 1, 2);
-plot(x(1:500), fm_y(1:500))
+plot(t, y)
 grid
 title('Частотная модуляция')
-spectrum = fft(fm_y, 512);      % Спектр частотной модуляции
-norm_spectrum = spectrum.*conj(spectrum)/512;  
+
+spectrum = fft(y, 512);      % Спектр частотной модуляции
+norm_spectrum = spectrum.*conj(spectrum)/512;
 f = 100*(0:255)/512;
 subplot(4, 1, 3);
 plot(f, norm_spectrum(1:256))
 grid
 title('Спектр частотной модуляции')
 axis([min(f) max(f) 0 max(norm_spectrum)]);
-fdm_y = fmdemod(fm_y,Fc,Fs,freqdev); 	% Демодуляция
+
+z = fmdemod(y,Fc,Fs,fdev); % Демодуляция
 subplot(4, 1, 4);
-plot(x, fdm_y)
+plot(t, z)
 grid
 title('Частотная демодуляция')
+
 
 \end{verbatim}
 
