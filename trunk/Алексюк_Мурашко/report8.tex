@@ -126,48 +126,53 @@ axis([min(f) max(f) 0 max(normSpectrum)]);
 
 \end{figure}
 Выполним демодуляцию, в том числе с помощью блока захвата фазы (фазовой автоподстройки частоты) Phase-Locked Loop.
+
+%\begin{figure}[H]
+%\includegraphics[width=150mm, scale = 0.9]{lab8/8_11}
+%   \caption{Модель фазовой автоподстройки часоты в %режиме слежения}
+%\end{figure}
+
+%\begin{figure}[H]
+%\includegraphics[width=150mm, scale = 0.9]{lab8/8_12}
+%   \caption{Модель фазовой автоподстройки часоты в %режиме захвата и удержания сигнала}
+%\end{figure}
+
 \begin{figure}[H]
-
-\includegraphics[width=150mm, scale = 0.9]{lab8/8_11}
-   \caption{Модель фазовой автоподстройки часоты в режиме слежения}
-
+\includegraphics[width=150mm, scale = 0.9]{lab8/PLL}
+   \caption{Phase-Locked Loop}
 \end{figure}
+
 \begin{figure}[H]
-
-\includegraphics[width=150mm, scale = 0.9]{lab8/8_12}
-   \caption{Модель фазовой автоподстройки часоты в режиме захвата и удержания сигнала}
-
-\end{figure}
-\begin{figure}[H]
-
-\includegraphics[width=150mm, scale = 0.9]{lab8/8_13}
+\includegraphics[width=150mm, scale = 0.9]{lab8/PLL_src}
    \caption{Исходный сигнал}
-
 \end{figure}
-\begin{figure}[H]
 
+\begin{figure}[H]
 \includegraphics[width=150mm, scale = 0.9]{lab8/8_14}
    \caption{Моделированный сигнал}
-
 \end{figure}
-\begin{figure}[H]
 
-\includegraphics[width=150mm, scale = 0.9]{lab8/8_15}
+\begin{figure}[H]
+\includegraphics[width=150mm, scale = 0.9]{lab8/PLL_result}
    \caption{Сигнал на выходе ФНЧ}
-
 \end{figure}
-\begin{figure}[H]
 
-\includegraphics[width=150mm, scale = 0.9]{lab8/8_16}
+\begin{figure}[H]
+\includegraphics[width=150mm, scale = 0.9]{lab8/PLL_gain}
+   \caption{Сигнал на выходе ФНЧ с усилением на 26 dB (в 20 раз)}
+\end{figure}
+
+
+\begin{figure}[H]
+\includegraphics[width=150mm, scale = 0.9]{lab8/PD}
    \caption{Сигнал на выходе фазового детектора}
-
 \end{figure}
+
 \begin{figure}[H]
-
-\includegraphics[width=150mm, scale = 0.9]{lab8/8_17}
+\includegraphics[width=150mm, scale = 0.9]{lab8/VCO}
    \caption{Сигнал на выходе ГУН}
-
 \end{figure}
+
 \section{Вывод}
 
 В результате выполнения данной работы были выполнены частотная и фазовая модуляция/демодуляция, а также чатотная демодуляция с  помощью блока захвата фазы. Частотная и фазовая модуляция тесно взаимосвязаны, поскольку обе они влияют на аргумент функции cos. Поэтому эти два вида модуляции имеют общее название — угловая модуляция. Сигнал с угловой модуляцией имеет вид колебания, начальная фаза которого зависит от времени:
