@@ -17,8 +17,8 @@ int main( int argc, char *argv[] )
     struct sockaddr_in serv_addr, cli_addr;
     int  n;
 
-    int a;
-    int b;
+    int a=2;
+    int b=3;
     int sum;
     sum = a+b;
 
