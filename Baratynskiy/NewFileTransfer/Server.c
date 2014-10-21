@@ -12,77 +12,42 @@
 #include <sys/stat.h>
 #include <netinet/in.h>
 
-void getFileName(FILE *f,int sock, int bufsocket,struct sockaddr_in clientAddr,int clilen,pid_t pid)
+int doprocessing (int sock,FILE *f)
 {
-	bufsocket = accept(sock, (struct sockaddr *)&clientAddr,
-	                                &clilen);
-	    if (bufsocket < 0)
-	    {
-	        perror("ERROR on accept");
-	        exit(1);
-	    }
-	    //create child process
-	    pid = fork();
-	            if (pid < 0)
-	            {
-	                perror("ERROR on fork");
-	    	    exit(1);
-	            }
-	            if (pid == 0)
-	            {
-	                /* This is the client process */
-	                close(sock);
-	                doprocessing(bufsocket,f);
-	                fprintf(f,"%s\n","");
-	                exit(0);
-	            }
-	            else
-	            {
-	                close(bufsocket);
-	            }
-}
-
-void doprocessing (int sock,FILE *f)
-{
-    int n;
     char buffer[256];
-
     bzero(buffer,256);
-
-    n = read(sock,buffer,255);
-    if (n < 0)
-    {
-        perror("ERROR reading from socket");
-        exit(1);
-    }
+    read(sock,buffer,255);
+    write(sock,"I got your message",18);
     fprintf(f,"%s",buffer);
-    if (n < 0)
-    {
-        perror("ERROR writing to socket");
-        exit(1);
-    }
+    return 0;
 }
+
+char* getFileName(int sock, char *filename)
+{
+    bzero(filename,256);
+    read(sock,filename,255);
+    write(sock,"I got your message",18);
+    return filename;
+}
+
 
 int main( int argc, char *argv[] )
 {
     int sock, bufsocket, port, clilen;
     char buffer[256];
     struct sockaddr_in serverAddr, clientAddr;
-    int  n,b;
-    int size;
-    int i=0;
+    char *name=buffer;
+    int v = 10;
     pid_t pid;
-    FILE *f = fopen("file.txt","ab");
-    struct stat buff;
+    FILE *f = fopen("newfile","ab");
     sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0)
     {
         perror("ERROR opening socket");
-        exit(1);
     }
     //Initializing socket
     bzero((char *) &serverAddr, sizeof(serverAddr));
-    port = 9999;
+    port = 7777;
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_addr.s_addr = INADDR_ANY;
     serverAddr.sin_port = htons(port);
@@ -92,45 +57,65 @@ int main( int argc, char *argv[] )
                           sizeof(serverAddr)) < 0)
     {
          perror("ERROR on binding");
-         exit(1);
     }
 
     //Listening for clients
     listen(sock,5);
     clilen = sizeof(clientAddr);
-    getFileName(f,sock,bufsocket,clientAddr,clilen,pid);
     //Accept connection
-    while(1){
     bufsocket = accept(sock, (struct sockaddr *)&clientAddr,
                                 &clilen);
     if (bufsocket < 0)
     {
-        perror("ERROR on accept");
-        exit(1);
+        //perror("ERROR on accept");
+        return 1;
     }
     //create child process
     pid = fork();
-            if (pid < 0)
-            {
-                perror("ERROR on fork");
-    	    exit(1);
-            }
-            if (pid == 0)
-            {
-                /* This is the client process */
-                close(sock);
-                doprocessing(bufsocket,f);
-                exit(0);
-            }
-            else
-            {
-                close(bufsocket);
-            }
+    if (pid < 0)
+    {
+    	perror("ERROR on fork");
     }
-    //fprintf(file,"%s",buffer);
- //   printf("The file was received: \n");
+    if (pid == 0)
+    {
+    	/* This is the client process */
+    	close(sock);
+    	getFileName(bufsocket,name);
+    	puts(name);
+    }
+    else
+    {
+    	close(bufsocket);
 
+    }
+    while(v>0){
+    	v--;
+    	clilen = sizeof(clientAddr);
+    	bufsocket = accept(sock, (struct sockaddr *)&clientAddr,
+                                &clilen);
+    	if (bufsocket < 0)
+    	{
+    		continue;
+    	}
+    	//create child process
+    	pid = fork();
+    	if (pid < 0)
+    	{
+    		perror("ERROR on fork");
+    	}
+    	if (pid == 0)
+    	{
+    		/* This is the client process */
+    		close(sock);
+    		doprocessing(bufsocket,f);
+    	}
+    	else
+    	{
+    		close(bufsocket);
+
+        }
+    }
+    rename("newfile",name);
     fclose(f);
-
     return 0;
 }
