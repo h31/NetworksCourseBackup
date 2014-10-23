@@ -48,6 +48,8 @@ int main( int argc, char *argv[] )
     struct sockaddr_in serverAddr, clientAddr;
     char *name=buffer;
     int fs;
+    while(1)
+    {
     FILE *f = fopen("newfile","ab");
     sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0)
@@ -116,5 +118,6 @@ int main( int argc, char *argv[] )
     close(sock);
     fclose(f);
     rename("newfile",name);
+    }
     return 0;
 }
