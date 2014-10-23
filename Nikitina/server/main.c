@@ -45,8 +45,6 @@ int main( int argc, char *argv[] )
          perror("ERROR on binding");
          exit(1);
     }
-
-
     listen(sockfd,5);
     clilen = sizeof(cli_addr);
 
@@ -58,6 +56,18 @@ int main( int argc, char *argv[] )
         perror("ERROR on accept");
         exit(1);
     }
+
+    char r='0';
+    while(r!='!'){
+    bzero(buffer,256);
+    n = read( newsockfd,buffer,255 );
+    if (n < 0) {
+            perror("ERROR reading from socket");
+            exit(1);
+        }
+    r=buffer[0];
+    }
+
     for(i=0;i<testSize;i++)
     {
     char *stringOut=writeToClient(&x[i]);
@@ -79,8 +89,7 @@ int main( int argc, char *argv[] )
     {
         perror("ERROR writing to socket");
         exit(1);
-    }
-}
+}}
     for(i=0;i<testSize;i++)
         freeLine(&x[i]) ;
     return 0;
