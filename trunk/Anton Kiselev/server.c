@@ -29,8 +29,8 @@ char* callterminal(char* command)
 	while (fgets(path, 16536, fp) != NULL)
 	{
 		printf("%s", path);
-		strcat(answer,path);
 	}
+	strcat(answer,path);
 	status = pclose(fp);
 	if (status == -1) {
 		/* Error reported by pclose() */
@@ -43,11 +43,35 @@ char* callterminal(char* command)
 	}
 
 }
+void doprocessing (int sock)
+{
+    int n;
+    char buffer[256];
+
+    bzero(buffer,256);
+
+    n = read(sock,buffer,255);
+    if (n < 0)
+    {
+        perror("ERROR reading from socket");
+        exit(1);
+    }
+    printf("Here is the message: %s\n",buffer);
+	char answer[16536];
+	strcpy(answer,callterminal(buffer));
+    n = write(sock,answer,18);
+    if (n < 0)
+    {
+        perror("ERROR writing to socket");
+        exit(1);
+    }
+}
 
 int main(int argc, char *argv[])
 {
      int sockfd, newsockfd, portno;
      socklen_t clilen;
+     pid_t pid;
      char buffer[256];
      struct sockaddr_in serv_addr, cli_addr;
      int n;
@@ -75,15 +99,41 @@ int main(int argc, char *argv[])
           error("ERROR on accept");
      while(1)
      {
-    	 bzero(buffer,256);
+          newsockfd = accept(sockfd,
+                 (struct sockaddr *) &cli_addr, &clilen);
+         if (newsockfd < 0)
+         {
+             perror("ERROR on accept");
+             exit(1);
+         }
+         /* Create child process */
+         pid = fork();
+         if (pid < 0)
+         {
+             perror("ERROR on fork");
+             exit(1);
+         }
+         if (pid == 0)
+         {
+             /* This is the client process */
+             close(sockfd);
+             doprocessing(newsockfd);
+             exit(0);
+         }
+         else
+         {
+             close(newsockfd);
+         }
+
+    	/* bzero(buffer,256);
     	 n = read(newsockfd,buffer,256);
     	 if (n < 0) error("ERROR reading from socket");
-    	 	 printf("Here is the message: %s\n",buffer);
+    	 printf("Here is the message: %s\n",buffer);
     	 char answer[16536];
     	 strcpy(answer,callterminal(buffer));
 
     	 n = write(newsockfd,answer,18);
-    	 if (n < 0) error("ERROR writing to socket");
+    	 if (n < 0) error("ERROR writing to socket");*/
      }
      close(newsockfd);
      close(sockfd);

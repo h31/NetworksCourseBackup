@@ -46,8 +46,7 @@ int main(int argc, char *argv[])
     //printf("h_addr: %s\n", inet_ntoa(serv_addr.sin_addr));
     if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0)//Подсоединение к серверу
         error("ERROR connecting");
-    while(1)
-    {
+
     	printf("Please enter the message: ");//Введите сообщение
     	bzero(buffer,16535);
     	fgets(buffer,16535,stdin);//Запись сообщения от пользователоя в массив
@@ -55,11 +54,11 @@ int main(int argc, char *argv[])
     	if (n < 0)
     		error("ERROR writing to socket");
     	bzero(buffer,16536);
-    	n = read(sockfd,buffer,100000000);//Чтение полученного сообщения
+    	n = read(sockfd,buffer,16536);//Чтение полученного сообщения
     	if (n < 0)
     		error("ERROR reading from socket");
     	printf("%s\n",buffer);//Выведение сообщения на экран
-    }
+
     close(sockfd);//Закрытие сокета
     return 0;
 }
