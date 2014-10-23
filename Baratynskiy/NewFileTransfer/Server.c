@@ -2,7 +2,7 @@
  * Server.c
  *
  *  Created on: Oct 16, 2014
- *      Author: user
+ *      Author: Baratynskiy
  */
 
 
@@ -30,15 +30,24 @@ char* getFileName(int sock, char *filename)
     return filename;
 }
 
+int getFileSize(int sock, int size)
+{
+	char buffer[256],newbuffer[256];
+    bzero(buffer,256);
+    read(sock,buffer,255);
+    write(sock,"I got your message",18);
+    sscanf(buffer,"%d",&size);
+    return size;
+}
 
 int main( int argc, char *argv[] )
 {
     int sock, bufsocket, port, clilen;
+    const int on = 1;
     char buffer[256];
     struct sockaddr_in serverAddr, clientAddr;
     char *name=buffer;
-    int v = 10;
-    pid_t pid;
+    int fs;
     FILE *f = fopen("newfile","ab");
     sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0)
@@ -53,6 +62,7 @@ int main( int argc, char *argv[] )
     serverAddr.sin_port = htons(port);
 
     //Bind the host address
+    setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on) );
     if (bind(sock, (struct sockaddr *) &serverAddr,
                           sizeof(serverAddr)) < 0)
     {
@@ -70,52 +80,41 @@ int main( int argc, char *argv[] )
         //perror("ERROR on accept");
         return 1;
     }
-    //create child process
-    pid = fork();
-    if (pid < 0)
+    getFileName(bufsocket,name);
+    puts(name);
+    clilen = sizeof(clientAddr);
+    //Accept connection
+    bufsocket = accept(sock, (struct sockaddr *)&clientAddr,
+                                    &clilen);
+    if (bufsocket < 0)
     {
-    	perror("ERROR on fork");
+    	//perror("ERROR on accept");
+    	return 1;
     }
-    if (pid == 0)
+    fs = getFileSize(bufsocket,fs);
+    if (fs%256 > 0)
     {
-    	/* This is the client process */
-    	close(sock);
-    	getFileName(bufsocket,name);
-    	puts(name);
+    	fs = fs/256+1;
     }
     else
     {
-    	close(bufsocket);
-
+    	fs = fs/256;
     }
-    while(v>0){
-    	v--;
-    	clilen = sizeof(clientAddr);
-    	bufsocket = accept(sock, (struct sockaddr *)&clientAddr,
+    while(fs>0)
+    {
+        fs--;
+        clilen = sizeof(clientAddr);
+        bufsocket = accept(sock, (struct sockaddr *)&clientAddr,
                                 &clilen);
-    	if (bufsocket < 0)
-    	{
-    		continue;
-    	}
-    	//create child process
-    	pid = fork();
-    	if (pid < 0)
-    	{
-    		perror("ERROR on fork");
-    	}
-    	if (pid == 0)
-    	{
-    		/* This is the client process */
-    		close(sock);
-    		doprocessing(bufsocket,f);
-    	}
-    	else
-    	{
-    		close(bufsocket);
-
+        if (bufsocket < 0)
+        {
+            continue;
         }
+        doprocessing(bufsocket,f);
     }
-    rename("newfile",name);
+    close(bufsocket);
+    close(sock);
     fclose(f);
+    rename("newfile",name);
     return 0;
 }
