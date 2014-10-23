@@ -1,2 +1,2 @@
 all: 
-	gcc -o roulette roulette.c
+	gcc -o roulette roulette.c 
