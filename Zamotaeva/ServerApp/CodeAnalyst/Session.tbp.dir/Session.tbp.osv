@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<OSV version="1" >
+	<Entry hdr="Target Application Info" >
+		<Entry hdr="PID : 7852" val="C:\Users\Tatianka\Documents\Visual Studio 2010\Projects\ClientServer\ServerApp\Debug\ServerApp.exe" >
+			<Entry hdr="TID : 7724" val="3.301 sec" />
+		</Entry>
+	</Entry>
+	<Entry hdr="System-wide Profile" >
+		<Entry hdr="Number of Processes" val="33  [View Processes]" lnk = "proc:Session.tbp" />
+		<Entry hdr="Number of Modules" val="93  [View Modules]" lnk = "sys:Session.tbp" />
+	</Entry>
+</OSV>

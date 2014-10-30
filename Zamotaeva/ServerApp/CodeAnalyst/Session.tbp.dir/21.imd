@@ -1,0 +1,16 @@
+﻿[C:\Windows\System32\mshtml.dll]
+SIZE=0
+SAMPS=4
+ModuleType=1
+NUMSUBSECTIONS=1
+
+[SUB]
+BASEADDR=0x627d0000
+LINECOUNT=4
+4064,4068,1,1,[1 0] 1,0x3397bf
+4064,4068,1,1,[0 0] 1,0x35a079
+4064,4068,1,1,[1 0] 1,0x5cedab
+4064,4068,1,1,[0 0] 1,0x6508ec
+[SUB_END]
+[END]
+

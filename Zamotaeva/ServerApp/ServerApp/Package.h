@@ -1,0 +1,18 @@
+#pragma once
+#include "Command.h"
+class Package
+{
+public:
+	static const int LENGTH_FIELD_SIZE = 3; //dlina vsego packeta
+	static const int TYPE_FIELD_SIZE = 2;	//type command
+	static const int SENDER_FIELD_SIZE = 6; //name polz - kto otprav
+	static const int DATA_START_POSITION = LENGTH_FIELD_SIZE+TYPE_FIELD_SIZE+SENDER_FIELD_SIZE;//mesto data
+public:
+	Package(void);
+	~Package(void);
+	Command Parse(BYTE* inputmessage); //rashifr
+	Package Generate(Command cmd); //gener package
+	BYTE * data;
+	
+};
+
