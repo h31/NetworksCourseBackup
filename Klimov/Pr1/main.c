@@ -8,13 +8,14 @@
 #include <libxml/parser.h>
 #include <libxml/tree.h>
 #include <libxml/xmlwriter.h>
+#include <libxml/xmlmemory.h>
+#include <libxml/xpath.h>
 
 #include <sys/stat.h>
 #include <unistd.h>
 
 #define MY_ENCODING "ISO-8859-1"
 
-//#include "tinyxml/tinyxml.h"
 
 void print_topic_names(xmlNode * a_node, char *mess)
 {
@@ -34,28 +35,6 @@ void print_topic_names(xmlNode * a_node, char *mess)
 
         print_topic_names(cur_node->children,mess);
     }
-}
-
-void create_xml(char *fileName){
-	xmlTextWriterPtr writer;
-	int rc;
-	//xmlDocPtr doc;
-	//xmlNodePtr node;
-	//xmlChar *tmp;
-	//writer = xmlNewTextWriterFilename("test.xml", 0);
-	writer = xmlNewTextWriterFilename(fileName, 0);
-	rc = xmlTextWriterStartDocument(writer, NULL, "UTF-8", NULL);
-	rc = xmlTextWriterStartElement(writer, "Powersettings");
-		rc = xmlTextWriterWriteElement(writer, "PowerScheme", "Testing");
-		rc = xmlTextWriterEndElement(writer);
-		rc = xmlTextWriterWriteElement(writer, "CPUSpeed", "Adaptive");
-		rc = xmlTextWriterEndElement(writer);
-	/* ... etc ... */
-	rc = xmlTextWriterEndElement(writer);
-	rc = xmlTextWriterEndDocument(writer);
-	xmlFreeTextWriter(writer);
-	//xmlSaveFileEnc(file, doc, "UTF-8");
-	//xmlFreeDoc(doc);
 }
 
 char *newStr(char *charBuffer) {
@@ -149,27 +128,68 @@ void create_file(char *to, char *from, char *msg){
 	int rc;
 	xmlTextWriterPtr writer;
 	xmlDocPtr doc;
-	xmlNodePtr node;
+	xmlNodePtr node, root;
 	xmlChar *tmp;
 
-	doc = xmlNewDoc(BAD_CAST XML_DEFAULT_VERSION);
-	node = xmlNewDocNode(doc, NULL, BAD_CAST "inbox", NULL);
-	xmlDocSetRootElement(doc, node);
-	writer = xmlNewTextWriterTree(doc, node, 0);
-	rc = xmlTextWriterStartDocument(writer, NULL, MY_ENCODING, NULL);
-	rc = xmlTextWriterStartElement(writer, BAD_CAST "mes");
-	rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "id", BAD_CAST "1");
-	rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "from", BAD_CAST from);
-	rc = xmlTextWriterEndAttribute(writer);
-	rc = xmlTextWriterWriteString(writer, (const xmlChar*) msg);
-	rc = xmlTextWriterEndElement(writer);
-	rc = xmlTextWriterEndDocument(writer);
-	xmlFreeTextWriter(writer);
+	if(doc = xmlParseFile(to)){
+		root = xmlDocGetRootElement(doc);
 
-	xmlSaveFileEnc(to, doc, MY_ENCODING);
+		xmlNodePtr pNode = xmlNewNode(0, (xmlChar*)"mes");
+		//xmlSetProp(pNode, (const xmlChar*) "id", (const xmlChar*) "val");
+		xmlSetProp(pNode, (const xmlChar*) "from", (const xmlChar*) from);
+		xmlNodeSetContent(pNode, (xmlChar*)msg);
+		xmlAddChild(root, pNode);
 
-	xmlFreeDoc(doc);
+		xmlSaveFileEnc(to, doc, MY_ENCODING);
+		xmlFreeDoc(doc);
+	}else{
+		doc = xmlNewDoc(BAD_CAST XML_DEFAULT_VERSION);
+		node = xmlNewDocNode(doc, NULL, BAD_CAST "inbox", NULL);
+		xmlDocSetRootElement(doc, node);
+		writer = xmlNewTextWriterTree(doc, node, 0);
+		rc = xmlTextWriterStartDocument(writer, NULL, MY_ENCODING, NULL);
+		rc = xmlTextWriterStartElement(writer, BAD_CAST "mes");
+		//rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "id", BAD_CAST "1");
+		rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "from", BAD_CAST from);
+		rc = xmlTextWriterEndAttribute(writer);
+		rc = xmlTextWriterWriteString(writer, (const xmlChar*) msg);
+		rc = xmlTextWriterEndElement(writer);
+		rc = xmlTextWriterEndDocument(writer);
+		xmlFreeTextWriter(writer);
+		xmlSaveFileEnc(to, doc, MY_ENCODING);
+		xmlFreeDoc(doc);
+	}
+}
 
+void receive_msg(int newsockfd, char *buffer, char *name){
+
+	char *msg;
+	msg = get_mes_from_client(newsockfd, buffer);
+    char *first = get_1st_arg(msg);
+    //char *second = get_2nd_arg(msg);
+    if(strcmp(first, "send") == 0){
+    	char * to_send;
+    	to_send = get_mes_from_client(newsockfd, buffer);
+    	char *mail_to = get_1st_arg(to_send);
+    	char *message = get_2nd_arg(to_send);
+    	//create_file(get_1st_arg(to_send), first, get_2nd_arg(to_send));
+    	create_file(mail_to, name, message);
+    	receive_msg(newsockfd, buffer, name);
+    //}else if (!strcmp(get_1st_arg(buffer), "readinbox")) {
+    }else if (strcmp(first, "readinbox") == 0) {
+    	printf("readinbox");
+    	receive_msg(newsockfd, buffer, name);
+	}else if (strcmp(first, "exit") == 0) {
+    	printf("bb");
+    	exit(1);
+	}
+    else{
+    	printf("wrong command");
+    	receive_msg(newsockfd, buffer, name);
+    }
+
+	//buffer = get_mes_from_client(newsockfd, buffer);
+	receive_msg(newsockfd, buffer, name);
 }
 
 int main( int argc, char *argv[] )
@@ -220,32 +240,32 @@ int main( int argc, char *argv[] )
     }
     /* If connection is established then start communicating */
 
-    xmlDoc *doc = NULL;
-    xmlNode *root_element = NULL;
-    //const char *fileName = "test1.xml";
-    const char *fileName = "myxml.xml";
-    doc = xmlReadFile(fileName, NULL, 0);
-    if (doc == NULL){
-    	printf("error: could not parse file %s\n", fileName);
-        strncat(buffer,"Error\n",6);
-     }
-     else
-     {
-    	 root_element = xmlDocGetRootElement(doc);
-         //strncat(buffer,"Topics:\n",10);
-    	 bzero(buffer,256);
-         print_topic_names(root_element,buffer);
-         xmlFreeDoc(doc);
-     }
-    xmlCleanupParser();
+//    xmlDoc *doc = NULL;
+//    xmlNode *root_element = NULL;
+//    //const char *fileName = "test1.xml";
+//    const char *fileName = "myxml.xml";
+//    doc = xmlReadFile(fileName, NULL, 0);
+//    if (doc == NULL){
+//    	printf("error: could not parse file %s\n", fileName);
+//        strncat(buffer,"Error\n",6);
+//     }
+//     else
+//     {
+//    	 root_element = xmlDocGetRootElement(doc);
+//         //strncat(buffer,"Topics:\n",10);
+//    	 bzero(buffer,256);
+//         print_topic_names(root_element,buffer);
+//         xmlFreeDoc(doc);
+//     }
+//    xmlCleanupParser();
+//
+//    printf("test: %s\n", buffer);
 
-    printf("test: %s\n", buffer);
 
+    //int i, k = 0, m = 0;
+    //FILE *fp;
 
-    int i, k = 0, m = 0;
-    FILE *fp;
-
-    n = write(newsockfd, "Please type ur e-mail address\n", 30);
+    //n = write(newsockfd, "Please type ur e-mail address\n", 30);
     bzero(buffer,256);
     n = read( newsockfd,buffer,255 );
     if (n < 0)
@@ -254,13 +274,8 @@ int main( int argc, char *argv[] )
         exit(1);
     }
 
-    //find_char(buffer);
     char *first = get_1st_arg(buffer);
     char *second = get_2nd_arg(buffer);
-    //if(!strcmp(get_2nd_arg(buffer), "send")){
-    //printf("res: %d\n", strcmp(first, "Serg"));
-    //printf("res: %d\n", strcmp(second, "send"));
-    //exit(1);
     if(strcmp(second, "send") == 0){
     	char * to_send;
     	to_send = get_mes_from_client(newsockfd, buffer);
@@ -268,59 +283,66 @@ int main( int argc, char *argv[] )
     	char *message = get_2nd_arg(to_send);
     	//create_file(get_1st_arg(to_send), first, get_2nd_arg(to_send));
     	create_file(mail_to, first, message);
+    	receive_msg(newsockfd, buffer, first);
     	//printf("to: %s\n", get_1st_arg(to_send));
     	//printf("message: %s\n", get_2nd_arg(to_send));
-    }else if (!strcmp(get_2nd_arg(buffer), "readinbox")) {
+    //}else if (!strcmp(get_2nd_arg(buffer), "readinbox")) {
+    }else if (strcmp(second, "readinbox") == 0) {
     	printf("readinbox");
+    	//receive_msg(newsockfd, buffer);
+	}else if (strcmp(second, "exit") == 0) {
+    	printf("bb");
+    	exit(1);
 	}
     else{
     	printf("wrong command");
+    	receive_msg(newsockfd, buffer, first);
     }
-    fp = fopen(buffer, "rb");
-    if(fp){
-    	//already in base
-    	printf("E-mail in base: %s\n", buffer);
-    }
-    strncpy(name, buffer, 256);
-    bzero(buffer,256);
-    n = write(newsockfd, "Please type the e-mail address of the recipient\n", 48);
-
-    bzero(buffer,256);
-    n = read( newsockfd,buffer,255 );
-    if (n < 0)
-    {
-        perror("ERROR reading from socket");
-        exit(1);
-    }
-
-    printf("E-mail: %s\n", buffer);
-
-
-
-    for(i = 0; i < 256; i++)
-    	if(buffer[i] == '@')
-    		k++;
-    if(k > 0){
-    	fp = fopen(buffer, "ab+");
-
-
-    	fprintf(fp, "<%s>\n", name);
-    	n = write(newsockfd,"OK\nPlease, write a message:\n",29);
-    	bzero(buffer,256);
-    	n = read( newsockfd,buffer,255 );
-    	fprintf(fp, "%s\n", buffer);
-    	fprintf(fp, "</%s>\n", name);
-    	printf("Message: %s\n", buffer);
-
-    }
-    else
-    	n = write(newsockfd,"Wrong e-mail address\n",21);
-
-    if (n < 0)
-    {
-        perror("ERROR writing to socket");
-        exit(1);
-    }
+//    fp = fopen(buffer, "rb");
+//    if(fp){
+//    	//already in base
+//    	printf("E-mail in base: %s\n", buffer);
+//    }
+//    strncpy(name, buffer, 256);
+//    bzero(buffer,256);
+//    n = write(newsockfd, "Please type the e-mail address of the recipient\n", 48);
+//
+//    bzero(buffer,256);
+//    n = read( newsockfd,buffer,255 );
+//    if (n < 0)
+//    {
+//        perror("ERROR reading from socket");
+//        exit(1);
+//    }
+//
+//    printf("E-mail: %s\n", buffer);
+//
+//
+//
+//    for(i = 0; i < 256; i++)
+//    	if(buffer[i] == '@')
+//    		k++;
+//    if(k > 0){
+//    	fp = fopen(buffer, "ab+");
+//
+//
+//    	fprintf(fp, "<%s>\n", name);
+//    	n = write(newsockfd,"OK\nPlease, write a message:\n",29);
+//    	bzero(buffer,256);
+//    	n = read( newsockfd,buffer,255 );
+//    	fprintf(fp, "%s\n", buffer);
+//    	fprintf(fp, "</%s>\n", name);
+//    	printf("Message: %s\n", buffer);
+//
+//    }
+//    else
+//    	n = write(newsockfd,"Wrong e-mail address\n",21);
+//
+//    if (n < 0)
+//    {
+//        perror("ERROR writing to socket");
+//        exit(1);
+//    }
     return 0;
 }
 
