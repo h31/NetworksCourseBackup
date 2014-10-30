@@ -1,0 +1,13 @@
+﻿[unknown module pid (4804)]
+SIZE=0
+SAMPS=2
+ModuleType=5
+NUMSUBSECTIONS=1
+
+[SUB]
+LINECOUNT=2
+4804,6296,1,1,[0 0] 1,0x60ab1ed7
+4804,6296,1,1,[1 0] 1,0x70463242
+[SUB_END]
+[END]
+

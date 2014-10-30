@@ -1,0 +1,13 @@
+﻿[C:\Windows\assembly\NativeImages_v2.0.50727_32\System.Windows.Forms\1453d9e9a4989833ef3db4b22549ba1a\System.Windows.Forms.ni.dll]
+SIZE=0
+SAMPS=1
+ModuleType=1
+NUMSUBSECTIONS=1
+
+[SUB]
+BASEADDR=0x65600000
+LINECOUNT=1
+2508,2512,1,1,[0 0] 1,0x208e08
+[SUB_END]
+[END]
+

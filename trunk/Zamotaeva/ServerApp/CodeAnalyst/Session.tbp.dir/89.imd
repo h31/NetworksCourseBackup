@@ -1,0 +1,15 @@
+﻿[unknown module pid (556)]
+SIZE=0
+SAMPS=4
+ModuleType=5
+NUMSUBSECTIONS=1
+
+[SUB]
+LINECOUNT=4
+556,672,1,1,[1 0] 1,0x776d2375
+556,672,1,1,[1 0] 1,0x77745306
+556,672,1,1,[0 0] 1,0x77791ccf
+556,672,1,1,[1 0] 1,0x777b2e82
+[SUB_END]
+[END]
+
