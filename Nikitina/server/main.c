@@ -4,11 +4,13 @@
 #include <netinet/in.h>
 #include <string.h>
 #include "writeStruct.h"
+#include "registration.h"
 
 int main(int argc, char *argv[]) {
 	char str[50];
 	FILE *file;
 	int i,numberTrueAnswer=0;
+	char *clientFile="/home/user/workspace/server/registration.txt";
 	char numberTest='0';
 	char *name=(char*)malloc(50*sizeof(char));
 
@@ -43,6 +45,66 @@ int main(int argc, char *argv[]) {
 		perror("ERROR on accept");
 		exit(1);
 	}
+
+	//Connect from client
+
+	while(1){
+	bzero(buffer, 256);
+		n = read(newsockfd, buffer, 255);
+		if (n < 0) {
+				perror("ERROR reading from socket");
+				exit(1);
+		}
+	if(buffer[0]=='!'){
+		n = write(newsockfd, "Login", 5);
+		break;
+	}
+	n = write(newsockfd, "ERROR", 5);
+	}
+	//Registration
+	int numberClient;
+	int clientSize=sizeFile(clientFile);
+	struct Client c[clientSize];
+	file = fopen(clientFile, "r");
+	for (i = 0; fgets(str, sizeof(str), file); i++) {
+						writeSizeClient(&c[i], &str);
+	}
+	fclose(file);
+	while(1){
+		numberClient=-1;
+		bzero(buffer, 256);
+		n = read(newsockfd, buffer, 255);
+		for (i = 0; i<clientSize; i++) {
+			if(strcmp(buffer, strcat(c[i].login,"\n"))==0){
+				numberClient=i;
+				break;
+		}}
+		if(numberClient!=-1){
+			n = write(newsockfd, "Parol", 5);
+			break;
+		}
+		n = write(newsockfd, "Login", 5);
+		}
+	//Enter Password
+	while(1){
+			bzero(buffer, 256);
+			n = read(newsockfd, buffer, 255);
+			if(strcmp(buffer, strcat(c[numberClient].parol, "\n"))==0){
+					n = write(newsockfd, "OK", 2);
+					break;
+			}
+			n = write(newsockfd, "Parol", 5);
+			}
+	//Enter last result
+	char *string=writeLastResult(&c[numberClient]);
+	printf("%s",string);
+	//n = write(newsockfd, string, strlen(string));
+	//if(buffer[0]=='!')
+		//reg=true;
+	//struct Client regClient;
+	//sscanf("!uu#dddd","!%s#%s",regClient.login,regClient.parol);
+
+	/*//Number test
 	sprintf(name, " %s%c.%s", "/home/user/workspace/server/",numberTest, "txt");
 	while ((file = fopen(name, "r"))==NULL){
 		free(name);
@@ -55,15 +117,16 @@ int main(int argc, char *argv[]) {
 				numberTest = buffer[0];
 	name=(char*)malloc(50*sizeof(char));
 	sprintf(name, "%s%c%s", "/home/user/workspace/server/",numberTest, ".txt");
-	}
+	}*/
+	/*name="/home/user/workspace/server/1.txt";
 	int testSize = sizeFile(name);
 	struct Line x[testSize];
 	file = fopen(name, "r");
 		for (i = 0; fgets(str, sizeof(str), file); i++) {
-			writeSize(&x[i], &str);
+			//writeSize(&x[i], &str);
 		}
 		fclose(file);
-		for (i = 0; i < testSize; i++) {
+		/*for (i = 0; i < testSize; i++) {
 		char *stringOut = writeToClient(&x[i]);
 		n = write(newsockfd, stringOut, strlen(stringOut));
 		printf("%d", strlen(stringOut));
@@ -98,6 +161,8 @@ int main(int argc, char *argv[]) {
 	n = write(newsockfd, "!\n", 2);
 	for (i = 0; i < testSize; i++)
 		freeLine(&x[i]);
-	free(name);
+	free(name);*/
+	for (i = 0; i < clientSize; i++)
+		freeClient(&c[i]);
 	return 0;
 }

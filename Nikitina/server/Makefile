@@ -1,2 +1,2 @@
-all:	main.c writeStruct.c writeStruct.h
-		gcc main.c writeStruct.c -o server1
+all:	main.c writeStruct.c writeStruct.h  registration.c registration.h
+		gcc main.c writeStruct.c registration.c -o server
