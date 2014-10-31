@@ -46,11 +46,48 @@ int main(int argc, char *argv[])
     /* Now ask for a message from the user, this message
     * will be read by server
     */
+    strcpy(buffer,"ERROR");
+    while(strcmp(buffer,"ERROR")==0){
+    printf("Please enter '!' to connect :");
     bzero(buffer,256);
     fgets(buffer,255,stdin);
     /* Send message to the server */
     n = write(sockfd,buffer,strlen(buffer));
-    while(1){
+    if (n < 0)
+    {
+         perror("ERROR writing to socket");
+         exit(1);
+    }
+    bzero(buffer,256);
+       n = read(sockfd,buffer,255);
+           if (n < 0)
+           {
+                perror("ERROR reading from socket");
+                exit(1);
+           }
+    }
+    //Registration
+    while(strcmp(buffer,"Login")==0){
+    	printf("%s\n",buffer);
+        bzero(buffer,256);
+        fgets(buffer,255,stdin);
+        n = write(sockfd,buffer,strlen(buffer));
+        bzero(buffer,256);
+        n = read(sockfd,buffer,255);
+        }
+    //Enter password
+        while(strcmp(buffer,"Parol")==0){
+        	printf("%s\n",buffer);
+            bzero(buffer,256);
+            fgets(buffer,255,stdin);
+            n = write(sockfd,buffer,strlen(buffer));
+            bzero(buffer,256);
+            n = read(sockfd,buffer,255);
+            }
+    /*bzero(buffer,256);
+    n = read(sockfd,buffer,255);
+    printf("%s\n",buffer);
+    /*while(1){
     bzero(buffer,256);
     n = read(sockfd,buffer,255);
         if (n < 0)
@@ -69,7 +106,7 @@ int main(int argc, char *argv[])
          exit(1);
     }
     /* Now read server response */
-    bzero(buffer,256);
+   /* bzero(buffer,256);
     n = read(sockfd,buffer,255);
     if (n < 0)
     {
@@ -82,7 +119,8 @@ int main(int argc, char *argv[])
     	close(sockfd);
     	return 0;
     }
-    }
+    }*/
+    close(sockfd);
     return 0;
 }
 
