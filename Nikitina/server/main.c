@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
 	}
 	n = write(newsockfd, "ERROR", 5);
 	}
-	//Registration
+	/*//Registration
 	int numberClient;
 	int clientSize=sizeFile(clientFile);
 	struct Client c[clientSize];
@@ -97,36 +97,30 @@ int main(int argc, char *argv[]) {
 			}
 	//Enter last result
 	char *string=writeLastResult(&c[numberClient]);
-	printf("%s",string);
-	//n = write(newsockfd, string, strlen(string));
-	//if(buffer[0]=='!')
-		//reg=true;
-	//struct Client regClient;
-	//sscanf("!uu#dddd","!%s#%s",regClient.login,regClient.parol);
+	printf("%s",string);*/
 
-	/*//Number test
-	sprintf(name, " %s%c.%s", "/home/user/workspace/server/",numberTest, "txt");
-	while ((file = fopen(name, "r"))==NULL){
-		free(name);
+	//Number test
+	while (1){
 		bzero(buffer, 256);
-				n = read(newsockfd, buffer, 255);
-				if (n < 0) {
-					perror("ERROR reading from socket");
-					exit(1);
-				}
-				numberTest = buffer[0];
-	name=(char*)malloc(50*sizeof(char));
-	sprintf(name, "%s%c%s", "/home/user/workspace/server/",numberTest, ".txt");
-	}*/
-	/*name="/home/user/workspace/server/1.txt";
+		n = read(newsockfd, buffer, 255);
+		numberTest = buffer[0];
+		name=(char*)malloc(50*sizeof(char));
+		sprintf(name, "%s%c%s", "/home/user/workspace/server/",numberTest, ".txt");
+		if((file = fopen(name, "r"))!=NULL){
+			n = write(newsockfd, "OK", 2);
+			break;
+		}
+		n = write(newsockfd, "ERROR", 5);
+		free(name);
+	}
 	int testSize = sizeFile(name);
 	struct Line x[testSize];
 	file = fopen(name, "r");
 		for (i = 0; fgets(str, sizeof(str), file); i++) {
-			//writeSize(&x[i], &str);
+			writeSize(&x[i], &str);
 		}
 		fclose(file);
-		/*for (i = 0; i < testSize; i++) {
+		for (i = 0; i < testSize; i++) {
 		char *stringOut = writeToClient(&x[i]);
 		n = write(newsockfd, stringOut, strlen(stringOut));
 		printf("%d", strlen(stringOut));
@@ -161,8 +155,8 @@ int main(int argc, char *argv[]) {
 	n = write(newsockfd, "!\n", 2);
 	for (i = 0; i < testSize; i++)
 		freeLine(&x[i]);
-	free(name);*/
-	for (i = 0; i < clientSize; i++)
-		freeClient(&c[i]);
+	free(name);
+	//for (i = 0; i < clientSize; i++)
+		//freeClient(&c[i]);
 	return 0;
 }
