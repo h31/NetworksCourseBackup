@@ -1,3 +1,11 @@
+/*
+ * client.c
+ *
+ *  Created on: 05.11.2014
+ *      Author: anton
+ */
+
+
 /* Sample TCP client */
 /*Created by Anton*/
 #include <stdio.h>
@@ -51,20 +59,54 @@ int main(int argc, char *argv[])
 	 //printf("h_addr: %s\n", inet_ntoa(serv_addr.sin_addr));
 	 if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0)//Подсоединение к серверу
 	      error("ERROR connecting");
-      printf("Please enter the message: ");//Введите сообщение
-      bzero(buffer,256);
-      fgets(buffer,256,stdin);//Запись сообщения от пользователоя в массив
-      n = write(sockfd,buffer,strlen(buffer));//Отправка сообщения на сервер
-      if (n < 0)
-          error("ERROR writing to socket");
-      //while(1)//
-      //{
-    	  bzero(buffer,256);
-    	  n = read(sockfd,buffer,255);//Чтение полученного сообщения
-    	  if (n < 0)
-    		  error("ERROR reading from socket");
-    	  printf("%s\n",buffer);//Выведение сообщения на экран
-      //}
+
+	 printf("Please enter the message: ");//Введите сообщение
+	 bzero(buffer,256);
+	 char passbuf[256];
+	 bzero(passbuf,256);
+	 fgets(buffer,256,stdin);//Запись сообщения от пользователоя в массив
+	 n = write(sockfd,buffer,strlen(buffer)-1);//Отправка сообщения на сервер
+	 strncpy(passbuf,buffer,strlen(buffer)-1);
+	 if (n < 0)
+		 error("ERROR writing to socket");
+	 //do//
+	 //{
+	 bzero(buffer,256);
+	 n = read(sockfd,buffer,255);//Чтение полученного сообщения
+     printf("%s\n",buffer);
+     printf("%s, %i\n",passbuf,strlen(passbuf));
+
+	 unsigned int res = HashH37(passbuf);
+	 printf("%i\n",res);
+	 printf("%i\n",(void*)res);
+	 bzero(buffer,256);
+	 memcpy(buffer, (char*)&res, 3);
+	 n = write(sockfd,buffer,256);//Отправка сообщения на сервер
+	 if (n < 0)
+		 error("ERROR writing to socket");
+	 bzero(buffer,256);
+	 n = read(sockfd,buffer,255);//Чтение полученного сообщения
+	 if (n < 0)
+	     error("ERROR reading from socket");
+	 printf("%s\n",buffer);//Выведение сообщения на экран
+
+	 	 //} while(n >= 0);
+
+	 int i = 0;
+	 for(i = 0; i < 10; i++)
+	 {
+		 printf("Please enter the message: ");//Введите сообщение
+		 bzero(buffer,256);
+		 fgets(buffer,256,stdin);//Запись сообщения от пользователоя в массив
+		 n = write(sockfd,buffer,strlen(buffer));//Отправка сообщения на сервер
+		 if (n < 0)
+		     error("ERROR writing to socket");
+		 bzero(buffer,256);
+		 n = read(sockfd,buffer,255);//Чтение полученного сообщения
+		 if (n < 0)
+		     error("ERROR reading from socket");
+		 printf("%s\n",buffer);//Выведение сообщения на экран
+	  }
       close(sockfd);//Закрытие сокета
 	  return 0;
 }
