@@ -23,18 +23,23 @@ int doprocessing(int sock, FILE *f) {
 	return 0;
 }
 
-char* getFileName(int sock, char *filename) {
-	bzero(filename, bufSize);
-	read(sock, filename, bufSize - 1);
-	if (strcmp(filename, "ls") == 0){
+char* getFirstMessage(int sock, char *firstMessage) {
+	bzero(firstMessage, bufSize);
+	read(sock, firstMessage, bufSize - 1);
+	if (strcmp(firstMessage, "ls") == 0){
 		write(sock, "ls command", 10);
-		filename = "ls";
+		firstMessage = "ls";
 		return "ls";
+	}
+	else if(strcmp(firstMessage, "get") == 0){
+		write(sock, "get command", 11);
+		firstMessage = "get";
+		return "get";
 	}
 	else{
 		write(sock, "I got file name", 15);
 	}
-	return filename;
+	return firstMessage;
 }
 
 int getFileSize(int sock, int size) {
@@ -56,7 +61,7 @@ void listenToClients(FILE *f, int sock, int bufsocket, int clilen,
 	if (bufsocket < 0) {
 		perror("ERROR on accept");
 	}
-	getFileName(bufsocket, name);
+	getFirstMessage(bufsocket, name);
 	if(strcmp(name,"ls")==0){
 		system("ls>ls");
 		FILE *ls = fopen("ls","r");
@@ -77,6 +82,24 @@ void listenToClients(FILE *f, int sock, int bufsocket, int clilen,
 		close(bufsocket);
 		close(sock);
 		fclose(f);
+		return;
+	}
+	if(strcmp(name,"get")==0){
+		char filename[30];
+		char buffer[1024];
+		read(bufsocket,filename,sizeof(filename));
+		write(bufsocket,filename,sizeof(filename));
+		printf("%s is wanted\n",filename);
+		FILE *file = fopen(filename, "r+");
+		while (!feof(file)) {
+			fread(buffer, 1, sizeof(buffer), file);
+			write(bufsocket,buffer,sizeof(buffer));
+			read(bufsocket,buffer,sizeof(buffer));
+		write(bufsocket,"&",1);
+		read(bufsocket,buffer,sizeof(buffer));
+		close(bufsocket);
+		close(sock);
+		fclose(file);
 		return;
 	}
 	printf("%s was recieved!\n",name);
