@@ -44,6 +44,12 @@ void error(const char *msg)
     perror(msg);
     exit(1);
 }
+//Отсоединение клиента
+void killclient()
+{
+    system("killall client");
+    exit(1);
+}
 //Считывание содержимого файла пользователей и паролей
 struct ArrFields readFile()
 {
@@ -124,31 +130,30 @@ struct ArrFields readFile()
 	return arrfields;
 }
 //Вызов и выполнение команд терминала
-char* callterminal(char* command)
+/*char* callterminal(char* command)
 {
     FILE *fp;
     int status;
     char path[256];
-    char answer[256];
+    char buffer[256];
+    char answer[256] = "";
     fp = popen(command, "r");
     if (fp == NULL)
-        /* Handle error */;
+		 error("Failed to execute a command in the terminal\n");
     while (fgets(path, 256, fp) != NULL)
     {
-        //printf("%s", path);
+		 printf("%s", path);
+		 bzero(buffer,256);
+		 strncpy(buffer,path,strlen(path)-1);
+		 strcat(answer,buffer);
     }
     status = pclose(fp);
     if (status == -1) {
-        /* Error reported by pclose() */
         return "Error with executing of command";
     } else {
-    /* Use macros described under wait() to inspect `status' in order
-       to determine success/failure of command executed by popen() */
-        char *p = answer;
-        return p;
+        return &answer;
     }
-
-}
+}*/
 //Для выполнения клиентских команд
 void doprocessing (int socket)
 {
@@ -164,7 +169,7 @@ void doprocessing (int socket)
     }
     printf("Here is the message: %s\n",buffer);
 	char answer[256];
-	strcpy(answer,callterminal(buffer));
+	//strcpy(answer,callterminal(buffer));
     n = write(socket,answer,18);
     if (n < 0)
     {
@@ -205,44 +210,60 @@ int main(int argc, char *argv[])
      if (newsockfd < 0)
           error("ERROR on accept");
      /*Аутентификация пользователя*/
+     int is_auntentity_ok = 0;
+     char savebuf[256];
+     //do
+    // {
+    	 n = write(newsockfd,"Please, give me your username and password via blank:",255);
+    	 if (n < 0)
+    		 error("ERROR writing to socket");
 
-	 bzero(buffer,256);//Взятие данных от пользователя
-	 n = read(newsockfd,buffer,256);
-	 if (n < 0)
-		 error("ERROR reading from socket");
-	 printf("Here is the message: %s\n",buffer);
-	 //buffer[strlen(buffer)] = '\0';
-	 char temp[256];
-	 bzero(temp,256);
-	 strncpy(temp,buffer,strlen(buffer));
-	 printf("%i\n",(int)strlen(temp));
-	 struct ArrFields arrfields = readFile();
-	 int i = 0;
-	 int yes = 0;
-	 char savebuf[256];
-	 bzero(savebuf,256);
-	 for(i = 0; i < arrfields.size; i++)
-	 {
-		 char usrpassw [256];
-		 bzero(usrpassw,256);
-		 strcat(usrpassw,arrfields.arr[i].username);
-		 strcat(usrpassw," ");
-		 strcat(usrpassw,arrfields.arr[i].password);
-		 printf("%i\n",(int)strlen(usrpassw));
-		 if(strcmp(temp,usrpassw) == 0)
-		 {
-			 yes = 1;
-			 strncpy(savebuf,temp,strlen(temp));
-		 }
-	 }
-	 n = write(newsockfd,"Wait!",255);
-	 if (n < 0)
-	     error("ERROR writing to socket");
-	 printf("%i\n",yes);
-	 if(yes == 1)
-	 {
-
-	     printf("%s, %i\n",savebuf,strlen(savebuf));
+    	 bzero(buffer,256);//Взятие данных от пользователя
+    	 n = read(newsockfd,buffer,256);
+    	 sleep(5);
+    	 if (n < 0)
+    		 error("ERROR reading from socket");
+    	 printf("Here is the message: %s\n",buffer);
+    	 char temp[256];
+    	 bzero(temp,256);
+    	 bzero(savebuf,256);
+    	 strncpy(temp,buffer,strlen(buffer));
+    	 struct ArrFields arrfields = readFile();
+    	 int i = 0;
+    	 int yes = 0;
+    	 for(i = 0; i < arrfields.size; i++)
+    	 {
+    		 char usrpassw [256];
+    		 bzero(usrpassw,256);
+    		 strcat(usrpassw,arrfields.arr[i].username);
+    		 strcat(usrpassw," ");
+    		 strcat(usrpassw,arrfields.arr[i].password);
+    		 if(strcmp(temp,usrpassw) == 0)
+    		 {
+    			 yes = 1;
+    			 strncpy(savebuf,temp,strlen(temp));
+    		 }
+    	 }
+    	 printf("%i\n",yes);
+    	 if(yes == 1)
+    	 {
+    		 is_auntentity_ok = 1;
+    		 n = write(newsockfd,"Ok!",strlen(answer)-1);
+    		 if (n < 0)
+    		     error("ERROR writing to socket");
+    	 }
+    	 else
+    	 {
+    		 n = write(newsockfd,"Polzovatel' and Parol' neverny!",255);
+    		 if (n < 0)
+    		     error("ERROR writing to socket");
+    		 //close(newsockfd);
+    		 //killclient();
+    	 }
+   //  } while(is_auntentity_ok != 1);
+     is_auntentity_ok = 0;
+	// do
+	// {
 		 unsigned int res = HashH37(savebuf);//Вычисление хэш-функции
 		 printf("%i\n",res);
     	 char ans [256];
@@ -261,23 +282,16 @@ int main(int argc, char *argv[])
     	     n = write(newsockfd,"Hello!",strlen(answer)-1);
     	     if (n < 0)
     		     error("ERROR writing to socket");
+    	     is_auntentity_ok = 1;
    	     }
 	     else
 	     {
-    	     n = write(newsockfd,"Good Buy!",strlen(answer)-1);
+	    	 killclient();
+    	     /*n = write(newsockfd,"Hash neveren",strlen(answer)-1);
     	     if (n < 0)
-    		     error("ERROR writing to socket");
-             close(newsockfd);
+    		     error("ERROR writing to socket");*/
    	     }
-	 }
-	 else
-	 {
-		 n = write(newsockfd,"Good Buy!",strlen(answer)-1);
-		 if (n < 0)
-		     error("ERROR writing to socket");
-		 close(newsockfd);
-	 }
-
+    // } while(is_auntentity_ok != 1);
      while(1)
      {
     	 bzero(buffer,256);
@@ -286,6 +300,29 @@ int main(int argc, char *argv[])
     	 if (n < 0)
     		 error("ERROR reading from socket");
     	 printf("Here is the message: %s\n",buffer);
+    	 char tempbuf[256];
+    	 bzero(tempbuf,256);
+    	 strncpy(tempbuf,buffer,strlen(buffer)-1);
+    	 printf("%s\n",tempbuf);
+    	 if(strcmp(tempbuf,"end") == 0)
+    	 {
+        	 printf("yes\n");
+        	 n = write(newsockfd,"Good Buy!",255);
+        	 if (n < 0)
+        		 error("ERROR writing to socket");
+        	 FILE *fp;
+        	 int status;
+        	 char path[256];
+        	 bzero(path,256);
+        	 fp = popen("killall client", "r");
+        	 if (fp == NULL)
+        		 error("Failed to execute a command in the terminal\n");
+        	 status = pclose(fp);
+        	 if (status == -1) {
+        		 error("Error with executing of command\n");
+        	 }
+        	 close(newsockfd);
+    	 }
     	 FILE *fp;
     	 int status;
     	 char path[256];
