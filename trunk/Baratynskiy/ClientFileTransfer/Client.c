@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
 	struct hostent *server;
 	long size;
 	int b;
-	char fileName[30],user[30];
+	char fileName[30], user[30];
 	char commandLine[15];
 	char buffer[bufSize];
 	char charSize[bufSize];
@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
 	}
 	port = atoi(argv[2]);
 	printf("User:");
-	scanf("%s",user);
+	scanf("%s", user);
 	sock = socket(AF_INET, SOCK_STREAM, 0);
 	if (sock < 0) {
 		perror("ERROR opening socket");
@@ -160,62 +160,128 @@ int main(int argc, char *argv[]) {
 			write(sock, "ls", 2);
 			bzero(buffer, bufSize);
 			read(sock, buffer, bufSize - 1);
-			while(1){
+			while (1) {
 				bzero(buffer, bufSize);
 				read(sock, buffer, bufSize - 1);
-				if(strcmp(buffer,"&")==0){
+				if (strcmp(buffer, "&") == 0) {
 					break;
 				}
 				printf("%s", buffer);
-				write(sock,"o",1);
+				write(sock, "o", 1);
 			}
 
 		} else if (strcmp(commandLine, "get") == 0) {
 			char filename[30];
 			printf("Get ");
-			scanf("%s",filename);
+			scanf("%s", filename);
 			sock = socket(AF_INET, SOCK_STREAM, 0);
-						if (sock < 0) {
-							perror("ERROR opening socket");
-							exit(1);
-						}
-						server = gethostbyname(argv[1]);
-						if (server == NULL) {
-							fprintf(stderr, "ERROR, no such host\n");
-							exit(0);
-						}
+			if (sock < 0) {
+				perror("ERROR opening socket");
+				exit(1);
+			}
+			server = gethostbyname(argv[1]);
+			if (server == NULL) {
+				fprintf(stderr, "ERROR, no such host\n");
+				exit(0);
+			}
 
-						bzero((char *) &serv_addr, sizeof(serv_addr));
-						serv_addr.sin_family = AF_INET;
+			bzero((char *) &serv_addr, sizeof(serv_addr));
+			serv_addr.sin_family = AF_INET;
 
-						serv_addr.sin_port = htons(port);
+			serv_addr.sin_port = htons(port);
 
-						/* Now connect to the server */
-						if (connect(sock, &serv_addr, sizeof(serv_addr)) < 0) {
-							perror("ERROR connecting");
-							exit(1);
-						}
+			/* Now connect to the server */
+			if (connect(sock, &serv_addr, sizeof(serv_addr)) < 0) {
+				perror("ERROR connecting");
+				exit(1);
+			}
 
-						write(sock, "get", 3);
-						bzero(buffer, bufSize);
-						read(sock, buffer, bufSize - 1);
-						write(sock,filename,sizeof(filename));
-						FILE *f = fopen(filename,"ab");
-						bzero(buffer, bufSize);
-						read(sock, buffer, bufSize - 1);
-						while(1){
-							bzero(buffer,bufSize);
-							read(sock,buffer,bufSize-1);
-							if(strcmp(buffer,"&")==0){
-								fclose(f);
-								break;
-							}
-							else{
-								fprintf(f, "%s", buffer);
-								write(sock,"m",1);
-							}
-						}
+			write(sock, "get", 3);
+			bzero(buffer, bufSize);
+			read(sock, buffer, bufSize - 1);
+			write(sock, filename, sizeof(filename));
+			FILE *f = fopen(filename, "ab");
+			bzero(buffer, bufSize);
+			read(sock, buffer, bufSize - 1);
+			while (1) {
+				bzero(buffer, bufSize);
+				read(sock, buffer, bufSize - 1);
+				if (strcmp(buffer, "&") == 0) {
+					fclose(f);
+					break;
+				} else {
+					fprintf(f, "%s", buffer);
+					write(sock, "m", 1);
+				}
+			}
 
+		} else if (strcmp(commandLine, "mkdir") == 0) {
+			char dirname[30];
+			printf("mkdir ");
+			scanf("%s", dirname);
+			sock = socket(AF_INET, SOCK_STREAM, 0);
+			if (sock < 0) {
+				perror("ERROR opening socket");
+				exit(1);
+			}
+			server = gethostbyname(argv[1]);
+			if (server == NULL) {
+				fprintf(stderr, "ERROR, no such host\n");
+				exit(0);
+			}
+
+			bzero((char *) &serv_addr, sizeof(serv_addr));
+			serv_addr.sin_family = AF_INET;
+
+			serv_addr.sin_port = htons(port);
+
+			/* Now connect to the server */
+			if (connect(sock, &serv_addr, sizeof(serv_addr)) < 0) {
+				perror("ERROR connecting");
+				exit(1);
+			}
+
+			write(sock, "mkdir", 5);
+			bzero(buffer, bufSize);
+			read(sock, buffer, bufSize - 1);
+			write(sock, dirname, sizeof(dirname));
+			bzero(buffer, bufSize);
+			read(sock, buffer, bufSize - 1);
+			bzero(buffer, bufSize);
+
+		} else if (strcmp(commandLine, "cd") == 0) {
+			char dirname[30];
+			printf("cd ");
+			scanf("%s", dirname);
+			sock = socket(AF_INET, SOCK_STREAM, 0);
+			if (sock < 0) {
+				perror("ERROR opening socket");
+				exit(1);
+			}
+			server = gethostbyname(argv[1]);
+			if (server == NULL) {
+				fprintf(stderr, "ERROR, no such host\n");
+				exit(0);
+			}
+
+			bzero((char *) &serv_addr, sizeof(serv_addr));
+			serv_addr.sin_family = AF_INET;
+
+			serv_addr.sin_port = htons(port);
+
+			/* Now connect to the server */
+			if (connect(sock, &serv_addr, sizeof(serv_addr)) < 0) {
+				perror("ERROR connecting");
+				exit(1);
+			}
+
+			write(sock, "cd", 2);
+			bzero(buffer, bufSize);
+			read(sock, buffer, bufSize - 1);
+			write(sock, dirname, sizeof(dirname));
+			bzero(buffer, bufSize);
+			read(sock, buffer, bufSize - 1);
+			bzero(buffer, bufSize);
 		} else if (strcmp(commandLine, "close") == 0) {
 			return 0;
 		}
