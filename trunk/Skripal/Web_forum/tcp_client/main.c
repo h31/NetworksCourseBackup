@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
     struct hostent *server;
     char end;
     char buffer[256];
+    char buffer2[256];
 
     if (argc < 3) {
         fprintf(stderr,"usage %s hostname port\n", argv[0]);
@@ -47,6 +48,7 @@ int main(int argc, char *argv[])
              exit(1);
         }
     printf("%s\n",buffer);
+
     bzero(buffer,256);
 	printf("Print login\n");
     fgets(buffer,255,stdin);
@@ -56,7 +58,12 @@ int main(int argc, char *argv[])
          perror("ERROR writing to socket");
          exit(1);
     }
-     bzero(buffer,256);
+
+    bzero(buffer,256);
+    n = read(sockfd,buffer,255);
+    //printf("----%s----\n",buffer);
+
+    bzero(buffer,256);
 	printf("Print password\n");
     fgets(buffer,255,stdin);
     n = write(sockfd,buffer,strlen(buffer));
@@ -65,31 +72,38 @@ int main(int argc, char *argv[])
          perror("ERROR writing to socket");
          exit(1);
     }
-    int i;
-    while(1){
-    for(i=0;i<10;i++){
-    bzero(buffer,256);
-    n = read(sockfd,buffer,255);
-        if (n < 0)
-        {
-             perror("ERROR reading from socket");
-             exit(1);
-        }
-    //if(strncmp(buffer,"next",4))
-        printf("---%s\n",buffer);
-    //else
-    	//break;
-    }
-    bzero(buffer,256);
-    printf("Ready to new command\n");
-    fgets(buffer,255,stdin);
-    n = write(sockfd,buffer,strlen(buffer));
-    if (n < 0)
+
+    while(1)
     {
-         perror("ERROR writing to socket");
-         exit(1);
+    	bzero(buffer,256);
+    	n = read(sockfd,buffer,255);
+    	if((strncmp(buffer,"next",4)))
+    	{
+    		printf("%s\n",buffer);
+    	}
+
+    	if(!(strncmp(buffer,"next",4)))
+    	{
+			bzero(buffer,256);
+			fgets(buffer,255,stdin);
+			n = write(sockfd,buffer,strlen(buffer));
+			if (n < 0)
+			{
+			   perror("ERROR writing to socket");
+			   exit(1);
+			}
+    	}
+    	else
+    	{
+    		n = write(sockfd,"OK",2);
+    		if (n < 0)
+    		{
+    		   perror("ERROR writing to socket");
+    		   exit(1);
+    		}
+    	}
     }
-    }
+
 }
 
 

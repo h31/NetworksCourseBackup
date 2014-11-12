@@ -74,8 +74,13 @@ int main( int argc, char *argv[] )
     login_func(newsockfd,login);
     while(1)
     {
+    	bzero(buffer,256);
+    	strcpy(buffer,"next\n");
+		n=write(newsockfd,buffer,7);
+    	//printf("next\n");
 		bzero(buffer,256);
 		n = read( newsockfd,buffer,255 );
+		//printf("Buffer :%s\n",buffer);
 		if (n < 0)
 		{
 			perror("ERROR reading from socket");
@@ -229,6 +234,7 @@ void print_topic_names(xmlNode * a_node, char *mess, int newsockfd)
             	strncpy(buf,xmlGetProp(cur_node,"name"),strlen(xmlGetProp(cur_node,"name")));
             	strcat(buf,"\n");
             	n = write(newsockfd,buf,strlen(buf));
+            	n=read(newsockfd,buf,255);
 			}
             if((!xmlStrcmp(cur_node->name,(const xmlChar *)"post")))
             {
@@ -238,6 +244,7 @@ void print_topic_names(xmlNode * a_node, char *mess, int newsockfd)
             	strncat(buf,xmlGetProp(cur_node,"name"),strlen(xmlGetProp(cur_node,"name")));
                 strcat(buf,"\n");
                         	n = write(newsockfd,buf,strlen(buf));
+                        	n=read(newsockfd,buf,255);
             			}
         }
 
@@ -266,6 +273,7 @@ void login_func(int newsockfd,char * log)
 		perror("ERROR reading from socket");
 		exit(1);
 	}
+	n=write(newsockfd,"OK",2);
 	n = read( newsockfd,password,255 );
 	if (n < 0)
 	{
@@ -285,13 +293,13 @@ void login_func(int newsockfd,char * log)
 		root_element = xmlDocGetRootElement(doc);
 		bzero(id,256);
 		login[strlen(login)-1] = 0;
-		login[strlen(login)-1] = 0;
-		password[strlen(password)-1] = 0;
+		//login[strlen(login)-1] = 0;
+		//password[strlen(password)-1] = 0;
 		password[strlen(password)-1] = 0;
 	    search_user(root_element,login,password,id);
 	    if(id[0] == 0)
 	    {
-	    	printf("Invalid login\n Retry write you login and password\n");
+	    	printf("Invalid login --%s-- and password --%s-- \n Retry write you login and password\n");
 	    	login_func(newsockfd,login);
 	    }
 	    else
@@ -460,6 +468,7 @@ void fnp_post_by_id(xmlNode * a_node, char *id,int newsockfd)
 							strcat(buf,"\n");
 							n = write(newsockfd,buf,strlen(buf));
 							//printf("%s\n",xmlGetProp(cur_node,"text"));
+							n=read(newsockfd,buf,255);
 							return;
 						}
 					}
@@ -500,6 +509,7 @@ void fnp_post_name_by_id(xmlNode * a_node, char *id,int newsockfd)
 							strcat(buf,"\n");
 							n = write(newsockfd,buf,strlen(buf));
 							//printf("%s\n",xmlGetProp(cur_node,"text"));
+							n=read(newsockfd,buf,255);
 							return;
 						}
 					}
@@ -557,6 +567,7 @@ void on_off_user(xmlNode * a_node, char *login,int on_off)
 void search_online_user(xmlNode * a_node,int newsockfd)
 {
 	xmlNode *cur_node = NULL;
+	char buf[256];
 			int n;
 
 			for (cur_node = a_node; cur_node; cur_node = cur_node->next)
@@ -567,6 +578,7 @@ void search_online_user(xmlNode * a_node,int newsockfd)
 						if((!xmlStrcmp(xmlGetProp(cur_node,"stat"),(const xmlChar *)"on")))
 						{
 							n = write(newsockfd,xmlGetProp(cur_node,"name"),strlen(xmlGetProp(cur_node,"name")));
+							n=read(newsockfd,buf,255);
 						}
 					}
 			    }
