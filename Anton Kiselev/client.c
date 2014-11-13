@@ -33,6 +33,7 @@ void error(const char *msg)
 
 int main(int argc, char *argv[])
 {
+	int pid = getpid();
 	 int sockfd, portno, n;//Дескриптор сокета
 	 struct sockaddr_in serv_addr;//Адрес сервера
 	 struct hostent *server;//IP-address
@@ -78,6 +79,7 @@ int main(int argc, char *argv[])
     	 bzero(buffer,256);
     	 n = read(sockfd,buffer,255);//Чтение полученного сообщения
     	 printf("%s\n",buffer);
+		 printf("%i\n",strlen(buffer));
     	 if(strcmp(buffer,"Polzovatel' and Parol' neverny!") == 0)
     	 {
     		 is_auntentity_ok = 1;
@@ -86,10 +88,16 @@ int main(int argc, char *argv[])
      is_auntentity_ok = 0;
      //do
      //{
-    	 unsigned int res = HashH37(passbuf);
+     char hashbuf[256];
+     bzero(hashbuf,256);
+     strcat(hashbuf,passbuf);
+     strcat(hashbuf,buffer);
+	 printf("%s\n",hashbuf);
+	 printf("%i\n",strlen(hashbuf));
+    	 unsigned int res = HashH37(hashbuf);
     	 printf("%i\n",res);
     	 bzero(buffer,256);
-    	 memcpy(buffer, (char*)&res, 3);
+    	 sprintf(buffer, "%d", res);
     	 n = write(sockfd,buffer,256);//Отправка сообщения на сервер
     	 if (n < 0)
     		 error("ERROR writing to socket");
@@ -112,6 +120,32 @@ int main(int argc, char *argv[])
 		 n = write(sockfd,buffer,strlen(buffer));//Отправка сообщения на сервер
 		 if (n < 0)
 		     error("ERROR writing to socket");
+		 char tmp[256];
+		 bzero(tmp,256);
+		 strncpy(tmp,buffer,strlen(buffer)-1);
+		 if(strcmp(tmp,"logout") == 0)
+		 {
+			 printf("sovpalo\n");
+        	 FILE *fp;
+        	 int status;
+        	 char path[256];
+        	 bzero(path,256);
+        	 bzero(buffer,256);
+        	 char command[256];
+        	 bzero(command,256);
+        	 strcat(command,"kill -s 9 ");
+        	 char n_str[10];
+        	 bzero(n_str,10);
+        	 sprintf(n_str, "%d", pid);
+        	 strcat(command,n_str);
+        	 fp = popen(command, "r");
+        	 if (fp == NULL)
+        		 error("Failed to execute a command in the terminal\n");
+        	 status = pclose(fp);
+        	 if (status == -1) {
+        		 error("Error with executing of command\n");
+        	 }
+		 }
 		 bzero(buffer,256);
 		 n = read(sockfd,buffer,255);//Чтение полученного сообщения
 		 if (n < 0)
