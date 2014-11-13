@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -56,120 +57,155 @@ int main(int argc, char *argv[]) {
 		}
 		if (buffer[0] == '!') {
 			n = write(newsockfd, "Login", 5);
+			if (n < 0) {
+				perror("ERROR writing to socket");
+				exit(1);
+			}
 			break;
 		}
 		n = write(newsockfd, "ERROR", 5);
+		if (n < 0) {
+			perror("ERROR writing to socket");
+			exit(1);
+		}
 	}
 	//Registration
 	int numberClient;
 	int clientSize = sizeFile(clientFile);
-	struct Client *cNew;
-	struct Client *c = (struct Client*) malloc(
-			clientSize * sizeof(struct Client));
+	struct Client c[50];
 	file = fopen(clientFile, "r");
+	if (file == NULL) {
+		perror("ERROR open file");
+		exit(1);
+	}
 	for (i = 0; fgets(str, sizeof(str), file); i++) {
 		writeSizeClient(&c[i], &str);
 	}
 	fclose(file);
 	char bufferNew[256];
+	numberClient = -1;
 	bzero(buffer, 256);
+	bzero(bufferNew, 256);
 	n = read(newsockfd, buffer, 255);
-	if (strcmp(buffer, "yes\n") == NULL) {
-		char login[256];
-		//Enter new login
-		while (1) {
-			numberClient = -1;
-			bzero(buffer, 256);
-			bzero(bufferNew, 256);
-			n = read(newsockfd, buffer, 255);
-			for (i = 0; i < strlen(buffer) - 1; i++)
-				bufferNew[i] = buffer[i];
-			for (i = 0; i < clientSize; i++) {
-				if (strcmp(bufferNew, c[i].login) == NULL) {
-					numberClient = i;
-					break;
-				}
+	if (n < 0) {
+		perror("ERROR reading from socket");
+		exit(1);
+	}
+	for (i = 0; i < strlen(buffer) - 1; i++)
+		bufferNew[i] = buffer[i];
+	for (i = 0; i < clientSize; i++) {
+		if (strcmp(bufferNew, c[i].login) == NULL) {
+			numberClient = i;
+			result = writeLastResult(&c[numberClient]);
+			n = write(newsockfd, result, strlen(result));
+			if (n < 0) {
+				perror("ERROR writing to socket");
+				exit(1);
 			}
-			if (numberClient == -1) {
-				strcpy(login, bufferNew);
-				n = write(newsockfd, "OK", 2);
-				break;
-			}
-			n = write(newsockfd, "ERROR", 5);
+			break;
 		}
-		//Enter password
-		bzero(buffer, 256);
-		bzero(bufferNew, 256);
-		n = read(newsockfd, buffer, 255);
-		for (i = 0; i < strlen(buffer) - 1; i++)
-			bufferNew[i] = buffer[i];
+	}
+
+	//New client
+	if (numberClient == -1) {
 		clientSize++;
-		//New client
 		struct Client client;
-		new(login, bufferNew, &client);
-		c = (struct Client*) realloc(c, clientSize * sizeof(struct Client));
-		c[clientSize] = client;
-		numberClient=clientSize;
-	}
-	//Enter last login
-	else {
-		while (1) {
-			numberClient = -1;
-			bzero(buffer, 256);
-			bzero(bufferNew, 256);
-			n = read(newsockfd, buffer, 255);
-			for (i = 0; i < strlen(buffer) - 1; i++)
-				bufferNew[i] = buffer[i];
-			for (i = 0; i < clientSize; i++) {
-				if (strcmp(bufferNew, c[i].login) == NULL) {
-					numberClient = i;
-					break;
-				}
-			}
-			if (numberClient != -1) {
-				n = write(newsockfd, "OK", 2);
-				break;
-			}
-			n = write(newsockfd, "ERROR", 5);
-		}
-		//Enter last parol
-		while (1) {
-			bzero(buffer, 256);
-			bzero(bufferNew, 256);
-			n = read(newsockfd, buffer, 255);
-			for (i = 0; i < strlen(buffer) - 1; i++)
-				bufferNew[i] = buffer[i];
-			if (strcmp(bufferNew, c[numberClient].parol) == NULL) {
-				result = writeLastResult(&c[numberClient]);
-				n = write(newsockfd, result, strlen(result));
-				break;
-			}
-			n = write(newsockfd, "ERROR", 5);
+		new(bufferNew, &client);
+		c[clientSize - 1] = client;
+		numberClient = clientSize - 1;
+		n = write(newsockfd, "OK", 2);
+		if (n < 0) {
+			perror("ERROR writing to socket");
+			exit(1);
 		}
 	}
-	//Number test
+	//List of test
 	while (1) {
-		free(name);
 		bzero(buffer, 256);
 		n = read(newsockfd, buffer, 255);
+		if (n < 0) {
+			perror("ERROR reading from socket");
+			exit(1);
+		}
+		if (buffer[0] == '!')
+			break;
+		n = write(newsockfd, "ERROR", 5);
+		if (n < 0) {
+			perror("ERROR writing to socket");
+			exit(1);
+		}
+	}
+	char res[60] = "List of tests: ";
+	char s[3];
+	for (i = 1; i < 50; i++) {
+		sprintf(name, "%s%d%s", "/home/user/workspace/server/test/", i, ".txt");
+		if ((file = fopen(name, "r")) != NULL) {
+			sprintf(s, "%d ", i);
+			strcat(res, s);
+			fclose(file);
+		}
+	}
+
+	n = write(newsockfd, res, strlen(res));
+	if (n < 0) {
+		perror("ERROR writing to socket");
+		exit(1);
+	}
+
+//Number test
+	while (1) {
+		bzero(buffer, 256);
+		n = read(newsockfd, buffer, 255);
+		if (n < 0) {
+			perror("ERROR reading from socket");
+			exit(1);
+		}
 		numberTest = buffer[0];
-		name = (char*) malloc(50 * sizeof(char));
 		sprintf(name, "%s%c%s", "/home/user/workspace/server/test/", numberTest,
 				".txt");
 		if ((file = fopen(name, "r")) != NULL) {
 			n = write(newsockfd, "OK", 2);
+			if (n < 0) {
+				perror("ERROR writing to socket");
+				exit(1);
+			}
 			break;
 		}
 		n = write(newsockfd, "ERROR", 5);
+		if (n < 0) {
+			perror("ERROR writing to socket");
+			exit(1);
+		}
 	}
 	int testSize = sizeFile(name);
 	struct Line x[testSize];
 	file = fopen(name, "r");
+	if (file == NULL) {
+		perror("ERROR open file");
+		exit(1);
+	}
 	for (i = 0; fgets(str, sizeof(str), file); i++) {
 		writeSize(&x[i], &str);
+	}
+	fclose(file);
+
+	for (i = 0; i < testSize; i++) {
+		while (1) {
+			bzero(buffer, 256);
+			n = read(newsockfd, buffer, 255);
+			if (n < 0) {
+				perror("ERROR reading from socket");
+				exit(1);
+			}
+			if (buffer[0] == '!')
+				break;
+			n = write(newsockfd, "ERROR", 5);
+			if (n < 0) {
+				perror("ERROR writing to socket");
+				exit(1);
+			}
 		}
-fclose(file);
-		for (i = 0; i<testSize; i++) {
+
 		char *stringOut = writeToClient(&x[i]);
 		n = write(newsockfd, stringOut, strlen(stringOut));
 		bzero(buffer, 256);
@@ -181,27 +217,40 @@ fclose(file);
 		printf("Answer: %s\n", buffer);
 		if (buffer[0] == x[i].trueAnswer) {
 			n = write(newsockfd, "Right\n", 6);
+			if (n < 0) {
+				perror("ERROR writing to socket");
+				exit(1);
+			}
 			numberTrueAnswer = numberTrueAnswer + 1;
 		} else
 			n = write(newsockfd, "Wrong\n", 6);
-	}
-	newResult(&c[numberClient],1,testSize,numberTrueAnswer);
-	for (i = 0; i < clientSize; i++) {
-		registration(&c[i],1);
+		if (n < 0) {
+			perror("ERROR writing to socket");
+			exit(1);
+		}
 	}
 	free(name);
 	name = (char*) malloc(100 * sizeof(char));
-	sprintf(name, "%s%d\n%s%d!\n", "Number of question ", testSize,
+	sprintf(name, "%s%d\n%s%d!", "Number of question ", testSize,
 			"Number of true answer is ", numberTrueAnswer);
 	n = write(newsockfd, name, strlen(name));
 	if (n < 0) {
 		perror("ERROR writing to socket");
 		exit(1);
 	}
+	newResult(&c[numberClient], numberTest, testSize, numberTrueAnswer);
+	file = fopen("/home/user/workspace/server/registration.txt", "w");
+	if (file == NULL) {
+		perror("ERROR open file");
+		exit(1);
+	}
+	for (i = 0; i < clientSize; i++) {
+		fprintf(file, "%d#%d#%d#%s/\n", c[i].numberTest, c[i].sizeQuestion,
+				c[i].sizeTrueAnswer, c[i].login);
+	}
+	fclose(file);
 	for (i = 0; i < testSize; i++)
 		freeLine(&x[i]);
 	free(name);
-	for (i = 0; i < clientSize; i++)
-		freeClient(&c[i]);
 	return 0;
 }
