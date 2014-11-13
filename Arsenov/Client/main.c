@@ -7,6 +7,8 @@
 int main(int argc, char *argv[])
 {
     int sockfd, portno, n;
+    int i;
+    int end_of_recv;
     struct sockaddr_in serv_addr;
     struct hostent *server;
 
@@ -47,6 +49,7 @@ int main(int argc, char *argv[])
         /* Now ask for a message from the user, this message
         * will be read by server
         */
+    	printf(">> ");
         bzero(buffer,256);
         fgets(buffer,255,stdin);
         /* Send message to the server */
@@ -57,14 +60,23 @@ int main(int argc, char *argv[])
              exit(1);
         }
         /* Now read server response */
-        bzero(buffer,256);
-        n = read(sockfd,buffer,255);
-        if (n < 0)
-        {
-             perror("ERROR reading from socket");
-             exit(1);
-        }
-        printf("%s\n",buffer);
+        end_of_recv = 0;
+	do {
+		bzero(buffer,256);
+		n = read(sockfd,buffer,255);
+		for (i = 0; i < strlen(buffer); i++) {
+			if (buffer[i] == 4) {
+				buffer[i] = 0;
+				end_of_recv = 1;
+			}
+		}
+		if (n < 0)
+		{
+			perror("ERROR reading from socket");
+			exit(1);
+		}
+		printf("%s",buffer);
+	} while (!end_of_recv);
     }
 
     return 0;
