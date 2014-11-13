@@ -5,26 +5,30 @@
 #include <netinet/in.h>
 #include <string.h>
 #include <math.h>
+#include <gmp.h>
+
 
 long int factorial(int x) {
     return !x ? 1 : x * factorial(x - 1);
 }
 
-void calculation(char *buffer, char *ans) {
+void calculation(char *buffer, char *ans, int n, int newsockfd) {
 	int i, j;
-	long int n;
+	long int f;
+	mpz_t f_g;
 	double a, b, k, answer;
 	char temp1[30],temp2[30];
 	int size;
 
-	for (i = 0; i < 255; i++) {
+	for (i = 1; i < 255; i++) {
 		//factorial
 		if (buffer[i] == '!'){
 			strncpy(temp1, buffer, i);
-			n = atoi(temp1);
-			printf("n = %d\n", n);
+			f = atoi(temp1);
+			printf("f = %d\n", f);
 			break;
 		}
+		//sqrt
 		if (buffer[i] == '#'){
 			strncpy(temp1, buffer, i);
 			a = atof(temp1);
@@ -39,7 +43,7 @@ void calculation(char *buffer, char *ans) {
 				break;
 		}
 	}
-
+	//end expression
 	for (j = 0; j < 255; j++) {
 		if (buffer[j] == '=') {
 			strncpy(temp2, buffer + i + 1, j - i - 1);
@@ -51,30 +55,55 @@ void calculation(char *buffer, char *ans) {
 
 	if (buffer[i] == '+'){
 		answer = a+b;
+		sprintf(ans, "Answer = %f\n", answer);
+		write(newsockfd, ans, strlen(ans));
+		printf("answer = %f\n", answer);
 	}
 	if (buffer[i] == '-'){
 		answer = a-b;
+		sprintf(ans, "Answer = %f\n", answer);
+		write(newsockfd, ans, strlen(ans));
+		printf("answer = %f\n", answer);
 	}
 	if (buffer[i] == '*'){
 			answer = a*b;
+			//mpz_mul (answer,a,b);
+			sprintf(ans, "Answer = %f\n", answer);
+			write(newsockfd, ans, strlen(ans));
+			printf("answer = %f\n", answer);
 	}
 	if (buffer[i] == '/'){
 			answer = a/b;
+			sprintf(ans, "Answer = %f\n", answer);
+			write(newsockfd, ans, strlen(ans));
+			printf("answer = %f\n", answer);
 	}
 	if (buffer[i] == '#'){
-			//if (k>0)
+			if (a<0){
+				write(newsockfd,"Error, input Root >= 0 !\n",strlen("Error, input Root > 0 !\n"));
+			}
+			else {
+				answer = sqrt(a);
+				sprintf(ans, "Answer = %f\n", answer);
+				write(newsockfd, ans, strlen(ans));
+				printf("sqrt = %f\n", a);
 
-			k=a;
-			answer = sqrt(k);
-			printf("sqrt = %f\n", k);
+			}
 	}
 	if (buffer[i] == '!'){
-		answer = factorial(n);
-		printf("factorial = %d\n", factorial(n) );
-		//sprintf(ans, "Answer = %f\n", factorial(a));
+		if (f<=0){
+			write(newsockfd,"Error, input Factorial > 0 !\n",strlen("Error, input Factorial > 0 !\n"));
+		}
+		else {
+			answer = factorial(f);
+			sprintf(ans, "Answer = %f\n", answer);
+			write(newsockfd, ans, strlen(ans));
+			printf("factorial = %d\n", factorial(f));
+		}
 	}
-	sprintf(ans, "Answer = %f\n", answer);
-	printf("answer = %f\n", answer);
+	//sprintf(ans, "Answer = %f\n", answer);
+	//write(newsockfd, ans, strlen(ans));
+	//printf("answer = %f\n", answer);
 }
 
 int main(int argc, char *argv[]) {
@@ -127,8 +156,8 @@ int main(int argc, char *argv[]) {
 	}
 
 	printf("Received: %s\n", buffer);
-	calculation(buffer, ans);
-	n = write(newsockfd, ans, strlen(ans));
+	calculation(buffer, ans, n, newsockfd);
+	//n = write(newsockfd, ans, strlen(ans));
 
 	/* Write a response to the client */
 	 if (n < 0)
