@@ -18,18 +18,80 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
+#include <limits.h>
 
 #define N 80
 
+//Структура для хранения имен пользователей, паролей, команд, текущих директорий
 struct UserFields{
 	char username[256];
 	char password[256];
 	char commands[256];
+	char currentDir[256];
 };
+//Массив структур пользователей
 struct ArrFields{
 	int size;
 	struct UserFields* arr;
 };
+//Возвращает текущий каталог
+char* retCurrentDirectory()
+{
+	char PathName[PATH_MAX];
+    char PN;
+    PN = getwd (PathName);
+    if (PN == NULL)
+    	printf ("Ошибка определения пути");
+    else
+    	printf ("Текущая директория: %s\n",PathName);
+    return PathName;
+}
+//Сменить текущюю директорию
+void chDirectory(struct ArrFields fields, char newdir[256], char username[256])
+{
+	int i;
+	for(i = 0; i < fields.size; i++)
+	{
+		printf("%s\n",username);
+		printf("%s\n",fields.arr[i].username);
+		printf("\n");
+		if(strcmp(fields.arr[i].username,username) == 0)
+		{
+			bzero(fields.arr[i].currentDir,256);
+	   		strncpy(fields.arr[i].currentDir,newdir,strlen(newdir));
+		}
+	}
+	FILE *file;
+	file = fopen("usersandpasswords.txt", "w");
+	for(i = 0; i < fields.size; i++)
+	{
+		fprintf(file, "%s", fields.arr[i].username);
+		fprintf(file, "%s", "\n");
+		fprintf(file, "%s", fields.arr[i].password);
+		fprintf(file, "%s", "\n");
+		fprintf(file, "%s", fields.arr[i].commands);
+		fprintf(file, "%s", "\n");
+		fprintf(file, "%s", fields.arr[i].currentDir);
+		fprintf(file, "%s", "\n");
+	}
+	fclose(file);
+}
+//Создать сообщение из списка имен пользователей и директорий
+char* createWhoMessage(struct ArrFields fields)
+{
+	char whomessage[1024];
+	bzero(whomessage,1024);
+	int i;
+	printf("%i\n",fields.size);
+	for(i = 0; i < fields.size; i++)
+	{
+		strcat(whomessage,fields.arr[i].username);
+		strcat(whomessage,"\n");
+		strcat(whomessage,fields.arr[i].currentDir);
+		strcat(whomessage,"\n");
+	}
+	return whomessage;
+}
 //Хеш-функция, используемая для проверки данных пользователя и пароля
 unsigned int HashH37(const char * str)
 {
@@ -49,6 +111,24 @@ void killclient()
 {
     system("killall client");
     exit(1);
+}
+//Добавить нового пользователя
+void addNewUser(char* username, char* password)
+{
+	FILE *fp;
+	int status;
+	char command[1024];
+	bzero(command,1024);
+	strcat(command,"echo '");
+	strcat(command,username);
+	strcat(command,"\n");
+	strcat(command,password);
+	strcat(command,"\n");
+	strcat(command,"cd ls who kill logout\n");
+	strcat(command,retCurrentDirectory());
+	strcat(command,"' >> usersandpasswords.txt");
+	fp = popen(command, "r");
+	status = pclose(fp);
 }
 //Считывание содержимого файла пользователей и паролей
 struct ArrFields readFile()
@@ -90,14 +170,14 @@ struct ArrFields readFile()
 	      {
 	         //Если файл закончился, выводим сообщение о завершении
 	         //чтения и выходим из бесконечного цикла
-	         printf ("\nЧтение файла закончено\n");
+	         //printf ("\nЧтение файла закончено\n");
 	         break;
 	      }
 	      else
 	      {
 	         //Если при чтении произошла ошибка, выводим сообщение
 	         //об ошибке и выходим из бесконечного цикла
-	         printf ("\nОшибка чтения из файла\n");
+	        // printf ("\nОшибка чтения из файла\n");
 	         break;
 	      }
 	   }
@@ -113,8 +193,12 @@ struct ArrFields readFile()
 	   		  strncpy(usr.commands,str,strlen(str));
 	   		  usr.commands[strlen(str)-1] = '\0';
 	   	  }
+	   else if(strcount == 3){
+		   	  strncpy(usr.currentDir,str,strlen(str));
+		   	  usr.currentDir[strlen(str)-1] = '\0';
+	   }
 	   strcount = strcount+1;
-	   if(strcount == 3)
+	   if(strcount == 4)
 	   {
 		   strcount = 0;
 		   arr[size] = usr;
@@ -129,89 +213,18 @@ struct ArrFields readFile()
 	else printf ("выполнено\n");
 	return arrfields;
 }
-//Вызов и выполнение команд терминала
-/*char* callterminal(char* command)
-{
-    FILE *fp;
-    int status;
-    char path[256];
-    char buffer[256];
-    char answer[256] = "";
-    fp = popen(command, "r");
-    if (fp == NULL)
-		 error("Failed to execute a command in the terminal\n");
-    while (fgets(path, 256, fp) != NULL)
-    {
-		 printf("%s", path);
-		 bzero(buffer,256);
-		 strncpy(buffer,path,strlen(path)-1);
-		 strcat(answer,buffer);
-    }
-    status = pclose(fp);
-    if (status == -1) {
-        return "Error with executing of command";
-    } else {
-        return &answer;
-    }
-}*/
-//Для выполнения клиентских команд
-void doprocessing (int socket)
-{
-    int n;
-    char buffer[256];
-    bzero(buffer,256);
-    n = read(socket,buffer,255);
-    printf("%s\n",buffer);
-    if (n < 0)
-    {
-        perror("ERROR reading from socket");
-        exit(1);
-    }
-    printf("Here is the message: %s\n",buffer);
-	char answer[256];
-	//strcpy(answer,callterminal(buffer));
-    n = write(socket,answer,18);
-    if (n < 0)
-    {
-        perror("ERROR writing to socket");
-        exit(1);
-    }
-}
 //Запуск сервера
-int main(int argc, char *argv[])
+void * thread_func(int newsockfd)
 {
-     int sockfd, newsockfd, portno;
-     socklen_t clilen;
-     pid_t pid;
-     char answer[1024];
-     char buffer[256];
-     struct sockaddr_in serv_addr, cli_addr;
-     int n;
-     if (argc < 2) {//указать порт
-         fprintf(stderr,"ERROR, no port provided\n");
-         exit(1);
-     }
-     sockfd = socket(AF_INET, SOCK_STREAM, 0);
-     if (sockfd < 0)
-        error("ERROR opening socket");
-     bzero((char *) &serv_addr, sizeof(serv_addr));
-     portno = atoi(argv[1]);
-     serv_addr.sin_family = AF_INET;
-     serv_addr.sin_addr.s_addr = INADDR_ANY;
-     serv_addr.sin_port = htons(portno);
-     if (bind(sockfd, (struct sockaddr *) &serv_addr,//привязка сервера к ресурсам
-              sizeof(serv_addr)) < 0)
-              error("ERROR on binding");
-     listen(sockfd,5);
-     clilen = sizeof(cli_addr);
-     newsockfd = accept(sockfd,//Открытие нового сокета
-                 (struct sockaddr *) &cli_addr,
-                 &clilen);
-     if (newsockfd < 0)
-          error("ERROR on accept");
-     /*Аутентификация пользователя*/
-     int is_auntentity_ok = 0;
-     char savebuf[256];
+	char hashsend[256] = "1q2w3e4r";//Случайная последовательность
+	socklen_t clilen;
+	pid_t pid;
+	char answer[1024];
+	char buffer[256];
+	int n;
+    //Аутентификация пользователя
+    int is_auntentity_ok = 0;
+    char savebuf[256];
      //do
     // {
     	 n = write(newsockfd,"Please, give me your username and password via blank:",255);
@@ -248,7 +261,9 @@ int main(int argc, char *argv[])
     	 if(yes == 1)
     	 {
     		 is_auntentity_ok = 1;
-    		 n = write(newsockfd,"Ok!",strlen(answer)-1);
+    		 printf("%s\n",hashsend);
+    		 printf("%i\n",strlen(hashsend));
+    		 n = write(newsockfd,hashsend,strlen(hashsend));
     		 if (n < 0)
     		     error("ERROR writing to socket");
     	 }
@@ -264,32 +279,42 @@ int main(int argc, char *argv[])
      is_auntentity_ok = 0;
 	// do
 	// {
-		 unsigned int res = HashH37(savebuf);//Вычисление хэш-функции
+     	 char hashbuf[256];
+     	 bzero(hashbuf,256);
+     	 strcat(hashbuf,savebuf);
+     	 strcat(hashbuf,hashsend);
+		 printf("%s\n",hashbuf);
+		 printf("%i\n",strlen(hashbuf));
+		 unsigned int res = HashH37(hashbuf);//Вычисление хэш-функции
 		 printf("%i\n",res);
     	 char ans [256];
     	 bzero(ans,256);
          bzero(buffer,256);
-    	 memcpy(buffer, (char*)&res, 3);
+    	 sprintf(buffer, "%d", res);
     	 strcpy(ans,buffer);
-	     printf("%s\n",buffer);
+	     printf("Подсчитанный хеш: %s\n",ans);
+	     printf("Подсчитанный хеш длина: %i\n",strlen(ans));
     	 bzero(buffer,256);
 	     n = read(newsockfd,buffer,256);
-	     printf("%s\n",buffer);
+	     printf("Полученный хеш: %s\n",buffer);
+	     printf("Полученный хеш длина: %i\n",strlen(buffer));
 	     if (n < 0)
 		     error("ERROR reading from socket");
 	     if (strcmp(ans,buffer) == 0)
 	     {
-    	     n = write(newsockfd,"Hello!",strlen(answer)-1);
+		     printf("Hash ok\n");
+    	     n = write(newsockfd,"Hello!",255);
     	     if (n < 0)
     		     error("ERROR writing to socket");
     	     is_auntentity_ok = 1;
    	     }
 	     else
 	     {
-	    	 killclient();
-    	     /*n = write(newsockfd,"Hash neveren",strlen(answer)-1);
+		     printf("Hash not ok\n");
+    	     n = write(newsockfd,"Hash neveren",255);
     	     if (n < 0)
-    		     error("ERROR writing to socket");*/
+    		     error("ERROR writing to socket");
+	    	 killclient();
    	     }
     // } while(is_auntentity_ok != 1);
      while(1)
@@ -304,9 +329,9 @@ int main(int argc, char *argv[])
     	 bzero(tempbuf,256);
     	 strncpy(tempbuf,buffer,strlen(buffer)-1);
     	 printf("%s\n",tempbuf);
-    	 if(strcmp(tempbuf,"end") == 0)
+    	 if(strcmp(tempbuf,"logout") == 0)
     	 {
-        	 printf("yes\n");
+        	 printf("logout yes\n");
         	 n = write(newsockfd,"Good Buy!",255);
         	 if (n < 0)
         		 error("ERROR writing to socket");
@@ -314,38 +339,106 @@ int main(int argc, char *argv[])
         	 int status;
         	 char path[256];
         	 bzero(path,256);
-        	 fp = popen("killall client", "r");
-        	 if (fp == NULL)
-        		 error("Failed to execute a command in the terminal\n");
-        	 status = pclose(fp);
-        	 if (status == -1) {
-        		 error("Error with executing of command\n");
-        	 }
         	 close(newsockfd);
     	 }
-    	 FILE *fp;
-    	 int status;
-    	 char path[256];
-    	 bzero(path,256);
-    	 fp = popen(buffer, "r");
-    	 if (fp == NULL)
-    		 error("Failed to execute a command in the terminal\n");
-    	 while (fgets(path, 256, fp) != NULL)
+    	 else if(strcmp(tempbuf,"who") == 0)
     	 {
-    		 printf("%s", path);
-    		 bzero(buffer,256);
-    		 strncpy(buffer,path,strlen(path)-1);
-    		 strcat(answer,buffer);
+        	 printf("who yes\n");
+        	 char whomessage[1024];
+        	 bzero(whomessage,1024);
+        	 chDirectory(arrfields, "/home/anton/workspace/tcpproj", "Anton");
+        	 strcpy(whomessage,createWhoMessage(arrfields));
+        	 n = write(newsockfd,whomessage,255);
+        	 if (n < 0)
+        		 error("ERROR writing to socket");
     	 }
-    	 n = write(newsockfd,answer,strlen(answer)-1);
-    	 if (n < 0)
-    		 error("ERROR writing to socket");
-    	 status = pclose(fp);
-    	 if (status == -1) {
-    		 error("Error with executing of command\n");
+
+    	 else
+    	 {
+    		 printf("%s\n",buffer);
+
+    		 FILE *fp;
+    		 int status;
+    		 char path[256];
+    		 bzero(path,256);
+    		 fp = popen(buffer, "r");
+    		 if (fp == NULL)
+    			 error("Failed to execute a command in the terminal\n");
+    		 char prov[256];
+    		 bzero(prov,256);
+    		 strncpy(prov,buffer,strlen(buffer)-1);
+    		 if((strcmp(prov,"cd") == 0) || (strcmp(prov,"cd ..") == 0))
+    		 {
+    			 printf("cdok");
+    			 strcpy(answer,"cdok");
+    		 }
+    		 else {
+    			 while (fgets(path, 256, fp) != NULL)
+    			 {
+    				 printf("%s", path);
+    				 bzero(buffer,256);
+    				 strncpy(buffer,path,strlen(path));
+    				 strcat(answer,buffer);
+    			 }
+    		 }
+    		 n = write(newsockfd,answer,strlen(answer));
+    		 if (n < 0)
+    			 error("ERROR writing to socket");
+    		 status = pclose(fp);
+    		 if (status == -1) {
+    			 error("Error with executing of command\n");
+    		 }
     	 }
      }
      close(newsockfd);
-     close(sockfd);
-     return 0;
+}
+
+int main(int argc, char * argv[])
+{
+	int id1, result;
+	pthread_t thread;
+
+	int sockfd, newsockfd, portno;
+	char hashsend[256] = "1q2w3e4r";
+	socklen_t clilen;
+	pid_t pid;
+	char answer[1024];
+	char buffer[256];
+	struct sockaddr_in serv_addr, cli_addr;
+	int n;
+	if (argc < 2) {//указать порт
+		fprintf(stderr,"ERROR, no port provided\n");
+		exit(1);
+	}
+	sockfd = socket(AF_INET, SOCK_STREAM, 0);
+	if (sockfd < 0)
+		error("ERROR opening socket");
+	bzero((char *) &serv_addr, sizeof(serv_addr));
+	portno = atoi(argv[1]);
+	serv_addr.sin_family = AF_INET;
+	serv_addr.sin_addr.s_addr = INADDR_ANY;
+	serv_addr.sin_port = htons(portno);
+	if (bind(sockfd, (struct sockaddr *) &serv_addr,//привязка сервера к ресурсам
+         sizeof(serv_addr)) < 0)
+         error("ERROR on binding");
+	listen(sockfd,5);
+	clilen = sizeof(cli_addr);
+
+	while(1)
+	{
+		newsockfd = accept(sockfd,//Открытие нового сокета
+				(struct sockaddr *) &cli_addr,
+            &clilen);
+		if (newsockfd < 0)
+			error("ERROR on accept");
+
+		result = pthread_create(&thread, NULL, thread_func, newsockfd);
+		if (result != 0)
+		{
+			perror("Creating the first thread");
+			return EXIT_FAILURE;
+		}
+	}
+    //close(sockfd);
+    return 0;
 }
