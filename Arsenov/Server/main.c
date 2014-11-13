@@ -26,11 +26,14 @@ void my_write(int conn_socket, const void* send_buff, size_t size) {
         perror("ERROR writing to socket");
         exit(1);
     }
+    const int end_of_transmission = 4;
+    write(conn_socket, &end_of_transmission, sizeof(end_of_transmission));
 }
 
 void show(int items_num, struct item* items, int conn_socket) {
     unsigned int i;
     char send_buff[256];
+    int n;
 
     for (i=0; i < items_num; i++) {
         snprintf(send_buff, 255, "%d %s %d %d\n", //
@@ -39,8 +42,15 @@ void show(int items_num, struct item* items, int conn_socket) {
                 items[i].price, //
                 items[i].count); //
 
-        my_write(conn_socket,send_buff,strlen(send_buff));
+        n = write(conn_socket, send_buff, strlen(send_buff));
+        if (n < 0)
+        {
+            perror("ERROR writing to socket");
+            exit(1);
+        }
     }
+    const int end_of_transmission = 4;
+    write(conn_socket, &end_of_transmission, sizeof(end_of_transmission));
 }
 
 int main( int argc, char *argv[] )
@@ -74,7 +84,7 @@ int main( int argc, char *argv[] )
     }
     /* Initialize socket structure */
     bzero((char *) &serv_addr, sizeof(serv_addr));
-    portno = 5002;
+    portno = 5007;
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_addr.s_addr = INADDR_ANY;
     serv_addr.sin_port = htons(portno);
