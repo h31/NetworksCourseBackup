@@ -50,33 +50,15 @@ int main(int argc, char *argv[])
     * will be read by server
     */
 
-    n=read (sockfd,buffer,255);
-    printf ("%s\n",buffer);
+
+    bzero (buffer,256);
+    scanf ("%s", buffer);
+    n=write (sockfd, buffer, strlen(buffer));
     bzero (buffer,256);
     n=read (sockfd, buffer,255);
     printf ("%s\n",buffer);
 
-  //  printf("Please enter the message: \n");
-    bzero(buffer,256);
-    scanf("%s", buffer);
- //   printf("%s - my bet\n", buffer);
-    n=write (sockfd, buffer, strlen(buffer));
-   // fgets(buffer,255,stdin);
-    bzero(buffer,256);
-    n=read (sockfd, buffer,256);
-    printf ("%s\n", buffer);
-    bzero(buffer, 256);
-    scanf ("%s", buffer);
-    n= write (sockfd, buffer, strlen(buffer));
-    bzero (buffer, 256);
-    n= read (sockfd, buffer, strlen (buffer));
-    printf ("%s", buffer);
-    bzero (buffer, 256);
-    scanf ("%s", buffer);
-    n= write (sockfd, buffer, strlen (buffer));
 
-    /* Send message to the server */
-    n = write(sockfd,buffer,strlen(buffer));
     if (n < 0)
     {
          perror("ERROR writing to socket");
@@ -90,6 +72,16 @@ int main(int argc, char *argv[])
          perror("ERROR reading from socket");
          exit(1);
     }
+    printf("%s\n",buffer);
+    bzero(buffer,256);
+    scanf ("%s", buffer);
+    n=write (sockfd, buffer, strlen(buffer));
+    //start from croup
+    bzero(buffer,256);
+        scanf ("%s", buffer);
+        n=write (sockfd, buffer, strlen(buffer));
+        bzero(buffer,256);
+    n = read(sockfd,buffer,255);
     printf("%s\n",buffer);
     return 0;
 }
