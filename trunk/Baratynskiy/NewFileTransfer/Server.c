@@ -15,6 +15,11 @@
 
 #define bufSize 1024
 
+struct SockParams{
+	int sock, bufsocket, port, clilen;
+	struct sockaddr_in serverAddr, clientAddr;
+};
+
 int doprocessing(int sock, FILE *f) {
 	char buffer[bufSize];
 	bzero(buffer, bufSize);
@@ -140,7 +145,7 @@ void getUser(int sock, int bufsocket, int port, int clilen,
 	printf("%d\n",bufsocket);
 	bzero(buffer, bufSize);
 	read(bufsocket, user, sizeof(user));
-	//puts(user);
+	chdir("/home/user/workspace/NewFileTransfer");
 	int ch = chdir(user);
 	if (ch == -1) {
 		mkdir(user, S_IRWXU);
@@ -150,43 +155,49 @@ void getUser(int sock, int bufsocket, int port, int clilen,
 	write(bufsocket, "I got user name", 15);
 }
 
-void startThread(int sock, int port, int clilen,
-		struct sockaddr_in serverAddr, struct sockaddr_in clientAddr){
-	int bufsocket,fs;
+void startThread(void *in){
+	struct SockParams *sp = (struct SockParams*) in;
+	int fs;
 	char buffer[bufSize];
 	char *name = buffer;
-	bufsocket = accept(sock,
-	                (struct sockaddr *) &clientAddr, &clilen);
-	getUser(sock, bufsocket, port, clilen, serverAddr, clientAddr);
+	puts("Thread was created");
+	getUser(sp->sock, sp->bufsocket, sp->port, sp->clilen, sp->serverAddr, sp->clientAddr);
 		while (1) {
-			listenToClients(sock, bufsocket, clilen, clientAddr, name, fs);
+			listenToClients(sp->sock, sp->bufsocket, sp->clilen, sp->clientAddr, name, fs);
 		}
 
 }
 
 int main(int argc, char *argv[]) {
-	//pthread_t thread;
-	int sock, port, clilen;
+	pthread_t threads[5],mainthread;
+	int i = 0;
+	int j;
+	struct SockParams sp;
 	const int on = 1;
-	struct sockaddr_in serverAddr, clientAddr;
-	sock = socket(AF_INET, SOCK_STREAM, 0);
-	if (sock < 0) {
+	sp.sock = socket(AF_INET, SOCK_STREAM, 0);
+	if (sp.sock < 0) {
 		perror("ERROR opening socket");
 	}
-	bzero((char *) &serverAddr, sizeof(serverAddr));
-	port = 7777;
-	serverAddr.sin_family = AF_INET;
-	serverAddr.sin_addr.s_addr = INADDR_ANY;
-	serverAddr.sin_port = htons(port);
-	setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
-	if (bind(sock, (struct sockaddr *) &serverAddr, sizeof(serverAddr)) < 0) {
+	bzero((char *) &sp.serverAddr, sizeof(sp.serverAddr));
+	sp.port = 7777;
+	sp.serverAddr.sin_family = AF_INET;
+	sp.serverAddr.sin_addr.s_addr = INADDR_ANY;
+	sp.serverAddr.sin_port = htons(sp.port);
+	setsockopt(sp.sock, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
+	if (bind(sp.sock, (struct sockaddr *) &sp.serverAddr, sizeof(sp.serverAddr)) < 0) {
 		perror("ERROR on binding");
 	}
-	listen(sock, 5);
-	clilen = sizeof(clientAddr);
-	startThread(sock, port, clilen, serverAddr, clientAddr);
-	//pthread_create(&thread,NULL,startThread,sock, port, clilen, serverAddr, clientAddr);
-	//pthread_join(thread,NULL);
-	//startThread();
+//	listen(sp.sock, 5);
+//	sp.clilen = sizeof(sp.clientAddr);
+	while(1){
+		listen(sp.sock, 5);
+		sp.clilen = sizeof(sp.clientAddr);
+		sp.bufsocket = accept(sp.sock,(struct sockaddr *) &sp.clientAddr, &sp.clilen);
+		pthread_create(&threads[i],NULL,startThread,(void*)&sp);
+		i++;
+	}
+	for (j = 0; j < 5;j++){
+		pthread_join(threads[j],NULL);
+	}
 	return 0;
 }
