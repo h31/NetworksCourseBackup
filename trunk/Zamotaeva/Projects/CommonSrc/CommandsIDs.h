@@ -4,25 +4,30 @@ class CommandsIDs
 public:
     enum IDs
 	{
-		ECHO_REQUEST, //client -- sprash servera ti tut  0 
-		ECHO_ANSWER, //server otvech  1
+        ECHO_REQUEST,
+        ECHO_ANSWER,
 
-		LOGIN_REQUEST, //client zalog hochet	//Yulia
-		LOGIN_ANSWER, //server otv - uspesno	//1 0 
+        LOGIN_REQUEST,
+        LOGIN_ANSWER,
 
-		INIT_IP_REQUEST, //client hochet otprv ip svoi	//10.200.2.1
-		INIT_IP_ANSWER,									//1
+        USERS_REQUEST,
+        USERS_ANSWER,
 
-		CLIENT_IP_REQUEST, //client hochet sprosit u servera ip druga	//Petya
-		CLIENT_IP_ANSWER,												//10.200.1.1 / NO_FOUND polz
+        BAD_PACKAGE_ANSWER,
+        UNAUTHORIZED_ACTION,// user not login
 
-		BAD_PACKAGE_ANSWER, //
+        MESSAGE_SEND,
+        MESSAGE_INCORRECT_NAME,
+        MESSAGE_SUCCESS_SENDED,
+        MESSAGE_USER_OFFLINE,
+        MESSAGE_DELIVERY,
 
-		MESSAGE_SEND, //client hochet otprav mes komy to cherez server	//Petya ### Hello
-		MESSAGE_INCOORECT_NAME,//nekorrect name
-		MESSAGE_REC, //server otpr mes poluch		//Hello
+        ADVERT_MESSAGE,
 
-        SPAM_MESSAGE	//	//visit our site
+        ALIVE_REQUEST, //server asks client about life
+        ALIVE_ANSWER, //client wants to be alive
+
+        QUIT_REQUEST, //client want to disconnect
 
 
     };

@@ -10,8 +10,8 @@ int main(int argc, _TCHAR* argv[])
 	ApplicationOptions::setServerAppOptions();
 	MyServer* server = new MyServer();
 	server->SetupLibrary();
-	server->SetServerConnectionsParams();
-	bool isCreateSocketSuccess = server->CreateDefaultSocket();
+    server->SetDefaultServerConnectionsParams();
+    bool isCreateSocketSuccess = server->CreateListenSocket();
 	if(isCreateSocketSuccess == false)
 	{
 		MyLogger::WriteFailNetworkEvent("Create socket");

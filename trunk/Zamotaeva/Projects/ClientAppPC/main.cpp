@@ -19,7 +19,6 @@ int main(int argc, _TCHAR* argv[])
 
 	printf("input your name\n");
 	scanf("%255s",login);
-	
 	printf("input message:\n");
 	scanf("%255s",message);
 

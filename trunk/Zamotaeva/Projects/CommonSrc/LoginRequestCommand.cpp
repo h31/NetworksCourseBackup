@@ -9,7 +9,7 @@ LoginRequestCommand::LoginRequestCommand(std::string Login):Command(CommandsIDs:
 char* LoginRequestCommand::GenerateData()
 {
     char * answer = new char[Login.size()];
-	for(int i= 0;i<Login.size();i++)
+    for(unsigned int i= 0;i<Login.size();i++)
 	{
 		answer[i] = Login[i];
 	}
