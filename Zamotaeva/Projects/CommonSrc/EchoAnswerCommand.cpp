@@ -2,7 +2,7 @@
 #include "EchoAnswerCommand.h"
 
 
-EchoAnswerCommand::EchoAnswerCommand(void): Command(CommandsIDs::ECHO_ANSWER)
+EchoAnswerCommand::EchoAnswerCommand(void): Command(CommandsIDs::ECHO_ANSWER) //command type
 {
 	
 }
@@ -13,7 +13,7 @@ EchoAnswerCommand::~EchoAnswerCommand(void)
 }
 
 
-char* EchoAnswerCommand::GenerateData()
+char* EchoAnswerCommand::GenerateData() //data
 {
     char * answer = new char[1];
     char ans = '1';

@@ -25,17 +25,13 @@ void Command::OutCommand()
 	case CommandsIDs::ECHO_ANSWER:
 		printf("echo answer");
 		break;
-
-	case CommandsIDs::INIT_IP_REQUEST:
-		printf("init ip request");
-		break;
 	case CommandsIDs::LOGIN_REQUEST:
 		printf("login request");
 		break;
 	case CommandsIDs::MESSAGE_SEND:
 		printf("message send");
 		break;
-	case CommandsIDs::MESSAGE_REC:
+    case CommandsIDs::MESSAGE_DELIVERY:
 		printf("message deliver");
 		break;
 

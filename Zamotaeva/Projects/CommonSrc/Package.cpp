@@ -42,7 +42,7 @@ Command Package::Parse(char* inputmessage)
 		c_packtype[i] =inputmessage[shift];
 		shift++;
 	}
-	sscanf(c_packtype,"%d",&i_packtype);
+    sscanf(c_packtype,"%d",&i_packtype); //convert type char-->int ('00' - 0)
 
 
 	//parse package sender
@@ -68,8 +68,8 @@ Command Package::Parse(char* inputmessage)
 	}
 
 
-	//generate command
-	Command command(i_packtype);
+    //generate command - type,data
+    Command command(i_packtype);
     command.data = (char*)c_packdata;
 
 	//destroy pointers
@@ -78,7 +78,7 @@ Command Package::Parse(char* inputmessage)
 	return command;
 }
 
-Package Package::Generate(Command cmd) //nam prichodit command  - preobraaz v package posulat
+Package Package::Generate(Command cmd) //generate package from command
 {
 	this->data_length = cmd.data_len;
 	this->packagesize = Package::DATA_START_POSITION + data_length; //dl package = slujebnoy inf + data
