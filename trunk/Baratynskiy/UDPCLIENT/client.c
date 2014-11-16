@@ -66,6 +66,38 @@ int main(void)
         	sendto(sock, "&", BUFLEN , 0 , (struct sockaddr *) &si_other, slen);
     		recvfrom(sock, message, BUFLEN, 0, (struct sockaddr *) &si_other, &slen);
         }
+        if (strcmp(message,"ls")==0){
+            while (strcmp(message,"&")!=0){
+            	bzero(message,sizeof(message));
+            	sendto(sock, message, BUFLEN , 0 , (struct sockaddr *) &si_other, slen);
+            	recvfrom(sock, message, BUFLEN, 0, (struct sockaddr *) &si_other, &slen);
+            	if (strcmp(message,"&")!=0)
+            			printf("%s",message);
+            	sendto(sock, message, BUFLEN , 0 , (struct sockaddr *) &si_other, slen);
+            	recvfrom(sock, message, BUFLEN, 0, (struct sockaddr *) &si_other, &slen);
+            }
+        }
+        if (strcmp(message,"get")==0){
+        	bzero(message,sizeof(message));
+        	printf("get ");
+        	scanf("%s",message);
+        	sendto(sock, message, BUFLEN , 0 , (struct sockaddr *) &si_other, slen);
+        	FILE *f = fopen(message,"ab");
+        	recvfrom(sock, message, BUFLEN, 0, (struct sockaddr *) &si_other, &slen);
+        	while(strcmp(message,"&")!=0){
+        		sscanf("message", "%s", message);
+        		sendto(sock, message, BUFLEN , 0 , (struct sockaddr *) &si_other, slen);
+        		recvfrom(sock, message, BUFLEN, 0, (struct sockaddr *) &si_other, &slen);
+        		if (strcmp(message, "&") != 0) {
+        			fprintf(f, "%s", message);
+        		} else break;
+        		bzero(message,sizeof(message));
+        	}
+        	fclose(f);
+        }
+        if (strcmp(message,"close")==0){
+        	return 0;
+        }
     }
 
     close(sock);
