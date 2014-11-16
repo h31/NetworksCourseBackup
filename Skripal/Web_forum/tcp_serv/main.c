@@ -5,6 +5,8 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <string.h>
+#include <unistd.h>
+#include <pthread.h>
 
 void print_topic_names(xmlNode * a_node, char* mess,int newsockfd);
 void print_topic(char *buffer,int newsockfd);
@@ -20,36 +22,41 @@ void on_off_user(xmlNode * a_node, char *login,int on_off);
 void search_online_user(xmlNode * a_node,int newsockfd);
 void add_new_topic(xmlNode * a_node,int newsockfd,char *login);
 void add_topic(xmlNode * a_node,char *login, char *topic, char *post, char *text, char *id);
+void start_work(int newsockfd);
+void startThread(void *in);
+
+struct sockParams
+{
+	int sockfd, newsockfd, port_number, client;
+	struct sockaddr_in serv_addr, cli_addr;
+};
 
 int main( int argc, char *argv[] )
 {
-    int sockfd, newsockfd, port_number, client;
-    char buffer[256];
-    char id[6];
-    char login[100];
-    struct sockaddr_in serv_addr, cli_addr;
-    int  n;
-    xmlDoc         *doc = NULL;
-    xmlNode        *root_element = NULL;
-    const char     *Filename = "topics.xml";
 
+	pthread_t thread[5],mainthread;
+	int i,j;
+	struct sockParams sp;
+
+	i=0;
+	j=0;
     /* First call to socket() function */
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (sockfd < 0)
+    sp.sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (sp.sockfd < 0)
     {
         perror("ERROR opening socket");
         exit(1);
     }
     /* Initialize socket structure */
-    bzero((char *) &serv_addr, sizeof(serv_addr));
-    port_number = 5001;
-    serv_addr.sin_family = AF_INET;
-    serv_addr.sin_addr.s_addr = INADDR_ANY;
-    serv_addr.sin_port = htons(port_number);
+    bzero((char *) &sp.serv_addr, sizeof(sp.serv_addr));
+    sp.port_number = 5001;
+    sp.serv_addr.sin_family = AF_INET;
+    sp.serv_addr.sin_addr.s_addr = INADDR_ANY;
+    sp.serv_addr.sin_port = htons(sp.port_number);
 
     /* Now bind the host address using bind() call.*/
-    if (bind(sockfd, (struct sockaddr *) &serv_addr,
-                          sizeof(serv_addr)) < 0)
+    if (bind(sp.sockfd, (struct sockaddr *) &sp.serv_addr,
+                          sizeof(sp.serv_addr)) < 0)
     {
          perror("ERROR on binding");
          exit(1);
@@ -58,136 +65,171 @@ int main( int argc, char *argv[] )
     /* Now start listening for the clients, here process will
     * go in sleep mode and will wait for the incoming connection
     */
-    listen(sockfd,5);
-    client = sizeof(cli_addr);
-
-    /* Accept actual connection from the client */
-    newsockfd = accept(sockfd, (struct sockaddr *)&cli_addr,
-                                &client);
-    if (newsockfd < 0)
-    {
-        perror("ERROR on accept");
-        exit(1);
-    }
-    /* If connection is established then start communicating */
-    bzero(login,100);
-    login_func(newsockfd,login);
     while(1)
     {
-    	bzero(buffer,256);
-    	strcpy(buffer,"next\n");
-		n=write(newsockfd,buffer,7);
-    	//printf("next\n");
-		bzero(buffer,256);
-		n = read( newsockfd,buffer,255 );
-		//printf("Buffer :%s\n",buffer);
-		if (n < 0)
-		{
-			perror("ERROR reading from socket");
-			exit(1);
-		}
-		if(!strncmp(buffer,"topics",6))
-		{
-			print_topic(buffer,newsockfd);
-			//n = write(newsockfd,buffer,255);
-		}
-		if(!strncmp(buffer,"online",6))
-		{
-			Filename = "users.xml";
-			if (doc == NULL)
-			{
-				printf("error: could not parse file %s\n", Filename);
-				n = write(newsockfd,"Error\n",6);
-			}
-			else
-			{
-			    root_element = xmlDocGetRootElement(doc);
-			    search_online_user(root_element,newsockfd);
-			    xmlFreeDoc(doc);
-			}
-			xmlCleanupParser();
-		}
-		if(!strncmp(buffer,"show",4))
-		{
-			bzero(id,6);
-			for(n=5;n<10;n++)
-				id[n-5]=buffer[n];
-			Filename = "topics.xml";
-		    doc = xmlReadFile(Filename, NULL, 0);
-		    if (doc == NULL)
-		    {
-		        printf("error: could not parse file %s\n", Filename);
-		        n = write(newsockfd,"Error\n",6);
-		    }
-		    else
-		    {
-                root_element = xmlDocGetRootElement(doc);
-                fnp_post_by_id(root_element,id,newsockfd);
-                xmlFreeDoc(doc);
-            }
-	        xmlCleanupParser();
+    	listen(sp.sockfd,5);
+    	sp.client = sizeof(sp.cli_addr);
 
-	        Filename = "users.xml";
-	        doc = xmlReadFile(Filename, NULL, 0);
-	        if (doc == NULL)
-	        {
-	             printf("error: could not parse file %s\n", Filename);
-	             n = write(newsockfd,"Error\n",6);
-	        }
-	        else
-	        {
-	             root_element = xmlDocGetRootElement(doc);
-	             add_see_topic(root_element,login,id);
-	             xmlFreeDoc(doc);
-	        }
-	       	xmlCleanupParser();
-		}
-		if(!strncmp(buffer,"exit",4))
+    /* Accept actual connection from the client */
+    	sp.newsockfd = accept(sp.sockfd, (struct sockaddr *)&sp.cli_addr,
+
+                                &sp.client);
+		if (sp.newsockfd < 0)
 		{
-			bzero(buffer,256);
-			strncpy(buffer,"exit\n",6);
-			n = write(newsockfd,buffer,255);
-			Filename = "users.xml";
-			doc = xmlReadFile(Filename, NULL, 0);
-			if (doc == NULL)
-			{
-				printf("error: could not parse file %s\n", Filename);
-				n = write(newsockfd,"Error\n",6);
-			}
-			else
-			{
-			    root_element = xmlDocGetRootElement(doc);
-			    on_off_user(root_element,login,0);
-				xmlFreeDoc(doc);
-			}
-			xmlCleanupParser();
-			return 1;
-		}
-		if(!strncmp(buffer,"add",3))
-		{
-			Filename = "users.xml";
-			doc = xmlReadFile(Filename, NULL, 0);
-			if (doc == NULL)
-			{
-				printf("error: could not parse file %s\n", Filename);
-				n = write(newsockfd,"Error\n",6);
-			}
-			else
-			{
-			    root_element = xmlDocGetRootElement(doc);
-			    add_new_topic(root_element,newsockfd,login);
-				xmlFreeDoc(doc);
-			}
-			xmlCleanupParser();
-		}
-		/* Write a response to the client */
-		if (n < 0)
-		{
-			perror("ERROR writing to socket");
+			perror("ERROR on accept");
 			exit(1);
 		}
+		/* If connection is established then start communicating */
+		pthread_create(&thread[i],NULL,startThread,(void*) &sp);
+		//start_work(sp.newsockfd);
+		i++;
     }
+    for(j=0;j<5;j++)
+    	pthread_join(thread[j],NULL);
     return 0;
+}
+
+void startThread(void *in)
+{
+	struct sockParams *sp = (struct sockParams *)in;
+	start_work(sp->newsockfd);
+}
+
+void start_work(int newsockfd)
+{
+
+	int  n;
+	xmlDoc         *doc = NULL;
+	xmlNode        *root_element = NULL;
+	const char     *TopicFilename = "topics.xml";
+	const char     *UserFilename = "users.xml";
+	char buffer[256];
+	char id[6];
+	char login[100];
+
+	bzero(login,100);
+	    login_func(newsockfd,login);
+	    bzero(buffer,256);
+	    strcpy(buffer,"next\n");
+	    n=write(newsockfd,buffer,7);
+
+	    while(1)
+	    {
+	    	bzero(buffer,256);
+	    	strcpy(buffer,"next\n");
+			n=write(newsockfd,buffer,7);
+	    	//printf("next\n");
+			bzero(buffer,256);
+			n = read( newsockfd,buffer,255 );
+			//printf("Buffer :%s\n",buffer);
+			if (n < 0)
+			{
+				perror("ERROR reading from socket");
+				exit(1);
+			}
+			if(!strncmp(buffer,"topics",6))
+			{
+				print_topic(buffer,newsockfd);
+				//n = write(newsockfd,buffer,255);
+			}
+			if(!strncmp(buffer,"online",6))
+			{
+				doc = xmlReadFile(UserFilename, NULL, 0);
+				if (doc == NULL)
+				{
+					printf("error: could not parse file %s\n", UserFilename);
+					n = write(newsockfd,"Error\n",6);
+				}
+				else
+				{
+				    root_element = xmlDocGetRootElement(doc);
+				    search_online_user(root_element,newsockfd);
+				    xmlFreeDoc(doc);
+				}
+				xmlCleanupParser();
+			}
+			if(!strncmp(buffer,"show",4))
+			{
+				bzero(id,6);
+				for(n=5;n<10;n++)
+					id[n-5]=buffer[n];
+			    doc = xmlReadFile(TopicFilename, NULL, 0);
+			    if (doc == NULL)
+			    {
+			        printf("error: could not parse file %s\n", TopicFilename);
+			        n = write(newsockfd,"Error\n",6);
+			    }
+			    else
+			    {
+	                root_element = xmlDocGetRootElement(doc);
+	                fnp_post_by_id(root_element,id,newsockfd);
+	                xmlFreeDoc(doc);
+	            }
+		        xmlCleanupParser();
+
+		        doc = xmlReadFile(UserFilename, NULL, 0);
+		        if (doc == NULL)
+		        {
+		             printf("error: could not parse file %s\n", UserFilename);
+		             n = write(newsockfd,"Error\n",6);
+		        }
+		        else
+		        {
+		             root_element = xmlDocGetRootElement(doc);
+		             add_see_topic(root_element,login,id);
+		             xmlSaveFile(UserFilename,doc);
+		             xmlFreeDoc(doc);
+		        }
+		       	xmlCleanupParser();
+			}
+			if(!strncmp(buffer,"exit",4))
+			{
+				bzero(buffer,256);
+				strncpy(buffer,"exit\n",6);
+				n = write(newsockfd,buffer,255);
+				doc = xmlReadFile(UserFilename, NULL, 0);
+				if (doc == NULL)
+				{
+					printf("error: could not parse file %s\n", UserFilename);
+					n = write(newsockfd,"Error\n",6);
+				}
+				else
+				{
+				    root_element = xmlDocGetRootElement(doc);
+				    on_off_user(root_element,login,0);
+				    xmlSaveFile(UserFilename,doc);
+					xmlFreeDoc(doc);
+				}
+				xmlCleanupParser();
+				return NULL;
+			}
+			if(!strncmp(buffer,"add",3))
+			{
+				doc = xmlReadFile(UserFilename, NULL, 0);
+				if (doc == NULL)
+				{
+					printf("error: could not parse file %s\n", UserFilename);
+					n = write(newsockfd,"Error\n",6);
+				}
+				else
+				{
+				    root_element = xmlDocGetRootElement(doc);
+				    add_new_topic(root_element,newsockfd,login);
+					xmlFreeDoc(doc);
+				}
+				xmlCleanupParser();
+			}
+			else
+			{
+				n=write(newsockfd,"OK",2);
+			}
+			/* Write a response to the client */
+			if (n < 0)
+			{
+				perror("ERROR writing to socket");
+				exit(1);
+			}
+	    }
 }
 
 void print_topic(char *buffer,int newsockfd)
@@ -300,14 +342,18 @@ void login_func(int newsockfd,char * log)
 	    if(id[0] == 0)
 	    {
 	    	printf("Invalid login --%s-- and password --%s-- \n Retry write you login and password\n");
+	    	n=write(newsockfd,"OK",5);
 	    	login_func(newsockfd,login);
 	    }
 	    else
 	    {
+	    	n=write(newsockfd,"next",5);
 	    	search_new_topics(login,newsockfd);
 	    	root_element = xmlDocGetRootElement(doc);
 	    	on_off_user(root_element,login,1);
+	    	xmlSaveFile(Filename,doc);
 	    	strcpy(log,login);
+	    	n=write(newsockfd,"next",5);
 	    }
 
 	    xmlFreeDoc(doc);
@@ -329,10 +375,11 @@ void search_user(xmlNode * a_node, char *login, char *password,char *id)
 				if((!xmlStrcmp(xmlGetProp(cur_node,"login"),(const xmlChar *)login)))
 				{
 					if((!xmlStrcmp(xmlGetProp(cur_node,"password"),(const xmlChar *)password)))
-					{
-						strcpy(id,xmlGetProp(cur_node,"id"));//strcpu
-						return;
-					}
+						if((!xmlStrcmp(xmlGetProp(cur_node,"stat"),(const xmlChar *)"ff")))
+						{
+							strcpy(id,xmlGetProp(cur_node,"id"));//strcpu
+							return;
+						}
 				}
 			}
 	    }
@@ -553,10 +600,13 @@ void on_off_user(xmlNode * a_node, char *login,int on_off)
 				{
 					if((!xmlStrcmp(xmlGetProp(cur_node,"login"),(const xmlChar *)login)))
 					{
+
 						if(on_off==1)
-							xmlSetProp(cur_node,"stat","on");
+							xmlSetProp(cur_node,(const xmlChar *)"stat",(const xmlChar *)"on");
 						else
-							xmlSetProp(cur_node,"stat","off");
+						{
+							xmlSetProp(cur_node,(const xmlChar *)"stat",(const xmlChar *)"ff");
+						}
 						return;
 					}
 				}
@@ -568,7 +618,7 @@ void search_online_user(xmlNode * a_node,int newsockfd)
 {
 	xmlNode *cur_node = NULL;
 	char buf[256];
-			int n;
+	int n;
 
 			for (cur_node = a_node; cur_node; cur_node = cur_node->next)
 			{
@@ -577,7 +627,7 @@ void search_online_user(xmlNode * a_node,int newsockfd)
 					{
 						if((!xmlStrcmp(xmlGetProp(cur_node,"stat"),(const xmlChar *)"on")))
 						{
-							n = write(newsockfd,xmlGetProp(cur_node,"name"),strlen(xmlGetProp(cur_node,"name")));
+							n = write(newsockfd,xmlGetProp(cur_node,"login"),strlen(xmlGetProp(cur_node,"login")));
 							n=read(newsockfd,buf,255);
 						}
 					}
