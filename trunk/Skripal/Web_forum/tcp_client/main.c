@@ -40,15 +40,17 @@ int main(int argc, char *argv[])
          exit(1);
     }
 
-	bzero(buffer,256);
-    n = read(sockfd,buffer,255);
-        if (n < 0)
-        {
-             perror("ERROR reading from socket");
-             exit(1);
-        }
-    printf("%s\n",buffer);
 
+while(1)
+{
+	bzero(buffer,256);
+	    n = read(sockfd,buffer,255);
+	        if (n < 0)
+	        {
+	             perror("ERROR reading from socket");
+	             exit(1);
+	        }
+	    printf("%s\n",buffer);
     bzero(buffer,256);
 	printf("Print login\n");
     fgets(buffer,255,stdin);
@@ -72,16 +74,27 @@ int main(int argc, char *argv[])
          perror("ERROR writing to socket");
          exit(1);
     }
+    bzero(buffer,256);
+    n = read(sockfd,buffer,255);
+    if((!strncmp(buffer,"next",4)))
+    {
+    	n = write(sockfd,"OK",2);
+    	break;
+    }
 
+}
     while(1)
     {
     	bzero(buffer,256);
     	n = read(sockfd,buffer,255);
-    	if((strncmp(buffer,"next",4)))
+    	//printf("Reading\n");
+    	if((strncmp(buffer,"OK",2)))
     	{
-    		printf("%s\n",buffer);
+    		if((strncmp(buffer,"next",4)))
+    			printf("%s\n",buffer);
     	}
 
+    	//printf("Writing\n");
     	if(!(strncmp(buffer,"next",4)))
     	{
 			bzero(buffer,256);
