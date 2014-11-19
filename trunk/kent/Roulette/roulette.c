@@ -78,9 +78,11 @@ void* thread2(int sock) {
 			printf("its time to show bets\n");
 		fo = fopen("bets.txt", "r");
 		while (fgets(buffer, 50, fo) != NULL) {
-			printf("bets: %s\n", buffer);
+	//		printf("bets: %s\n", buffer);
+			write(sock, buffer, strlen(buffer));
 		}
 	} else {
+		write(sock, "i got your bet", 14);
 		fo = fopen("bets.txt", "a+");
 		fputs(buffer, fo);
 		fputs("\n", fo);
@@ -195,5 +197,6 @@ int main(int argc, char *argv[]) {
 		pthread_create(&t2, NULL, thread2, newsockfd);
 
 	}
+	pthread_join(t2, NULL);
 	return 0;
 }
