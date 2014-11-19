@@ -77,6 +77,11 @@ int main(int argc, char *argv[])
     scanf ("%s", buffer);
     n=write (sockfd, buffer, strlen(buffer));
     //start from croup
+
+
+    bzero(buffer,256);
+    n = read(sockfd,buffer,255);
+    printf("%s\n",buffer);
     bzero(buffer,256);
         scanf ("%s", buffer);
         n=write (sockfd, buffer, strlen(buffer));
