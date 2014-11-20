@@ -88,3 +88,11 @@ void freeClient(struct Client *c) {
 	free(c->login);
 
 }
+int power(int x, int n) {
+	int i;
+	int a = 1;
+	for (i = 0; i < n; i++) {
+		a = a * x;
+	}
+	return a;
+}
