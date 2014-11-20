@@ -1,8 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <string.h>
+#include "write.h"
 
 int main(int argc, char *argv[]) {
 	int sockfd, portno, n;
@@ -50,7 +52,7 @@ int main(int argc, char *argv[]) {
 		printf("Please enter '!' to connect :");
 		bzero(buffer, 256);
 		fgets(buffer, 255, stdin);
-		n = write(sockfd, buffer, strlen(buffer));
+		n = write(sockfd, buffer, 1);
 		if (n < 0) {
 			perror("ERROR writing to socket");
 			exit(1);
@@ -84,7 +86,7 @@ int main(int argc, char *argv[]) {
 		printf("Please enter '!' to receive list of test :");
 		bzero(buffer, 256);
 		fgets(buffer, 255, stdin);
-		n = write(sockfd, buffer, strlen(buffer));
+		n = write(sockfd, buffer, 1);
 		if (n < 0) {
 			perror("ERROR writing to socket");
 			exit(1);
@@ -96,32 +98,43 @@ int main(int argc, char *argv[]) {
 			exit(1);
 		}
 	}
-	printf("%s\n", buffer);
-	strcpy(buffer, "ERROR");
-	while (strcmp(buffer, "ERROR") == 0) {
+	int listOfTest[50];
+	int size, number;
+	int true=0;
+	char res[50];
+	size=writeListTest(listOfTest,buffer,res);
+	printf("%s\n", res);
+	while(true!=1){
 		printf("Choose test: ");
 		bzero(buffer, 256);
 		fgets(buffer, 255, stdin);
 		n = write(sockfd, buffer, strlen(buffer));
 		if (n < 0) {
-			perror("ERROR writing to socket");
-			exit(1);
+					perror("ERROR writing to socket");
+					exit(1);
 		}
-		bzero(buffer, 256);
-		n = read(sockfd, buffer, 255);
-		if (n < 0) {
-			perror("ERROR reading from socket");
-			exit(1);
-		}
+		number=toInt(buffer);
+		for(i=0;i<size;i++){
+		if(number==listOfTest[i]){
+			true=1;
+			break;
+		}}
 	}
+	struct Line x;
 	//LOOP
 	while (1) {
+				if (buffer[strlen(buffer) - 1] == '!') {
+					printf("%s\n", buffer);
+					close(sockfd);
+					break;
+				}
+		bzero(buffer,256);
 		strcpy(buffer, "ERROR");
 		while (strcmp(buffer, "ERROR") == 0) {
 			printf("Enter ! to receive question: ");
 			bzero(buffer, 256);
 			fgets(buffer, 255, stdin);
-			n = write(sockfd, buffer, strlen(buffer));
+			n = write(sockfd, buffer, 1);
 			if (n < 0) {
 				perror("ERROR writing to socket");
 				exit(1);
@@ -131,15 +144,26 @@ int main(int argc, char *argv[]) {
 			if (n < 0) {
 				perror("ERROR reading from socket");
 				exit(1);
-			}
-			printf("%s\n", buffer);
-		}
+			}}
+			writeSize(&x,buffer);
+			char str[sizeStr(&x)];
+			char* stringOut = (char*) malloc(50 * sizeof(char));
+			writeToClient(&x,str,stringOut);
+			printf("%s\n", stringOut);
+
+		freeLine(&x);
+		while(1){
 		bzero(buffer, 256);
 		fgets(buffer, 255, stdin);
 		n = write(sockfd, buffer, strlen(buffer));
 		if (n < 0) {
 			perror("ERROR writing to socket");
 			exit(1);
+		}
+		if(!strcmp(buffer,"1\n")  || !strcmp(buffer,"2\n")  || !strcmp(buffer,"3\n")  || !strcmp(buffer,"4\n") )
+			break;
+		else
+			printf("Enter your answer(1,2,3,4):\n");
 		}
 		bzero(buffer, 256);
 		n = read(sockfd, buffer, 255);
@@ -149,9 +173,10 @@ int main(int argc, char *argv[]) {
 		}
 		printf("%s\n", buffer);
 		if (buffer[strlen(buffer) - 1] == '!') {
-			close(sockfd);
-			break;
-		}
+							printf("%s\n", buffer);
+							close(sockfd);
+							break;
+						}
 	}
 	return 0;
 }
