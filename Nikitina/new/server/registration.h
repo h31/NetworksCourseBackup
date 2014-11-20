@@ -13,4 +13,5 @@ void newResult(struct Client *c,char number,int testsize,int numberTrueAnswer);
 void writeClient(struct Client *c,char *str);
 void freeClient(struct Client *c);
 void new(char *login,struct Client *c);
+int power(int x, int n);
 #endif
