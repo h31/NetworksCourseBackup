@@ -14,6 +14,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <string.h>
+#include <pthread.h>
 
 #define MY_ENCODING "ISO-8859-1"
 #define MY_PORT 5001
@@ -211,66 +212,84 @@ void create_file(char *to, char *from, char *msg){
 	}
 	xmlCleanupParser();
 }
+struct sockParams
+{
+	int sockfd, newsockfd, port_number, client;
+	struct sockaddr_in serv_addr, cli_addr;
+};
+
+void startThread(void *in)
+{
+	struct sockParams *sp = (struct sockParams *)in;
+	start_work(sp->newsockfd);
+}
+
+void start_work(int newsockfd){
+	char buffer[256];
+	int n;
+	bzero(buffer,256);
+		n = read( newsockfd,buffer,255 );
+		if (n < 0)
+		{
+		 	perror("ERROR reading from socket");
+		    exit(1);
+		}
+		  //int j;
+		    char* get_inp[4];
+		    get_args(buffer, get_inp);
+		    char user_name[10]="nnm";
+		    strcpy(user_name, get_hello(newsockfd, buffer, get_inp));
+		    do_wait_mes(newsockfd, buffer, user_name);
+		    //return 0;
+}
 
 int main( int argc, char *argv[] )
 {
-    int sockfd, newsockfd, portno, clilen;
-    char buffer[256];
-    char name[256];
-    struct stat st = {0};
-    struct sockaddr_in serv_addr, cli_addr;
-    int  n;
+	pthread_t thread[5], mainthread;
+	int i=0, j=0;
+	struct sockParams sp;
 
-    /* First call to socket() function */
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (sockfd < 0)
-    {
-        perror("ERROR opening socket");
-        exit(1);
-    }
-    /* Initialize socket structure */
-    bzero((char *) &serv_addr, sizeof(serv_addr));
-    //portno = 5001;
-    portno = MY_PORT;
-    //portno = 7771;
-    serv_addr.sin_family = AF_INET;
-    serv_addr.sin_addr.s_addr = INADDR_ANY;
-    serv_addr.sin_port = htons(portno);
+	sp.sockfd = socket(AF_INET, SOCK_STREAM, 0);
+	if (sp.sockfd < 0)
+	    {
+	        perror("ERROR opening socket");
+	        exit(1);
+	    }
+	bzero((char *) &sp.serv_addr, sizeof(sp.serv_addr));
+	sp.port_number = MY_PORT;
+	//portno = 7771;
+	sp.serv_addr.sin_family = AF_INET;
+	sp.serv_addr.sin_addr.s_addr = INADDR_ANY;
+	sp.serv_addr.sin_port = htons(sp.port_number);
 
-    /* Now bind the host address using bind() call.*/
-    if (bind(sockfd, (struct sockaddr *) &serv_addr,
-                          sizeof(serv_addr)) < 0)
-    {
-         perror("ERROR on binding");
-         exit(1);
-    }
+	    /* Now bind the host address using bind() call.*/
+	if (bind(sp.sockfd, (struct sockaddr *) &sp.serv_addr,
+	                       sizeof(sp.serv_addr)) < 0)
+	{
+		perror("ERROR on binding");
+	    exit(1);
+	}
 
-    /* Now start listening for the clients, here process will
-    * go in sleep mode and will wait for the incoming connection
-    */
-    listen(sockfd,5);
-    clilen = sizeof(cli_addr);
+	    /* Now start listening for the clients, here process will
+	    * go in sleep mode and will wait for the incoming connection
+	    */
+	while(1){
+		listen(sp.sockfd,5);
+		sp.client = sizeof(sp.cli_addr);
 
-    /* Accept actual connection from the client */
-    newsockfd = accept(sockfd, (struct sockaddr *)&cli_addr,
-                                &clilen);
-    if (newsockfd < 0)
-    {
-        perror("ERROR on accept");
-        exit(1);
-    }
-    bzero(buffer,256);
-    n = read( newsockfd,buffer,255 );
-    if (n < 0)
-    {
-    	perror("ERROR reading from socket");
-        exit(1);
-    }
-    int j;
-    char* get_inp[4];
-    get_args(buffer, get_inp);
-    char user_name[10]="nnm";
-    strcpy(user_name, get_hello(newsockfd, buffer, get_inp));
-    do_wait_mes(newsockfd, buffer, user_name);
-    return 0;
+		//printf("cl: %s\n", sp.client);
+	  /* Accept actual connection from the client */
+		sp.newsockfd = accept(sp.sockfd, (struct sockaddr *)&sp.cli_addr, &sp.client);
+		if (sp.newsockfd < 0)
+		{
+			perror("ERROR on accept");
+			exit(1);
+		}
+		pthread_create(&thread[i], NULL, startThread,(void*)&sp);
+		i++;
+	}
+
+	for(j=0;j<5;j++)
+		pthread_join(thread[j], NULL);
+	return 0;
 }
