@@ -27,9 +27,34 @@ void startThread(void *in);
 
 struct sockParams
 {
-	int sockfd, newsockfd, port_number, client;
+	int sockfd, newsockfd, port_number, client,countnumber;
 	struct sockaddr_in serv_addr, cli_addr;
 };
+
+struct userThread
+{
+	char login[5][100];
+	int count;
+};
+
+struct userThread usersthr;
+
+void workMainTh(void *in)
+{
+	char buffer[100];
+	int i;
+
+	pthread_t *t = (pthread_t *)in;
+	while(1)
+	{
+		fgets(buffer,99,stdin);
+		for(i=0;i<5;i++)
+		{
+			if(strcmp(buffer,usersthr.login[i]))
+				  pthread_cancel(t[i]);
+		}
+	}
+}
 
 int main( int argc, char *argv[] )
 {
@@ -38,6 +63,7 @@ int main( int argc, char *argv[] )
 	int i,j;
 	struct sockParams sp;
 
+	usersthr.count=0;
 	i=0;
 	j=0;
     /* First call to socket() function */
@@ -80,6 +106,7 @@ int main( int argc, char *argv[] )
 			exit(1);
 		}
 		/* If connection is established then start communicating */
+		sp.port_number=i;
 		pthread_create(&thread[i],NULL,startThread,(void*) &sp);
 		//start_work(sp.newsockfd);
 		i++;
@@ -109,6 +136,8 @@ void start_work(int newsockfd)
 
 	bzero(login,100);
 	    login_func(newsockfd,login);
+	    strcpy(usersthr.login[usersthr.count],login);
+	    usersthr.count++;
 	    bzero(buffer,256);
 	    strcpy(buffer,"next\n");
 	    n=write(newsockfd,buffer,7);
