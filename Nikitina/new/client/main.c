@@ -47,8 +47,8 @@ int main(int argc, char *argv[]) {
 	 * will be read by server
 	 */
 	//Start connect
-	strcpy(buffer, "ERROR");
-	while (strcmp(buffer, "ERROR") == 0) {
+	buffer[0] = '-';
+	while (buffer[0] != '!') {
 		printf("Please enter '!' to connect :");
 		bzero(buffer, 256);
 		fgets(buffer, 255, stdin);
@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
 			exit(1);
 		}
 		bzero(buffer, 256);
-		n = read(sockfd, buffer, 255);
+		n = read(sockfd, buffer, 1);
 		if (n < 0) {
 			perror("ERROR reading from socket");
 			exit(1);
@@ -79,10 +79,15 @@ int main(int argc, char *argv[]) {
 		perror("ERROR reading from socket");
 		exit(1);
 	}
-	printf("%s\n", buffer);
-
-	strcpy(buffer, "ERROR");
-	while (strcmp(buffer, "ERROR") == 0) {
+	struct Client c;
+	writeSizeClient(&c, &buffer);
+	if(c.numberTest==c.sizeQuestion== c.sizeTrueAnswer==0)
+		printf("Welcome, %s.\n",c.login);
+	else
+	printf("%s your last test is %d. Result %d of %d.\n", c.login,c.numberTest,c.sizeQuestion, c.sizeTrueAnswer);
+	free(c.login);
+	buffer[0] = '-';
+	while (buffer[0] != '!') {
 		printf("Please enter '!' to receive list of test :");
 		bzero(buffer, 256);
 		fgets(buffer, 255, stdin);
@@ -92,12 +97,18 @@ int main(int argc, char *argv[]) {
 			exit(1);
 		}
 		bzero(buffer, 256);
-		n = read(sockfd, buffer, 255);
+		n = read(sockfd, buffer, 1);
 		if (n < 0) {
 			perror("ERROR reading from socket");
 			exit(1);
 		}
 	}
+	bzero(buffer, 256);
+	n = read(sockfd, buffer, 256);
+			if (n < 0) {
+				perror("ERROR reading from socket");
+				exit(1);
+			}
 	int listOfTest[50];
 	int size, number;
 	int true=0;
@@ -108,11 +119,6 @@ int main(int argc, char *argv[]) {
 		printf("Choose test: ");
 		bzero(buffer, 256);
 		fgets(buffer, 255, stdin);
-		n = write(sockfd, buffer, strlen(buffer));
-		if (n < 0) {
-					perror("ERROR writing to socket");
-					exit(1);
-		}
 		number=toInt(buffer);
 		for(i=0;i<size;i++){
 		if(number==listOfTest[i]){
@@ -120,31 +126,41 @@ int main(int argc, char *argv[]) {
 			break;
 		}}
 	}
+	n = write(sockfd, buffer, strlen(buffer));
+			if (n < 0) {
+						perror("ERROR writing to socket");
+						exit(1);
+			}
 	struct Line x;
 	//LOOP
 	while (1) {
-				if (buffer[strlen(buffer) - 1] == '!') {
-					printf("%s\n", buffer);
-					close(sockfd);
-					break;
+		buffer[0] = '-';
+			while (buffer[0] != '!') {
+				printf("Please enter '!' to next question :");
+				bzero(buffer, 256);
+				fgets(buffer, 255, stdin);
+				n = write(sockfd, buffer, 1);
+				if (n < 0) {
+					perror("ERROR writing to socket");
+					exit(1);
 				}
-		bzero(buffer,256);
-		strcpy(buffer, "ERROR");
-		while (strcmp(buffer, "ERROR") == 0) {
-			printf("Enter ! to receive question: ");
-			bzero(buffer, 256);
-			fgets(buffer, 255, stdin);
-			n = write(sockfd, buffer, 1);
-			if (n < 0) {
-				perror("ERROR writing to socket");
-				exit(1);
+				bzero(buffer, 256);
+				n = read(sockfd, buffer, 1);
+				if (n < 0) {
+					perror("ERROR reading from socket");
+					exit(1);
+				}
+				if(buffer[0]=='/')
+					break;
 			}
-			bzero(buffer, 256);
-			n = read(sockfd, buffer, 255);
-			if (n < 0) {
-				perror("ERROR reading from socket");
-				exit(1);
-			}}
+			if(buffer[0]=='/')
+								break;
+						bzero(buffer, 256);
+						n = read(sockfd, buffer, 256);
+						if (n < 0) {
+							perror("ERROR reading from socket");
+							exit(1);
+						}
 			writeSize(&x,buffer);
 			char str[sizeStr(&x)];
 			char* stringOut = (char*) malloc(50 * sizeof(char));
@@ -155,29 +171,33 @@ int main(int argc, char *argv[]) {
 		while(1){
 		bzero(buffer, 256);
 		fgets(buffer, 255, stdin);
-		n = write(sockfd, buffer, strlen(buffer));
-		if (n < 0) {
-			perror("ERROR writing to socket");
-			exit(1);
-		}
 		if(!strcmp(buffer,"1\n")  || !strcmp(buffer,"2\n")  || !strcmp(buffer,"3\n")  || !strcmp(buffer,"4\n") )
 			break;
 		else
 			printf("Enter your answer(1,2,3,4):\n");
 		}
+		n = write(sockfd, buffer, 1);
+		if (n < 0) {
+			perror("ERROR writing to socket");
+			exit(1);
+		}
 		bzero(buffer, 256);
-		n = read(sockfd, buffer, 255);
+		n = read(sockfd, buffer, 6);
 		if (n < 0) {
 			perror("ERROR reading from socket");
 			exit(1);
 		}
-		printf("%s\n", buffer);
-		if (buffer[strlen(buffer) - 1] == '!') {
-							printf("%s\n", buffer);
-							close(sockfd);
-							break;
-						}
 	}
+	n = read(sockfd, buffer, 256);
+			if (n < 0) {
+				perror("ERROR reading from socket");
+				exit(1);
+			}
+			struct Client c1;
+writeSizeClient(&c1, &buffer);
+printf("The end.\n Test is %d. True answer %d of %d.\n", c1.numberTest,c1.sizeQuestion, c1.sizeTrueAnswer);
+free(c1.login);
+							close(sockfd);
 	return 0;
 }
 

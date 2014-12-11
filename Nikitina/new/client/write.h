@@ -17,4 +17,13 @@ int writeListTest(int *listOfTest,char *buffer, char *string);
 int power(int x, int n);
 int toInt(char *buffer);
 int sizeStr(struct Line *x);
+struct Client{
+	char *login;
+	int numberTest;
+	int sizeQuestion;
+	int sizeTrueAnswer;
+	int sizes[4];
+};
+void writeSizeClient(struct Client *c,char *str);
+void writeClient(struct Client *c,char *str);
 #endif
