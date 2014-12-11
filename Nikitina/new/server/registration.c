@@ -69,18 +69,12 @@ void writeClient(struct Client *c, char *str) {
 }
 char *writeLastResult(struct Client *c) {
 	char string[50];
-	strcpy(string, c->login);
-	char* num = (char*) malloc(50 * sizeof(char));
-	sprintf(num, " your last test is %d. Result %d of %d.", c->numberTest,
-			c->sizeQuestion, c->sizeTrueAnswer);
-	strcat(string, num);
-	free(num);
-	strcat(string, "\n");
-	return string;
+		sprintf(string, "%d#%d#%d#%s/", c->numberTest,c->sizeQuestion, c->sizeTrueAnswer,c->login);
+		return string;
 }
-void newResult(struct Client *c, char number, int testsize,
+void newResult(struct Client *c, int number, int testsize,
 		int numberTrueAnswer) {
-	c->numberTest = number - '0';
+	c->numberTest = number;
 	c->sizeQuestion = testsize;
 	c->sizeTrueAnswer = numberTrueAnswer;
 }
@@ -95,4 +89,14 @@ int power(int x, int n) {
 		a = a * x;
 	}
 	return a;
+}
+int toInt(char *buffer){
+		int i=strlen(buffer)-2;
+		int pow=0;
+		int size=0;
+		while(i>=0){
+					size = size + ((int) buffer[i] - '0') * power(10, pow);
+						pow++;i--;
+				}
+		return size;
 }
