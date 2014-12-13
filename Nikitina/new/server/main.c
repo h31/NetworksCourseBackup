@@ -94,7 +94,7 @@ void* thread1(int sock){
 									perror("ERROR writing to socket");
 									exit(1);
 							}
-								if (buffer[0] == '!')
+								if (buffer[0] == '1')
 									break;
 			}
 			char res[60]="/" ;
@@ -149,7 +149,7 @@ void* thread1(int sock){
 													perror("ERROR writing to socket");
 													exit(1);
 											}
-												if (buffer[0] == '!' || buffer[0] == '/')
+												if (buffer[0] == '2' || buffer[0] == '/')
 													break;
 							}
 				if(end)
@@ -218,7 +218,13 @@ int main(int argc, char *argv[]) {
 	}
 	//setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
 	bzero((char *) &serv_addr, sizeof(serv_addr));
-	portno = 5001;
+	//portno = 5001;
+	if (argc < 2) {
+			printf("usage default port 5001\n");
+			portno = 5001;
+	}
+	else
+	portno = atoi(argv[1]);
 	serv_addr.sin_family = AF_INET;
 	serv_addr.sin_addr.s_addr = INADDR_ANY;
 	serv_addr.sin_port = htons(portno);
