@@ -87,8 +87,8 @@ int main(int argc, char *argv[]) {
 	printf("%s your last test is %d. Result %d of %d.\n", c.login,c.numberTest,c.sizeQuestion, c.sizeTrueAnswer);
 	free(c.login);
 	buffer[0] = '-';
-	while (buffer[0] != '!') {
-		printf("Please enter '!' to receive list of test :");
+	while (buffer[0] != '1') {
+		printf("Please enter '1' to receive list of test :");
 		bzero(buffer, 256);
 		fgets(buffer, 255, stdin);
 		n = write(sockfd, buffer, 1);
@@ -135,8 +135,8 @@ int main(int argc, char *argv[]) {
 	//LOOP
 	while (1) {
 		buffer[0] = '-';
-			while (buffer[0] != '!') {
-				printf("Please enter '!' to next question :");
+			while (buffer[0] != '2') {
+				printf("Please enter '2' to next question :");
 				bzero(buffer, 256);
 				fgets(buffer, 255, stdin);
 				n = write(sockfd, buffer, 1);
@@ -195,7 +195,7 @@ int main(int argc, char *argv[]) {
 			}
 			struct Client c1;
 writeSizeClient(&c1, &buffer);
-printf("The end.\n Test is %d. True answer %d of %d.\n", c1.numberTest,c1.sizeQuestion, c1.sizeTrueAnswer);
+printf("The end.\n Test is %d. True answer %d of %d.\n", c1.numberTest,c1.sizeTrueAnswer,c1.sizeQuestion, );
 free(c1.login);
 							close(sockfd);
 	return 0;
