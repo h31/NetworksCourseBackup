@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "registration.h"
 #include "writeStruct.h"
+
 void new(char *login, struct Client *c) {
 	c->login = login;
 	c->numberTest = c->sizeQuestion = c->sizeTrueAnswer = 0;
@@ -78,8 +79,17 @@ char *writeLastResult(struct Client *c) {
 	strcat(string, "\n");
 	return string;
 }
-void newResult(struct Client *c, char number, int testsize,
-		int numberTrueAnswer) {
+int toInt(char *buffer){
+		int i=strlen(buffer)-2;
+		int pow=0;
+		int size=0;
+		while(i>=0){
+					size = size + ((int) buffer[i] - '0') * power(10, pow);
+						pow++;i--;
+				}
+		return size;
+}
+void newResult(struct Client *c, char number, int testsize, int numberTrueAnswer) {
 	c->numberTest = number - '0';
 	c->sizeQuestion = testsize;
 	c->sizeTrueAnswer = numberTrueAnswer;
