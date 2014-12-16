@@ -146,4 +146,61 @@ int sizeStr(struct Line *x){
 		number=number+x->sizeAnswer[i];
 	return number;
 }
+void writeSizeClient(struct Client *c, char *str) {
+	int i = 0;
+	int state;
+	for (state = 0; state < 4; state++) {
+		c->sizes[state] = 0;
+	}
+	state = 0;
+	while (str[i] != '/') {
+		if (str[i] == '#') {
+			i++;
+			state++;
+		}
+		c->sizes[state]++;
+		i++;
+	}
+	writeClient(c, str);
+}
+void writeClient(struct Client *c, char *str) {
+	int i = 0;
+	c->login = (char*) malloc(c->sizes[3] * sizeof(char));
+	c->numberTest = c->sizeQuestion = c->sizeTrueAnswer = 0;
+	int state;
+	int j = 0;
+	int add;
+	int pow;
 
+	for (state = 0; state < 3; state++) {
+		pow = c->sizes[state] - 1;
+		if (str[i] == '#')
+			i++;
+		while (str[i] != '#') {
+			add = ((int) str[i] - '0') * power(10, pow);
+			switch (state) {
+			case 0:
+				c->numberTest = c->numberTest + add;
+				break;
+			case 1:
+				c->sizeQuestion = c->sizeQuestion + add;
+				break;
+			case 2:
+				c->sizeTrueAnswer = c->sizeTrueAnswer + add;
+				break;
+			}
+			i++;
+			pow--;
+		}
+	}
+	state++;
+	i++;
+	j = 0;
+	while (str[i] != '/') {
+
+		c->login[j] = str[i];
+
+		i++;
+		j++;
+	}
+}
