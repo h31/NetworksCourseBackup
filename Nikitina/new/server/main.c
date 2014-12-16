@@ -16,7 +16,7 @@ void* thread1(int sock){
 	char buffer[256];
 	int n;
 	char str[50];
-		char *result;
+		char result[50];
 		FILE *file;
 		int i, numberTrueAnswer = 0;
 		char *clientFile = "/home/user/workspace/server/registration.txt";
@@ -75,7 +75,10 @@ void* thread1(int sock){
 				c[clientSize - 1] = client;
 				numberClient = clientSize - 1;
 			}
-			result = writeLastResult(&c[numberClient]);
+			char strres[50];
+			sprintf(strres,"%d#%d#%d#%s/\n",c[numberClient].numberTest,
+					c[numberClient].sizeQuestion,c[numberClient].sizeTrueAnswer,c[numberClient].login);
+			strcpy(result ,strres);
 			n = write(sock, result, strlen(result));
 				if (n < 0) {
 					perror("ERROR writing to socket");
