@@ -14,4 +14,5 @@ void writeClient(struct Client *c,char *str);
 void freeClient(struct Client *c);
 void new(char *login,struct Client *c);
 int power(int x, int n);
+int toInt(char *buffer);
 #endif
