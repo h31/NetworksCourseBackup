@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "registration.h"
 #include "writeStruct.h"
+
 void new(char *login, struct Client *c) {
 	c->login = login;
 	c->numberTest = c->sizeQuestion = c->sizeTrueAnswer = 0;
@@ -69,26 +70,18 @@ void writeClient(struct Client *c, char *str) {
 }
 char *writeLastResult(struct Client *c) {
 	char string[50];
-		sprintf(string, "%d#%d#%d#%s/", c->numberTest,c->sizeQuestion, c->sizeTrueAnswer,c->login);
-		return string;
+	sprintf(string,"%d#%d#%d#%s/\n",c->numberTest,c->sizeQuestion,c->sizeTrueAnswer,c->login);
+	return string;
 }
 void newResult(struct Client *c, int number, int testsize,
 		int numberTrueAnswer) {
-	c->numberTest = number;
+	c->numberTest = number ;
 	c->sizeQuestion = testsize;
 	c->sizeTrueAnswer = numberTrueAnswer;
 }
 void freeClient(struct Client *c) {
 	free(c->login);
 
-}
-int power(int x, int n) {
-	int i;
-	int a = 1;
-	for (i = 0; i < n; i++) {
-		a = a * x;
-	}
-	return a;
 }
 int toInt(char *buffer){
 		int i=strlen(buffer)-2;
@@ -99,4 +92,12 @@ int toInt(char *buffer){
 						pow++;i--;
 				}
 		return size;
+}
+int power(int x, int n) {
+	int i;
+	int a = 1;
+	for (i = 0; i < n; i++) {
+		a = a * x;
+	}
+	return a;
 }
