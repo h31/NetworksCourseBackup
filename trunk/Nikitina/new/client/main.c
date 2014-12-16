@@ -80,11 +80,11 @@ int main(int argc, char *argv[]) {
 		exit(1);
 	}
 	struct Client c;
-	writeSizeClient(&c, &buffer);
-	if(c.numberTest==c.sizeQuestion== c.sizeTrueAnswer==0)
+	writeSizeClient(&c, buffer);
+	if(c.numberTest==0)
 		printf("Welcome, %s.\n",c.login);
 	else
-	printf("%s your last test is %d. Result %d of %d.\n", c.login,c.numberTest,c.sizeQuestion, c.sizeTrueAnswer);
+	printf("%s your last test is %d. Result %d of %d.\n", c.login,c.numberTest ,c.sizeTrueAnswer,c.sizeQuestion);
 	free(c.login);
 	buffer[0] = '-';
 	while (buffer[0] != '1') {
@@ -195,7 +195,7 @@ int main(int argc, char *argv[]) {
 			}
 			struct Client c1;
 writeSizeClient(&c1, &buffer);
-printf("The end.\n Test is %d. True answer %d of %d.\n", c1.numberTest,c1.sizeTrueAnswer,c1.sizeQuestion, );
+printf("The end.\n Test is %d. True answer %d of %d.\n", c1.numberTest,c1.sizeTrueAnswer,c1.sizeQuestion);
 free(c1.login);
 							close(sockfd);
 	return 0;
