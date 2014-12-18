@@ -7,7 +7,9 @@
 #include "registration.h"
 #define maxSize 500
 pthread_t t1;
+pthread_mutex_t mutex= PTHREAD_MUTEX_INITIALIZER;;
 static void* worker(void* arg) {
+	pthread_mutex_lock(&mutex);
     int sock = *(int*)arg;
     printf("Worker for %d is up\n", sock);
 	int n;
@@ -16,13 +18,14 @@ static void* worker(void* arg) {
         struct sockaddr_in cliaddr;
         socklen_t len = sizeof(struct sockaddr_in);
 	char str[50];
-	char *result;
+	char result[50];
 	FILE *file;
 	struct Client c[50];
 	int i, numberTrueAnswer = 0;
 	char *clientFile = "/home/user/workspace/udp_server/registration.txt";
 	char numberTest = '0';
 	char *name = (char*) malloc(50 * sizeof(char));
+
 			while (1) {
 					bzero(buffer, maxSize);
 					n = recvfrom(sock, buffer, 1,0,(struct sockaddr *) &cliaddr, &len);
@@ -75,9 +78,10 @@ static void* worker(void* arg) {
 					c[clientSize - 1] = client;
 					numberClient = clientSize - 1;
 				}
-				//printf("%s\n",c[numberClient].login);
-				result = writeLastResult(&c[numberClient]);
-				printf("%s\n",result);
+				char strres[50];
+							sprintf(strres,"%d#%d#%d#%s/\n",c[numberClient].numberTest,
+									c[numberClient].sizeQuestion,c[numberClient].sizeTrueAnswer,c[numberClient].login);
+							strcpy(result ,strres);
 				n = sendto(sock, result, strlen(result),0,(struct sockaddr *) &cliaddr, len);
 					if (n < 0) {
 						perror("ERROR writing to socket");
@@ -205,6 +209,8 @@ static void* worker(void* arg) {
 				fclose(file);
 				free(name);
 	}
+
+	pthread_mutex_unlock(&mutex);
     shutdown(sock, 2);
     close(sock);
 }
@@ -212,6 +218,7 @@ static void* worker(void* arg) {
 int main(int argc, char**argv) {
 	int sock;
 	int portno=5001;
+	//pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 	if(argc<2)
 printf("use default port 5001\n");
 	else portno=atoi(argv[1]);
@@ -221,18 +228,24 @@ printf("use default port 5001\n");
 
 	bzero(&servaddr, sizeof(servaddr));
 	servaddr.sin_family = AF_INET;
-	servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+	servaddr.sin_addr.s_addr = INADDR_ANY;
 	servaddr.sin_port = htons(portno);
     int optval = 1;
     setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof optval);
 	bind(sock, (struct sockaddr *) &servaddr, sizeof(servaddr));
-
-	 listen(sock,5);
+listen(sock,5);
 	    pthread_create(&(accept_thread),NULL, worker, (void*) &sock);
-	    while (1) {
-	        }
+    while (1) {
+        char command = getchar();
+        if (command == 'q') {
+            break;
+            //int pthread_mutex_destroy(pthread_mutex_t *mutex);
+        }
+    }
+	    printf("Exit...\n");
 	    shutdown(sock, 2);
 	    close(sock);
-	    pthread_join(accept_thread, NULL);
+	   pthread_join(accept_thread, NULL);
+	    printf("Done\n");
 	return 0;
 }

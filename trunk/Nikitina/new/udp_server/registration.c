@@ -89,7 +89,7 @@ int toInt(char *buffer){
 				}
 		return size;
 }
-void newResult(struct Client *c, char number, int testsize, int numberTrueAnswer) {
+void newResult(struct Client *c, int number, int testsize, int numberTrueAnswer) {
 	c->numberTest = number - '0';
 	c->sizeQuestion = testsize;
 	c->sizeTrueAnswer = numberTrueAnswer;
