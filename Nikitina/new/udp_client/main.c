@@ -55,7 +55,6 @@ int main(int argc, char**argv)
    		printf("Enter login: ");
    		bzero(buffer, maxSize);
    		fgets(buffer, maxSize, stdin);
-   		printf("%s\n",buffer);
    		n = write(sockfd, buffer, strlen(buffer));
    		if (n < 0) {
    			perror("ERROR writing to socket");
@@ -69,7 +68,7 @@ int main(int argc, char**argv)
    		}
    		struct Client c;
    		writeSizeClient(&c, buffer);
-   		if(c.numberTest==c.sizeQuestion== c.sizeTrueAnswer==0)
+   		if(c.numberTest==0)
    			printf("Welcome, %s.\n",c.login);
    		else
    		printf("%s your last test is %d. Result %d of %d.\n", c.login,c.numberTest,c.sizeQuestion, c.sizeTrueAnswer);
