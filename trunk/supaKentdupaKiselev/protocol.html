@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+   <style type="text/css">
+   /*CSS stylesheet is based on killwing's flavored markdown style:https://gist.github.com/2937864*/body{    margin: 0 auto;    font: 13px/1.231 Helvetica, Arial, sans-serif;    color: #444444;    line-height: 1;    max-width: 960px;    padding: 5px;}h1, h2, h3, h4 {    color: #111111;    font-weight: 400;}h1, h2, h3, h4, h5, p {    margin-bottom: 16px;    padding: 0;}h1 {    font-size: 28px;}h2 {    font-size: 22px;    margin: 20px 0 6px;}h3 {    font-size: 21px;}h4 {    font-size: 18px;}h5 {    font-size: 16px;}a {    color: #0099ff;    margin: 0;    padding: 0;    vertical-align: baseline;}a:link,a:visited{ text-decoration:none;}a:hover{ text-decoration:underline;}ul, ol {    padding: 0;    margin: 0;}li {    line-height: 24px;    margin-left: 44px;}li ul, li ul {    margin-left: 24px;}ul, ol {    font-size: 14px;    line-height: 20px;    max-width: 540px;}p {    font-size: 14px;    line-height: 20px;    max-width: 540px;    margin-top: 3px;}pre {    padding: 0px 4px;    max-width: 800px;    white-space: pre-wrap;    font-family: Consolas, Monaco, Andale Mono, monospace;    line-height: 1.5;    font-size: 13px;    border: 1px solid #ddd;    background-color: #f7f7f7;    border-radius: 3px;}code {    font-family: Consolas, Monaco, Andale Mono, monospace;    line-height: 1.5;    font-size: 13px;    border: 1px solid #ddd;    background-color: #f7f7f7;    border-radius: 3px;}pre code {    border: 0px;}aside {    display: block;    float: right;    width: 390px;}blockquote {    border-left:.5em solid #40AA53;    padding: 0 2em;    margin-left:0;    max-width: 476px;}blockquote  cite {    font-size:14px;    line-height:20px;    color:#bfbfbf;}blockquote cite:before {    content: '\2014 \00A0';}blockquote p {      color: #666;    max-width: 460px;}hr {    height: 1px;    border: none;    border-top: 1px dashed #0066CC}button,input,select,textarea {  font-size: 100%;  margin: 0;  vertical-align: baseline;  *vertical-align: middle;}button, input {  line-height: normal;  *overflow: visible;}button::-moz-focus-inner, input::-moz-focus-inner {  border: 0;  padding: 0;}button,input[type="button"],input[type="reset"],input[type="submit"] {  cursor: pointer;  -webkit-appearance: button;}input[type=checkbox], input[type=radio] {  cursor: pointer;}/* override default chrome & firefox settings */input:not([type="image"]), textarea {  -webkit-box-sizing: content-box;  -moz-box-sizing: content-box;  box-sizing: content-box;}input[type="search"] {  -webkit-appearance: textfield;  -webkit-box-sizing: content-box;  -moz-box-sizing: content-box;  box-sizing: content-box;}input[type="search"]::-webkit-search-decoration {  -webkit-appearance: none;}label,input,select,textarea {  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;  font-size: 13px;  font-weight: normal;  line-height: normal;  margin-bottom: 18px;}input[type=checkbox], input[type=radio] {  cursor: pointer;  margin-bottom: 0;}input[type=text],input[type=password],textarea,select {  display: inline-block;  width: 210px;  padding: 4px;  font-size: 13px;  font-weight: normal;  line-height: 18px;  height: 18px;  color: #808080;  border: 1px solid #ccc;  -webkit-border-radius: 3px;  -moz-border-radius: 3px;  border-radius: 3px;}select, input[type=file] {  height: 27px;  line-height: 27px;}textarea {  height: auto;}/* grey out placeholders */:-moz-placeholder {  color: #bfbfbf;}::-webkit-input-placeholder {  color: #bfbfbf;}input[type=text],input[type=password],select,textarea {  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;  transition: border linear 0.2s, box-shadow linear 0.2s;  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);}input[type=text]:focus, input[type=password]:focus, textarea:focus {  outline: none;  border-color: rgba(82, 168, 236, 0.8);  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);}/* buttons */button {  display: inline-block;  padding: 4px 14px;  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;  font-size: 13px;  line-height: 18px;  -webkit-border-radius: 4px;  -moz-border-radius: 4px;  border-radius: 4px;  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);  background-color: #0064cd;  background-repeat: repeat-x;  background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));  background-image: -moz-linear-gradient(top, #049cdb, #0064cd);  background-image: -ms-linear-gradient(top, #049cdb, #0064cd);  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));  background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);  background-image: -o-linear-gradient(top, #049cdb, #0064cd);  background-image: linear-gradient(top, #049cdb, #0064cd);  color: #fff;  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);  border: 1px solid #004b9a;  border-bottom-color: #003f81;  -webkit-transition: 0.1s linear all;  -moz-transition: 0.1s linear all;  transition: 0.1s linear all;  border-color: #0064cd #0064cd #003f81;  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);}button:hover {  color: #fff;  background-position: 0 -15px;  text-decoration: none;}button:active {  -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);  -moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);  box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);}button::-moz-focus-inner {  padding: 0;  border: 0;}/* table  */table {    border-spacing: 0;    border: 1px solid #ccc;}td, th{    border: 1px solid #ccc;    padding: 5px;}/* code syntax highlight.Documentation: http://www.mdcharm.com/documentation/code_syntax_highlighting.html#custom_your_own */pre .literal,pre .comment,pre .template_comment,pre .diff .header,pre .javadoc {    color: #008000;}pre .keyword,pre .css .rule .keyword,pre .winutils,pre .javascript .title,pre .nginx .title,pre .subst,pre .request,pre .status {    color: #0000FF;    font-weight: bold}pre .number,pre .hexcolor,pre .python .decorator,pre .ruby .constant {    color: #0000FF;}pre .string,pre .tag .value,pre .phpdoc,pre .tex .formula {    color: #D14}pre .title,pre .id {    color: #900;    font-weight: bold}pre .javascript .title,pre .lisp .title,pre .clojure .title,pre .subst {    font-weight: normal}pre .class .title,pre .haskell .type,pre .vhdl .literal,pre .tex .command {    color: #458;    font-weight: bold}pre .tag,pre .tag .title,pre .rules .property,pre .django .tag .keyword {    color: #000080;    font-weight: normal}pre .attribute,pre .variable,pre .lisp .body {    color: #008080}pre .regexp {    color: #009926}pre .class {    color: #458;    font-weight: bold}pre .symbol,pre .ruby .symbol .string,pre .lisp .keyword,pre .tex .special,pre .prompt {    color: #990073}pre .built_in,pre .lisp .title,pre .clojure .built_in {    color: #0086b3}pre .preprocessor,pre .pi,pre .doctype,pre .shebang,pre .cdata {    color: #999;    font-weight: bold}pre .deletion {    background: #fdd}pre .addition {    background: #dfd}pre .diff .change {    background: #0086b3}pre .chunk {    color: #aaa}pre .markdown .header {    color: #800;    font-weight: bold;}pre .markdown .blockquote {    color: #888;}pre .markdown .link_label {    color: #88F;}pre .markdown .strong {    font-weight: bold;}pre .markdown .emphasis {    font-style: italic;}
+   </style>
+   
+   
+</head>
+<body>
+    <h1>Отчет по лабораторной работе</h1>
+
+<h1>Технологии компьютерных сетей</h1>
+
+<h2>Работу выполнил:студент группа 43501/3 Киселёв Антон</h2>
+
+<h1>Описание протокола взаимодействия клиентской и серверной части</h1>
+
+<h1>Задание: &quot;Система терминального доступа&quot;</h1>
+
+<p><strong>Система терминального доступа</strong> представляет сервис клиенту для осуществления команд в терминале на удаленном компьютере. Система состоит из двух частей: </p>
+
+<p>1) <strong>Серверная часть</strong> - находится на галвном компьютере, предоставляющем свой     терминал для пользования другим компьютерам и осуществления операций согласно правам доступа клиента к данному компьютеру.</p>
+
+<p>2) <strong>Клиентская часть</strong> - является внешним компьютером, получающим возможность обращения к компьютеру на сервере для осуществления необходимых операций.</p>
+
+<p>Сервер предоставляет право доступа к терминалу для нескольких подключенных пользователей. В его основные задачи входит проверка пользователя и пароля, предоставление списка доступных команд и проверка их ввода клиентом, обнаружение и исправление ошибок.</p>
+
+<p>Клиент имеет право запускать только те команды, которые указаны в списке допустимых, а также осуществляет мониторинг ошибок при соединении с сервером.</p>
+
+<p>Протокол взаимодействия опишем отдельно для клиента и для сервера и для разных реализаций TCP и UDP.</p>
+
+<h2>Описание взаимодействий по протоколу TCP</h2>
+
+<h3>Описание протокола взаимодействия серверной части</h3>
+
+<p><strong>Серверная часть</strong> инициализируется запуском с указанием используемого TCP-порта. После чего сервер переводится в режим прослушивания порта. Опишем как работает протокол для взаимодействия с один клиентом. Сервер осуществляет многопоточное соединение с различными подключающимися клиентами.
+Сервер ожидает подключения клиента и получения первого сообщения с указанием имени пользователя и пароля. Имя пользователя и пароль присылаются в следующем формате:</p>
+
+<p>&lt;username&gt;_&lt;password&gt;</p>
+
+<p><em>Синтаксический обработчик</em> прочтет имя пользователя и пароль и запишет их в переменные. Далее сервер начнет проводить аутентификацию имени пользователя и пароля, аутентификация будет происходить как на серверной, так и на клиентской части. Сначала сервер обратиться к файлу, содержащему имена и пароли всех компьютеров, у которых есть доступ к удаленному терминалу. Данный файл имеет формат .txt и содержит данные о пользователе, пароле и используемых командах в следующем формате:</p>
+
+<table><thead>
+<tr>
+<th>Идентификатор</th>
+<th align="center">Значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Имя пользователя</td>
+<td align="center">Антон</td>
+</tr>
+<tr>
+<td>Пароль</td>
+<td align="center">1234</td>
+</tr>
+<tr>
+<td>Доступные команды терминала</td>
+<td align="center">cd ls mkdir</td>
+</tr>
+<tr>
+<td>Текущий каталог</td>
+<td align="center">/home/anton</td>
+</tr>
+<tr>
+<td>Имя пользователя</td>
+<td align="center">User</td>
+</tr>
+<tr>
+<td>Пароль</td>
+<td align="center">5678</td>
+</tr>
+<tr>
+<td>Доступные команды терминала</td>
+<td align="center">cd ls</td>
+</tr>
+<tr>
+<td>Текущий каталог</td>
+<td align="center">/home/anton</td>
+</tr>
+<tr>
+<td>Имя пользователя</td>
+<td align="center">Root</td>
+</tr>
+<tr>
+<td>Пароль</td>
+<td align="center">0912</td>
+</tr>
+<tr>
+<td>Доступные команды терминала</td>
+<td align="center">cd ls rm</td>
+</tr>
+<tr>
+<td>Текущий каталог</td>
+<td align="center">/home/anton</td>
+</tr>
+</tbody></table>
+
+<hr>
+
+<p>Данная таблица представлет структуру файла для трёх пользователей.</p>
+
+<p>Сервер произведет сравнение данных, полученных от пользователя с данными в файле: при положительном результате клиент будет переведен на второй этап аутентификации пользователя и пароля. Клиенту будет отправлено число для пересчета хэш-функции имени пользователя и пароля. Сервер также будет осуществлять подсчет хэш-фугкций имени пользователя и пароля. Клиент, имеющий доступ к терминалу владеет специальной функцией подсчета хэш-кода, как и сервер. Для подсчета кода взята функция Ly.</p>
+
+<h5>Ly- функция</h5>
+
+<pre><code class="c">    <span class="keyword">unsigned</span> <span class="keyword">int</span> HashLy(<span class="keyword">const</span> <span class="keyword">char</span> * str)
+    {
+        <span class="keyword">unsigned</span> <span class="keyword">int</span> hash = <span class="number">0</span>;
+
+        <span class="keyword">for</span>(; *str; str++)
+            hash = (hash * <span class="number">1664525</span>) + (<span class="keyword">unsigned</span> <span class="keyword">char</span>)(*str) + <span class="number">1013904223</span>;
+
+        <span class="keyword">return</span> hash;
+    }
+</code></pre>
+
+<p>После подсчет хэш-функций клиентом и сервером, сервер осуществит сравнение полученных данных и в случае полодительной проверки подлинности предоставит терминал клиенту на право пользования, в противном случае &quot;обрубит соединение&quot;.
+В случае положительной проверки пользовательских данных клиент получит сообщение: <strong>&quot;Добро пожаловать!&quot;</strong> Далее клиенту будет отпрален список всех возможных команд для использования.</p>
+
+<p>Сервер будет осуществлять запуск команд от клиента, извлекая их из сообщений. Каждое сообщение для удобства будет помещаться в буфер типа char размером до 256 байт. </p>
+
+<p>Каждую полученную команду сервер будет проверять по файлу всех команд для данного пользователя.</p>
+
+<p>Команды будут вызываться в терминале с помощью функции <strong>popen</strong> из библиотеки <strong>stdio.h</strong>. Результат выполнения будет записываться в бубчер размером 1024 байта и отправляться клиенту.</p>
+
+<h3>Обработка сервером ошибок</h3>
+
+<p>В случае если на сервере появилась ошибка при запуске команды из терминала, то клиенту будет отправлено соответствующее сообщение об ошибке, а сервер приостановит процесс выполнения команд и отключит клиента.</p>
+
+<p>Ошибки соединения контролируются пользователем на компьютере клиента, в случае неудачного присоединения пользователь сам совершит переприсоединение к серверу.</p>
+
+<h3>Описание протокола взаимодействия клиентской части</h3>
+
+<p><strong>Клиентская часть</strong> осуществляет запрос на главный компьютер с целью получить терминал компьютера в пользование. Все сообщения посылаемые клиентом помещаются в символьный буфер размером 256 байт, за исключением сообщения от команды who (1024 байта). Запрос на подключение к терминалу сервера осуществляется автоматически: клиент инициирует соединение, сервер запрашивает у него имя пользователя и пароль, которые далее отправляются. После сервер отправляет клиенту случаную последовательность символов. Полученное сообщение конкатенируется с паролем и для них просчитывается хэш-код. Клиент отправляет свой вычисленный хэш и пользователю останется только дождаться сообщения о готовности использования терминала: &quot;Добро пожаловать!&quot;. </p>
+
+<p>Пользователю достаточно вводить используемые команды в командной строке при наличии подключения. Все команды отправляются в виде 256-байтного сообщения, введенного с консоли. Клиент принимает сообщения от сервера в буфер размером 256 либо 1024 байта. </p>
+
+<p>На различные исключительные ситуации расставлены обработчики, осуществляющие обработку и исправление ошибок.</p>
+
+<p>Список вводимых клиентом команд:</p>
+
+<ul>
+<li>ls: получение списка файлов и директорий в текущей директории;</li>
+<li>cd: произвести переход к другой папке;</li>
+<li>who: запрос на получение списка всех пользователей и их текущих директорий;</li>
+<li>logout: завершение сеанса;</li>
+</ul>
+
+<h3>Многопоточное взаимодействие для связи с несколькими клиентами.</h3>
+
+<p>Для осуществления многоклиентского взаимодействия используются потоки, это удобно посколько с каждым клиентом устанавливается логическое соединение, что удобно, потому что каждый поток будет защищен от другого клиента. Сервер при постоянном режиме прослушивает необходимый порт и при подключении клиента, выделяет ему отдельный поток и переводит себя в стандартный режим общения с клиентом.</p>
+
+<h2>Описание взаимодействий по протоколу UDP</h2>
+
+<h3>Описание клиентской части</h3>
+
+<p><strong>Клиент UDP</strong> является управляющим и инициирующем всю систему, порядок работы настраивает именно он, поскольку сервер выполняет функцию обработчика команд, то есть в зависимости от присланного клиентом сообщения сервер будет передавать одно или иное сообщение.</p>
+
+<p>Клиент в данном варианте инициализирует соединение. Пользователь вводит с консоли любую команду и отправляет её серверу и подсоединяется к нему. После чего в обычном порядке происходит стандартное взаимодействие. Единственным отличием от TCP-взаимодействия является то, что каждая команда, которую собирается набрать пользователь предварительно передается с ключевым значением. Всего имеются следующие ключевые слова:</p>
+
+<ol>
+<li><p>My  data - говорит серверу, что далее будет осуществляться аутентификация клиента.</p></li>
+<li><p>commands - говорит серверу, что далее будет осуществляться переслыка команд терминала.</p></li>
+<li><p>иное - говорит серверу инициировать общение с клиентом.</p></li>
+</ol>
+
+<p>После передачи каждой такой команды осуществляется соответствующее действие по аутентификации, или передачи команд аналогично протоколу UDP.</p>
+
+<h3>Описание серверной части</h3>
+
+<p><strong>Сервер UDP</strong> содержит необходимую логику для взаимодействия с несколькими клиентами в отличии от протокола TCP, так как данный протокол не устанавливает логического соединения. Сервер находится в постоянной работе по принятию дейтаграммных сообщений и в зависимости от присланного сообщения осуществляет те или иные действия по взаимодействию. </p>
+
+<p>Сервер дожидается специальных команд, после чего каждую принятую он обрабатывает на соответствие и переводит себя  в необходимое состояние для работы. Каждый блок для специальных команд полностью аналогичен взаимодействию по протоколу TCP.</p>
+
+<h3>Многоклиентское взаимодействие</h3>
+
+<p>В данной задаче, так как не предусматрвиается установления логического соединения, то удобна организация асинхронного сервера, реагирующего на сообщения. Поэтому реализация такой задачи была осуществлена с помощью логики, а не потоков.</p>
+
+<h2>Тестирование всего приложения</h2>
+
+<p>Для тестирования была проведена необходимая отладка отдельных частей и компонентов. Были проверены вводимые данные и производился поиск основных ошибок, связанных с число передаваемых байт, аутентификация чтение из файла и выполнение команд в терминале.</p>
+
+<p>Протокол TCP тестировался на создание логического соединения, на осуществления правильной аутентификации и на передачу команд, предусмотрены некоторые исключения, касающиеся неправильно введенных данных и неправильно подсчитанных хэш-функций. </p>
+
+<p>Протокол UDP тестировался на ввод специальных команд и на выполнение основных функции по выполнению команд в терминале и чтению файлов.</p>
+
+<p>Оба протокола были протестированы подключением 2-3 клиентов и проверкой правильного взаимодействия сервера с обоими клиентами. </p>
+
+</body>
+</html>
