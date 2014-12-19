@@ -71,7 +71,7 @@ void* thread1(int sock){
 			if (numberClient == -1) {
 				clientSize++;
 				struct Client client;
-				new(bufferNew, &client);
+				newUser(bufferNew, &client);
 				c[clientSize - 1] = client;
 				numberClient = clientSize - 1;
 			}
