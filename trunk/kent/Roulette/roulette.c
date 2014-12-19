@@ -81,8 +81,10 @@ void* thread2(int sock) {
 	//		printf("bets: %s\n", buffer);
 			write(sock, buffer, strlen(buffer));
 		}
+		write(sock,"1", 1);
 	} else {
 		write(sock, "i got your bet", 14);
+		write(sock,"1", 1);
 		fo = fopen("bets.txt", "a+");
 		fputs(buffer, fo);
 		fputs("\n", fo);
