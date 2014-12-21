@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<topics>
+	<topic name="Telecom">
+		<post id="00001" name="Why i like telecom" autor="john" text="Because i must love it" />
+		<post id="00002" name="Hello, telecom!" autor="john" text="Hi this is new topic" />
+		<post id="00003" name="Hello, telecom again!" autor="john" text="Hi this is new topic too" />
+	</topic>
+	<topic name="Other topic"/>
+</topics>

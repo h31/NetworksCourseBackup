@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<users>
+	<user login="john" password="qwerty" id="1" view="00001" stat="on"/>
+	<user login="smit" password="abc" id="2" view="" stat="ff"/>
+</users>
