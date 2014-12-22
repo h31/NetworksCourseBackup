@@ -33,11 +33,16 @@ void add_topic(xmlNode * a_node,char *login, char *topic, char *post, char *text
 void start_work(int newsockfd);
 DWORD WINAPI startThread(LPVOID lpParam);
 
+#define PORT 8888
+#define BUFLEN 512
+
+DWORD dwThreadId[5];
+
 struct connection {
     int recv;
     char data[255];
     struct sockaddr_in addr;
-    int socket;
+    int socket, addrlen;
 };
 
 struct connection conns[20];
@@ -50,9 +55,14 @@ void my_read(int conn, char* data, int length) {
 }
 
 int my_write(int conn, char* data, int length) {
-    printf("%d\n", conns[conn].socket);
-    return sendto(conns[conn].socket, data, length, 0,
-                  (struct sockaddr*)(&(conns[conn].addr)), sizeof(struct sockaddr_in));
+    int n;
+	printf("%d\n", conns[conn].socket);
+	n=sendto(conns[conn].socket, data, length, 0,
+		(struct sockaddr*) &conns[conn].addr, conns[conn].addrlen);
+	if(n==SOCKET_ERROR)
+		printf("Error\n");
+	printf("%d \n",n);
+	return n;
 }
 
 void fill(void* sock) {
@@ -78,6 +88,9 @@ void fill(void* sock) {
     if (num == -1) {
         conns[conn_num].addr.sin_addr = client_addr.sin_addr;
         conns[conn_num].addr.sin_port = client_addr.sin_port;
+		conns[conn_num].addr.sin_family = client_addr.sin_family;
+		conns[conn_num].socket = socketfd;
+		conns[conn_num].addrlen = addrlen;
         num = conn_num;
         conn_num++;
     }
@@ -98,69 +111,74 @@ struct userThread
 
 struct userThread usersthr;
 
-void workMainTh(void *in)
+DWORD WINAPI workMainTh(LPVOID lpParam)
 {
-//    char buffer[100];
-//    int i;
-	printf("YEAH\n");
-    /*pthread_t *t = (pthread_t *)in;
+ char buffer[100];
+    int i,port,addr;
+    //pthread_t *t = (pthread_t *)in;
     while(1)
     {
         fgets(buffer,99,stdin);
-        for(i=0;i<5;i++)
+        if(!strncmp(buffer,"online",6))
         {
-            // if(strcmp(buffer,usersthr.login[i]))
-                //pthread_cancel(t[i]);
+        	for(i=0;i<conn_num;i++)
+        		printf("%d    %d %d\n",i,conns[i].addr.sin_addr,conns[i].addr.sin_port);
+        	printf("Print number \n");
+        	scanf("%d",&i);
+        	printf("%d\n",i);
+        	if(i>=0)
+        	{
+				ExitThread(dwThreadId[i]);
+        	}
         }
-    }*/
+    }
 }
 
 int main( int argc, char *argv[] )
 {
 
     HANDLE thread[5],mainthread;
-	DWORD dwThreadId[5];
-    int i,j;
-    struct sockParams sp;
-	WSADATA wsaData;
-
-    usersthr.count=0;
-    i=0;
-    j=0;
-    /* First call to socket() function */
-	if(WSAStartup(MAKEWORD(2,2),&wsaData)!=0)
-		printf("Error\n");
-    sp.sockfd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-    /*if (sp.sockfd < 0)
+	DWORD dwMainThread;
+     SOCKET s;
+    struct sockaddr_in server, si_other;
+    int slen , recv_len;
+    char buf[BUFLEN];
+    WSADATA wsa;
+ 
+    slen = sizeof(si_other) ;
+    mainthread= CreateThread(NULL, 0, workMainTh,NULL, 0, &dwMainThread);
+    //Initialise winsock
+    printf("\nInitialising Winsock...");
+    if (WSAStartup(MAKEWORD(2,2),&wsa) != 0)
     {
-        perror("ERROR opening socket");
-        exit(1);
-    }*/
-    /* Initialize socket structure */
-    bzero((char *) &sp.serv_addr, sizeof(sp.serv_addr));
-    sp.port_number = 5001;
-    sp.serv_addr.sin_family = AF_INET;
-    sp.serv_addr.sin_addr.s_addr = INADDR_ANY;
-    sp.serv_addr.sin_port = htons(sp.port_number);
-	bind(sp.sockfd, (struct sockaddr *) &sp.serv_addr,
-             sizeof(sp.serv_addr));
-    /* Now bind the host address using bind() call.*/
-    /*if (bind(sp.sockfd, (struct sockaddr *) &sp.serv_addr,
-             sizeof(sp.serv_addr)) < 0)
+        printf("Failed. Error Code : %d",WSAGetLastError());
+        exit(EXIT_FAILURE);
+    }
+    printf("Initialised.\n");
+     
+    //Create a socket
+    if((s = socket(AF_INET , SOCK_DGRAM , 0 )) == INVALID_SOCKET)
     {
-        perror("ERROR on binding");
-        exit(1);
-    }*/
-
-    /* Now start listening for the clients, here process will
-    * go in sleep mode and will wait for the incoming connection
-    */
-    listen(sp.sockfd,5);
+        printf("Could not create socket : %d" , WSAGetLastError());
+    }
+    printf("Socket created.\n");
+     
+    //Prepare the sockaddr_in structure
+    server.sin_family = AF_INET;
+    server.sin_addr.s_addr = INADDR_ANY;
+    server.sin_port = htons( PORT );
+     
+    //Bind
+    if( bind(s ,(struct sockaddr *)&server , sizeof(server)) == SOCKET_ERROR)
+    {
+        printf("Bind failed with error code : %d" , WSAGetLastError());
+        exit(EXIT_FAILURE);
+    }
 	printf("Start\n");
     while(1)
     {
 		
-        sp.client = sizeof(sp.cli_addr);
+        //s.client = sizeof(s.cli_addr);
 
         /* Accept actual connection from the client */
 
@@ -172,7 +190,7 @@ int main( int argc, char *argv[] )
         struct sockaddr_in client_addr;
         socklen_t addrlen = sizeof(struct sockaddr_in);
 		printf("Reading\n");
-        n = recvfrom(sp.sockfd, buff, 255, 0, (struct sockaddr*) &client_addr, &addrlen);
+        n = recvfrom(s, buff, 255, 0, (struct sockaddr*) &client_addr, &addrlen);
 		printf("Res %s \n",buff);
         num = -1;
         for (i = 0; i < conn_num; i++) {
@@ -186,13 +204,20 @@ int main( int argc, char *argv[] )
             num = conn_num;
             conns[num].addr.sin_addr = client_addr.sin_addr;
             conns[num].addr.sin_port = client_addr.sin_port;
-            conns[num].socket = sp.sockfd;
+			conns[num].addr.sin_family = client_addr.sin_family;
+			//conns[num].addr.sin_zero = client_addr.sin_zero;
+            conns[num].socket = s;
+			conns[num].addrlen = addrlen;
             conns[num].recv = 0;
+			//int n =sendto(s,"Hi\n",4,0,(struct sockaddr *)&client_addr,addrlen);
+			//printf("N is %d\n",n);
+			//my_write(0,"Hi\n",4);
             //pthread_create(&thread[num],NULL,startThread,(void*) &num);
 			thread[num]= CreateThread(NULL, 0, startThread, (LPVOID)&num, 0, &dwThreadId[i]);
             conn_num++;
         }
         printf("Client %d\n", num);
+		
         bcopy(buff, conns[num].data, 255);
         conns[num].recv = 1;
         //start_work(sp.newsockfd);
