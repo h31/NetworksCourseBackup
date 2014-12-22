@@ -39,7 +39,7 @@ void start_work(int newsockfd);
 DWORD WINAPI startThread(LPVOID lpParam);
 
 DWORD dwThreadId[MAXUSERS];
-
+HANDLE thread[MAXUSERS];
 
 struct sockParams
 {
@@ -50,6 +50,7 @@ struct sockParams
 struct userThread
 {
 	char login[MAXUSERS][LOGINSIZE];
+	int socket[MAXUSERS];
 	int count;
 };
 
@@ -65,7 +66,10 @@ DWORD WINAPI workMainTh(LPVOID lpParam)
 		for(i=0;i<MAXUSERS;i++)
 		{
 			if(strcmp(buffer,usersthr.login[i]))
+			{
 				ExitThread(dwThreadId[i]);
+				closesocket(usersthr.socket[i]);
+			}
 		}
 	}
 	return 0;
@@ -74,11 +78,12 @@ DWORD WINAPI workMainTh(LPVOID lpParam)
 int main( int argc, char *argv[] )
 {
 
-	HANDLE thread[MAXUSERS],mainthread;
+	HANDLE mainthread;
+	DWORD mtID;
 	int i,j;
 	struct sockParams sp;
 	WSADATA wsaData;
-
+	mainthread=CreateThread(NULL, 0, workMainTh, NULL, 0, &mtID);
 	WSAStartup(MAKEWORD(2,2),&wsaData);
 	usersthr.count=0;
 	i=0;
@@ -123,6 +128,7 @@ void start_work(int newsockfd)
 	bzero(login,LOGINSIZE);
 	login_func(newsockfd,login);
 	strcpy(usersthr.login[usersthr.count],login);
+	usersthr.socket[usersthr.count]=newsockfd;
 	usersthr.count++;
 	bzero(buffer,BUFSIZE);
 	strcpy(buffer,"next\n");

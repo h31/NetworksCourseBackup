@@ -56,13 +56,13 @@ int main(int argc, char *argv[])
 		bzero(message,BUFSIZE);
 		printf("Print login\n");
 		fgets(message,BUFSIZE-1,stdin);
-		send(sockfd,buffer,strlen(buffer),0);
+		send(sockfd,message,strlen(message),0);
 		bzero(buffer,BUFSIZE);
 		recv(sockfd,buffer,BUFSIZE-1,0);
 		bzero(message,BUFSIZE);
 		printf("Print password\n");
 		fgets(message,BUFSIZE-1,stdin);
-		send(sockfd,buffer,strlen(buffer),0);
+		send(sockfd,message,strlen(message),0);
 		bzero(buffer,BUFSIZE);
 		recv(sockfd,buffer,BUFSIZE-1,0);
 		if((!strncmp(buffer,"next",4)))
@@ -88,101 +88,15 @@ int main(int argc, char *argv[])
     		printf("Writing\n");
     		bzero(message,BUFSIZE);
     		fgets(message,BUFSIZE-1,stdin);
-			send(sockfd,buffer,strlen(buffer),0);
+			send(sockfd,message,strlen(message),0);
+			recv(sockfd,buffer,BUFSIZE-1,0);
+			send(sockfd,"next",strlen("next"),0);
     	}
     	else
     	{
     		bzero(message,BUFSIZE);
     		strncpy_s(message,"OK",strlen("OK"));
-			send(sockfd,buffer,strlen(buffer),0);
+			send(sockfd,message,strlen(message),0);
     	}
     }
 }
-
-
-/*
-while(1)
-{
-	bzero(buffer,256);
-	    n = recv(sockfd,buffer,255,0);
-	        if (n == 0)
-	        {
-	             perror("ERROR reading from socket");
-	             exit(1);
-	        }
-	    printf("%s\n",buffer);
-    bzero(buffer,256);
-	printf("Print login\n");
-    fgets(buffer,255,stdin);
-    n = send(sockfd,buffer,strlen(buffer),0);
-    if (n == 0)
-    {
-         perror("ERROR writing to socket");
-         exit(1);
-    }
-
-    bzero(buffer,256);
-    n = recv(sockfd,buffer,255,0);
-    //printf("----%s----\n",buffer);
-
-    bzero(buffer,256);
-	printf("Print password\n");
-    fgets(buffer,255,stdin);
-    n = send(sockfd,buffer,strlen(buffer),0);
-   /* if (n == 0)
-    {
-         perror("ERROR writing to socket");
-         exit(1);
-    }*/
-    /*bzero(buffer,256);
-    n = recv(sockfd,buffer,255,0);
-    if((!strncmp(buffer,"next",4)))
-    {
-    	n = send(sockfd,"OK",2,0);
-    	break;
-    }
-
-}
-    while(1)
-    {
-    	bzero(buffer,256);
-    	n = recv(sockfd,buffer,255,0);
-    	printf("Reading %s \n",buffer);
-    	if((strncmp(buffer,"OK",2)))
-    	{
-    		if((strncmp(buffer,"next",4)))
-    		{
-
-    			printf("%s\n",buffer);
-    		}
-    	}
-
-    	//printf("Writing\n");
-    	if(!(strncmp(buffer,"next",4)))
-    	{
-			bzero(buffer,256);
-			fgets(buffer,255,stdin);
-			n = send(sockfd,buffer,strlen(buffer),0);
-			n = recv(sockfd,buffer,255,0);
-			n = send(sockfd,"next",4,0);
-			/*if (n > 0)
-			{
-			   perror("ERROR writing to socket");
-			   exit(1);
-			}*/
-    	/*}
-    	else
-    	{
-    		n = send(sockfd,"OK",2,0);
-    		printf("write OK\n");
-    		/*if (n > 0)
-    		{
-    		   perror("ERROR writing to socket");
-    		   exit(1);
-    		}*/
-    //	}
-   // }
-
-//}
-
-
