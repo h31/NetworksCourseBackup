@@ -11,7 +11,7 @@
 #include <libxml/xmlmemory.h>
 #include <libxml/xpath.h>
 
-#define BUFLEN 512  //Max length of buffer
+#define BUFLEN 1024  //Max length of buffer
 #define MY_PORT 5001   //The port on which to listen for incoming data
 
 void die(char *s)
@@ -126,8 +126,8 @@ void do_read(int newsockfd, char *buffer, char* client, struct sockaddr_in si_ot
 
 void read_mes(xmlNode* node, char* mess, int s, struct sockaddr_in si_other, int slen){
 	xmlNode *cur_node = NULL;
-	char buf[256];
-	bzero(buf,256);
+	char buf[BUFLEN];
+	bzero(buf,BUFLEN);
 	int n;
     for (cur_node = node; cur_node; cur_node = cur_node->next) {
         if (cur_node->type == XML_ELEMENT_NODE) {
@@ -229,8 +229,8 @@ void print_mesgs(char* buffer ,int s, char* user, struct sockaddr_in si_other, i
 
 void add_mes(xmlNode* node, char* from, char* msg){
 	xmlNode* cur_node = NULL;
-	char buf[256];
-	bzero(buf,256);
+	char buf[BUFLEN];
+	bzero(buf,BUFLEN);
 	for (cur_node = node; cur_node; cur_node = cur_node->next)
 	{
 		if (cur_node->type == XML_ELEMENT_NODE) {
@@ -332,12 +332,26 @@ int use_token(char* str, int num, char* res){
 	return 0;
 }
 
+void squeeze (char s[], int c) {
+	int i, j;
+
+	for (i = j = 0; s[i] != '\0'; i++)
+		if (s[i] != c)
+			s[j++] = s[i];
+	s[j] = '\0';
+}
+
 int main(void)
 {
     struct sockaddr_in si_me, si_other;
 
     int s, i, slen = sizeof(si_other) , recv_len;
     char buf[BUFLEN];
+
+    char* user_names[5];
+    char* user_addr[5];
+    //int user_port[5];
+    uint16_t user_port[5];
 
     //create a UDP socket
     if ((s=socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) == -1)
@@ -364,15 +378,26 @@ socklen_t slen_o = sizeof(si_other);
 int sa = sizeof("Commands: 1#kitty#Hello# - Send message 'Hello' to user kitty;\n"
 		"2# - read ur inbox; 3# - exit\n");
 int k=0;
+
 char* arg[4];
 char* arg_tmp[4];
 //char user_name[10]="nnm";
 char* user_name;
-char* send_to;
-char* mess_to;
+//char* send_to;
+//char* mess_to;
 char buf_tmp[BUFLEN];
-char buf_tmp2[BUFLEN];
-char buf_tmp3[BUFLEN];
+//char buf_tmp2[BUFLEN];
+//char buf_tmp3[BUFLEN];
+char users[5][20];
+char adrs[5][30];
+
+char** teem;
+
+int arr[2] = {0,1};
+
+//number = 0;
+
+
 char **qq;
 
     while(1)
@@ -395,6 +420,12 @@ char **qq;
             die("sendto()");
         }
 
+        //if(nm < 5){
+        	//user_addr[nm] =
+        //}
+
+
+        printf("Received packet from %s:%d\n", inet_ntoa(si_other.sin_addr), ntohs(si_other.sin_port));
 
         strcpy(buf_tmp,buf);
         int buu = 0;
@@ -434,8 +465,30 @@ char **qq;
                             }
 
 
-                            bzero(user_name, sizeof(user_name));
-                            get_cmd_ch(buf, 0, user_name);
+                            //bzero(user_name, sizeof(user_name));
+
+                            //teem = splito_array(buf);
+                            //printf("us: %s", teem[0]);
+                            //strcpy(user_name, teem[0]);
+                            //get_cmd_ch(buf, 0, user_name);
+
+                            strcpy(user_name, buf);
+                            //strcpy(user_names[arr[0]], buf);
+                            user_name[strlen(user_name)-1]=0;
+                            //user_names[arr[0]][strlen(user_names[arr[0]])-1]=0;
+
+                            strcpy(users[arr[0]], buf);
+
+
+                            squeeze(users[arr[0]], '#');
+
+                            strcpy(adrs[arr[0]], inet_ntoa(si_other.sin_addr));
+
+                            user_port[arr[0]] = ntohs(si_other.sin_port);
+
+                            arr[0]++;
+
+
 
                             printf("User: %s\n", user_name);
                             bzero(buf, sizeof(buf));
@@ -464,17 +517,36 @@ char **qq;
 
         	puts("OBRABOTKA\n");
 
+        	printf("usss: %s",users[0]);
+
         	qq = splito_array(buf_tmp);
 
         	if(buu!=0){
         		if (buu==1){
-        			printf("name: %s, to: %s, mes: %s\n", user_name, qq[1], qq[2]);
-        			do_send(user_name, qq[1], qq[2]);
+        			//printf("name: %s, to: %s, mes: %s\n", user_name, qq[1], qq[2]);
+        			for(k=0;k<5;k++)
+        				if(user_port[k] == ntohs(si_other.sin_port)){
+        					printf("k=%d p: %d, us: %s\n", k, user_port[k], users[k]);
+        					//do_send(user_names[k], qq[1], qq[2]);
+        					printf("from=%s to: %s, mes: %s\n", users[k], qq[1], qq[2]);
+        					do_send(users[k], qq[1], qq[2]);
+        				}
+
+        			//for(k=0;k<5;k++)
+        				//if(strcmp(user_port[k], ntohs(si_other.sin_port)) == 0)
+        					//strcpy(user_name, user_names[k]);
+
+        			//do_send(user_name, qq[1], qq[2]);
+
         			//puts("com 1");
         		}
         		else if (buu==2){
-        			printf("Client name: %s\n", user_name);
-        			do_read(s, buf, user_name, si_other, slen);
+        			for(k=0;k<5;k++)
+        				if(user_port[k] == ntohs(si_other.sin_port)){
+        					printf("Client name: %s\n", user_name);
+        					//do_read(s, buf, user_name, si_other, slen);
+        					do_read(s, buf, users[k], si_other, slen);
+        				}
         			//puts("com 2");
         		}
         		else if (buu==3){
