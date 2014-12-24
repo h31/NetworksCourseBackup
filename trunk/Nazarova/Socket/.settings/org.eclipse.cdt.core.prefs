@@ -1,9 +1,0 @@
-eclipse.preferences.version=1
-environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.323964137/CWD/delimiter=\:
-environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.323964137/CWD/operation=replace
-environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.323964137/CWD/value=/home/user/workspace/Socket/Debug
-environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.323964137/PATH/delimiter=\:
-environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.323964137/PATH/operation=replace
-environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.323964137/PATH/value=/bin\:/usr/local/bin\:/usr/bin\:/usr/local/games\:/usr/games\:/opt/jdk/bin\:/opt/eclipse\:usr/bin/g++
-environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.323964137/append=true
-environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.323964137/appendContributed=true
