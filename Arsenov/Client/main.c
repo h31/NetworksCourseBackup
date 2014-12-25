@@ -1,32 +1,61 @@
+/*
+ * File:   main.c
+ * Author: student
+ *
+ * Created on 27 Октябрь 2014 г., 13:42
+ */
+
 #include <stdio.h>
-#include <sys/types.h> 
-#include <sys/socket.h>
+#include <stdlib.h>
 #include <netinet/in.h>
 #include <netdb.h>
+#include <strings.h>
+#include <string.h>
+#include <errno.h>
 
-int main(int argc, char *argv[])
+ssize_t                         /* Read "n" bytes from a descriptor. */
+readn(int fd, void *vptr, size_t n)
 {
-    int sockfd, portno, n;
-    int i;
-    int end_of_recv;
+    size_t  nleft;
+    ssize_t nread;
+    char   *ptr;
+
+    ptr = vptr;
+    nleft = n;
+    while (nleft > 0) {
+        if ( (nread = read(fd, ptr, nleft)) < 0) {
+            if (errno == EINTR)
+                nread = 0;      /* and call read() again */
+            else
+                return (-1);
+        } else if (nread == 0)
+            break;              /* EOF */
+
+        nleft -= nread;
+        ptr += nread;
+    }
+    return (n - nleft);         /* return >= 0 */
+}
+
+/*
+ *
+ */
+int main(int argc, char** argv) {
+    int sockfd, n;
     struct sockaddr_in serv_addr;
     struct hostent *server;
 
     char buffer[256];
 
-    if (argc < 3) {
-        fprintf(stderr,"usage %s hostname port\n", argv[0]);
-        exit(0);
-    }
-    portno = atoi(argv[2]);
+    const int portno = 5000;
     /* Create a socket point */
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (sockfd < 0) 
+    if (sockfd < 0)
     {
         perror("ERROR opening socket");
         exit(1);
     }
-    server = gethostbyname(argv[1]);
+    server = gethostbyname("localhost");
     if (server == NULL) {
         fprintf(stderr,"ERROR, no such host\n");
         exit(0);
@@ -34,51 +63,55 @@ int main(int argc, char *argv[])
 
     bzero((char *) &serv_addr, sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
-    bcopy((char *)server->h_addr, 
+    bcopy((char *)server->h_addr,
            (char *)&serv_addr.sin_addr.s_addr,
                 server->h_length);
     serv_addr.sin_port = htons(portno);
 
     /* Now connect to the server */
-    if (connect(sockfd,&serv_addr,sizeof(serv_addr)) < 0) 
+    if (connect(sockfd,&serv_addr,sizeof(serv_addr)) < 0)
     {
          perror("ERROR connecting");
          exit(1);
     }
-    while (1) { //
+
+    while (1) {
         /* Now ask for a message from the user, this message
-        * will be read by server
-        */
-    	printf(">> ");
-        bzero(buffer,256);
-        fgets(buffer,255,stdin);
+         * will be read by server
+         */
+        printf("Please enter the command: ");
+        bzero(buffer, 256);
+        fgets(buffer, 255, stdin);
+        int buffer_len = strlen(buffer);
+
+        if (buffer_len == 0) {
+            perror("Empty message, try again");
+            break;
+        }
+        // Remove EOL
+        buffer[strlen(buffer) - 1] = '\0';
+        buffer_len--;
+        /* Send length to the server */
+        write(sockfd, &buffer_len, sizeof(int));
         /* Send message to the server */
-        n = write(sockfd,buffer,strlen(buffer));
-        if (n < 0)
-        {
-             perror("ERROR writing to socket");
-             exit(1);
+        n = write(sockfd, buffer, buffer_len);
+        if (n < 0) {
+            perror("ERROR writing to socket");
+            exit(1);
         }
         /* Now read server response */
-        end_of_recv = 0;
-	do {
-		bzero(buffer,256);
-		n = read(sockfd,buffer,255);
-		for (i = 0; i < strlen(buffer); i++) {
-			if (buffer[i] == 4) {
-				buffer[i] = 0;
-				end_of_recv = 1;
-			}
-		}
-		if (n < 0)
-		{
-			perror("ERROR reading from socket");
-			exit(1);
-		}
-		printf("%s",buffer);
-	} while (!end_of_recv);
+        read(sockfd, &buffer_len, sizeof(int));
+        bzero(buffer, 256);
+        n = readn(sockfd, buffer, buffer_len);
+        if (n < 0) {
+            perror("ERROR reading from socket");
+            exit(1);
+        }
+        printf("%s\n", buffer);
     }
-
     return 0;
+
 }
+
+
 
