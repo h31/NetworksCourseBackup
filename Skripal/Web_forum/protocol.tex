@@ -9,10 +9,10 @@
 
 \begin{document}
 \begin{titlepage}
-\title{Описание протокола}
+\title{Отчет по предмету "Телекомуникации". "Сетевой форум"}
 \author{Скрипаль Б.А.}
 \end{titlepage}
-
+\maketitle
 \chapter{Задание}
 Разработать клиент-серверную систему сетевого форума из сервера сетевого форума и пользовательских клиентов.
 \section{Основные возможности сервера}
@@ -63,6 +63,13 @@
 \item add Имя темы\&Название поста\&Содержание поста - добавление нового "поста" в выбранную пользователем ветвь форума. Если имя темы указано неверно, то тема не будет добавлена на сетевой форум.
 \item exit - завершение сеанса. После ввода данной команды связь между клиентом и сервером обрывается, и пользователь переходит в состояние оффлайн.
 \end{itemize}
+\section{Формат команд}
+Формат команд был выбран таким образом, что бы язык управления был максимально удобен для человека. Команды устроены следующим образом:
+\begin{itemize}
+\item Каждая команда начинается с ключевого слова (например topics)
+\item Если у команды есть параметр, то он отделяется от ключевого слова пробелом (например show 00001)
+\item Если у команды несколько параметров, то они отделяются друг от друга знаком \& (например add Telecom\&Test\&test)
+\end{itemize}
 \section{Диаграмма организации клиент-серверного обмена}
 \includegraphics[scale=0.5]{diagram}
 \chapter{Архитектура приложения}
@@ -96,6 +103,64 @@
 \item Получение потомка
 \item Чтение заданных атрибутов потомка, их изменение и сохранение
 \end{itemize}
+XML-схема структуры файла с содержимым форума
+\begin{verbatim}
+<xs:schema attributeFormDefault="unqualified" 
+elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="topics">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="topic" maxOccurs="unbounded" minOccurs="1">
+          <xs:complexType mixed="true">
+            <xs:sequence>
+              <xs:element name="post" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:byte" name="id"/>
+                      <xs:attribute type="xs:string" name="name"/>
+                      <xs:attribute type="xs:string" name="autor"/>
+                      <xs:attribute type="xs:string" name="text"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="name"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+\end{verbatim}
+XML схема структуры файла с пользователями
+\begin{verbatim}
+<xs:schema attributeFormDefault="unqualified" 
+elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="users">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="user" maxOccurs="unbounded" minOccurs="1">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="login"/>
+                <xs:attribute type="xs:string" name="password"/>
+                <xs:attribute type="xs:byte" name="id"/>
+                <xs:attribute type="xs:string" name="view"/>
+                <xs:attribute type="xs:string" name="stat"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+\end{verbatim}
+\section{Описание реализации многопоточности}
+При подключении нового клиента к серверу ему выделяется отдельный поток. В реализации при помощи TCP все потоки работают параллельно. В UDP пришлось вставить некоторую задержку, для более стабильной работы приложения. Поток закрывается или после отключения клиента от сервера или посредством отключения клиента от сервера посредством сервера. Так как в TCP имеется возможность установления соединения, то каждый поток, фактически, слушает только своего клиента. Из-за того, что в UDP нет такого понятия как соединение, то порт слушается в главном потоке. Затем он определяет какому потоку предназначено это сообщение и записывает его в соответствующую структуру. Потоки, выделенные для клиентов, поочередно просматривают эту структуру и если в ней имеется сообщение для этого потока, то они обрабатывают это сообщение и посылают ответ клиенту.
 \section{Дизайн протокола}
 \begin{itemize}
 \item Клиент отправляет серверу сообщение о начале работы 
