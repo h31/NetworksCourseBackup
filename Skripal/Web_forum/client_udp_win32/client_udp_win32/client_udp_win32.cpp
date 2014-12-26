@@ -32,8 +32,6 @@ int main(void)
     char buffer[BUFLEN];
     char message[BUFLEN];
     WSADATA wsa;
-	int n;
-	int N=256;
     //Initialise winsock
     printf("\nInitialising Winsock...");
     if (WSAStartup(MAKEWORD(2,2),&wsa) != 0)
