@@ -317,7 +317,7 @@ void login_func(int newsockfd,char * log)
 	    search_user(root_element,login,password,id);
 	    if(id[0] == 0)
 	    {
-	    	printf("Invalid login --%s-- and password --%s-- \n Retry write you login and password\n");
+	    	printf("Invalid login --%s-- and password --%s-- \n Retry write you login and password\n",login,password);
 	    	n=send(newsockfd,"OK",strlen("OK"),0);
 	    	login_func(newsockfd,login);
 	    }

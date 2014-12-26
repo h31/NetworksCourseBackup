@@ -141,8 +141,7 @@ int main( int argc, char *argv[] )
 	DWORD dwMainThread;
      SOCKET s;
     struct sockaddr_in server, si_other;
-    int slen , recv_len;
-    char buf[BUFLEN];
+    int slen;
     WSADATA wsa;
  
     slen = sizeof(si_other) ;
@@ -486,7 +485,7 @@ void login_func(int newsockfd,char * log)
         search_user(root_element,login,password,id);
         if(id[0] == 0)
         {
-            printf("Invalid login --%s-- and password --%s-- \n Retry write you login and password\n");
+            printf("Invalid login --%s-- and password --%s-- \n Retry write you login and password\n",login,password);
             n=my_write(newsockfd,"OK",5);
             login_func(newsockfd,login);
         }

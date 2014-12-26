@@ -268,7 +268,6 @@ void print_topic(char *buffer,int newsockfd)
         xmlDoc         *doc = NULL;
         xmlNode        *root_element = NULL;
         const char     *Filename = "topics.xml";
-        int n;
         doc = xmlReadFile(Filename, NULL, 0);
         if (doc == NULL)
           {
@@ -281,7 +280,7 @@ void print_topic(char *buffer,int newsockfd)
 
                   root_element = xmlDocGetRootElement(doc);
                  // strncat(buffer,"Topics:\n",10);
-                  n = write(newsockfd,"Topics:\n",10);
+                  write(newsockfd,"Topics:\n",10);
                   print_topic_names(root_element,buffer,newsockfd);
                   xmlFreeDoc(doc);
           }
@@ -297,7 +296,6 @@ void print_topic_names(xmlNode * a_node, char *mess, int newsockfd)
     xmlNode *cur_node = NULL;
     char buf[256];
     bzero(buf,256);
-    int n;
 
     for (cur_node = a_node; cur_node; cur_node = cur_node->next) {
         if (cur_node->type == XML_ELEMENT_NODE) {
@@ -305,8 +303,8 @@ void print_topic_names(xmlNode * a_node, char *mess, int newsockfd)
             {
             	strncpy(buf,xmlGetProp(cur_node,"name"),strlen(xmlGetProp(cur_node,"name")));
             	strcat(buf,"\n");
-            	n = write(newsockfd,buf,strlen(buf));
-            	n=read(newsockfd,buf,255);
+            	write(newsockfd,buf,strlen(buf));
+            	read(newsockfd,buf,255);
 			}
             if((!xmlStrcmp(cur_node->name,(const xmlChar *)"post")))
             {
@@ -315,8 +313,8 @@ void print_topic_names(xmlNode * a_node, char *mess, int newsockfd)
             	strcat(buf,"	");
             	strncat(buf,xmlGetProp(cur_node,"name"),strlen(xmlGetProp(cur_node,"name")));
                 strcat(buf,"\n");
-                        	n = write(newsockfd,buf,strlen(buf));
-                        	n=read(newsockfd,buf,255);
+                        	write(newsockfd,buf,strlen(buf));
+                        	read(newsockfd,buf,255);
             			}
         }
 
@@ -371,19 +369,19 @@ void login_func(int newsockfd,char * log)
 	    search_user(root_element,login,password,id);
 	    if(id[0] == 0)
 	    {
-	    	printf("Invalid login --%s-- and password --%s-- \n Retry write you login and password\n");
-	    	n=write(newsockfd,"OK",5);
+	    	printf("Invalid login --%s-- and password --%s-- \n Retry write you login and password\n",login,password);
+	    	write(newsockfd,"OK",5);
 	    	login_func(newsockfd,login);
 	    }
 	    else
 	    {
-	    	n=write(newsockfd,"next",5);
+	    	write(newsockfd,"next",5);
 	    	search_new_topics(login,newsockfd);
 	    	root_element = xmlDocGetRootElement(doc);
 	    	on_off_user(root_element,login,1);
 	    	xmlSaveFile(Filename,doc);
 	    	strcpy(log,login);
-	    	n=write(newsockfd,"next",5);
+	    	write(newsockfd,"next",5);
 	    }
 
 	    xmlFreeDoc(doc);
@@ -532,7 +530,6 @@ void search_topics_by_name(xmlNode * a_node, char *name, char *buffer)
 void fnp_post_by_id(xmlNode * a_node, char *id,int newsockfd)
 {
 	xmlNode *cur_node = NULL;
-	int n;
 	char buf[256];
 	bzero(buf,256);
 			for (cur_node = a_node; cur_node; cur_node = cur_node->next) {
@@ -543,9 +540,9 @@ void fnp_post_by_id(xmlNode * a_node, char *id,int newsockfd)
 						{
 							strncpy(buf,xmlGetProp(cur_node,"text"),strlen(xmlGetProp(cur_node,"text")));
 							strcat(buf,"\n");
-							n = write(newsockfd,buf,strlen(buf));
+							write(newsockfd,buf,strlen(buf));
 							//printf("%s\n",xmlGetProp(cur_node,"text"));
-							n=read(newsockfd,buf,255);
+							read(newsockfd,buf,255);
 							return;
 						}
 					}
@@ -573,7 +570,6 @@ void search_all_post(xmlNode * a_node, char all_posts[255][6],int *j)
 void fnp_post_name_by_id(xmlNode * a_node, char *id,int newsockfd)
 {
 	xmlNode *cur_node = NULL;
-	int n;
 	char buf[256];
 	bzero(buf,256);
 			for (cur_node = a_node; cur_node; cur_node = cur_node->next) {
@@ -584,9 +580,9 @@ void fnp_post_name_by_id(xmlNode * a_node, char *id,int newsockfd)
 						{
 							strncpy(buf,xmlGetProp(cur_node,"name"),strlen(xmlGetProp(cur_node,"name")));
 							strcat(buf,"\n");
-							n = write(newsockfd,buf,strlen(buf));
+							write(newsockfd,buf,strlen(buf));
 							//printf("%s\n",xmlGetProp(cur_node,"text"));
-							n=read(newsockfd,buf,255);
+							read(newsockfd,buf,255);
 							return;
 						}
 					}
@@ -648,8 +644,6 @@ void search_online_user(xmlNode * a_node,int newsockfd)
 {
 	xmlNode *cur_node = NULL;
 	char buf[256];
-	int n;
-
 			for (cur_node = a_node; cur_node; cur_node = cur_node->next)
 			{
 				if (cur_node->type == XML_ELEMENT_NODE) {
@@ -657,8 +651,8 @@ void search_online_user(xmlNode * a_node,int newsockfd)
 					{
 						if((!xmlStrcmp(xmlGetProp(cur_node,"stat"),(const xmlChar *)"on")))
 						{
-							n = write(newsockfd,xmlGetProp(cur_node,"login"),strlen(xmlGetProp(cur_node,"login")));
-							n=read(newsockfd,buf,255);
+							write(newsockfd,xmlGetProp(cur_node,"login"),strlen(xmlGetProp(cur_node,"login")));
+							read(newsockfd,buf,255);
 						}
 					}
 			    }
@@ -667,31 +661,31 @@ void search_online_user(xmlNode * a_node,int newsockfd)
 }
 void add_new_topic(xmlNode * a_node,int newsockfd,char *login)
 {
-	int n,i;
+	int i;
 	char buffer[256];
 	char topic_name[256];
 	char post_name[256];
 	char post_message[256];
 	char id[6];
 
-	n = write(newsockfd,"Print topic name\n ",18);
+	write(newsockfd,"Print topic name\n ",18);
 	bzero(buffer,256);
 	bzero(topic_name,256);
-	n = read( newsockfd,buffer,255 );
+	read( newsockfd,buffer,255 );
 	strcpy(topic_name,buffer);
 	topic_name[strlen(topic_name)-1]=0;
 
-	n = write(newsockfd,"Print post name\n ",18);
+	write(newsockfd,"Print post name\n ",18);
 	bzero(buffer,256);
 	bzero(post_name,256);
-	n = read( newsockfd,buffer,255 );
+	read( newsockfd,buffer,255 );
 	strcpy(post_name,buffer);
 	post_name[strlen(post_name)-1]=0;
 
-	n = write(newsockfd,"Print message\n ",18);
+	write(newsockfd,"Print message\n ",18);
 	bzero(buffer,256);
 	bzero(post_message,256);
-	n = read( newsockfd,buffer,255 );
+	read( newsockfd,buffer,255 );
 	strcpy(post_message,buffer);
 	post_message[strlen(post_message)-1]=0;
 

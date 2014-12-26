@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results version="2">
+    <cppcheck version="1.67"/>
+    <errors>
+        <error id="redundantAssignment" severity="performance" msg="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used." verbose="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used.">
+            <location file="tcp_serv_win32\tcp_serv_win32\win_tcp_serv.cpp" line="299"/>
+            <location file="tcp_serv_win32\tcp_serv_win32\win_tcp_serv.cpp" line="302"/>
+        </error>
+        <error id="redundantAssignment" severity="performance" msg="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used." verbose="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used.">
+            <location file="tcp_serv_win32\tcp_serv_win32\win_tcp_serv.cpp" line="302"/>
+            <location file="tcp_serv_win32\tcp_serv_win32\win_tcp_serv.cpp" line="303"/>
+        </error>
+        <error id="redundantAssignment" severity="performance" msg="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used." verbose="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used.">
+            <location file="tcp_serv_win32\tcp_serv_win32\win_tcp_serv.cpp" line="303"/>
+            <location file="tcp_serv_win32\tcp_serv_win32\win_tcp_serv.cpp" line="304"/>
+        </error>
+        <error id="redundantAssignment" severity="performance" msg="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used." verbose="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used.">
+            <location file="tcp_serv_win32\tcp_serv_win32\win_tcp_serv.cpp" line="326"/>
+            <location file="tcp_serv_win32\tcp_serv_win32\win_tcp_serv.cpp" line="332"/>
+        </error>
+        <error id="redundantAssignment" severity="performance" msg="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used." verbose="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used.">
+            <location file="tcp_serv_win32\tcp_serv_win32\win_tcp_serv.cpp" line="500"/>
+            <location file="tcp_serv_win32\tcp_serv_win32\win_tcp_serv.cpp" line="501"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;root_element&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;root_element&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level.">
+            <location file="tcp_serv_win32\tcp_serv_win32\win_tcp_serv.cpp" line="242"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;id&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;id&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level.">
+            <location file="tcp_serv_win32\tcp_serv_win32\win_tcp_serv.cpp" line="293"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;root_element&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;root_element&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level.">
+            <location file="tcp_serv_win32\tcp_serv_win32\win_tcp_serv.cpp" line="296"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;n&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;n&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level.">
+            <location file="tcp_serv_win32\tcp_serv_win32\win_tcp_serv.cpp" line="489"/>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &amp;#039;j&amp;#039; is assigned a value that is never used." verbose="Variable &amp;#039;j&amp;#039; is assigned a value that is never used.">
+            <location file="tcp_serv_win32\tcp_serv_win32\win_tcp_serv.cpp" line="90"/>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &amp;#039;n&amp;#039; is assigned a value that is never used." verbose="Variable &amp;#039;n&amp;#039; is assigned a value that is never used.">
+            <location file="tcp_serv_win32\tcp_serv_win32\win_tcp_serv.cpp" line="332"/>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &amp;#039;n&amp;#039; is assigned a value that is never used." verbose="Variable &amp;#039;n&amp;#039; is assigned a value that is never used.">
+            <location file="tcp_serv_win32\tcp_serv_win32\win_tcp_serv.cpp" line="501"/>
+        </error>
+        <error id="redundantAssignment" severity="performance" msg="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used." verbose="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used.">
+            <location file="client_tcp_lin\main.c" line="62"/>
+            <location file="client_tcp_lin\main.c" line="68"/>
+        </error>
+        <error id="redundantAssignment" severity="performance" msg="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used." verbose="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used.">
+            <location file="server_tcp_lin\main.c" line="149"/>
+            <location file="server_tcp_lin\main.c" line="152"/>
+        </error>
+        <error id="redundantAssignment" severity="performance" msg="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used." verbose="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used.">
+            <location file="server_tcp_lin\main.c" line="337"/>
+            <location file="server_tcp_lin\main.c" line="340"/>
+        </error>
+        <error id="redundantAssignment" severity="performance" msg="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used." verbose="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used.">
+            <location file="server_tcp_lin\main.c" line="346"/>
+            <location file="server_tcp_lin\main.c" line="347"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;root_element&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;root_element&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level.">
+            <location file="server_tcp_lin\main.c" line="269"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;id&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;id&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level.">
+            <location file="server_tcp_lin\main.c" line="330"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;root_element&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;root_element&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level.">
+            <location file="server_tcp_lin\main.c" line="333"/>
+        </error>
+        <error id="unusedVariable" severity="style" msg="Unused variable: mainthread" verbose="Unused variable: mainthread">
+            <location file="server_tcp_lin\main.c" line="62"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;root_element&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;root_element&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level.">
+            <location file="server_udp_lin\main.c" line="324"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;id&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;id&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level.">
+            <location file="server_udp_lin\main.c" line="424"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;root_element&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;root_element&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level.">
+            <location file="server_udp_lin\main.c" line="427"/>
+        </error>
+        <error id="redundantAssignment" severity="performance" msg="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used." verbose="Variable &amp;#039;n&amp;#039; is reassigned a value before the old one has been used.">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="494"/>
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="500"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;root_element&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;root_element&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level.">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="383"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;id&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;id&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level.">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="446"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;root_element&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;root_element&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level.">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="449"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;n&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;n&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level.">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="690"/>
+        </error>
+        <error id="unusedStructMember" severity="style" msg="struct or union member &amp;#039;sockParams::sockfd&amp;#039; is never used." verbose="struct or union member &amp;#039;sockParams::sockfd&amp;#039; is never used.">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="102"/>
+        </error>
+        <error id="unusedStructMember" severity="style" msg="struct or union member &amp;#039;sockParams::newsockfd&amp;#039; is never used." verbose="struct or union member &amp;#039;sockParams::newsockfd&amp;#039; is never used.">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="102"/>
+        </error>
+        <error id="unusedStructMember" severity="style" msg="struct or union member &amp;#039;sockParams::port_number&amp;#039; is never used." verbose="struct or union member &amp;#039;sockParams::port_number&amp;#039; is never used.">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="102"/>
+        </error>
+        <error id="unusedStructMember" severity="style" msg="struct or union member &amp;#039;sockParams::client&amp;#039; is never used." verbose="struct or union member &amp;#039;sockParams::client&amp;#039; is never used.">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="102"/>
+        </error>
+        <error id="unusedStructMember" severity="style" msg="struct or union member &amp;#039;sockParams::countnumber&amp;#039; is never used." verbose="struct or union member &amp;#039;sockParams::countnumber&amp;#039; is never used.">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="102"/>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &amp;#039;n&amp;#039; is assigned a value that is never used." verbose="Variable &amp;#039;n&amp;#039; is assigned a value that is never used.">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="76"/>
+        </error>
+        <error id="unusedVariable" severity="style" msg="Unused variable: port" verbose="Unused variable: port">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="117"/>
+        </error>
+        <error id="unusedVariable" severity="style" msg="Unused variable: addr" verbose="Unused variable: addr">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="117"/>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &amp;#039;thread&amp;#039; is assigned a value that is never used." verbose="Variable &amp;#039;thread&amp;#039; is assigned a value that is never used.">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="215"/>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &amp;#039;slen&amp;#039; is assigned a value that is never used." verbose="Variable &amp;#039;slen&amp;#039; is assigned a value that is never used.">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="147"/>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &amp;#039;n&amp;#039; is assigned a value that is never used." verbose="Variable &amp;#039;n&amp;#039; is assigned a value that is never used.">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="192"/>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &amp;#039;n&amp;#039; is assigned a value that is never used." verbose="Variable &amp;#039;n&amp;#039; is assigned a value that is never used.">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="500"/>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &amp;#039;n&amp;#039; is assigned a value that is never used." verbose="Variable &amp;#039;n&amp;#039; is assigned a value that is never used.">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="701"/>
+        </error>
+        <error id="invalidscanf_libc" severity="portability" msg="scanf without field width limits can crash with huge input data on some versions of libc." verbose="scanf without field width limits can crash with huge input data on libc versions older than 2.13-25. Add a field width specifier to fix this problem:&#10;    %i =&amp;gt; %3i&#10;&#10;Sample program that can crash:&#10;&#10;#include &amp;lt;stdio.h&amp;gt;&#10;int main()&#10;{&#10;    int a;&#10;    scanf(&amp;quot;%i&amp;quot;, &amp;amp;a);&#10;    return 0;&#10;}&#10;&#10;To make it crash:&#10;perl -e &amp;#039;print &amp;quot;5&amp;quot;x2100000&amp;#039; | ./a.out">
+            <location file="server_udp_win32\server_udp_win32\server_udp_win32.cpp" line="127"/>
+        </error>
+    </errors>
+</results>

@@ -36,14 +36,10 @@ struct sockParams
 
 int main( int argc, char *argv[] )
 {
-
-	int i,j;
 	struct sockParams sp;
 	sp.slen = sizeof(sp.si_other);
 
-	i=0;
-	j=0;
-    /* First call to socket() function */
+   /* First call to socket() function */
 	 if((sp.sock=socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) == -1)
 			printf("Error!!!!\n");
 
@@ -327,7 +323,6 @@ void print_topic(void *in)
         xmlDoc         *doc = NULL;
         xmlNode        *root_element = NULL;
         const char     *Filename = "topics.xml";
-        int n;
         char			buffer[256];
         struct sockParams *sp = (struct sockParams *)in;
         doc = xmlReadFile(Filename, NULL, 0);
@@ -377,7 +372,6 @@ void print_topic_names(xmlNode * a_node, char *mess, void *in)
     xmlNode *cur_node = NULL;
     char buf[256];
     bzero(buf,256);
-    int n;
     struct sockParams *sp = (struct sockParams *)in;
     printf("start topic names\n");
     for (cur_node = a_node; cur_node; cur_node = cur_node->next) {
@@ -427,7 +421,6 @@ void login_func(void *in,char * log)
 {
 	char login[256];
 	char password[256];
-	int n;
 	char id[256];
 	char message[256];
 	xmlDoc         *doc = NULL;
@@ -659,7 +652,6 @@ void search_topics_by_name(xmlNode * a_node, char *name, char *buffer)
 void fnp_post_by_id(xmlNode * a_node, char *id,void *in)
 {
 	xmlNode *cur_node = NULL;
-	int n;
 	char buf[256];
 	struct sockParams *sp = (struct sockParams *)in;
 	bzero(buf,256);
@@ -709,7 +701,6 @@ void search_all_post(xmlNode * a_node, char all_posts[255][6],int *j)
 void fnp_post_name_by_id(xmlNode * a_node, char *id,void *in)
 {
 	xmlNode *cur_node = NULL;
-	int n;
 	char buf[256];
 	struct sockParams *sp = (struct sockParams *)in;
 	bzero(buf,256);
@@ -793,7 +784,6 @@ void search_online_user(xmlNode * a_node,void *in)
 {
 	xmlNode *cur_node = NULL;
 	char buf[256];
-	int n;
 	struct sockParams *sp = (struct sockParams *)in;
 	for (cur_node = a_node; cur_node; cur_node = cur_node->next)
 	{
@@ -821,7 +811,7 @@ void search_online_user(xmlNode * a_node,void *in)
 }
 void add_new_topic(xmlNode * a_node,void *in,char *login)
 {
-	int n,i;
+	int i;
 	char buffer[256];
 	char topic_name[256];
 	char post_name[256];

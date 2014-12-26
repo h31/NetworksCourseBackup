@@ -17,7 +17,7 @@ void die(char *s)
 int main(void)
 {
     struct sockaddr_in si_other;
-    int s, i, slen=sizeof(si_other);
+    int s, slen=sizeof(si_other);
     char buf[BUFLEN];
     char message[BUFLEN];
 
