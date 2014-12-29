@@ -1,9 +1,4 @@
-/*
- * File:   main.c
- * Author: student
- *
- * Created on 27 Октябрь 2014 г., 13:42
- */
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,7 +8,7 @@
 #include <string.h>
 #include <errno.h>
 
-ssize_t                         /* Read "n" bytes from a descriptor. */
+ssize_t                         /*cbnsdf. */
 readn(int fd, void *vptr, size_t n)
 {
     size_t  nleft;
