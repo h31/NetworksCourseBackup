@@ -25,6 +25,8 @@ int recv_report(int sock);
 void send_report(int sock, char *status);
 void ValidateArgs(int argc, char **argv);
 void usage();
+void recv_msg(int sock, void *__restrict __buf, size_t __n, int __flags, __SOCKADDR_ARG __addr, socklen_t *__restrict __addr_len);
+void send_msg(int sock, __const void *__buf, size_t __n, int __flags, __CONST_SOCKADDR_ARG __addr, socklen_t __addr_len);
 
 
 int port = DEFAULT_PORT;
@@ -213,7 +215,7 @@ int main(int argc, char **argv)
 				perror("SEND full path to file failed");
 				exit(1);
 			}
-			//printf("SEND  [%d bytes]: full path to file '%s'\n", msg_size, path);
+			printf("SEND  [%d bytes]: full path to file '%s'\n", msg_size, path);
 		}
 		else if (!strcmp(command, "find"))
 		{
@@ -235,6 +237,29 @@ int main(int argc, char **argv)
 		output(content);
 		send_report(sock, SUCCESS);
 	}
+	recv_msg(sock, content, sizeof(content), 0, (struct sockaddr *)&client, (socklen_t *)&len);
+	/*int num = 0;
+	char *ptr = &content[1];
+	char number[2];
+	while(1){
+		if ((msg_size = recvfrom(sock, content, sizeof(content), 0, (struct sockaddr *)&client, (socklen_t *)&len)) < 0)	// Receive the content of file
+		{
+			perror("RECV file or directory content failed");
+			exit(1);
+		}
+		printf("RECV  [%d bytes]: file or directory content\n", msg_size);
+		memset(number, 0, sizeof(number));
+		strncpy(number, ptr, 2);
+		printf("%d    ", atoi(number));
+		output(content);
+		if (num != atoi(number))
+			send_report(sock, UNSUCCESS);
+		else
+			send_report(sock, SUCCESS);
+		num++;
+		if (content[0] == '1')
+			break;
+	}*/
     close(sock);
 	return 0;
 }
@@ -283,7 +308,7 @@ int recv_report(int sock)
 		perror("RECV report message failed");
 		exit(1);
 	}
-	//printf("RECV  [%d bytes]: report message  '%s'\n", msg_size, status);
+	printf("RECV  [%d bytes]: report message  '%s'\n", msg_size, status);
 	return (!strcmp(status, SUCCESS) ? 0 : -1);
 }
 
@@ -295,7 +320,7 @@ void send_report(int sock, char *status)
 		perror("SEND report message failed");
 		exit(1);
 	}
-	//printf("SEND  [%d bytes]: report message  '%s'\n", msg_size, status);
+	printf("SEND  [%d bytes]: report message  '%s'\n", msg_size, status);
 }
 
 void output(char *buffer)
@@ -335,3 +360,69 @@ void add_article_to_system(int sock, char *path)
 	//printf("RECV  [%d bytes]: file or directory content\n", msg_size);
 	output(content);
 }
+void send_msg(int sock, __const void *buf, size_t __n, int __flags, __CONST_SOCKADDR_ARG addr, socklen_t __addr_len){
+	char msg[1024];
+	int msg_size;
+	strcpy(msg, buf);
+	int DAGRM_SIZE =16;
+	int NUM_SIZE = 3;
+	char dagrm[DAGRM_SIZE];
+	char *_ptr = msg;
+	int num, size = 0;
+	int length =  DAGRM_SIZE - NUM_SIZE - sizeof(char);
+	for (num = 0;_ptr <= &msg[strlen(msg) - 1];){
+		memset(dagrm, 0, sizeof(dagrm));
+		sprintf(dagrm, "%3x", num);
+		if (num == ((strlen(msg) - 1)/(DAGRM_SIZE - NUM_SIZE - sizeof(char))))
+			dagrm[0] = '1';
+		strncat(dagrm, _ptr, length);
+		if ((msg_size = sendto(sock, dagrm, strlen(dagrm), 0,  addr, __addr_len)) < 0)
+		{
+			perror("SEND directory content error");
+			exit(1);
+		}
+		printf("SEND  [%d bytes]: directory content '%s'\n", msg_size, dagrm);
+		if (recv_report(sock) == 1)
+			continue;
+		_ptr = _ptr + length;
+		size = size + length;
+		num++;
+	}
+}
+void recv_msg(int sock, void *__restrict buf, size_t __n, int __flags, __SOCKADDR_ARG addr, socklen_t *__restrict len){
+
+	char result[__n];
+	bzero(result, sizeof(result));
+	bzero(buf, sizeof(buf));
+	char content[1024];
+	int num = 0, msg_size;
+	strcpy(content, buf);
+	char *ptr = &content[1];
+	char number[2];
+	while(1){
+		bzero(content, sizeof(content));
+		if ((msg_size = recvfrom(sock, content, sizeof(content), 0, addr, len)) < 0)	// Receive the content of file
+		{
+			perror("RECV file or directory content failed");
+			exit(1);
+		}
+		printf("RECV  [%d bytes]: file or directory content\n", msg_size);
+		memset(number, 0, sizeof(number));
+		strncpy(number, ptr+1, 2);
+		printf("%d    ", atoi(number));
+		if (num != atoi(number)){
+			printf("%d != %d\n", num, atoi(number));
+			send_report(sock, UNSUCCESS);
+		}
+		else
+			send_report(sock, SUCCESS);
+		num++;
+		strncat(result, content+3, strlen(content)-3);
+
+		if (content[0] == '1')
+			break;
+	}
+	printf("%s\n", result);
+}
+
+

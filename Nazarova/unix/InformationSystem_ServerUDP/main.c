@@ -21,7 +21,7 @@
 #define SIZE_STR     128
 #define SUCCESS      "000"
 #define UNSUCCESS    "111"
-#define START_PATH   "/home/ks/workspace/InformationSystem_ServerUDP/Information System/"
+#define START_PATH   "/home/ks/workspace/simple_server/Information System/"
 
 typedef struct
 {
@@ -39,11 +39,12 @@ int open_file(int sock, char *path, struct sockaddr_in *ptr_addr);
 void sendPath_recvReport(int sock, char *path, struct sockaddr_in *ptr_addr);
 void send_input_error(int sock, struct sockaddr_in *ptr_addr);
 void send_report(int sock, char *status, struct sockaddr_in *ptr_addr);
-void recv_report(int sock, struct sockaddr_in *ptr_addr);
+int recv_report(int sock, struct sockaddr_in *ptr_addr);
 void validateArgs(int argc, char **argv);
 void *pthread_handler(void *ptr);
 void usage();
-
+void send_msg(int sock, __const void *__buf, size_t __n, int __flags, __CONST_SOCKADDR_ARG __addr, socklen_t __addr_len);
+void recv_msg(int sock, void *__restrict __buf, size_t __n, int __flags, __SOCKADDR_ARG __addr, socklen_t *__restrict __addr_len);
 int main(int argc, char **argv)
 {
 	const int on = 1;
@@ -239,6 +240,33 @@ void *pthread_handler(void *ptr)
 				strcat(path, "/");
 		}
 	}
+/*	int DAGRM_SIZE =16;
+	int NUM_SIZE = 3;
+	char _msg[1024] = "1234567890123456789012345678901234567890123456789012345678901234567890";
+	char dagrm[DAGRM_SIZE];
+	char *_ptr = _msg;
+	int num, size = 0;
+	int length =  DAGRM_SIZE - NUM_SIZE - sizeof(char);
+	for (num = 0;_ptr <= &_msg[strlen(_msg) - 1];){
+		memset(dagrm, 0, sizeof(dagrm));
+		sprintf(dagrm, "%3x", num);
+		if (num == ((strlen(_msg) - 1)/(DAGRM_SIZE - NUM_SIZE - sizeof(char))))
+			dagrm[0] = '1';
+		strncat(dagrm, _ptr, length);
+		if ((msg_size = sendto(sock, dagrm, strlen(dagrm), 0,  (struct sockaddr*)&addr, sizeof(addr))) < 0)
+		{
+			perror("SEND directory content error");
+			exit(1);
+		}
+		printf("SEND  [%d bytes]: directory content '%s'\n", msg_size, dagrm);
+		if (recv_report(sock,&addr) == 0)
+			continue;
+		_ptr = _ptr + length;
+		size = size + length;
+		num++;
+	}*/
+	send_msg(sock, "Hello,world!Hello,World!!!", strlen("Hello,world!Hello,World!!!"), 0,  (struct sockaddr*)&addr, sizeof(addr));
+
 	pthread_exit(0);
 	return 0;
 }
@@ -423,7 +451,7 @@ void send_report(int sock, char *status, struct sockaddr_in *ptr_addr)
 }
 
 
-void recv_report(int sock, struct sockaddr_in *ptr_addr)
+int recv_report(int sock, struct sockaddr_in *ptr_addr)
 {
 	struct sockaddr_in addr;
 	addr = *ptr_addr;
@@ -437,4 +465,64 @@ void recv_report(int sock, struct sockaddr_in *ptr_addr)
 		exit(1);
 	}
 	printf("RECV  [%d bytes]: report message  '%s'\n", msg_size, status);
+	return strcmp(status, UNSUCCESS) ? 1 : 0;
+}
+
+void send_msg(int sock, __const void *buf, size_t __n, int __flags, __CONST_SOCKADDR_ARG addr, socklen_t __addr_len){
+	char msg[1024];
+	int msg_size;
+	strcpy(msg, buf);
+	int DAGRM_SIZE =16;
+	int NUM_SIZE = 3;
+	char dagrm[DAGRM_SIZE];
+	char *_ptr = msg;
+	int num, size = 0;
+	int length =  DAGRM_SIZE - NUM_SIZE - sizeof(char);
+	for (num = 0;_ptr <= &msg[strlen(msg) - 1];){
+		memset(dagrm, 0, sizeof(dagrm));
+		sprintf(dagrm, "%3x", num);
+		if (num == ((strlen(msg) - 1)/(DAGRM_SIZE - NUM_SIZE - sizeof(char))))
+			dagrm[0] = '1';
+		strncat(dagrm, _ptr, length);
+		if ((msg_size = sendto(sock, dagrm, strlen(dagrm), 0,  addr, __addr_len)) < 0)
+		{
+			perror("SEND directory content error");
+			exit(1);
+		}
+		printf("SEND  [%d bytes]: directory content '%s'\n", msg_size, dagrm);
+		if (recv_report(sock,&addr) == 0)
+			continue;
+		_ptr = _ptr + length;
+		size = size + length;
+		num++;
+	}
+
+}
+
+void recv_msg(int sock, void *__restrict __buf, size_t __n, int __flags, __SOCKADDR_ARG addr, socklen_t *__restrict len){
+	char content[1024];
+	int num = 0, msg_size;
+	strcpy(content, __buf);
+	char *ptr = &content[1];
+	char number[2];
+	while(1){
+		if ((msg_size = recvfrom(sock, content, sizeof(content), 0, addr, len)) < 0)	// Receive the content of file
+		{
+			perror("RECV file or directory content failed");
+			exit(1);
+		}
+		printf("RECV  [%d bytes]: file or directory content\n", msg_size);
+		memset(number, 0, sizeof(number));
+		strncpy(number, ptr, 2);
+		printf("%d    ", atoi(number));
+		if (num != atoi(number))
+			send_report(sock, UNSUCCESS, (struct sockaddr_in *)addr);
+		else
+			send_report(sock, SUCCESS, (struct sockaddr_in *)addr);
+		num++;
+		if (content[0] == '1')
+			break;
+	}
+	printf("THIS: %s\n", content);
+	__buf = content;
 }
