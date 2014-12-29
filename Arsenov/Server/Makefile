@@ -1,5 +1,5 @@
 all:
-	gcc main.c -o main
+	gcc main.c -lpthread -o main
 
 clean:
 	rm my_server
