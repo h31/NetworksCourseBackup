@@ -7,18 +7,46 @@
 #include <string.h>
 #include <assert.h>
 #include <math.h>
+#include <conio.h>
 
 #pragma comment (lib, "Ws2_32.lib")
 #pragma comment (lib, "Mswsock.lib")
 #pragma comment (lib, "AdvApi32.lib")
 
-#define BUFLEN 1000  //Max length of buffer
+#define BUFLEN 40  //Max length of buffer
 #define PORT 5001   //The port on which to listen for incoming data
 #define snprintf _snprintf
 
 #define bzero(b,len) (memset((b), '\0', (len)), (void) 0)  
 #define bcopy(b1,b2,len) (memmove((b2), (b1), (len)), (void) 0)
 
+struct connection {
+	int recv;
+	char data[255];
+	struct sockaddr_in addr;
+	int socket, addrlen;
+};
+
+struct connection conns[20];
+int conn_num = 0;
+DWORD dwThreadId[5];
+
+void my_read(int conn, char* data, int length) {
+	while (!conns[conn].recv) Sleep(1);
+	bcopy(conns[conn].data, data, length);
+	conns[conn].recv = 0;
+}
+
+int my_write(int conn, char* data, int length) {
+	int n;
+	printf("%d\n", conns[conn].socket);
+	n=sendto(conns[conn].socket, data, length, 0,
+		(struct sockaddr*) &conns[conn].addr, conns[conn].addrlen);
+	if(n==SOCKET_ERROR)
+		printf("Error\n");
+	printf("%d \n",n);
+	return n;
+}
 
 long int factorial(long int x) {
 	return !x ? 1 : x * factorial(x - 1);
@@ -65,6 +93,7 @@ void calculation(char *buffer,char *answer) {
 		}
 	}
 	if (buffer[i] == '+'){
+		Sleep(10000);
 		sprintf(answer, "Answer = %f", a+b);
 	}
 	if (buffer[i] == '-'){
@@ -101,8 +130,22 @@ void calculation(char *buffer,char *answer) {
 
 void die(char *s)
 {
-    perror(s);
-    exit(1);
+	perror(s);
+	exit(1);
+}
+
+DWORD WINAPI startThread(LPVOID lpParam) {
+	int sock = *(int*)lpParam;
+	char mesg[BUFLEN];
+	while(1)
+	{
+		char answer[BUFLEN];
+		bzero(mesg, sizeof(mesg));
+		my_read(sock, mesg, BUFLEN);
+		calculation(mesg,answer);
+		my_write(sock, answer, strlen(answer));
+		printf("%s\n",answer);
+	}
 }
 
 int main() {
@@ -114,41 +157,72 @@ int main() {
 	socklen_t len;
 	len = sizeof(cliaddr);
 	char mesg[BUFLEN];
+	HANDLE thread[5],mainthread;
 
 	// Initialize Winsock
 	WSADATA wsaData;
-    n = WSAStartup(MAKEWORD(2,2), &wsaData);
-    if (n != 0) {
-        printf("WSAStartup failed with error: %d\n", n);
-        return -1;
-    }
+	n = WSAStartup(MAKEWORD(2,2), &wsaData);
+	if (n != 0) {
+		printf("WSAStartup failed with error: %d\n", n);
+		return -1;
+	}
 
 	sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 	if (sock == INVALID_SOCKET)
-    {
-        die("socket");
-    }
+	{
+		die("socket");
+	}
 
 	memset((char *) &servaddr, 0, sizeof(servaddr));
 	bzero(&servaddr, sizeof(servaddr));
-    servaddr.sin_family = AF_INET;
-    servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-    servaddr.sin_port = htons(PORT);
+	servaddr.sin_family = AF_INET;
+	servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+	servaddr.sin_port = htons(PORT);
 
-    if( bind(sock , (struct sockaddr*)&servaddr, sizeof(servaddr) ) == -1)
-    {
-        die("bind");
-    }
+	if( bind(sock , (struct sockaddr*)&servaddr, sizeof(servaddr) ) == -1)
+	{
+		die("bind");
+	}
 	while(1)
-    {
-			char answer[BUFLEN];
-			bzero(mesg, sizeof(mesg));
-             recvfrom(sock, mesg, BUFLEN, 0, (struct sockaddr *) &cliaddr, &len);
-			 calculation(mesg,answer);
-			 sendto(sock, answer, strlen(answer), 0, (struct sockaddr *)&cliaddr,sizeof(cliaddr));
-			 printf("%s\n",answer);
-    }
+	{
+
+		/* Accept actual connection from the client */
+
+		/* If connection is established then start communicating */
+		int n, i, num;
+		char buff[256];
+		bzero(buff, 255);
+
+		struct sockaddr_in client_addr;
+		socklen_t addrlen = sizeof(struct sockaddr_in);
+		n = recvfrom(sock, buff, 255, 0, (struct sockaddr*) &client_addr, &addrlen);
+		printf("Res %s \n",buff);
+		num = -1;
+		for (i = 0; i < conn_num; i++) {
+			if ((conns[i].addr.sin_addr.s_addr == client_addr.sin_addr.s_addr) &&
+				(conns[i].addr.sin_port == client_addr.sin_port)) {
+					num = i;
+					break;
+			}
+		}
+		if (num == -1) {
+			num = conn_num;
+			conns[num].addr.sin_addr = client_addr.sin_addr;
+			conns[num].addr.sin_port = client_addr.sin_port;
+			conns[num].addr.sin_family = client_addr.sin_family;
+			//conns[num].addr.sin_zero = client_addr.sin_zero;
+			conns[num].socket = sock;
+			conns[num].addrlen = addrlen;
+			conns[num].recv = 0;
+			thread[num]= CreateThread(NULL, 0, startThread, (LPVOID)&num, 0, &dwThreadId[i]);
+			conn_num++;
+		}
+		printf("Client %d\n", num);
+
+		bcopy(buff, conns[num].data, 255);
+		conns[num].recv = 1;
+	}
 	closesocket(sock);
-	 return 0;
-    
+	return 0;
+
 }
